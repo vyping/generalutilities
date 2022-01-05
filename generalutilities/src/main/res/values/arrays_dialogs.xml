@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Dialogs PickerDate - Section
+
+    <string-array name="Dialogs_PickerDate">
+        <item name="PickerDate_IconTitle">\uf073</item>   //calendar-alt
+        <item name="PickerDate_TextTitle">Fecha</item>
+        <item name="PickerDate_Information">Seleccione la fecha a visualizar:</item>
+        <item name="PickerDate_Description">En este campo se debe seleccionar la fecha deseada para visualizar la información correspondiente.</item>
+        <item name="PickerDate_Negative">Cancelar</item>
+        <item name="PickerDate_Positive">Seleccionar</item>
+    </string-array>
+
+</resources>

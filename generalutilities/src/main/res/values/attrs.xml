@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <declare-styleable name="CustomView">
+
+        <attr name="actbarToolsButtons" format="reference"/>
+
+        <attr name="colorActionBarBackground" format="color"/>
+        <attr name="colorActionBarSideBars" format="color"/>
+        <attr name="colorActionBarTitle" format="color"/>
+        <attr name="colorActionBarSubTitle" format="color"/>
+        <attr name="colorActionBarVersion" format="color"/>
+        <attr name="colorActionBarButtons" format="color"/>
+        <attr name="colorActionBarMainIcons" format="color"/>
+        <attr name="colorActionBarSecundaryIcons" format="color"/>
+
+        <attr name="colorDialogBackground" format="color"/>
+        <attr name="colorDialogMainButton" format="color"/>
+        <attr name="colorDialogSecundaryButton" format="color"/>
+        <attr name="colorDialogButtonText" format="color"/>
+        <attr name="colorDialogInstructionsText" format="color"/>
+        <attr name="colorDialogDescriptionText" format="color"/>
+        <attr name="colorDialogInputTextBackground" format="color"/>
+        <attr name="colorDialogMainContainer" format="color"/>
+        <attr name="colorDialogPickerText" format="color"/>
+        <attr name="colorDialogInputTextColor" format="color"/>
+
+        <attr name="colorMenuButtonBackground" format="color"/>
+        <attr name="colorMenuButtonText" format="color"/>
+
+        <attr name="colorPopUpsContainers" format="color"/>
+        <attr name="colorPopUpsButtons" format="color"/>
+        <attr name="colorPopUpsIcons" format="color"/>
+
+        <attr name="dialogInfoButton" format="reference"/>
+        <attr name="dialogInputText" format="reference"/>
+        <attr name="dialogSearchView" format="reference"/>
+        <attr name="dialogListView" format="reference"/>
+        <attr name="dialogCheckBox" format="reference"/>
+        <attr name="dialogNumberPicker" format="reference"/>
+        <attr name="dialogOptionButton" format="reference"/>
+        <attr name="dialogPattern" format="reference"/>
+        <attr name="dialogPickerDateSpinner" format="reference"/>
+        <attr name="dialogPickerDateCalendar" format="reference"/>
+        <attr name="dialogPickerTimeSpinner" format="reference"/>
+        <attr name="dialogPickerTimeClock" format="reference"/>
+        <attr name="dialogQrScan" format="reference"/>
+        <attr name="dialogSigning" format="reference"/>
+        <attr name="dialogSlide" format="reference"/>
+        <attr name="dialogVideoPlayer" format="reference"/>
+        <attr name="dialogShowInfo" format="reference"/>
+        <attr name="dialogButtons" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="QuantityView">
+        <attr name="minQuantity" format="integer" />
+        <attr name="maxQuantity" format="integer" />
+        <attr name="startQuantity" format="integer" />
+        <attr name="deltaQuantity" format="integer" />
+        <attr name="isOutlined" format="boolean" />
+        <attr name="colorOfQuantity" format="color" />
+        <attr name="colorOfText" format="color" />
+    </declare-styleable>
+
+</resources>

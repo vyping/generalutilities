@@ -2,6 +2,13 @@
 
 <manifest
 
-    package="com.vyping.masterlibrary">
+    package="com.vyping.masterlibrary"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
 </manifest>

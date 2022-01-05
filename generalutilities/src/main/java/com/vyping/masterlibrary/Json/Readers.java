@@ -1,0 +1,334 @@
+package com.vyping.masterlibrary.Json;
+
+import android.content.Context;
+import android.text.format.DateFormat;
+import android.util.JsonReader;
+
+import androidx.annotation.NonNull;
+
+import com.vyping.masterlibrary.Common.DateTools;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
+public class Readers {
+
+    private String Tag;
+
+
+    // ----- String Readers ----- //
+
+    public String getJsonString(@NonNull JSONArray array, int index) {
+
+        try {
+
+            return array.getString(index);
+
+        } catch (JSONException e) {
+
+            return "";
+        }
+    }
+
+    public String getJsonString(@NonNull JSONObject jsonObject, String key) {
+
+        try {
+
+            return jsonObject.getString(key);
+
+        } catch (JSONException e) {
+
+            return "";
+        }
+    }
+
+
+    // ----- Long Readers ----- //
+
+    public long getJsonLong(@NonNull JSONArray array, int index) {
+
+        try {
+
+            return array.getLong(index);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return 0L;
+        }
+    }
+
+    public double getJsonDouble(@NonNull JSONArray array, int index) {
+
+        try {
+
+            return array.getDouble(index);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return 0.0;
+        }
+    }
+
+
+    // ----- Integer Readers ----- //
+
+    public int getJsonInt(@NonNull JSONArray array, int index) {
+
+        try {
+
+            return array.getInt(index);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return 0;
+        }
+    }
+
+    public String getJsonDate(@NonNull JSONArray array, int index) {
+
+       long longDate = getJsonLong(array, 0);
+
+       if (longDate!= 0L) {
+
+           return new DateTools().getTime("dd/MM/yy", longDate);
+
+       } else {
+
+           return "";
+       }
+    }
+
+    public String getJsonHour(@NonNull JSONArray array, int index) {
+
+        try {
+
+            long hour = array.getLong(index);
+            Calendar calendar = Calendar.getInstance(Locale.getDefault());
+            calendar.setTimeInMillis(hour);
+
+            return DateFormat.format("HH:mm", calendar).toString();
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return "";
+        }
+    }
+
+    public long getArrayListSize(@NonNull JSONArray array) {
+
+        return array.length();
+    }
+
+    public String getArrayListToString(@NonNull JSONArray array) {
+
+        try {
+
+            String Text = "";
+
+            for (int i = 0; i < array.length(); ++i) {
+
+                if (Text.equals("")) {
+
+                    Text = array.getString(i);
+
+                } else {
+
+                    Text = MessageFormat.format("{0}\n\n{1}", Text, array.getString(i));
+                }
+            }
+
+            return Text;
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return "";
+        }
+
+    }
+
+    public String getArrayListToString(@NonNull JSONArray array, String censure) {
+
+        try {
+
+            String Text = "";
+
+            for (int i = 0; i < array.length(); ++i) {
+
+                if (Text.equals("")) {
+
+                    Text = array.getString(i);
+
+                } else {
+
+                    String line = array.getString(i);
+
+                    if (!line.contains(censure)) {
+
+                        Text = MessageFormat.format("{0}\n\n{1}", Text, line);
+                    }
+                }
+            }
+
+            return Text;
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return "";
+        }
+    }
+
+    public ArrayList<String> getArrayList(@NonNull JSONArray jsonArray) {
+
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        try {
+
+            for (int i=0; i<jsonArray.length(); i++) {
+
+                arrayList.add(jsonArray.getString(i));
+            }
+
+            return arrayList;
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return arrayList;
+        }
+    }
+
+    public String selectPlaceOrAddress(@NonNull JSONArray place) {
+
+        String Place = getJsonString(place, 0);
+        String Address = getJsonString(place, 2);
+
+        if (!Place.contains("Domicilio")) {
+
+            return Place;
+
+        } else {
+
+            return Address;
+        }
+    }
+
+    public String getJsonHourServer(@NonNull JSONArray jsonArray, int index, int delay) {
+
+        long timeMillis = getJsonLong(jsonArray, index);
+
+        if (timeMillis != 0L) {
+
+            return new DateTools().setStartHourForServer(timeMillis, delay);
+
+        } else {
+
+            return "";
+        }
+    }
+
+    public long readJsonStampServer(@NonNull JSONArray jsonArray, int index, int delay) {
+
+        long timeMillis = getJsonLong(jsonArray, index);
+
+        if (timeMillis != 0L) {
+
+            return new DateTools().setStartStampForServer(timeMillis, delay);
+
+        } else {
+
+            return 0L;
+        }
+    }
+
+
+    /**
+     * -------- Tools Section
+     */
+
+    public ArrayList<String> toArrayList(@NonNull Context context, int JsonList, String tag){
+
+        Tag = tag;
+        InputStream imputStream = context.getResources().openRawResource(JsonList);
+
+        try {
+
+            return readJsonStream(imputStream);
+
+        } catch (Exception e) { return null; }
+    }
+
+    @NonNull
+    private ArrayList<String> readJsonStream(InputStream in) throws IOException {
+
+        try (JsonReader reader = new JsonReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
+
+            return readItemsArray(reader);
+        }
+    }
+
+    @NonNull
+    private ArrayList<String> readItemsArray(@NonNull JsonReader reader) throws IOException {
+
+        ArrayList<String> Items = new ArrayList<>();
+
+        reader.beginArray();
+
+        while (reader.hasNext()) {
+
+            Items.add(readItem(reader));
+        }
+
+        reader.endArray();
+
+        return Items;
+    }
+
+    private String readItem(@NonNull JsonReader reader) throws IOException {
+
+        String Item = null;
+
+        reader.beginObject();
+
+        while (reader.hasNext()) {
+
+            String item = reader.nextName();
+
+            if (item.equals(Tag)) {
+
+                Item = reader.nextString();
+
+            } else {
+
+                reader.skipValue();
+            }
+        }
+
+        reader.endObject();
+
+        return Item;
+    }
+}
+

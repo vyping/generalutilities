@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Primary Color - Scale
+
+    <color name="colorPrimaryTranslucid">#81256EA4</color>
+    <color name="colorPrimaryLigth20">#f6fbff</color>
+    <color name="colorPrimaryLigth19">#e3f2ff</color>
+    <color name="colorPrimaryLigth10">#d4edff</color>
+    <color name="colorPrimaryLigth9">#c8e8ff</color>
+    <color name="colorPrimaryLigth8">#ADD4F1</color>
+    <color name="colorPrimaryLigth7">#97C5E7</color>
+    <color name="colorPrimaryLigth6">#7EB3DA</color>
+    <color name="colorPrimaryLigth5">#6BA6D1</color>
+    <color name="colorPrimaryLigth4">#5A99C7</color>
+    <color name="colorPrimaryLigth3">#4A8CBC</color>
+    <color name="colorPrimaryLigth2">#3C81B4</color>
+    <color name="colorPrimaryLigth1">#3278AC</color>
+    <color name="colorPrimary">#256EA4</color>
+    <color name="colorPrimaryDark1">#186096</color>
+    <color name="colorPrimaryDark2">#0E5387</color>
+    <color name="colorPrimaryDark3">#074A7C</color>
+    <color name="colorPrimaryDark4">#014273</color>
+    <color name="colorPrimaryDark5">#003156</color>
+    <color name="colorPrimaryDark6">#002847</color>
+    <color name="colorPrimaryDark7">#00233E</color>
+    <color name="colorPrimaryDark8">#001B32</color>
+    <color name="colorPrimaryDark9">#001222</color>
+    <color name="colorPrimaryDark10">#000A12</color>
+
+
+    // Gray Color - Scale
+    
+    <color name="GreySolid00">#E6E6E6</color>
+    <color name="GreySolid01">#DFDFDF</color>
+    <color name="GreySolid02">#D8D8D8</color>
+    <color name="GreySolid03">#CCCCCC</color>
+    <color name="GreySolid04">#C3C3C3</color>
+    <color name="GreySolid05">#BABABA</color>
+    <color name="GreySolid06">#B1B0B0</color>
+    <color name="GreySolid07">#A8A8A8</color>
+    <color name="GreySolid08">#9C9B9B</color>
+    <color name="GreySolid09">#8E8E8E</color>
+    <color name="GreySolid10">#838383</color>
+    <color name="GreySolid11">#757575</color>
+    <color name="GreySolid12">#686868</color>
+    <color name="GreySolid13">#5E5E5E</color>
+    <color name="GreySolid14">#515151</color>
+    <color name="GreySolid15">#454545</color>
+    <color name="GreySolid16">#3C3C3C</color>
+    <color name="GreySolid17">#303030</color>
+    <color name="GreySolid18">#232323</color>
+    <color name="GreySolid19">#191919</color>
+    <color name="GreySolid20">#0C0C0C</color>
+
+    <color name="GreyLight000">#00757575</color>
+    <color name="GreyLight010">#1A757575</color>
+    <color name="GreyLight020">#33757575</color>
+    <color name="GreyLight030">#4D757575</color>
+    <color name="GreyLight040">#66757575</color>
+    <color name="GreyLight050">#80757575</color>
+    <color name="GreyLight060">#99757575</color>
+    <color name="GreyLight070">#B3757575</color>
+    <color name="GreyLight080">#CC757575</color>
+    <color name="GreyLight090">#E6757575</color>
+    <color name="GreyLight100">#757575</color>
+
+    <color name="GreyMid000">#00454545</color>
+    <color name="GreyMid010">#1A454545</color>
+    <color name="GreyMid020">#33454545</color>
+    <color name="GreyMid030">#4D454545</color>
+    <color name="GreyMid040">#66454545</color>
+    <color name="GreyMid050">#80454545</color>
+    <color name="GreyMid060">#99454545</color>
+    <color name="GreyMid070">#B3454545</color>
+    <color name="GreyMid080">#CC454545</color>
+    <color name="GreyMid090">#E6454545</color>
+    <color name="GreyMid100">#454545</color>
+
+    <color name="GreyDark000">#00191919</color>
+    <color name="GreyDark010">#1A191919</color>
+    <color name="GreyDark020">#33191919</color>
+    <color name="GreyDark030">#4D191919</color>
+    <color name="GreyDark040">#66191919</color>
+    <color name="GreyDark050">#80191919</color>
+    <color name="GreyDark060">#99191919</color>
+    <color name="GreyDark070">#B3191919</color>
+    <color name="GreyDark080">#CC191919</color>
+    <color name="GreyDark090">#E6191919</color>
+    <color name="GreyDark100">#191919</color>
+
+    
+    // Blue Color - Scale
+
+    <color name="BlueUltraLight000">#006BA6D1</color>
+    <color name="BlueUltraLight010">#1A6BA6D1</color>
+    <color name="BlueUltraLight020">#336BA6D1</color>
+    <color name="BlueUltraLight030">#4D6BA6D1</color>
+    <color name="BlueUltraLight040">#666BA6D1</color>
+    <color name="BlueUltraLight050">#806BA6D1</color>
+    <color name="BlueUltraLight060">#996BA6D1</color>
+    <color name="BlueUltraLight070">#B36BA6D1</color>
+    <color name="BlueUltraLight080">#CC6BA6D1</color>
+    <color name="BlueUltraLight090">#E66BA6D1</color>
+    <color name="BlueUltraLight100">#6BA6D1</color>
+
+    <color name="BlueLight000">#00256EA4</color>
+    <color name="BlueLight010">#1A256EA4</color>
+    <color name="BlueLight020">#33256EA4</color>
+    <color name="BlueLight030">#4D256EA4</color>
+    <color name="BlueLight040">#66256EA4</color>
+    <color name="BlueLight050">#80256EA4</color>
+    <color name="BlueLight060">#99256EA4</color>
+    <color name="BlueLight070">#B3256EA4</color>
+    <color name="BlueLight080">#CC256EA4</color>
+    <color name="BlueLight090">#E6256EA4</color>
+    <color name="BlueLight100">#256EA4</color>
+    
+    <color name="BlueMid000">#00003156</color>
+    <color name="BlueMid010">#1A003156</color>
+    <color name="BlueMid020">#33003156</color>
+    <color name="BlueMid030">#4D003156</color>
+    <color name="BlueMid040">#66003156</color>
+    <color name="BlueMid050">#80003156</color>
+    <color name="BlueMid060">#99003156</color>
+    <color name="BlueMid070">#B3003156</color>
+    <color name="BlueMid080">#CC003156</color>
+    <color name="BlueMid090">#E6003156</color>
+    <color name="BlueMid100">#003156</color>
+    
+    <color name="BlueDark000">#00000D18</color>
+    <color name="BlueDark010">#1A000D18</color>
+    <color name="BlueDark020">#33000D18</color>
+    <color name="BlueDark030">#4D000D18</color>
+    <color name="BlueDark040">#66000D18</color>
+    <color name="BlueDark050">#80000D18</color>
+    <color name="BlueDark060">#99000D18</color>
+    <color name="BlueDark070">#B3000D18</color>
+    <color name="BlueDark080">#CC000D18</color>
+    <color name="BlueDark090">#E6000D18</color>
+    <color name="BlueDark100">#000D18</color>
+    
+    
+    // Red Color - Scale
+    
+    <color name="RedLight000">#00FF0000</color>
+    <color name="RedLight010">#1AFF0000</color>
+    <color name="RedLight020">#33FF0000</color>
+    <color name="RedLight030">#4DFF0000</color>
+    <color name="RedLight040">#66FF0000</color>
+    <color name="RedLight050">#80FF0000</color>
+    <color name="RedLight060">#99FF0000</color>
+    <color name="RedLight070">#B3FF0000</color>
+    <color name="RedLight080">#CCFF0000</color>
+    <color name="RedLight090">#E6FF0000</color>
+    <color name="RedLight100">#FF0000</color>
+
+    <color name="RedMid000">#00CE000A</color>
+    <color name="RedMid010">#1ACE000A</color>
+    <color name="RedMid020">#33CE000A</color>
+    <color name="RedMid030">#4DCE000A</color>
+    <color name="RedMid040">#66CE000A</color>
+    <color name="RedMid050">#80CE000A</color>
+    <color name="RedMid060">#99CE000A</color>
+    <color name="RedMid070">#B3CE000A</color>
+    <color name="RedMid080">#CCCE000A</color>
+    <color name="RedMid090">#E6CE000A</color>
+    <color name="RedMid100">#CE000A</color>
+
+    <color name="RedDark000">#00730106</color>
+    <color name="RedDark010">#1A730106</color>
+    <color name="RedDark020">#33730106</color>
+    <color name="RedDark030">#4D730106</color>
+    <color name="RedDark040">#66730106</color>
+    <color name="RedDark050">#80730106</color>
+    <color name="RedDark060">#99730106</color>
+    <color name="RedDark070">#B3730106</color>
+    <color name="RedDark080">#CC730106</color>
+    <color name="RedDark090">#E6730106</color>
+    <color name="RedDark100">#A30008</color>
+    
+    
+    // Green Color - Scale
+    
+    <color name="colorGreenTranslucid">#7A28AA49</color>
+    <color name="colorGreenLigth12">#EFFAF0</color>
+    <color name="colorGreenLigth11">#E5FDEA</color>
+    <color name="colorGreenLigth10">#CEFDD9</color>
+    <color name="colorGreenLigth9">#C2FFD0</color>
+    <color name="colorGreenLigth8">#B0FAC1</color>
+    <color name="colorGreenLigth7">#9CF1B0</color>
+    <color name="colorGreenLigth6">#8AEBA1</color>
+    <color name="colorGreenLigth5">#77E090</color>
+    <color name="colorGreenLigth4">#64D57F</color>
+    <color name="colorGreenLigth3">#52C96F</color>
+    <color name="colorGreenLigth2">#43BE61</color>
+    <color name="colorGreenLigth1">#34B152</color>
+    <color name="colorGreen">#28AA63</color>
+    <color name="colorGreenDark1">#1EA03F</color>
+    <color name="colorGreenDark2">#0F9130</color>
+    <color name="colorGreenDark3">#058024</color>
+    <color name="colorGreenDark4">#016F1E</color>
+    <color name="colorGreenDark5">#015E19</color>
+    <color name="colorGreenDark6">#003F11</color>
+    <color name="colorGreenDark7">#002E0C</color>
+    <color name="colorGreenDark8">#001806</color>
+
+    <color name="GreenLight000">#005AFF00</color>
+    <color name="GreenLight010">#1A5AFF00</color>
+    <color name="GreenLight020">#335AFF00</color>
+    <color name="GreenLight030">#4D5AFF00</color>
+    <color name="GreenLight040">#665AFF00</color>
+    <color name="GreenLight050">#805AFF00</color>
+    <color name="GreenLight060">#995AFF00</color>
+    <color name="GreenLight070">#B35AFF00</color>
+    <color name="GreenLight080">#CC5AFF00</color>
+    <color name="GreenLight090">#E65AFF00</color>
+    <color name="GreenLight100">#FF5AFF00</color>
+
+    <color name="GreenMid000">#0048CC01</color>
+    <color name="GreenMid010">#1A48CC01</color>
+    <color name="GreenMid020">#3348CC01</color>
+    <color name="GreenMid030">#4D48CC01</color>
+    <color name="GreenMid040">#6648CC01</color>
+    <color name="GreenMid050">#8048CC01</color>
+    <color name="GreenMid060">#9948CC01</color>
+    <color name="GreenMid070">#B348CC01</color>
+    <color name="GreenMid080">#CC48CC01</color>
+    <color name="GreenMid090">#E648CC01</color>
+    <color name="GreenMid100">#CE48CC01</color>
+
+    <color name="GreenDark000">#00339100</color>
+    <color name="GreenDark010">#1A339100</color>
+    <color name="GreenDark020">#33339100</color>
+    <color name="GreenDark030">#4D339100</color>
+    <color name="GreenDark040">#66339100</color>
+    <color name="GreenDark050">#80339100</color>
+    <color name="GreenDark060">#99339100</color>
+    <color name="GreenDark070">#B3339100</color>
+    <color name="GreenDark080">#CC339100</color>
+    <color name="GreenDark090">#E6339100</color>
+    <color name="GreenDark100">#CC339100</color>
+    
+    
+    // Indicator State - Scale
+
+    <color name="IndicatorRedLight">#CCFF8080</color>
+    <color name="IndicatorRedMid">#CCFF0000</color>
+    <color name="IndicatorRedDark">#CC8F0000</color>
+
+    <color name="IndicatorGreenLight">#CCAAFD7E</color>
+    <color name="IndicatorGreenMid">#CC56AA28</color>
+    <color name="IndicatorGreenDark">#CC2F8700</color>
+
+    <color name="IndicatorBlueLight">#CC80C9FF</color>
+    <color name="IndicatorBlueMid">#CC256EA4</color>
+    <color name="IndicatorBlueDark">#CC00487E</color>
+
+
+
+
+    <color name="colorBackground">#EFF9FF</color>
+    <color name="solidColor">#ffffff</color>
+    <color name="colorAccent">#0093FF</color>
+    <color name="colorNegro">#000000</color>
+    <color name="colorBlanco">#FFFFFF</color>
+    <color name="colorTransparente">#00FFFFFF</color>
+    <color name="colorAzul">#0101B6</color>
+    <color name="colorVerdeUltraClaro">#E6FCEC</color>
+    <color name="colorVerdeClaro">#5BFF88</color>
+    <color name="colorVerde">#00CE34</color>
+    <color name="colorVerdeOscuro">#48AD62</color>
+    <color name="colorVerdeUltraOscuro">#269241</color>
+    <color name="colorAmarillo">#CAE100</color>
+    <color name="colorAquamarine">#009196</color>
+    <color name="colorYellow">#ffaa3f</color>
+    <color name="colorOrange">#ffaa3f</color>
+    <color name="colorDarkOrange">#FF5C29</color>
+    <color name="colorGrey">#BEBEBE</color>
+    <color name="colorViolett">#92569B</color>
+    <color name="colorSolicitado">#0093FF</color>
+
+    <color name="colorNeverConected">#ABABAB</color>
+    <color name="colorOffline">#ffaa3f</color>
+    <color name="colorServiceOnline">#37A4FF</color>
+    <color name="colorActivityOnline">#2BFD23</color>
+
+    <color name="colorAzulOscuro">#0D446C</color>
+    <color name="colorAzulClaro">#4399D9</color>
+    <color name="colorAzulSuperClaro">#e7f5ff</color>
+    <color name="colorAzulUltraClaro">#9FD5FC</color>
+    <color name="colorAzulTranslucido">#A300192B</color>
+    <color name="background_gradient_start">#000000</color>
+    <color name="background_gradient_end">#DDDDDD</color>
+    <color name="fastlane_background">#0096a6</color>
+    <color name="search_opaque">#ffaa3f</color>
+    <color name="selected_background">#ffaa3f</color>
+    <color name="default_background">#3d3d3d</color>
+
+    <color name="colorPolylines">#ABABAB</color>
+    <color name="colorselected">#ECECEC</color>
+
+
+    <color name="color_marker_online">#A0FDA5</color>
+    <color name="color_marker_unknown">#FDD55C</color>
+    <color name="color_marker_offline">#FFB2AD</color>
+
+    <color name="colorViewTranslucid">#92256EA4</color>
+
+    // Dark Colors Traslates Globes
+
+    <color name="TraslateDarkTitleRequested">#D772DD</color>
+    <color name="TraslateDarkTitlePendient">#8D5DE1</color>
+    <color name="TraslateDarkTitleProgrammed">#4DA1DD</color>
+    <color name="TraslateDarkTitleAsign">#47BFC5</color>
+    <color name="TraslateDarkTitleInform">#48A675</color>
+    <color name="TraslateDarkTitleWaiting">#CCAB5A</color>
+    <color name="TraslateDarkTitleStart">#DF7C5C</color>
+    <color name="TraslateDarkTitleCancelled">#BF3D3D</color>
+    <color name="TraslateDarkTitleFinalized">#939393</color>
+
+    // Light Colors Traslates Globes
+
+    <color name="TraslateLightTitleRequested">#CD3DD6</color>
+    <color name="TraslateLightTitlePendient">#5B349F</color>
+    <color name="TraslateLightTitleProgrammed">#4A8CBC</color>
+    <color name="TraslateLightTitleAsign">#009196</color>
+    <color name="TraslateLightTitleInform">#48AD62</color>
+    <color name="TraslateLightTitleWaiting">#EAAB4C</color>
+    <color name="TraslateLightTitleStart">#E65426</color>
+    <color name="TraslateLightTitleCancelled">#A30008</color>
+    <color name="TraslateLightTitleFinalized">#979797</color>
+
+    // Light Colors Traslates Globes
+
+    <color name="TraslateTextTitleRequested">#FEEBFF</color>
+    <color name="TraslateTextTitlePendient">#F7F2FF</color>
+    <color name="TraslateTextTitleProgrammed">#F0F8FD</color>
+    <color name="TraslateTextTitleAsign">#EBFEFF</color>
+    <color name="TraslateTextTitleInform">#EBFFF5</color>
+    <color name="TraslateTextTitleWaiting">#FFFDF9</color>
+    <color name="TraslateTextTitleStart">#FFF2ED</color>
+    <color name="TraslateTextTitleCancelled">#FFEBEB</color>
+    <color name="TraslateTextTitleFinalized">#F4F4F4</color>
+
+</resources>

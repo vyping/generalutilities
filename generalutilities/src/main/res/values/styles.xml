@@ -1,0 +1,280 @@
+<resources>
+
+    <style name="AppLightTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimaryDark">@color/colorPrimaryDark5</item>
+        <item name="android:colorBackground">@color/colorPrimaryLigth8</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark9</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorActionBarBackground">@color/colorPrimaryDark5</item>
+        <item name="colorActionBarSideBars">@color/colorPrimary</item>
+        <item name="colorActionBarTitle">@color/colorBlanco</item>
+        <item name="colorActionBarSubTitle">@color/colorPrimaryLigth4</item>
+        <item name="colorActionBarVersion">@color/colorPrimaryDark2</item>
+        <item name="colorActionBarButtons">@color/colorPrimaryDark4</item>
+        <item name="colorActionBarMainIcons">@color/colorBlanco</item>
+        <item name="colorActionBarSecundaryIcons">@color/colorPrimaryDark2</item>
+
+        <item name="colorDialogBackground">@color/colorPrimaryLigth20</item>
+        <item name="colorDialogMainButton">@color/colorPrimaryDark3</item>
+        <item name="colorDialogSecundaryButton">@color/colorPrimaryLigth4</item>
+        <item name="colorDialogButtonText">@color/colorBlanco</item>
+        <item name="colorDialogDescriptionText">@color/colorAccent</item>
+        <item name="colorDialogInstructionsText">@color/colorNegro</item>
+        <item name="colorDialogInputTextBackground">@color/colorPrimaryLigth10</item>
+        <item name="colorDialogMainContainer">@color/colorPrimaryLigth6</item>
+        <item name="colorDialogInputTextColor">@color/colorPrimaryDark4</item>
+        <item name="colorDialogPickerText">@color/colorPrimaryDark5</item>
+
+        <item name="colorMenuButtonBackground">@color/colorBlanco</item>
+        <item name="colorMenuButtonText">@color/colorPrimary</item>
+
+        <item name="colorPopUpsContainers">@color/colorPrimary</item>
+        <item name="colorPopUpsButtons">@color/colorPrimaryDark4</item>
+        <item name="colorPopUpsIcons">@color/colorBlanco</item>
+
+    </style>
+
+    <style name="AppDarkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimaryDark">@color/colorPrimaryDark7</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark9</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark9</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorActionBarBackground">@color/colorPrimaryDark7</item>
+        <item name="colorActionBarSideBars">@color/colorPrimaryDark2</item>
+        <item name="colorActionBarTitle">@color/colorPrimaryLigth20</item>
+        <item name="colorActionBarSubTitle">@color/colorPrimaryLigth2</item>
+        <item name="colorActionBarVersion">@color/colorPrimaryDark4</item>
+        <item name="colorActionBarButtons">@color/colorPrimaryDark6</item>
+        <item name="colorActionBarMainIcons">@color/colorPrimaryLigth20</item>
+        <item name="colorActionBarSecundaryIcons">@color/colorPrimaryDark4</item>
+
+        <item name="colorDialogBackground">@color/colorPrimaryDark2</item>
+        <item name="colorDialogMainButton">@color/colorPrimaryDark5</item>
+        <item name="colorDialogSecundaryButton">@color/colorPrimaryLigth2</item>
+        <item name="colorDialogButtonText">@color/colorPrimaryLigth10</item>
+        <item name="colorDialogDescriptionText">@color/colorAccent</item>
+        <item name="colorDialogInstructionsText">@color/colorPrimaryLigth19</item>
+        <item name="colorDialogInputTextBackground">@color/colorPrimaryLigth6</item>
+        <item name="colorDialogMainContainer">@color/colorPrimaryDark4</item>
+        <item name="colorDialogInputTextColor">@color/colorPrimaryDark7</item>
+        <item name="colorDialogPickerText">@color/colorPrimaryLigth8</item>
+
+        <item name="colorMenuButtonBackground">@color/colorPrimary</item>
+        <item name="colorMenuButtonText">@color/colorBlanco</item>
+
+        <item name="colorPopUpsContainers">@color/colorPrimaryDark2</item>
+        <item name="colorPopUpsButtons">@color/colorPrimaryDark6</item>
+        <item name="colorPopUpsIcons">@color/colorPrimaryLigth20</item>
+
+        <item name="android:editTextColor">@color/colorPrimaryLigth8</item>
+
+        <item name="actbarToolsButtons">@style/ActionBarToolButtons</item>
+
+        <item name="dialogInfoButton">@style/DialogInfoButton</item>
+        <item name="dialogInputText">@style/DialogInputText</item>
+        <item name="dialogSearchView">@style/DialogSearchView</item>
+        <item name="dialogListView">@style/DialogListView</item>
+        <item name="dialogCheckBox">@style/DialogCheckBox</item>
+        <item name="dialogNumberPicker">@style/DialogNumberPicker</item>
+        <item name="dialogOptionButton">@style/DialogOptionButton</item>
+        <item name="dialogPattern">@style/DialogPattern</item>
+        <item name="dialogPickerDateSpinner">@style/DialogPickerDateSpinner</item>
+        <item name="dialogPickerDateCalendar">@style/DialogPickerDateCalendar</item>
+        <item name="dialogPickerTimeSpinner">@style/DialogPickerTimeSpinner</item>
+        <item name="dialogPickerTimeClock">@style/DialogPickerTimeClock</item>
+        <item name="dialogQrScan">@style/DialogQrScan</item>
+        <item name="dialogSigning">@style/DialogSigning</item>
+        <item name="dialogSlide">@style/DialogSlide</item>
+        <item name="dialogVideoPlayer">@style/DialogVideoPlayer</item>
+        <item name="dialogShowInfo">@style/DialogShowInfo</item>
+        <item name="dialogButtons">@style/DialogButtons</item>
+
+    </style>
+
+    <style name="MenuVerticalButton">
+        <item name="android:background">@drawable/layout_globe_body</item>
+        <item name="android:backgroundTint">?colorMenuButtonBackground</item>
+        <item name="android:textColor">?colorMenuButtonText</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/fontPlus10</item>
+        <item name="android:windowEnterAnimation">@animator/zoom_in</item>
+        <item name="android:windowExitAnimation">@animator/zoom_out</item>
+    </style>
+
+    <style name="MenuHorizontalButton">
+        <item name="android:background">@drawable/layout_globe_body</item>
+        <item name="android:backgroundTint">?colorMenuButtonBackground</item>
+        <item name="android:textColor">?colorMenuButtonText</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:drawablePadding">24dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/fontPlus10</item>
+        <item name="android:windowEnterAnimation">@animator/zoom_in</item>
+        <item name="android:windowExitAnimation">@animator/zoom_out</item>
+    </style>
+
+    // Animations - Section
+
+    <style name="blink_animation">
+        <item name="android:windowEnterAnimation">@animator/blink_in</item>
+        <item name="android:windowExitAnimation">@animator/blink_out</item>
+    </style>
+
+    <style name="slide_start_animation">
+        <item name="android:windowEnterAnimation">@animator/slide_in_start</item>
+        <item name="android:windowExitAnimation">@animator/slide_out_start</item>
+    </style>
+
+    <style name="slide_top_animation">
+        <item name="android:windowEnterAnimation">@animator/slide_in_top</item>
+        <item name="android:windowExitAnimation">@animator/slide_out_top</item>
+    </style>
+
+    <style name="zoom_animation">
+        <item name="android:windowEnterAnimation">@animator/zoom_in</item>
+        <item name="android:windowExitAnimation">@animator/zoom_out</item>
+    </style>
+
+    // ToolBars - Section
+
+    <style name="ToolBars">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/colorTransparente</item>
+        <item name="android:gravity">center</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+
+    // RecyclerView - Section
+
+    <style name="RecyclerView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:background">@color/colorGrey</item>
+        <item name="android:gravity">center</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="android:layout_marginTop">66dp</item>
+
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_vertical_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/scrollbar_vertical_track</item>
+        <item name="android:scrollbarSize">4dp</item>
+        <item name="android:scrollbarFadeDuration">1000</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">500</item>
+    </style>
+
+
+
+
+    <style name="ProgressDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@color/colorBlanco</item>
+        <item name="android:textColor">@color/colorNegro</item>
+        <item name="android:textSize">14sp</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:strokeColor">@color/colorBlanco</item>
+        <item name="android:windowElevation">1dp</item>
+    </style>
+
+    <style name="Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textColor">@color/colorNegro</item>
+        <item name="android:backgroundTint">@color/colorBlanco</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="GoogleMaspMobilesFree">
+        <item name="android:textSize">@dimen/fontBasic</item>
+        <item name="android:textColor">@color/colorAzul</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GoogleMaspMobilesOccuped">
+        <item name="android:textSize">@dimen/fontBasic</item>
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="scrollbar_shape_style">
+
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_vertical_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/scrollbar_vertical_track</item>
+        <item name="android:scrollbarSize">4dp</item>
+        <item name="android:scrollbarFadeDuration">1000</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">500</item>
+    </style>
+
+    <style name="NumberPicker">
+
+        <item name="android:textSize">@dimen/fontPlus4</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColorPrimary">@color/colorBlanco</item>
+        <item name="android:colorControlNormal">@color/BlueLight070</item>
+    </style>
+
+</resources>

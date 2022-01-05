@@ -1,0 +1,11 @@
+<vector
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="400"
+    android:viewportHeight="400">
+  <path
+      android:pathData="m91.436,-0.168c-50.634,0 -91.398,40.764 -91.398,91.398V308.373c0,50.634 40.764,91.396 91.398,91.396H308.578c50.634,0 91.396,-40.762 91.396,-91.396V91.23c0,-50.634 -40.762,-91.398 -91.396,-91.398z"
+      android:fillColor="?colorActionBarSecundaryIcons"/>
+</vector>

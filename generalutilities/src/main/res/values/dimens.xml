@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <dimen name="fontMinus2">12dp</dimen>
+    <dimen name="fontMinus1">13dp</dimen>
+    <dimen name="fontBasic">14dp</dimen>
+    <dimen name="fontPlus1">15dp</dimen>
+    <dimen name="fontPlus2">16dp</dimen>
+    <dimen name="fontPlus3">17dp</dimen>
+    <dimen name="fontPlus4">18dp</dimen>
+    <dimen name="fontPlus5">19dp</dimen>
+    <dimen name="fontPlus6">20dp</dimen>
+    <dimen name="fontPlus7">21dp</dimen>
+    <dimen name="fontPlus8">22dp</dimen>
+    <dimen name="fontPlus9">23dp</dimen>
+    <dimen name="fontPlus10">24dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+
+</resources>

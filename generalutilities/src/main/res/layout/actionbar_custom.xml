@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ActionBarMainLayout">
+
+    <LinearLayout
+        android:id="@+id/LL_Title"
+        style="@style/ActionBarTitleLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout style="@style/ActionBarTitleLayout2">
+
+            <TextView
+                android:id="@+id/Tv_Acb_Titulo"
+                style="@style/ActionBarTitle" />
+
+            <TextView
+                android:id="@+id/Tv_Acb_Subtitulo"
+                style="@style/ActionBarSubTitle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LL_Icon_Title"
+            style="@style/ActionBarMainButtonContainer">
+
+            <ImageButton
+                android:id="@+id/Btn_Acb_Menu"
+                style="@style/ActionBarMainButton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Tv_Version"
+        style="@style/ActionBarVersion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/LL_Tools"
+        style="@style/ActionBarToolsLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/LL_Icon_Tools"
+            style="@style/ActionBarToolsButtonContainer">
+
+            <ImageButton
+                android:id="@+id/Btn_Acb_Menu2"
+                style="@style/ActionBarToolsButton" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Ll_Options_Buttons"
+            style="@style/ActionBarToolsContainer" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,411 @@
+<resources>
+
+    // Dialogs General - Section
+
+    <style name="DialogWindowContainerWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="DialogWindowContainerMatch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0</item>
+    </style>
+
+    <style name="DialogBodyContainerWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="DialogBodyContainerMatch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    // Dialogs Header - Section
+
+    <style name="DialogTitleHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">-24dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">top</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="DialogTitleContainer">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogMainButton</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DialogTitleIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">?colorDialogButtonText</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:fontFamily">@font/solid</item>
+        <item name="android:hint">@string/image</item>
+    </style>
+
+    <style name="DialogTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:textColor">?colorDialogButtonText</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:hint">@string/title</item>
+    </style>
+
+    <style name="DialogInfoButton">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogMainButton</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:fontFamily">@font/solid</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/fontPlus6</item>
+        <item name="android:textColor">?colorDialogButtonText</item>
+        <item name="android:hint">@string/iconinfo</item>
+    </style>
+
+    <style name="DialogButtons">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogMainButton</item>
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:fontFamily">@font/solid</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/fontPlus10</item>
+        <item name="android:textColor">?colorDialogButtonText</item>
+        <item name="android:hint">@string/iconinfo</item>
+    </style>
+
+
+    // Dialogs Body - Section
+
+    <style name="DialogBackground">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogBackground</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">32dp</item>
+    </style>
+
+    <style name="DialogDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:textColor">?colorDialogDescriptionText</item>
+        <item name="android:textSize">@dimen/fontPlus4</item>
+    </style>
+
+    <style name="DialogInstructions">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:textColor">?colorDialogInstructionsText</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:hint">@string/instructions</item>
+    </style>
+
+    <style name="DialogMainContainerMatch">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogMainContainer</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DialogMainContainerWrap">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogMainContainer</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    // Dialogs Utilities - Section
+
+    <style name="DialogInputText" parent="@android:style/Widget.Material.Light.EditText" >
+        <item name="android:background">@drawable/dialog_edittext</item>
+        <item name="android:backgroundTint">?colorDialogInputTextBackground</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">?colorDialogInputTextColor</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:hint">@string/hint</item>
+    </style>
+
+    <style name="DialogDatePicker">
+        <item name="android:background">@drawable/layout_globe_body</item>
+        <item name="android:backgroundTint">?colorDialogSecundaryButton</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:calendarViewShown">true</item>
+        <item name="android:calendarTextColor">?colorDialogPickerText</item>
+        <item name="android:foregroundGravity">center</item>
+    </style>
+
+    <style name="DialogInsetButton">
+        <item name="android:background">@drawable/layout_globe_body</item>
+        <item name="android:backgroundTint">?colorDialogSecundaryButton</item>
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="DialogSearchView" parent="@android:style/Widget.Material.SearchView" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">-12dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:inputType">textCapWords</item>
+        <item name="android:iconifiedByDefault">false</item>
+    </style>
+
+    <style name="DialogListView" parent="@android:style/Widget.Material.ListView" >
+        <item name="android:background">@drawable/layout_rounded_white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+    </style>
+
+    <style name="DialogCheckBox" parent="@android:style/Widget.Material.Light.CompoundButton.CheckBox" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:textColor">?colorDialogInstructionsText</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:hint">@string/hint</item>
+    </style>
+
+    <style name="DialogNumberPicker" parent="@android:style/Widget.Material.NumberPicker">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fontPlus6</item>
+    </style>
+
+    <style name="DialogPattern">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">320dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/backgoudnpattern</item>
+    </style>
+
+    <style name="DialogPickerDateSpinner" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fontPlus6</item>
+        <item name="android:calendarViewShown">false</item>
+        <item name="android:datePickerMode">spinner</item>
+    </style>
+
+    <style name="DialogPickerDateCalendar" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fontPlus6</item>
+        <item name="android:calendarViewShown">false</item>
+        <item name="android:datePickerMode">calendar</item>
+    </style>
+
+    <style name="DialogPickerTimeSpinner" parent="@android:style/Widget.Material.TimePicker">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fontPlus6</item>
+        <item name="android:timePickerMode">spinner</item>
+    </style>
+
+    <style name="DialogPickerTimeClock" parent="@android:style/Widget.Material.TimePicker">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fontPlus6</item>
+        <item name="android:timePickerMode">clock</item>
+    </style>
+
+    <style name="DialogQrScan" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">320dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="DialogSigning" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">320dp</item>
+    </style>
+
+    <style name="DialogSlide">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="slideBackground">@drawable/swipe_background</item>
+        <item name="slideSrc">@drawable/swipe_button</item>
+        <item name="slideText">Deslizar...</item>
+        <item name="slideTextColor">@color/colorGrey</item>
+        <item name="slideTextSize">6dp</item>
+    </style>
+
+    <style name="DialogVideoPlayer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="DialogShowInfo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:hint">@string/hint</item>
+        <item name="android:textColor">?colorDialogInstructionsText</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+    </style>
+
+
+    // Dialogs Footer - Section
+
+    <style name="DialogOptionsFooter">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">-18dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">top</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="DialogOptionButton">
+        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:backgroundTint">?colorDialogMainButton</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:textColor">?colorDialogButtonText</item>
+        <item name="android:hint">@string/options</item>
+    </style>
+
+
+    // Dialogs Others - Section
+
+    <style name="DialogSpace">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+</resources>

@@ -1,0 +1,21 @@
+<resources>
+
+    <string name="title">Title</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="version">Version</string>
+
+    <string name="contentdescription">Description</string>
+    <string name="iconinfo">\uf05a</string> //info-circle
+    <string name="iconback">\uf3e5</string>  //reply
+    <string name="instructions">Instructions...</string>
+    <string name="image"></string>
+
+    <string name="hint">Hint...</string>
+    <string name="options">Option</string>
+    <string name="negative">Negative</string>
+    <string name="positive">Positive</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="Refresh">Refrescar</string>
+    <string name="Save">Guardar</string>
+
+</resources>
