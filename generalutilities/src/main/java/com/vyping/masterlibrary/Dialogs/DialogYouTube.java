@@ -26,7 +26,7 @@ public abstract class DialogYouTube  {
     private CreateDialog createDialog;
 
     private static final String codeVideo = "YDNRsYrprG4";
-    private static final String apiKey = "AIzaSyBtOl0rAhQvfDCBqtQzSskhGJDBYmkG7g0";
+    private static String apiKey;
 
 
     /**
@@ -34,9 +34,9 @@ public abstract class DialogYouTube  {
      */
 
     @SuppressLint("SetTextI18n")
-    public DialogYouTube(@NonNull Context context, int parameters, String Text) {
+    public DialogYouTube(@NonNull Context context, int parameters, String Text, String apiKey) {
 
-        setParameters(context, Text);
+        setParameters(context, Text, apiKey);
 
         createDialog = new CreateDialog(context, parameters, TRUE) {
 
@@ -73,10 +73,11 @@ public abstract class DialogYouTube  {
 
     /*----- Tools -----*/
 
-    private void setParameters(@NonNull Context context, String text) {
+    private void setParameters(@NonNull Context context, String text, String ApiKey) {
 
         this.context = context;
         activity = (Activity) context;
+        apiKey = ApiKey;
     }
 
     private void setViewsOnLayout(@NonNull Dialog dialog) {
