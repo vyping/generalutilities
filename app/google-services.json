@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1090642809970",
+    "firebase_url": "https://vyp-accescontrol-default-rtdb.firebaseio.com",
+    "project_id": "vyp-accescontrol",
+    "storage_bucket": "vyp-accescontrol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090642809970:android:635bebf021d45c79a15eeb",
+        "android_client_info": {
+          "package_name": "com.vyping.accesscontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7RIuDJogfSb5RHTextYy-8ITYoah7eQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090642809970:android:22ea5d6e9180c026a15eeb",
+        "android_client_info": {
+          "package_name": "com.vyping.libraries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7RIuDJogfSb5RHTextYy-8ITYoah7eQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
