@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<defaultsMap>
+
+
+    // -------- General App Section
+
+    <entry><key>General_Version_Restricted</key><value>false</value></entry>
+    <entry><key>General_Version_Code</key><value>1</value></entry>
+    <entry><key>General_NFC_Required</key><value>false</value></entry>
+
+</defaultsMap>

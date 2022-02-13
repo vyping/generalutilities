@@ -38,7 +38,7 @@ public class GeneralTools {
 
     public String requestVersionApp() {
 
-        return "";
+        return "Beta 1.0";
     }
 
     public void appUpdate(@NonNull Context context) {

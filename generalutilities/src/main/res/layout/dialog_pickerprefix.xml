@@ -3,7 +3,7 @@
 <RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/DialogWindowContainerWrap">
+    style="@style/DialogWindowContainer">
 
     <LinearLayout
         style="@style/DialogBodyContainerWrap">
@@ -74,14 +74,14 @@
 
             <Button
                 android:id="@+id/Btn_PickerPrefix_Negative"
-                style="@style/DialogOptionButton"/>
+                style="@style/DialogButtonNegative"/>
 
             <Space
                 style="@style/DialogSpace"/>
 
             <Button
                 android:id="@+id/Btn_PickerPrefix_Positive"
-                style="@style/DialogOptionButton"/>
+                style="@style/DialogButtonPositive"/>
         </LinearLayout>
 
     </LinearLayout>

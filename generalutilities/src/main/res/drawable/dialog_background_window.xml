@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <solid android:color="@color/colorBlanco"/>
+    <solid android:color="@color/PrimaryLight10"/>
 
-    <stroke android:color="@color/colorPrimary" android:width="2dp"/>
+    <stroke android:color="@color/Primary" android:width="2dp"/>
 
-    <corners android:radius="5dp"/>
+    <corners android:radius="32dp"/>
 
 </shape>

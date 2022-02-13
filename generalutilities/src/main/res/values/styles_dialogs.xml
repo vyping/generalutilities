@@ -2,17 +2,15 @@
 
     // Dialogs General - Section
 
-    <style name="DialogWindowContainerWrap">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:focusable">false</item>
-    </style>
-
-    <style name="DialogWindowContainerMatch">
+    <style name="DialogWindowContainer">
+        <item name="android:background">?colorDialogWindow</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">0</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:focusable">false</item>
     </style>
 
     <style name="DialogBodyContainerWrap">
@@ -34,8 +32,8 @@
 
     <style name="DialogTitleHeader">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_marginBottom">-24dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginBottom">-28dp</item>
         <item name="android:elevation">4dp</item>
         <item name="android:gravity">top</item>
         <item name="android:orientation">horizontal</item>
@@ -43,11 +41,11 @@
 
     <style name="DialogTitleContainer">
         <item name="android:background">@drawable/dialog_background_window</item>
-        <item name="android:backgroundTint">?colorDialogMainButton</item>
+        <item name="android:backgroundTint">?colorDialogTitle</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_height">40dp</item>
         <item name="android:layout_weight">0</item>
-        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginStart">32dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
@@ -56,21 +54,19 @@
     </style>
 
     <style name="DialogTitleIcon">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_weight">0</item>
         <item name="android:layout_marginEnd">8dp</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:textColor">?colorDialogButtonText</item>
-        <item name="android:textSize">@dimen/fontPlus2</item>
-        <item name="android:fontFamily">@font/solid</item>
-        <item name="android:hint">@string/image</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:src">@drawable/icon_image</item>
+        <item name="android:tint">?colorDialogButtonText</item>
     </style>
 
     <style name="DialogTitleText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_weight">0</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">gravity</item>
         <item name="android:textColor">?colorDialogButtonText</item>
@@ -79,23 +75,16 @@
     </style>
 
     <style name="DialogInfoButton">
-        <item name="android:background">@drawable/dialog_background_window</item>
-        <item name="android:backgroundTint">?colorDialogMainButton</item>
-        <item name="android:layout_width">32dp</item>
-        <item name="android:layout_height">32dp</item>
+        <item name="android:background">@drawable/button_alternative</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
         <item name="android:layout_weight">0</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:paddingStart">4dp</item>
-        <item name="android:paddingEnd">4dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:padding">10dp</item>
         <item name="android:elevation">4dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textAlignment">gravity</item>
-        <item name="android:fontFamily">@font/solid</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">@dimen/fontPlus6</item>
-        <item name="android:textColor">?colorDialogButtonText</item>
-        <item name="android:hint">@string/iconinfo</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:src">@drawable/icon_info</item>
+        <item name="android:tint">?colorDialogButtonText</item>
     </style>
 
     <style name="DialogButtons">
@@ -132,14 +121,14 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingEnd">16dp</item>
-        <item name="android:paddingBottom">32dp</item>
+        <item name="android:paddingBottom">56dp</item>
     </style>
 
     <style name="DialogDescription">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginTop">18dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">gravity</item>
         <item name="android:textColor">?colorDialogDescriptionText</item>
@@ -150,12 +139,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0</item>
-        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginTop">18dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">gravity</item>
         <item name="android:textColor">?colorDialogInstructionsText</item>
         <item name="android:textStyle">italic</item>
-        <item name="android:textSize">@dimen/fontPlus2</item>
+        <item name="android:textSize">@dimen/fontPlus4</item>
         <item name="android:hint">@string/instructions</item>
     </style>
 
@@ -165,7 +154,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:paddingStart">4dp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingEnd">4dp</item>
@@ -179,7 +169,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:paddingStart">4dp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingEnd">4dp</item>
@@ -341,8 +332,8 @@
 
     <style name="DialogSlide">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0</item>
         <item name="slideBackground">@drawable/swipe_background</item>
         <item name="slideSrc">@drawable/swipe_button</item>
         <item name="slideText">Deslizar...</item>
@@ -367,36 +358,77 @@
         <item name="android:textSize">@dimen/fontPlus2</item>
     </style>
 
+    <style name="DialogInputTextSerie">
+        <item name="android:background">@drawable/layout_rounded_white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:textSize">@dimen/fontPlus10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">gravity</item>
+        <item name="android:hint">@string/hint</item>
+        <item name="android:textColor">?colorDialogInstructionsText</item>
+    </style>
+
 
     // Dialogs Footer - Section
 
     <style name="DialogOptionsFooter">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_marginTop">-18dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:layout_marginTop">-34dp</item>
         <item name="android:elevation">4dp</item>
         <item name="android:gravity">top</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="DialogOptionButton">
-        <item name="android:background">@drawable/dialog_background_window</item>
-        <item name="android:backgroundTint">?colorDialogMainButton</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">32dp</item>
+    <style name="DialogButtonNegative">
+        <item name="android:background">@drawable/button_negative</item>
+        <item name="android:src">?dialogIconNegative</item>
+        <item name="android:tint">?colorButtonNegativeIcon</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
         <item name="android:layout_weight">0</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:padding">20dp</item>
         <item name="android:elevation">4dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textAlignment">gravity</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">@dimen/fontPlus2</item>
-        <item name="android:textColor">?colorDialogButtonText</item>
-        <item name="android:hint">@string/options</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="DialogButtonNeutral">
+        <item name="android:background">@drawable/button_neutral</item>
+        <item name="android:src">?dialogIconNeutral</item>
+        <item name="android:tint">?colorButtonNeutralIcon</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="DialogButtonPositive">
+        <item name="android:background">@drawable/button_positive</item>
+        <item name="android:src">?dialogIconPositive</item>
+        <item name="android:tint">?colorButtonPositiveIcon</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">centerInside</item>
     </style>
 
 

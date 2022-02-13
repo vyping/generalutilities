@@ -9,12 +9,12 @@
 
     <solid android:color="@color/colorBlanco"/>
 
-    <stroke android:color="@color/colorPrimaryLigth9" android:width="1dp"/>
+    <stroke android:color="@color/PrimaryLight09" android:width="1dp"/>
 
     <corners
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp" />
+        android:topLeftRadius="?paddingLayoutTopLeft"
+        android:topRightRadius="?paddingLayoutTopRight"
+        android:bottomLeftRadius="?paddingLayoutBottomLeft"
+        android:bottomRightRadius="?paddingLayoutBottomRight" />
 
 </shape>

@@ -1,0 +1,73 @@
+<resources>
+
+    // RecyclerView - Section
+
+    <style name="RecyclerView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:gravity">center</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_vertical_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/scrollbar_vertical_track</item>
+        <item name="android:scrollbarSize">4dp</item>
+        <item name="android:scrollbarFadeDuration">1000</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">500</item>
+    </style>
+
+    <style name="RecyclerView_Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:gravity">center</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+
+        <item name="android:scrollbarAlwaysDrawHorizontalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/scrollbar_vertical_thumb</item>
+        <item name="android:scrollbarTrackHorizontal">@drawable/scrollbar_vertical_track</item>
+        <item name="android:scrollbarSize">4dp</item>
+        <item name="android:scrollbarFadeDuration">1000</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">500</item>
+    </style>
+
+    <style name="LayoutContainerDialogs">
+        <item name="android:background">@color/colorPrimaryDark7</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">300dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ConstraintLayoutCustom">
+        <item name="android:background">@color/colorPrimaryDark7</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">300dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="IconIdCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+</resources>

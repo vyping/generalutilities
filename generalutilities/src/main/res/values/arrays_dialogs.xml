@@ -13,4 +13,39 @@
         <item name="PickerDate_Positive">Seleccionar</item>
     </string-array>
 
+
+    // Dialogs SlideEraseVehicle - Section
+
+    <string-array name="Dialogs_SlideEraseVehicle">
+        <item name="PickerDate_IconTitle">\uf00d</item>   //times
+        <item name="PickerDate_TextTitle">Eliminar</item>
+        <item name="PickerDate_Information">Deslice para eliminar el vehículo:</item>
+        <item name="PickerDate_Description">Deslice el botón para confirmar la eliminicación del vehículo.</item>
+        <item name="PickerDate_Negative">Cancelar</item>
+        <item name="PickerDate_Positive">Seleccionar</item>
+    </string-array>
+
+
+    // Dialogs SlideEraseVehicle - Section
+
+    <string-array name="Dialog_Vehicle_Exit">
+        <item name="PickerDate_IconTitle">icon_car</item>   //times
+        <item name="PickerDate_TextTitle">Eliminar</item>
+        <item name="PickerDate_Information">Deslice para eliminar el vehículo:</item>
+        <item name="PickerDate_Description">Deslice el botón para confirmar la eliminicación del vehículo.</item>
+        <item name="PickerDate_Negative">Cancelar</item>
+        <item name="PickerDate_Positive">Seleccionar</item>
+    </string-array>
+
+    // Dialogs Create Veicle
+
+    <string-array name="Dialogs_CreateVehicle">
+        <item name="PickerDate_IconTitle">icon_car</item>   //calendar-alt
+        <item name="PickerDate_TextTitle">Registro</item>
+        <item name="PickerDate_Information">Seleccione la fecha a visualizar:</item>
+        <item name="PickerDate_Description">En este campo se debe seleccionar la fecha deseada para visualizar la información correspondiente.</item>
+        <item name="PickerDate_Negative">Cancelar</item>
+        <item name="PickerDate_Positive">Seleccionar</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Orange Color - Solid Scale
+
+    <color name="OrangeDark20">#1A0600</color>
+    <color name="OrangeDark19">#250900</color>
+    <color name="OrangeDark18">#310C00</color>
+    <color name="OrangeDark17">#3C0E00</color>
+    <color name="OrangeDark16">#471100</color>
+    <color name="OrangeDark15">#531400</color>
+    <color name="OrangeDark14">#5E1700</color> -
+    <color name="OrangeDark13">#6A1900</color>
+    <color name="OrangeDark12">#751C00</color>
+    <color name="OrangeDark11">#811F00</color>
+    <color name="OrangeDark10">#8C2200</color>
+    <color name="OrangeDark9">#982400</color>
+    <color name="OrangeDark8">#A32700</color>
+    <color name="OrangeDark7">#AF2A00</color> -
+    <color name="OrangeDark6">#BA2D00</color>
+    <color name="OrangeDark5">#C62F00</color>
+    <color name="OrangeDark4">#D13200</color>
+    <color name="OrangeDark3">#DD3500</color>
+    <color name="OrangeDark2">#E83800</color>
+    <color name="OrangeDark1">#F43A00</color>
+    <color name="Orange">#FF3D00</color>
+    <color name="OrangeLight1">#FF460C</color>
+    <color name="OrangeLight2">#FF4F17</color>
+    <color name="OrangeLight3">#FF5722</color>
+    <color name="OrangeLight4">#FF602E</color>
+    <color name="OrangeLight5">#FF6939</color>
+    <color name="OrangeLight6">#FF7145</color>
+    <color name="OrangeLight7">#FF7A50</color> -
+    <color name="OrangeLight8">#FF835C</color>
+    <color name="OrangeLight9">#FF8C67</color>
+    <color name="OrangeLight10">#FF9473</color>
+    <color name="OrangeLight11">#FF9D7E</color>
+    <color name="OrangeLight12">#FFA68A</color>
+    <color name="OrangeLight13">#FFAF95</color>
+    <color name="OrangeLight14">#FFB7A1</color> -
+    <color name="OrangeLight15">#FFC0AC</color>
+    <color name="OrangeLight16">#FFC9B8</color>
+    <color name="OrangeLight17">#FFD1C3</color>
+    <color name="OrangeLight18">#FFDACF</color>
+    <color name="OrangeLight19">#FFE3DA</color>
+    <color name="OrangeLight20">#FFECE6</color>
+
+    
+    // Orange Color - Traslucid Scale
+
+    <color name="OrangeUltraDark000">#005E1700</color>
+    <color name="OrangeUltraDark010">#1A5E1700</color>
+    <color name="OrangeUltraDark020">#335E1700</color>
+    <color name="OrangeUltraDark030">#4D5E1700</color>
+    <color name="OrangeUltraDark040">#665E1700</color>
+    <color name="OrangeUltraDark050">#805E1700</color>
+    <color name="OrangeUltraDark060">#995E1700</color>
+    <color name="OrangeUltraDark070">#B35E1700</color>
+    <color name="OrangeUltraDark080">#CC5E1700</color>
+    <color name="OrangeUltraDark090">#E65E1700</color>
+    <color name="OrangeUltraDark100">#FF5E1700</color>
+
+    <color name="OrangeDark000">#00AF2A00</color>
+    <color name="OrangeDark010">#1AAF2A00</color>
+    <color name="OrangeDark020">#33AF2A00</color>
+    <color name="OrangeDark030">#4DAF2A00</color>
+    <color name="OrangeDark040">#66AF2A00</color>
+    <color name="OrangeDark050">#80AF2A00</color>
+    <color name="OrangeDark060">#99AF2A00</color>
+    <color name="OrangeDark070">#B3AF2A00</color>
+    <color name="OrangeDark080">#CCAF2A00</color>
+    <color name="OrangeDark090">#E6AF2A00</color>
+    <color name="OrangeDark100">#FFAF2A00</color>
+
+    <color name="OrangeMid000">#00FF3D00</color>
+    <color name="OrangeMid010">#1AFF3D00</color>
+    <color name="OrangeMid020">#33FF3D00</color>
+    <color name="OrangeMid030">#4DFF3D00</color>
+    <color name="OrangeMid040">#66FF3D00</color>
+    <color name="OrangeMid050">#80FF3D00</color>
+    <color name="OrangeMid060">#99FF3D00</color>
+    <color name="OrangeMid070">#B3FF3D00</color>
+    <color name="OrangeMid080">#CCFF3D00</color>
+    <color name="OrangeMid090">#E6FF3D00</color>
+    <color name="OrangeMid100">#FFFF3D00</color>
+
+    <color name="OrangeLight000">#00FF7A50</color>
+    <color name="OrangeLight010">#1AFF7A50</color>
+    <color name="OrangeLight020">#33FF7A50</color>
+    <color name="OrangeLight030">#4DFF7A50</color>
+    <color name="OrangeLight040">#66FF7A50</color>
+    <color name="OrangeLight050">#80FF7A50</color>
+    <color name="OrangeLight060">#99FF7A50</color>
+    <color name="OrangeLight070">#B3FF7A50</color>
+    <color name="OrangeLight080">#CCFF7A50</color>
+    <color name="OrangeLight090">#E6FF7A50</color>
+    <color name="OrangeLight100">#FFFF7A50</color>
+
+    <color name="OrangeUltraLight000">#00FFB7A1</color>
+    <color name="OrangeUltraLight010">#1AFFB7A1</color>
+    <color name="OrangeUltraLight020">#33FFB7A1</color>
+    <color name="OrangeUltraLight030">#4DFFB7A1</color>
+    <color name="OrangeUltraLight040">#66FFB7A1</color>
+    <color name="OrangeUltraLight050">#80FFB7A1</color>
+    <color name="OrangeUltraLight060">#99FFB7A1</color>
+    <color name="OrangeUltraLight070">#B3FFB7A1</color>
+    <color name="OrangeUltraLight080">#CCFFB7A1</color>
+    <color name="OrangeUltraLight090">#E6FFB7A1</color>
+    <color name="OrangeUltraLight100">#FFFFB7A1</color>
+
+</resources>

@@ -9,8 +9,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Common.Animations;
-import com.vyping.masterlibrary.Images.Drawables;
+import com.vyping.masterlibrary.Animations.Animations;
+import com.vyping.masterlibrary.Images.MyDrawable;
 
 public class ImageViews {
 
@@ -47,7 +47,7 @@ public class ImageViews {
 
     public ImageView setImageView(@NonNull Context context, int view, View.OnClickListener listener, int imageResource, int color) {
 
-        Drawable drawable = new Drawables().changeDrawableColor(context, imageResource, color);
+        Drawable drawable = new MyDrawable().changeDrawableColor(context, imageResource, color);
 
         ImageView imageView = ((Activity) context).findViewById(view);
         imageView.setImageDrawable(drawable);

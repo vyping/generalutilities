@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Red Color - Solid Scale
+
+    <color name="RedDark20">#1A0001</color>
+    <color name="RedDark19">#250002</color>
+    <color name="RedDark18">#310003</color>
+    <color name="RedDark17">#3C0003</color>
+    <color name="RedDark16">#470004</color>
+    <color name="RedDark15">#530004</color>
+    <color name="RedDark14">#5E0005</color>
+    <color name="RedDark13">#6A0005</color>
+    <color name="RedDark12">#750006</color>
+    <color name="RedDark11">#810007</color>
+    <color name="RedDark10">#8C0007</color>
+    <color name="RedDark09">#980008</color>
+    <color name="RedDark08">#A30008</color>
+    <color name="RedDark07">#AF0009</color>
+    <color name="RedDark06">#BA000A</color>
+    <color name="RedDark05">#C6000A</color>
+    <color name="RedDark04">#D1000B</color>
+    <color name="RedDark03">#DD000B</color>
+    <color name="RedDark02">#E8000C</color>
+    <color name="RedDark01">#F4000C</color>
+    <color name="Red">#FF000D</color>
+    <color name="RedLight01">#FF0C18</color>
+    <color name="RedLight02">#FF1723</color>
+    <color name="RedLight03">#FF222E</color>
+    <color name="RedLight04">#FF2E39</color>
+    <color name="RedLight05">#FF3943</color>
+    <color name="RedLight06">#FF454E</color>
+    <color name="RedLight07">#FF5059</color>
+    <color name="RedLight08">#FF5C64</color>
+    <color name="RedLight09">#FF676F</color>
+    <color name="RedLight10">#FF737A</color>
+    <color name="RedLight11">#FF7E85</color>
+    <color name="RedLight12">#FF8A90</color>
+    <color name="RedLight13">#FF959B</color>
+    <color name="RedLight14">#FFA1A6</color>
+    <color name="RedLight15">#FFACB0</color>
+    <color name="RedLight16">#FFB8BB</color>
+    <color name="RedLight17">#FFC3C6</color>
+    <color name="RedLight18">#FFCFD1</color>
+    <color name="RedLight19">#FFDADC</color>
+    <color name="RedLight20">#FFE6E7</color>
+
+
+    // RedColor - Traslucid Scale
+
+    <color name="RedUltraDark000">#00730006</color>
+    <color name="RedUltraDark010">#1A730006</color>
+    <color name="RedUltraDark020">#33730006</color>
+    <color name="RedUltraDark030">#4D730006</color>
+    <color name="RedUltraDark040">#66730006</color>
+    <color name="RedUltraDark050">#80730006</color>
+    <color name="RedUltraDark060">#99730006</color>
+    <color name="RedUltraDark070">#B3730006</color>
+    <color name="RedUltraDark080">#CC730006</color>
+    <color name="RedUltraDark090">#E6730006</color>
+    <color name="RedUltraDark100">#FF730006</color>
+
+    <color name="RedDark000">#00730106</color>
+    <color name="RedDark010">#1A730106</color>
+    <color name="RedDark020">#33730106</color>
+    <color name="RedDark030">#4D730106</color>
+    <color name="RedDark040">#66730106</color>
+    <color name="RedDark050">#80730106</color>
+    <color name="RedDark060">#99730106</color>
+    <color name="RedDark070">#B3730106</color>
+    <color name="RedDark080">#CC730106</color>
+    <color name="RedDark090">#E6730106</color>
+    <color name="RedDark100">#FFA30008</color>
+
+    <color name="RedMid000">#00CE000A</color>
+    <color name="RedMid010">#1ACE000A</color>
+    <color name="RedMid020">#33CE000A</color>
+    <color name="RedMid030">#4DCE000A</color>
+    <color name="RedMid040">#66CE000A</color>
+    <color name="RedMid050">#80CE000A</color>
+    <color name="RedMid060">#99CE000A</color>
+    <color name="RedMid070">#B3CE000A</color>
+    <color name="RedMid080">#CCCE000A</color>
+    <color name="RedMid090">#E6CE000A</color>
+    <color name="RedMid100">#FFCE000A</color>
+
+    <color name="RedLight000">#00FF0000</color>
+    <color name="RedLight010">#1AFF0000</color>
+    <color name="RedLight020">#33FF0000</color>
+    <color name="RedLight030">#4DFF0000</color>
+    <color name="RedLight040">#66FF0000</color>
+    <color name="RedLight050">#80FF0000</color>
+    <color name="RedLight060">#99FF0000</color>
+    <color name="RedLight070">#B3FF0000</color>
+    <color name="RedLight080">#CCFF0000</color>
+    <color name="RedLight090">#E6FF0000</color>
+    <color name="RedLight100">#FFFF0000</color>
+
+    <color name="RedUltraLight000">#00FB2828</color>
+    <color name="RedUltraLight010">#1AFB2828</color>
+    <color name="RedUltraLight020">#33FB2828</color>
+    <color name="RedUltraLight030">#4DFB2828</color>
+    <color name="RedUltraLight040">#66FB2828</color>
+    <color name="RedUltraLight050">#80FB2828</color>
+    <color name="RedUltraLight060">#99FB2828</color>
+    <color name="RedUltraLight070">#B3FB2828</color>
+    <color name="RedUltraLight080">#CCFB2828</color>
+    <color name="RedUltraLight090">#E6FB2828</color>
+    <color name="RedUltraLight100">#FFFB2828</color>
+
+</resources>

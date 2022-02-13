@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Green Color - Solid Scale
+
+    <color name="GreenDark20">#001A01</color>
+    <color name="GreenDark19">#002502</color>
+    <color name="GreenDark18">#003103</color>
+    <color name="GreenDark17">#003C03</color>
+    <color name="GreenDark16">#004704</color>
+    <color name="GreenDark15">#005304</color>
+    <color name="GreenDark14">#005E05</color>
+    <color name="GreenDark13">#006A05</color>
+    <color name="GreenDark12">#007506</color>
+    <color name="GreenDark11">#008107</color>
+    <color name="GreenDark10">#008C07</color>
+    <color name="GreenDark09">#009808</color>
+    <color name="GreenDark08">#00A308</color>
+    <color name="GreenDark07">#00AF09</color>
+    <color name="GreenDark06">#00BA0A</color>
+    <color name="GreenDark05">#00C60A</color>
+    <color name="GreenDark04">#00D10B</color>
+    <color name="GreenDark03">#00DD0B</color>
+    <color name="GreenDark02">#00E80C</color>
+    <color name="GreenDark01">#00F40C</color>
+    <color name="Green">#00FF0D</color>
+    <color name="GreenLight01">#0CFF18</color>
+    <color name="GreenLight02">#17FF23</color>
+    <color name="GreenLight03">#22FF2E</color>
+    <color name="GreenLight04">#2EFF39</color>
+    <color name="GreenLight05">#39FF44</color>
+    <color name="GreenLight06">#45FF4E</color>
+    <color name="GreenLight07">#50FF59</color>
+    <color name="GreenLight08">#5CFF64</color>
+    <color name="GreenLight09">#67FF6F</color>
+    <color name="GreenLight10">#73FF7A</color>
+    <color name="GreenLight11">#7EFF85</color>
+    <color name="GreenLight12">#8AFF90</color>
+    <color name="GreenLight13">#95FF9B</color>
+    <color name="GreenLight14">#A1FFA6</color>
+    <color name="GreenLight15">#ACFFB0</color>
+    <color name="GreenLight16">#B8FFBB</color>
+    <color name="GreenLight17">#C3FFC6</color>
+    <color name="GreenLight18">#CFFFD1</color>
+    <color name="GreenLight19">#DAFFDC</color>
+    <color name="GreenLight20">#E6FFE7</color>
+
+
+    // Green Color - Traslucid Scale
+
+    <color name="GreenUltraDark000">#00153E00</color>
+    <color name="GreenUltraDark010">#1A153E00</color>
+    <color name="GreenUltraDark020">#33153E00</color>
+    <color name="GreenUltraDark030">#4D153E00</color>
+    <color name="GreenUltraDark040">#66153E00</color>
+    <color name="GreenUltraDark050">#80153E00</color>
+    <color name="GreenUltraDark060">#99153E00</color>
+    <color name="GreenUltraDark070">#B3153E00</color>
+    <color name="GreenUltraDark080">#CC153E00</color>
+    <color name="GreenUltraDark090">#E6153E00</color>
+    <color name="GreenUltraDark100">#CC153E00</color>
+
+    <color name="GreenDark000">#00389E00</color>
+    <color name="GreenDark010">#1A389E00</color>
+    <color name="GreenDark020">#33389E00</color>
+    <color name="GreenDark030">#4D389E00</color>
+    <color name="GreenDark040">#66389E00</color>
+    <color name="GreenDark050">#80389E00</color>
+    <color name="GreenDark060">#99389E00</color>
+    <color name="GreenDark070">#B3389E00</color>
+    <color name="GreenDark080">#CC389E00</color>
+    <color name="GreenDark090">#E6389E00</color>
+    <color name="GreenDark100">#CC389E00</color>
+
+    <color name="GreenMid000">#0058FF00</color>
+    <color name="GreenMid010">#1A58FF00</color>
+    <color name="GreenMid020">#3358FF00</color>
+    <color name="GreenMid030">#4D58FF00</color>
+    <color name="GreenMid040">#6658FF00</color>
+    <color name="GreenMid050">#8058FF00</color>
+    <color name="GreenMid060">#9958FF00</color>
+    <color name="GreenMid070">#B358FF00</color>
+    <color name="GreenMid080">#CC58FF00</color>
+    <color name="GreenMid090">#E658FF00</color>
+    <color name="GreenMid100">#CE58FF00</color>
+
+    <color name="GreenLight000">#0092FF56</color>
+    <color name="GreenLight010">#1A92FF56</color>
+    <color name="GreenLight020">#3392FF56</color>
+    <color name="GreenLight030">#4D92FF56</color>
+    <color name="GreenLight040">#6692FF56</color>
+    <color name="GreenLight050">#8092FF56</color>
+    <color name="GreenLight060">#9992FF56</color>
+    <color name="GreenLight070">#B392FF56</color>
+    <color name="GreenLight080">#CC92FF56</color>
+    <color name="GreenLight090">#E692FF56</color>
+    <color name="GreenLight100">#FF92FF56</color>
+
+    <color name="GreenUltraLight000">#00C7FFA9</color>
+    <color name="GreenUltraLight010">#1AC7FFA9</color>
+    <color name="GreenUltraLight020">#33C7FFA9</color>
+    <color name="GreenUltraLight030">#4DC7FFA9</color>
+    <color name="GreenUltraLight040">#66C7FFA9</color>
+    <color name="GreenUltraLight050">#80C7FFA9</color>
+    <color name="GreenUltraLight060">#99C7FFA9</color>
+    <color name="GreenUltraLight070">#B3C7FFA9</color>
+    <color name="GreenUltraLight080">#CCC7FFA9</color>
+    <color name="GreenUltraLight090">#E6C7FFA9</color>
+    <color name="GreenUltraLight100">#FFC7FFA9</color>
+
+</resources>

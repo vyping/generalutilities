@@ -26,10 +26,10 @@
     // Action Bar Menu - Section
 
     <style name="ActionBarTitleLayout">
+        <item name="android:background">@drawable/actbar_container_main</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:paddingStart">8dp</item>
-        <item name="android:background">@drawable/actbar_container_main</item>
         <item name="android:elevation">2dp</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">horizontal</item>
@@ -70,23 +70,21 @@
         <item name="android:hint">@string/subtitle</item>
     </style>
 
-    <style name="ActionBarMainButtonContainer">
+    <style name="ActionBarMainButton">
+        <item name="android:background">@drawable/actbar_button_main</item>
+        <item name="android:src">@drawable/icon_image</item>
+        <item name="android:tint">?colorActionBarMainIcons</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginEnd">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:background">@drawable/actbar_button_main</item>
-        <item name="android:gravity">center</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="ActionBarMainButton">
-        <item name="android:layout_width">28dp</item>
-        <item name="android:layout_height">28dp</item>
+        <item name="android:paddingStart">?paddingActionBarBarMainButtons</item>
+        <item name="android:paddingTop">?paddingActionBarBarMainButtons</item>
+        <item name="android:paddingEnd">?paddingActionBarBarMainButtons</item>
+        <item name="android:paddingBottom">?paddingActionBarBarMainButtons</item>
         <item name="android:scaleType">centerInside</item>
-        <item name="android:background">@color/colorTransparente</item>
         <item name="android:contentDescription">@string/contentdescription</item>
     </style>
 
@@ -94,10 +92,10 @@
     // Action Bar Tools - Section
 
     <style name="ActionBarToolsLayout">
+        <item name="android:background">@drawable/actbar_container_tools</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:paddingEnd">4dp</item>
-        <item name="android:background">@drawable/actbar_container_tools</item>
         <item name="android:elevation">2dp</item>
         <item name="android:gravity">center|end</item>
         <item name="android:orientation">horizontal</item>
@@ -108,23 +106,21 @@
         <item name="android:baselineAligned">false</item>
     </style>
 
-    <style name="ActionBarToolsButtonContainer">
+    <style name="ActionBarToolsButton">
+        <item name="android:background">@drawable/actbar_button_main</item>
+        <item name="android:src">@drawable/icon_image</item>
+        <item name="android:tint">?colorActionBarMainIcons</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_marginStart">4dp</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginEnd">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:background">@drawable/actbar_button_main</item>
-        <item name="android:gravity">center</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="ActionBarToolsButton">
-        <item name="android:layout_width">28dp</item>
-        <item name="android:layout_height">28dp</item>
+        <item name="android:paddingStart">?paddingActionBarBarMainButtons</item>
+        <item name="android:paddingTop">?paddingActionBarBarMainButtons</item>
+        <item name="android:paddingEnd">?paddingActionBarBarMainButtons</item>
+        <item name="android:paddingBottom">?paddingActionBarBarMainButtons</item>
         <item name="android:scaleType">centerInside</item>
-        <item name="android:background">@color/colorTransparente</item>
         <item name="android:contentDescription">@string/contentdescription</item>
     </style>
 
@@ -138,16 +134,18 @@
     </style>
 
     <style name="ActionBarToolButtons" >
+        <item name="android:background">@drawable/actbar_button_tools</item>
+        <item name="android:src">@drawable/icon_image</item>
+        <item name="android:tint">?colorActionBarSecundaryIcons</item>
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginStart">4dp</item>
         <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:paddingStart">4dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingEnd">4dp</item>
-        <item name="android:paddingBottom">4dp</item>
-        <item name="android:background">@drawable/actbar_button_tools</item>
+        <item name="android:paddingStart">?paddingActionBarBarSecundaryButtons</item>
+        <item name="android:paddingTop">?paddingActionBarBarSecundaryButtons</item>
+        <item name="android:paddingEnd">?paddingActionBarBarSecundaryButtons</item>
+        <item name="android:paddingBottom">?paddingActionBarBarSecundaryButtons</item>
         <item name="android:scaleType">centerInside</item>
     </style>
 

@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/asdasdfda"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data class="MainActivityBinding">
+
+        <import type="com.vyping.libraries.R" />
+
+        <variable
+            name="exercise"
+            type="String" />
+
+        <!--<variable
+            name="chooseExerciseFragment"
+            type="com.stepett.app.fragments.excercise.ChooseExerciseFragment" />-->
+
+        <variable
+            name="mainActivity"
+            type="com.vyping.libraries.menu.MainActivity" />
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
+
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Please select your desired quantity:"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="@{exercise}"
+            android:hint="Test 0"
+            android:textAlignment="gravity" />
+    </RelativeLayout>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Button" />
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -11,8 +11,8 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Images.Colors;
-import com.vyping.masterlibrary.Images.Drawables;
+import com.vyping.masterlibrary.Images.MyColor;
+import com.vyping.masterlibrary.Images.MyDrawable;
 import com.vyping.masterlibrary.R;
 
 public class ImageButtons {
@@ -33,7 +33,7 @@ public class ImageButtons {
     public ImageButton setImage(@NonNull Dialog dialog, int view, int resDrawable, int color) {
 
         final Context context = dialog.getContext();
-        final Drawable drawable = new Drawables().changeDrawableColor(context, resDrawable, color);
+        final Drawable drawable = new MyDrawable().changeDrawableColor(context, resDrawable, color);
 
         final ImageButton imageButton = dialog.findViewById(view);
         imageButton.setImageDrawable(drawable);
@@ -45,7 +45,7 @@ public class ImageButtons {
     public ImageButton setImage(@NonNull Dialog dialog, int view, Drawable imageDrawable, int color) {
 
         final Context context = dialog.getContext();
-        final Drawable drawable = new Drawables().changeDrawableColor(context, imageDrawable, color);
+        final Drawable drawable = new MyDrawable().changeDrawableColor(context, imageDrawable, color);
 
         final ImageButton imageButton = dialog.findViewById(view);
         imageButton.setImageDrawable(drawable);
@@ -57,7 +57,7 @@ public class ImageButtons {
     public ImageButton setImageListener(@NonNull Dialog dialog, int view, View.OnClickListener listener, int resDrawable, int color) {
 
         final Context context = dialog.getContext();
-        final Drawable drawable = new Drawables().changeDrawableColor(context, resDrawable, color);
+        final Drawable drawable = new MyDrawable().changeDrawableColor(context, resDrawable, color);
 
         final ImageButton imageButton = dialog.findViewById(view);
         imageButton.setImageDrawable(drawable);
@@ -70,7 +70,7 @@ public class ImageButtons {
     public ImageButton setImageListener(@NonNull Dialog dialog, int view, View.OnClickListener listener, Drawable imageDrawable, int color) {
 
         final Context context = dialog.getContext();
-        final Drawable drawable = new Drawables().changeDrawableColor(context, imageDrawable, color);
+        final Drawable drawable = new MyDrawable().changeDrawableColor(context, imageDrawable, color);
 
         final ImageButton imageButton = dialog.findViewById(view);
         imageButton.setImageDrawable(drawable);
@@ -83,8 +83,8 @@ public class ImageButtons {
     public ImageButton setImageBackgroundListener(@NonNull Dialog dialog, int view, View.OnClickListener listener, int imageDrawable, int colorImage, int imageBackground, int colorBackground) {
 
         final Context context = dialog.getContext();
-        final Drawable background = new Drawables().changeDrawableColor(context, imageBackground, colorBackground);
-        final Drawable image = new Drawables().changeDrawableColor(context, imageDrawable, colorImage);
+        final Drawable background = new MyDrawable().changeDrawableColor(context, imageBackground, colorBackground);
+        final Drawable image = new MyDrawable().changeDrawableColor(context, imageDrawable, colorImage);
 
         final ImageButton imageButton = dialog.findViewById(view);
         imageButton.setBackground(background);
@@ -98,8 +98,8 @@ public class ImageButtons {
     public ImageButton setImageBackgroundListener(@NonNull Dialog dialog, int view, View.OnClickListener listener, Drawable resDrawable, int colorImage, Drawable resBackground, int colorBackground) {
 
         final Context context = dialog.getContext();
-        final Drawable background = new Drawables().changeDrawableColor(context, resDrawable, colorBackground);
-        final Drawable image = new Drawables().changeDrawableColor(context, resBackground, colorImage);
+        final Drawable background = new MyDrawable().changeDrawableColor(context, resDrawable, colorBackground);
+        final Drawable image = new MyDrawable().changeDrawableColor(context, resBackground, colorImage);
 
         final ImageButton imageButton = dialog.findViewById(view);
         imageButton.setBackground(background);
@@ -126,7 +126,7 @@ public class ImageButtons {
     public ImageButton setImage(@NonNull View parentView, int view, Drawable drawable, int color) {
 
         final Context context = parentView.getContext();
-        final Drawable modDrawable = new Drawables().changeDrawableColor(context, drawable, color);
+        final Drawable modDrawable = new MyDrawable().changeDrawableColor(context, drawable, color);
 
         final ImageButton imageButton = parentView.findViewById(view);
         imageButton.setImageDrawable(modDrawable);
@@ -138,7 +138,7 @@ public class ImageButtons {
     public ImageButton setImage(@NonNull View parentView, int view, int imageDrawable, int color) {
 
         final Context context = parentView.getContext();
-        final Drawable drawable = new Drawables().changeDrawableColor(context, imageDrawable, color);
+        final Drawable drawable = new MyDrawable().changeDrawableColor(context, imageDrawable, color);
 
         final ImageButton imageButton = parentView.findViewById(view);
         imageButton.setImageDrawable(drawable);
@@ -154,7 +154,7 @@ public class ImageButtons {
         if (drawable != null) {
 
             final Context context = parentView.getContext();
-            int color = new Colors().getColor(context, R.color.colorTransparente);
+            int color = new MyColor().getColor(context, R.color.colorTransparente);
 
             imageButton.setBackgroundColor(color);
             imageButton.setImageDrawable(drawable);
@@ -174,7 +174,7 @@ public class ImageButtons {
         if (imageDrawable != 0 ) {
 
             final Context context = parentView.getContext();
-            final Drawable drawable = new Drawables().extractFromResources(context, imageDrawable);
+            final Drawable drawable = new MyDrawable().extractFromResources(context, imageDrawable);
 
             return setImageListener(parentView, view, listener, drawable);
 
@@ -190,7 +190,7 @@ public class ImageButtons {
     public ImageButton setImageListener(@NonNull View parentView, int view, View.OnClickListener listener, Drawable drawable, int color) {
 
         final Context context = parentView.getContext();
-        final Drawable modDrawable = new Drawables().changeDrawableColor(context, drawable, color);
+        final Drawable modDrawable = new MyDrawable().changeDrawableColor(context, drawable, color);
 
         final ImageButton imageButton = parentView.findViewById(view);
         imageButton.setImageDrawable(modDrawable);
@@ -203,7 +203,7 @@ public class ImageButtons {
     public ImageButton setImageListener(@NonNull View parentView, int view, View.OnClickListener listener, int imageDrawable, int color) {
 
         final Context context = parentView.getContext();
-        final Drawable drawable = new Drawables().changeDrawableColor(context, imageDrawable, color);
+        final Drawable drawable = new MyDrawable().changeDrawableColor(context, imageDrawable, color);
 
         final ImageButton imageButton = parentView.findViewById(view);
         imageButton.setImageDrawable(drawable);
@@ -237,8 +237,8 @@ public class ImageButtons {
         if (imageDrawable != 0 && imageBackground != 0) {
 
             final Context context = parentView.getContext();
-            final Drawable background = new Drawables().extractFromResources(context, imageBackground);
-            final Drawable image = new Drawables().extractFromResources(context, imageDrawable);
+            final Drawable background = new MyDrawable().extractFromResources(context, imageBackground);
+            final Drawable image = new MyDrawable().extractFromResources(context, imageDrawable);
 
             return setImageBackgroundListener(parentView, view, listener, background, image);
 
@@ -254,8 +254,8 @@ public class ImageButtons {
     public ImageButton setImageBackgroundListener(@NonNull View parentView, int view, View.OnClickListener listener, Drawable resDrawable, int colorImage, Drawable resBackground, int colorBackground) {
 
         final Context context = parentView.getContext();
-        final Drawable background = new Drawables().changeDrawableColor(context, resDrawable, colorBackground);
-        final Drawable image = new Drawables().changeDrawableColor(context, resBackground, colorImage);
+        final Drawable background = new MyDrawable().changeDrawableColor(context, resDrawable, colorBackground);
+        final Drawable image = new MyDrawable().changeDrawableColor(context, resBackground, colorImage);
 
         final ImageButton imageButton = parentView.findViewById(view);
         imageButton.setBackground(background);
@@ -269,8 +269,8 @@ public class ImageButtons {
     public ImageButton setImageBackgroundListener(@NonNull View parentView, int view, View.OnClickListener listener, int imageDrawable, int colorImage, int imageBackground, int colorBackground) {
 
         final Context context = parentView.getContext();
-        final Drawable background = new Drawables().changeDrawableColor(context, imageBackground, colorBackground);
-        final Drawable image = new Drawables().changeDrawableColor(context, imageDrawable, colorImage);
+        final Drawable background = new MyDrawable().changeDrawableColor(context, imageBackground, colorBackground);
+        final Drawable image = new MyDrawable().changeDrawableColor(context, imageDrawable, colorImage);
 
         final ImageButton imageButton = parentView.findViewById(view);
         imageButton.setBackground(background);

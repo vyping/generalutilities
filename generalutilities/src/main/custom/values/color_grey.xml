@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Grey Color - Solid Scale
+
+    <color name="GreyDark20">#0E0E0E</color>
+    <color name="GreyDark19">#141414</color>
+    <color name="GreyDark18">#1A1A1A</color>
+    <color name="GreyDark17">#202020</color>
+    <color name="GreyDark16">#272727</color>
+    <color name="GreyDark15">#2D2D2D</color>
+    <color name="GreyDark14">#333333</color>
+    <color name="GreyDark13">#393939</color>
+    <color name="GreyDark12">#404040</color>
+    <color name="GreyDark11">#464646</color>
+    <color name="GreyDark10">#4C4C4C</color>
+    <color name="GreyDark09">#525252</color>
+    <color name="GreyDark08">#585858</color>
+    <color name="GreyDark07">#5F5F5F</color>
+    <color name="GreyDark06">#656565</color>
+    <color name="GreyDark05">#6B6B6B</color>
+    <color name="GreyDark04">#717171</color>
+    <color name="GreyDark03">#777777</color>
+    <color name="GreyDark02">#7E7E7E</color>
+    <color name="GreyDark01">#848484</color>
+    <color name="Grey">#8A8A8A</color>
+    <color name="GreyLight01">#8F8F8F</color>
+    <color name="GreyLight02">#959595</color>
+    <color name="GreyLight03">#9A9A9A</color>
+    <color name="GreyLight04">#9F9F9F</color>
+    <color name="GreyLight05">#A4A4A4</color>
+    <color name="GreyLight06">#AAAAAA</color>
+    <color name="GreyLight07">#AFAFAF</color>
+    <color name="GreyLight08">#B4B4B4</color>
+    <color name="GreyLight09">#B9B9B9</color>
+    <color name="GreyLight10">#BFBFBF</color>
+    <color name="GreyLight11">#C4C4C4</color>
+    <color name="GreyLight12">#C9C9C9</color>
+    <color name="GreyLight13">#CECECE</color>
+    <color name="GreyLight14">#D4D4D4</color>
+    <color name="GreyLight15">#D9D9D9</color>
+    <color name="GreyLight16">#DEDEDE</color>
+    <color name="GreyLight17">#E4E4E4</color>
+    <color name="GreyLight18">#E9E9E9</color>
+    <color name="GreyLight19">#EEEEEE</color>
+    <color name="GreyLight20">#F3F3F3</color>
+
+
+    // Grey Color - Traslucid Scale
+
+    <color name="GreyUltraDark000">#002C2C2C</color>
+    <color name="GreyUltraDark010">#1A2C2C2C</color>
+    <color name="GreyUltraDark020">#332C2C2C</color>
+    <color name="GreyUltraDark030">#4D2C2C2C</color>
+    <color name="GreyUltraDark040">#662C2C2C</color>
+    <color name="GreyUltraDark050">#802C2C2C</color>
+    <color name="GreyUltraDark060">#992C2C2C</color>
+    <color name="GreyUltraDark070">#B32C2C2C</color>
+    <color name="GreyUltraDark080">#CC2C2C2C</color>
+    <color name="GreyUltraDark090">#E62C2C2C</color>
+    <color name="GreyUltraDark100">#FF2C2C2C</color>
+
+    <color name="GreyDark000">#00454545</color>
+    <color name="GreyDark010">#1A454545</color>
+    <color name="GreyDark020">#33454545</color>
+    <color name="GreyDark030">#4D454545</color>
+    <color name="GreyDark040">#66454545</color>
+    <color name="GreyDark050">#80454545</color>
+    <color name="GreyDark060">#99454545</color>
+    <color name="GreyDark070">#B3454545</color>
+    <color name="GreyDark080">#CC454545</color>
+    <color name="GreyDark090">#E6454545</color>
+    <color name="GreyDark100">#FF454545</color>
+
+    <color name="GreyMid000">#00818181</color>
+    <color name="GreyMid010">#1A818181</color>
+    <color name="GreyMid020">#33818181</color>
+    <color name="GreyMid030">#4D818181</color>
+    <color name="GreyMid040">#66818181</color>
+    <color name="GreyMid050">#80818181</color>
+    <color name="GreyMid060">#99818181</color>
+    <color name="GreyMid070">#B3818181</color>
+    <color name="GreyMid080">#CC818181</color>
+    <color name="GreyMid090">#E6818181</color>
+    <color name="GreyMid100">#FF818181</color>
+
+    <color name="GreyLight000">#00B1B1B1</color>
+    <color name="GreyLight010">#1AB1B1B1</color>
+    <color name="GreyLight020">#33B1B1B1</color>
+    <color name="GreyLight030">#4DB1B1B1</color>
+    <color name="GreyLight040">#66B1B1B1</color>
+    <color name="GreyLight050">#80B1B1B1</color>
+    <color name="GreyLight060">#99B1B1B1</color>
+    <color name="GreyLight070">#B3B1B1B1</color>
+    <color name="GreyLight080">#CCB1B1B1</color>
+    <color name="GreyLight090">#E6B1B1B1</color>
+    <color name="GreyLight100">#FFB1B1B1</color>
+
+    <color name="GreyUltraLight000">#00DCDCDC</color>
+    <color name="GreyUltraLight010">#1ADCDCDC</color>
+    <color name="GreyUltraLight020">#33DCDCDC</color>
+    <color name="GreyUltraLight030">#4DDCDCDC</color>
+    <color name="GreyUltraLight040">#66DCDCDC</color>
+    <color name="GreyUltraLight050">#80DCDCDC</color>
+    <color name="GreyUltraLight060">#99DCDCDC</color>
+    <color name="GreyUltraLight070">#B3DCDCDC</color>
+    <color name="GreyUltraLight080">#CCDCDCDC</color>
+    <color name="GreyUltraLight090">#E6DCDCDC</color>
+    <color name="GreyUltraLight100">#FFDCDCDC</color>
+
+</resources>

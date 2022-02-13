@@ -19,13 +19,35 @@ public class Definitions {
     @StringDef({AUTH_INVALID, AUTH_DISABLED, AUTH_BLOCKED, AUTH_DELETED})
     public @interface LoginResponse {}
 
+    public static final int ORDER_BYKEY = 0, ORDER_BYCHILD = 1;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({ORDER_BYKEY, ORDER_BYCHILD})
+    public @interface OrderDatasnap {}
+
+    /*----- RecyclerView -----*/
+
+    public static final int LAYOUT_HORIZONTAL = 0, LAYOUT_VERTICAL = 1;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({LAYOUT_HORIZONTAL, LAYOUT_VERTICAL})
+    public @interface LayoutOrientation {}
+
+    /*----- Buttons -----*/
+
+    public static final int ICON_START = 0, ICON_TOP = 1, ICON_END = 2, ICON_BOTTOM = 3;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({ICON_START, ICON_TOP, ICON_END, ICON_BOTTOM})
+    public @interface IconPosition {}
+
 
     /*----- Dialog Buttons -----*/
 
-    public static final int BUTTONS_NONE = 0, BUTTONS_SINGLE = 1, BUTTONS_BOTH = 2, BUTTONS_THREE = 3;
+    public static final int BUTTONS_NONE = 0, BUTTONS_CANCEL = 1, BUTTONS_INFO = 2, BUTTONS_CANCEL_REFRESH = 3, BUTTONS_REFRESH_ACCEPT = 4, BUTTONS_CANCEL_ACCEPT = 5;
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({BUTTONS_NONE, BUTTONS_SINGLE, BUTTONS_BOTH, BUTTONS_THREE})
+    @IntDef({BUTTONS_NONE, BUTTONS_CANCEL, BUTTONS_INFO, BUTTONS_CANCEL_REFRESH, BUTTONS_REFRESH_ACCEPT, BUTTONS_CANCEL_ACCEPT})
     public @interface ModeButtons {}
 
 
@@ -36,6 +58,15 @@ public class Definitions {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({DATEPICKER_SPINNER, DATEPICKER_CALENDAR})
      public @interface TypeCalendar {}
+
+
+    /*----- DateNfcScan -----*/
+
+    public static final int SENSOR_NONEXISTENT = 0, SENSOR_DISABLED = 1, SENSOR_ACTIVE = 2;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({SENSOR_NONEXISTENT, SENSOR_DISABLED, SENSOR_ACTIVE})
+    public @interface SensorState {}
 
 
     /*----- TimePicker -----*/

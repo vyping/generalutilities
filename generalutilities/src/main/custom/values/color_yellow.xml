@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Yellow Color - Solid Scale
+
+    <color name="YellowDark20">#181A00</color>
+    <color name="YellowDark19">#232500</color>
+    <color name="YellowDark18">#2D3100</color>
+    <color name="YellowDark17">#383C00</color>
+    <color name="YellowDark16">#434700</color>
+    <color name="YellowDark15">#4D5300</color>
+    <color name="YellowDark14">#585E00</color>
+    <color name="YellowDark13">#636A00</color>
+    <color name="YellowDark12">#6E7500</color>
+    <color name="YellowDark11">#788100</color>
+    <color name="YellowDark10">#838C00</color>
+    <color name="YellowDark09">#8E9800</color>
+    <color name="YellowDark08">#98A300</color>
+    <color name="YellowDark07">#A3AF00</color>
+    <color name="YellowDark06">#AEBA00</color>
+    <color name="YellowDark05">#B9C600</color>
+    <color name="YellowDark04">#C3D100</color>
+    <color name="YellowDark03">#CEDD00</color>
+    <color name="YellowDark02">#D9E800</color>
+    <color name="YellowDark01">#E3F400</color>
+    <color name="Yellow">#EEFF00</color>
+    <color name="YellowLight01">#EFFF0C</color>
+    <color name="YellowLight02">#F0FF17</color>
+    <color name="YellowLight03">#F0FF22</color>
+    <color name="YellowLight04">#F1FF2E</color>
+    <color name="YellowLight05">#F2FF39</color>
+    <color name="YellowLight06">#F3FF45</color>
+    <color name="YellowLight07">#F3FF50</color>
+    <color name="YellowLight08">#F4FF5C</color>
+    <color name="YellowLight09">#F5FF67</color>
+    <color name="YellowLight10">#F6FF73</color>
+    <color name="YellowLight11">#F6FF7E</color>
+    <color name="YellowLight12">#F7FF8A</color>
+    <color name="YellowLight13">#F8FF95</color>
+    <color name="YellowLight14">#F9FFA1</color>
+    <color name="YellowLight15">#FAFFAC</color>
+    <color name="YellowLight16">#FAFFB8</color>
+    <color name="YellowLight17">#FBFFC3</color>
+    <color name="YellowLight18">#FCFFCF</color>
+    <color name="YellowLight19">#FDFFDA</color>
+    <color name="YellowLight20">#FDFFE6</color>
+
+
+    // Yellow Color - Traslucid Scale
+
+    <color name="YellowUltraDark000">#00685E00</color>
+    <color name="YellowUltraDark010">#1A685E00</color>
+    <color name="YellowUltraDark020">#33685E00</color>
+    <color name="YellowUltraDark030">#4D685E00</color>
+    <color name="YellowUltraDark040">#66685E00</color>
+    <color name="YellowUltraDark050">#80685E00</color>
+    <color name="YellowUltraDark060">#99685E00</color>
+    <color name="YellowUltraDark070">#B3685E00</color>
+    <color name="YellowUltraDark080">#CC685E00</color>
+    <color name="YellowUltraDark090">#E6685E00</color>
+    <color name="YellowUltraDark100">#FF685E00</color>
+
+    <color name="YellowDark000">#00AA9900</color>
+    <color name="YellowDark010">#1AAA9900</color>
+    <color name="YellowDark020">#33AA9900</color>
+    <color name="YellowDark030">#4DAA9900</color>
+    <color name="YellowDark040">#66AA9900</color>
+    <color name="YellowDark050">#80AA9900</color>
+    <color name="YellowDark060">#99AA9900</color>
+    <color name="YellowDark070">#B3AA9900</color>
+    <color name="YellowDark080">#CCAA9900</color>
+    <color name="YellowDark090">#E6AA9900</color>
+    <color name="YellowDark100">#FFAA9900</color>
+
+    <color name="YellowMid000">#00FFE500</color>
+    <color name="YellowMid010">#1AFFE500</color>
+    <color name="YellowMid020">#33FFE500</color>
+    <color name="YellowMid030">#4DFFE500</color>
+    <color name="YellowMid040">#66FFE500</color>
+    <color name="YellowMid050">#80FFE500</color>
+    <color name="YellowMid060">#99FFE500</color>
+    <color name="YellowMid070">#B3FFE500</color>
+    <color name="YellowMid080">#CCFFE500</color>
+    <color name="YellowMid090">#E6FFE500</color>
+    <color name="YellowMid100">#FFFFE500</color>
+
+    <color name="YellowLight000">#00FFEC44</color>
+    <color name="YellowLight010">#1AFFEC44</color>
+    <color name="YellowLight020">#33FFEC44</color>
+    <color name="YellowLight030">#4DFFEC44</color>
+    <color name="YellowLight040">#66FFEC44</color>
+    <color name="YellowLight050">#80FFEC44</color>
+    <color name="YellowLight060">#99FFEC44</color>
+    <color name="YellowLight070">#B3FFEC44</color>
+    <color name="YellowLight080">#CCFFEC44</color>
+    <color name="YellowLight090">#E6FFEC44</color>
+    <color name="YellowLight100">#FFFFEC44</color>
+
+    <color name="YellowUltraLight000">#00FFF27D</color>
+    <color name="YellowUltraLight010">#1AFFF27D</color>
+    <color name="YellowUltraLight020">#33FFF27D</color>
+    <color name="YellowUltraLight030">#4DFFF27D</color>
+    <color name="YellowUltraLight040">#66FFF27D</color>
+    <color name="YellowUltraLight050">#80FFF27D</color>
+    <color name="YellowUltraLight060">#99FFF27D</color>
+    <color name="YellowUltraLight070">#B3FFF27D</color>
+    <color name="YellowUltraLight080">#CCFFF27D</color>
+    <color name="YellowUltraLight090">#E6FFF27D</color>
+    <color name="YellowUltraLight100">#FFFFF27D</color>
+
+</resources>

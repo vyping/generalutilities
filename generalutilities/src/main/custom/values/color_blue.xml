@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Blue Color - Solid Scale
+
+    <color name="BlueDark20">#000C1A</color>
+    <color name="BlueDark19">#001225</color>
+    <color name="BlueDark18">#001731</color>
+    <color name="BlueDark17">#001D3C</color>
+    <color name="BlueDark16">#002247</color>
+    <color name="BlueDark15">#002853</color>
+    <color name="BlueDark14">#002E5E</color>
+    <color name="BlueDark13">#00336A</color>
+    <color name="BlueDark12">#003975</color>
+    <color name="BlueDark11">#003E81</color>
+    <color name="BlueDark10">#00448C</color>
+    <color name="BlueDark09">#004998</color>
+    <color name="BlueDark08">#004FA3</color>
+    <color name="BlueDark07">#0054AF</color>
+    <color name="BlueDark06">#005ABA</color>
+    <color name="BlueDark05">#005FC6</color>
+    <color name="BlueDark04">#0065D1</color>
+    <color name="BlueDark03">#006ADD</color>
+    <color name="BlueDark02">#0070E8</color>
+    <color name="BlueDark01">#0076F4</color>
+    <color name="Blue">#007BFF</color>
+    <color name="BlueLight01">#0C81FF</color>
+    <color name="BlueLight02">#1787FF</color>
+    <color name="BlueLight03">#228DFF</color>
+    <color name="BlueLight04">#2E93FF</color>
+    <color name="BlueLight05">#3999FF</color>
+    <color name="BlueLight06">#459FFF</color>
+    <color name="BlueLight07">#50A5FF</color>
+    <color name="BlueLight08">#5CABFF</color>
+    <color name="BlueLight09">#67B1FF</color>
+    <color name="BlueLight10">#73B6FF</color>
+    <color name="BlueLight11">#7EBCFF</color>
+    <color name="BlueLight12">#8AC2FF</color>
+    <color name="BlueLight13">#95C8FF</color>
+    <color name="BlueLight14">#A1CEFF</color>
+    <color name="BlueLight15">#ACD4FF</color>
+    <color name="BlueLight16">#B8DAFF</color>
+    <color name="BlueLight17">#C3E0FF</color>
+    <color name="BlueLight18">#CFE6FF</color>
+    <color name="BlueLight19">#DAECFF</color>
+    <color name="BlueLight20">#E6F2FF</color>
+
+
+    // Blue Color - Traslucid Scale
+
+    <color name="BlueUltraDark000">#00013663</color>
+    <color name="BlueUltraDark010">#1A013663</color>
+    <color name="BlueUltraDark020">#33013663</color>
+    <color name="BlueUltraDark030">#4D013663</color>
+    <color name="BlueUltraDark040">#66013663</color>
+    <color name="BlueUltraDark050">#80013663</color>
+    <color name="BlueUltraDark060">#99013663</color>
+    <color name="BlueUltraDark070">#B3013663</color>
+    <color name="BlueUltraDark080">#CC013663</color>
+    <color name="BlueUltraDark090">#E6013663</color>
+    <color name="BlueUltraDark100">#FF013663</color>
+
+    <color name="BlueDark000">#00115085</color>
+    <color name="BlueDark010">#1A115085</color>
+    <color name="BlueDark020">#33115085</color>
+    <color name="BlueDark030">#4D115085</color>
+    <color name="BlueDark040">#66115085</color>
+    <color name="BlueDark050">#80115085</color>
+    <color name="BlueDark060">#99115085</color>
+    <color name="BlueDark070">#B3115085</color>
+    <color name="BlueDark080">#CC115085</color>
+    <color name="BlueDark090">#E6115085</color>
+    <color name="BlueDark100">#FF115085</color>
+
+    <color name="BlueMid000">#00296FA5</color>
+    <color name="BlueMid010">#1A296FA5</color>
+    <color name="BlueMid020">#33296FA5</color>
+    <color name="BlueMid030">#4D296FA5</color>
+    <color name="BlueMid040">#66296FA5</color>
+    <color name="BlueMid050">#80296FA5</color>
+    <color name="BlueMid060">#99296FA5</color>
+    <color name="BlueMid070">#B3296FA5</color>
+    <color name="BlueMid080">#CC296FA5</color>
+    <color name="BlueMid090">#E6296FA5</color>
+    <color name="BlueMid100">#Ff296FA5</color>
+
+    <color name="BlueLight000">#004893CA</color>
+    <color name="BlueLight010">#1A4893CA</color>
+    <color name="BlueLight020">#334893CA</color>
+    <color name="BlueLight030">#4D4893CA</color>
+    <color name="BlueLight040">#664893CA</color>
+    <color name="BlueLight050">#804893CA</color>
+    <color name="BlueLight060">#994893CA</color>
+    <color name="BlueLight070">#B34893CA</color>
+    <color name="BlueLight080">#CC4893CA</color>
+    <color name="BlueLight090">#E64893CA</color>
+    <color name="BlueLight100">#FF4893CA</color>
+
+    <color name="BlueUltraLight000">#007DC8FF</color>
+    <color name="BlueUltraLight010">#1A7DC8FF</color>
+    <color name="BlueUltraLight020">#337DC8FF</color>
+    <color name="BlueUltraLight030">#4D7DC8FF</color>
+    <color name="BlueUltraLight040">#667DC8FF</color>
+    <color name="BlueUltraLight050">#807DC8FF</color>
+    <color name="BlueUltraLight060">#997DC8FF</color>
+    <color name="BlueUltraLight070">#B37DC8FF</color>
+    <color name="BlueUltraLight080">#CC7DC8FF</color>
+    <color name="BlueUltraLight090">#E67DC8FF</color>
+    <color name="BlueUltraLight100">#FF7DC8FF</color>
+
+</resources>

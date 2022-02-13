@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/colorPrimary"/>
+    <solid android:color="?colorActionBarSideBars"/>
 
     <corners
         android:topLeftRadius="150dp"

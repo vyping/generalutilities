@@ -3,43 +3,43 @@
 <selector
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<item
-android:state_pressed="true">
-<shape
-    android:paddingBottom="8dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="8dp"
-    android:shape="rectangle">
-    <stroke
-        android:color="@color/colorPrimaryLigth1"
-        android:width="1dp"/>
-    <gradient
-        android:angle="90"
-        android:endColor="@color/colorPrimaryLigth1"
-        android:centerColor="@color/colorPrimaryDark1"
-        android:startColor="@color/colorPrimaryLigth1" />
-    <corners
-        android:radius="5dp" />
-</shape>
-</item>
-<item>
-<shape
-    android:paddingBottom="8dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="8dp"
-    android:shape="rectangle">
-    <stroke
-        android:color="@color/colorPrimaryDark1"
-        android:width="1dp"/>
-    <gradient
-        android:angle="90"
-        android:startColor="@color/colorPrimaryDark1"
-        android:centerColor="@color/colorPrimaryLigth1"
-        android:endColor="@color/colorPrimaryDark1" />
-    <corners
-        android:radius="5dp" />
-</shape>
-</item>
-    </selector>
+    <item
+        android:state_pressed="true">
+        <shape
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:shape="rectangle">
+            <stroke
+                android:color="@color/PrimaryLight01"
+                android:width="1dp"/>
+            <gradient
+                android:angle="90"
+                android:endColor="@color/PrimaryLight01"
+                android:centerColor="@color/PrimaryDark01"
+                android:startColor="@color/PrimaryLight01" />
+            <corners
+                android:radius="5dp" />
+        </shape>
+    </item>
+    <item>
+        <shape
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:shape="rectangle">
+            <stroke
+                android:color="@color/PrimaryDark01"
+                android:width="1dp"/>
+            <gradient
+                android:angle="90"
+                android:startColor="@color/PrimaryDark01"
+                android:centerColor="@color/PrimaryLight01"
+                android:endColor="@color/PrimaryDark01" />
+            <corners
+                android:radius="5dp" />
+        </shape>
+    </item>
+</selector>

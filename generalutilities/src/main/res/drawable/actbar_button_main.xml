@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<shape
+<selector
+xmlns:android="http://schemas.android.com/apk/res/android">
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-
-    <solid android:color="@color/colorPrimaryDark9"/>
-
-    <size
-        android:width="60dp"
-        android:height="60dp"/>
-
-</shape>
+<item
+    android:state_pressed="true">
+    <shape
+        android:shape="oval">
+        <stroke
+            android:color="?colorActionBarMainButtonsPressed"
+            android:width="1dp"/>
+        <solid android:color="?colorActionBarMainButtonsPressed"/>
+    </shape>
+</item>
+<item>
+    <shape
+        android:shape="oval">
+        <stroke
+            android:color="?colorActionBarMainButtons"
+            android:width="1dp"/>
+        <solid android:color="?colorActionBarMainButtons"/>
+    </shape>
+</item>
+</selector>

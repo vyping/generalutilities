@@ -5,15 +5,17 @@ import static java.lang.Boolean.TRUE;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.text.Editable;
 import android.util.Patterns;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.vyping.masterlibrary.R;
+import com.vyping.masterlibrary.Bucles.BucleFor;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class Strings {
@@ -38,13 +40,78 @@ public class Strings {
         return word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 
+    public char[] getCharList(@NonNull CharSequence input) {
+
+        return input.toString().toCharArray();
+    }
+
+    public ArrayList<String> getCharArray(@NonNull CharSequence input) {
+
+        char[] charList = getCharList(input);
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        new BucleFor().forChars(charList, new BucleFor.CharsInterface() {
+
+            @Override
+            public void itemFromArray(char item) {
+
+                arrayList.add(String.valueOf(item));
+            }
+
+            private void DummyVoid() {}
+        });
+
+        return arrayList;
+    }
+
+    public String insertCharOnString(@NonNull CharSequence text, int position, String character) {
+
+        String Text = String.valueOf(text);
+
+        return insertCharOnString(Text, position, character);
+    }
+
+    public String insertCharOnString(@NonNull String text, int position, String character) {
+
+        String[] array = new String[text.length() + 1];
+        String[] cadenaArray = text.split("");
+        String res = "La posición se encuentra fuera de la longitud de la cadena";
+
+        if (position < text.length()) {
+
+            for (int i = 0; i < text.length(); i++) {
+
+                String letraCadena = cadenaArray[i];
+
+                if(i == position) {
+
+                    array[i] = character;
+                    array[i+1] = letraCadena;
+                    i+=1;
+
+                } else {
+
+                    array[i] = letraCadena;
+                }
+
+                res = String.join("", array);
+            }
+
+        } else {
+
+            res = text + character;
+        }
+
+        return res;
+    }
+
     public boolean isValidEmail(String email) {
 
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
 
-    public boolean stringLengthLess(@NonNull String text, int  length) {
+    public boolean stringLengthLess(@NonNull String text, int length) {
 
         if (text.length() < length) {
 
@@ -175,5 +242,84 @@ public class Strings {
 
             return "";
         }
+    }
+
+    public String formatToMoney(long number) {
+
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.getDefault());
+        formatter.applyPattern("$#,###,###,###");
+
+        return formatter.format(number);
+    }
+
+    public String formatToMoney(@NonNull String number) {
+
+
+        String Return = "";
+
+        if (!number.equals("")) {
+
+            boolean isNumber = new Numbers().isNumber(number);
+
+            if (isNumber) {
+
+                long Number = Long.parseLong(number);
+
+                Return = formatToMoney(Number);
+            }
+        }
+
+        return Return;
+    }
+
+    public String formatMiles(long number) {
+
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.getDefault());
+        formatter.applyPattern("#,###,###,###");
+
+        return formatter.format(number);
+    }
+
+    public String formatMiles(@NonNull String number) {
+
+        String Return = "";
+
+        if (!number.equals("")) {
+
+            boolean isNumber = new Numbers().isNumber(number);
+
+            if (isNumber) {
+
+                long Number = Long.parseLong(number);
+
+                Return = formatMiles(Number);
+            }
+        }
+
+        return Return;
+    }
+
+    public String formatDigits(long number, int digits) {
+
+        return String.format(Locale.getDefault(), "%0" + digits + "d" , number);
+    }
+
+    public String formatDigits(String number, int digits) {
+
+        String Return = "";
+
+        if (!number.equals("")) {
+
+            boolean isNumber = new Numbers().isNumber(number);
+
+            if (isNumber) {
+
+                long Number = Long.parseLong(number);
+
+                Return = formatDigits(Number, digits);
+            }
+        }
+
+        return Return;
     }
 }

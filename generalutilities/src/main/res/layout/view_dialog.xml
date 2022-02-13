@@ -3,7 +3,7 @@
 <RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/DialogWindowContainerWrap">
+    style="@style/DialogWindowContainer">
 
     <LinearLayout
         style="@style/DialogBodyContainerWrap">
@@ -62,7 +62,7 @@
 
                 <Button
                     android:id="@+id/Btn_Custom_Negative"
-                    style="@style/DialogOptionButton"/>
+                    style="@style/DialogButtonNegative"/>
 
             </LinearLayout>
 
@@ -79,7 +79,7 @@
 
                 <Button
                     android:id="@+id/Btn_Custom_Positive"
-                    style="@style/DialogOptionButton"/>
+                    style="@style/DialogButtonPositive"/>
 
             </LinearLayout>
 

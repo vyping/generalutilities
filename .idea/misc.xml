@@ -3,32 +3,160 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/buton_negative.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/buton_negative.xml.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_action_enter.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_action_exit.xml" value="0.114" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_alarm.xml" value="0.3472222222222222" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_door.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_neutral.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_neutral.xml.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/icon_image.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/shape_pink_circle.xml" value="0.37962962962962965" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/shape_purple_circle.xml" value="0.37592592592592594" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_enter.xml" value="0.2833333333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_erase.xml" value="0.24074074074074073" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_exit.xml" value="0.24074074074074073" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_inside.xml" value="0.23796296296296296" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_new.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_outside.xml" value="0.1824074074074074" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_type.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/background_sweep_rotations.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/button_positive.xml.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/calendar_shape_day.xml" value="0.2955" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/calendar_shape_month.xml" value="0.261" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/calendar_shape_other.xml" value="0.297" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/calendar_shape_void.xml" value="0.297" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/ic_launcher_background.xml" value="0.4010416666666667" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_add.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_addvehicle.xml" value="0.31203703703703706" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_enter.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_exit.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_image.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_info.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_main.xml" value="0.2875" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_tag.xml" value="0.25277777777777777" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_trash.xml" value="0.31203703703703706" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle2.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_articulate.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_automobile.xml" value="0.2361111111111111" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_bus.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_car.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_motorcycle.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_pickup.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_truck.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/icon_vehicle_van.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/shape_pink_circle.xml" value="0.3921875" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/shape_purple_circle.xml" value="0.3921875" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_bakcground_outside.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_shape_enter.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_shape_erase.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_shape_exit.xml" value="0.15833333333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_shape_inside.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_shape_outside.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/vehicles_shape_type.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/activity_main.xml" value="0.19831223628691982" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/activity_vehicles.xml" value="0.1" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/adm_prg_globe.xml" value="0.25" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/calendar_globe_outside.xml" value="0.3765625" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/custom_spinner_row.xml" value="0.28306159420289856" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/dialog_vehicle_create.xml" value="0.30448717948717946" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/dialog_vehicle_info.xml" value="0.28306159420289856" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/dialog_vehicle_payment.xml" value="0.31068840579710144" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/events_activity.xml" value="0.21240942028985507" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/events_globe.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/financial_activity.xml" value="0.33" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/financial_globe.xml" value="0.33" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/history_activity.xml" value="0.322463768115942" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/layout_choose_exercise_item.xml" value="0.31068840579710144" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/layout_insidevehicle.xml" value="0.67" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/layout_outsidevehicles.xml" value="0.1" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/layout_selected_exercise_item.xml" value="0.30842391304347827" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/main_vehicles.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/menu_activity.xml" value="0.33" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/sppiner_layout.xml" value="0.3765625" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_activity.xml" value="0.3222591362126246" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_inside.xml" value="0.67" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_inside.xml.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_outside.xml" value="0.75" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/actbar_button_main.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/actbar_button_maincontainer.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/actbar_button_tools.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/actbar_container_main.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/actbar_container_tools.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/arrow.xml" value="0.2859375" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/backgoudnpattern.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_activitys_primary.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_activitys_secondary.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_patternlock.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_rectangle.xml" value="0.2859375" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_sweep_rotations.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_sweep_rotations_primary.xml" value="0.35462962962962963" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/background_sweep_rotations_secundary.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/buton_negative.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/button.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/button_neutral.xml" value="0.3851851851851852" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/button_positive.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/button_text.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dialog_background_button.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dialog_background_info.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dialog_background_title.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dialog_background_trasparent.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dialog_background_window.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dialog_edittext.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/dibujo.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/ic_launcher_background.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_actbar_background.xml" value="0.4010416666666667" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_add.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_back.xml" value="0.38666666666666666" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_calendar.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_car.xml" value="0.38666666666666666" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_check.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_clock.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_configuration.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_enter.xml" value="0.14537037037037037" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_history.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_idcard.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_image.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_info.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_money.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_question.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_redo.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_search.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_sync.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_times.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_tools.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_trade.xml" value="0.2064814814814815" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_undo.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/icon_user.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_background.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_background_altern.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_background_secundary.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_globe_body.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_globe_title.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_rounded_ultradark.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/layout_rounded_white.xml" value="0.3490740740740741" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/menu_button.xml" value="0.3277777777777778" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/popup_button_short.xml" value="0.4010416666666667" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/popup_container_center.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/popup_container_left.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/popup_container_right.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/popup_internal_long.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/progresbar_van.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/scrollbar_vertical_thumb.xml" value="0.28802083333333334" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/scrollbar_vertical_track.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/swipe_background.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/swipe_button.xml" value="0.3921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/actionbar_custom.xml" value="0.2807971014492754" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/activity_main.xml" value="0.23076923076923078" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/button.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/button_info.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/contact_view.xml" value="0.3713768115942029" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/customview.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_check.xml" value="0.27717391304347827" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_custom.xml" value="0.1" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_custom.xml" value="0.18" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_generic.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_help.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_input_text.xml" value="0.26992753623188404" />
@@ -37,7 +165,7 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_patternlock.xml" value="0.27807971014492755" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_picker.xml" value="0.33" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_pickerdate.xml" value="0.1" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_pickerprefix.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_pickerprefix.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_progress.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_qrscan.xml" value="0.19344262295081968" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/dialog_question.xml" value="0.26902173913043476" />
@@ -54,7 +182,9 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/fragment_button.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/listview_item.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/popup_bubbles.xml" value="0.3765625" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/toolbars_datesearch.xml" value="0.1" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/spinner_globe_single.xml" value="0.34103260869565216" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/spinner_row_singleicon.xml" value="0.28804347826086957" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/toolbars_datesearch.xml" value="0.25" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/view_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/layout/view_quantity.xml" value="0.33" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/xml/sildeview.xml" value="0.21105072463768115" />

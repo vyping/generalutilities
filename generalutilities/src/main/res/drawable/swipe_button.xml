@@ -17,10 +17,11 @@
                 android:centerColor="@color/RedMid100"
                 android:endColor="@color/RedDark100" />
             <corners
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp" />
+                android:topLeftRadius="?paddingLayoutTopLeft"
+                android:topRightRadius="?paddingLayoutTopRight"
+                android:bottomLeftRadius="?paddingLayoutBottomLeft"
+                android:bottomRightRadius="?paddingLayoutBottomRight" />
+
             <size android:width="80dp" />
             <size android:height="40dp" />
         </shape>

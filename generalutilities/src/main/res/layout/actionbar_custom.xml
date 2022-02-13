@@ -4,7 +4,6 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActionBarMainLayout">
 
     <LinearLayout
@@ -26,15 +25,9 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LL_Icon_Title"
-            style="@style/ActionBarMainButtonContainer">
-
-            <ImageButton
-                android:id="@+id/Btn_Acb_Menu"
-                style="@style/ActionBarMainButton" />
-
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/Btn_Acb_Menu"
+            style="@style/ActionBarMainButton" />
 
     </LinearLayout>
 
@@ -49,19 +42,14 @@
     <LinearLayout
         android:id="@+id/LL_Tools"
         style="@style/ActionBarToolsLayout"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/LL_Icon_Tools"
-            style="@style/ActionBarToolsButtonContainer">
-
-            <ImageButton
-                android:id="@+id/Btn_Acb_Menu2"
-                style="@style/ActionBarToolsButton" />
-
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/Btn_Acb_Menu2"
+            style="@style/ActionBarToolsButton" />
 
         <LinearLayout
             android:id="@+id/Ll_Options_Buttons"

@@ -1,63 +1,34 @@
 {
   "project_info": {
-    "project_number": "1090642809970",
-    "firebase_url": "https://vyp-accescontrol-default-rtdb.firebaseio.com",
-    "project_id": "vyp-accescontrol",
-    "storage_bucket": "vyp-accescontrol.appspot.com"
+    "project_number": "299303784824",
+    "firebase_url": "https://vyp-parkingcontrol-default-rtdb.firebaseio.com",
+    "project_id": "vyp-parkingcontrol",
+    "storage_bucket": "vyp-parkingcontrol.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1090642809970:android:635bebf021d45c79a15eeb",
-        "android_client_info": {
-          "package_name": "com.vyping.accesscontrol"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC7RIuDJogfSb5RHTextYy-8ITYoah7eQs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1090642809970:android:22ea5d6e9180c026a15eeb",
+        "mobilesdk_app_id": "1:299303784824:android:367c476c8361f9ad98388d",
         "android_client_info": {
           "package_name": "com.vyping.libraries"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
+          "client_id": "299303784824-t9a6b2dm1vkokcrla1sl5kk3j0m3ou7a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC7RIuDJogfSb5RHTextYy-8ITYoah7eQs"
+          "current_key": "AIzaSyA5SKg6VR_4Od2AE3ZeG4imYAAa1u5fbvw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1090642809970-99vcadl61rpha9ugt61ophujvjga0s63.apps.googleusercontent.com",
+              "client_id": "299303784824-t9a6b2dm1vkokcrla1sl5kk3j0m3ou7a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

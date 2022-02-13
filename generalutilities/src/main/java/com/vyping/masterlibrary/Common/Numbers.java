@@ -21,7 +21,45 @@ public class Numbers {
         return TextUtils.isDigitsOnly(text);
     }
 
-    public long stringToNumber(String text) {
+    public long objectToLong(Object object) {
+
+        String text = String.valueOf(object);
+
+        return stringToLong(text);
+    }
+
+    public long stringToLong(String text) {
+
+        if (isNumber(text)) {
+
+            return Long.parseLong(text);
+
+        } else {
+
+            return 0L;
+        }
+    }
+
+    public int objectToInteger(Object object) {
+
+        String text = String.valueOf(object);
+
+        return stringToInteger(text);
+    }
+
+    public int stringToInteger(String text) {
+
+        if (isNumber(text)) {
+
+            return Integer.parseInt(text);
+
+        } else {
+
+            return 0;
+        }
+    }
+
+    public long stringChangeToNumber(String text) {
 
         String Text = new Strings().translateToTag(text);
         long result = 0;

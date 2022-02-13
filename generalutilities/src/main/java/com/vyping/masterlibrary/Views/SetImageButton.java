@@ -13,9 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.airbnb.paris.Paris;
-import com.andrognito.patternlockview.PatternLockView;
-import com.vyping.masterlibrary.Images.Drawables;
-import com.vyping.masterlibrary.R;
+import com.vyping.masterlibrary.Images.MyDrawable;
 
 public abstract class SetImageButton {
 
@@ -108,7 +106,7 @@ public abstract class SetImageButton {
 
         } else {
 
-            drawable = new Drawables().changeDrawableColor(context, resDrawable, color);
+            drawable = new MyDrawable().changeDrawableColor(context, resDrawable, color);
         }
 
         imageButton.setImageDrawable(drawable);
@@ -123,7 +121,7 @@ public abstract class SetImageButton {
 
     public void setBackground(int imageBackground, int color) {
 
-        Drawable background = new Drawables().changeDrawableColor(context, imageBackground, color);
+        Drawable background = new MyDrawable().changeDrawableColor(context, imageBackground, color);
 
         imageButton.setBackground(background);
     }

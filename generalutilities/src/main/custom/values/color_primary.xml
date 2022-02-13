@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // Primary Color - Solid Scale
+
+    <color name="PrimaryDark20">#120D00</color>
+    <color name="PrimaryDark19">#191300</color>
+    <color name="PrimaryDark18">#211900</color>
+    <color name="PrimaryDark17">#291F00</color>
+    <color name="PrimaryDark16">#312500</color>
+    <color name="PrimaryDark15">#392B00</color>
+    <color name="PrimaryDark14">#413100</color>
+    <color name="PrimaryDark13">#493600</color>
+    <color name="PrimaryDark12">#513C00</color>
+    <color name="PrimaryDark11">#584200</color>
+    <color name="PrimaryDark10">#604800</color>
+    <color name="PrimaryDark09">#684E00</color>
+    <color name="PrimaryDark08">#705400</color>
+    <color name="PrimaryDark07">#785A00</color>
+    <color name="PrimaryDark06">#806000</color>
+    <color name="PrimaryDark05">#886600</color>
+    <color name="PrimaryDark04">#906B00</color>
+    <color name="PrimaryDark03">#977100</color>
+    <color name="PrimaryDark02">#9F7700</color>
+    <color name="PrimaryDark01">#A77D00</color>
+    <color name="Primary">#AF8300</color>
+    <color name="PrimaryLight01">#B3890C</color>
+    <color name="PrimaryLight02">#B68E17</color>
+    <color name="PrimaryLight03">#BA9422</color>
+    <color name="PrimaryLight04">#BD992E</color>
+    <color name="PrimaryLight05">#C19F39</color>
+    <color name="PrimaryLight06">#C5A545</color>
+    <color name="PrimaryLight07">#C8AA50</color>
+    <color name="PrimaryLight08">#CCB05C</color>
+    <color name="PrimaryLight09">#CFB567</color>
+    <color name="PrimaryLight10">#D3BB73</color>
+    <color name="PrimaryLight11">#D7C07E</color>
+    <color name="PrimaryLight12">#DAC68A</color>
+    <color name="PrimaryLight13">#DECC95</color>
+    <color name="PrimaryLight14">#E1D1A1</color>
+    <color name="PrimaryLight15">#E5D7AC</color>
+    <color name="PrimaryLight16">#E9DCB8</color>
+    <color name="PrimaryLight17">#ECE2C3</color>
+    <color name="PrimaryLight18">#F0E7CF</color>
+    <color name="PrimaryLight19">#F3EDDA</color>
+    <color name="PrimaryLight20">#F7F3E6</color>
+
+
+    // Primary Color - Traslucid Scale
+
+    <color name="PrimaryUltraDark000">#00413100</color>
+    <color name="PrimaryUltraDark010">#1A413100</color>
+    <color name="PrimaryUltraDark020">#33413100</color>
+    <color name="PrimaryUltraDark030">#4D413100</color>
+    <color name="PrimaryUltraDark040">#66413100</color>
+    <color name="PrimaryUltraDark050">#80413100</color>
+    <color name="PrimaryUltraDark060">#99413100</color>
+    <color name="PrimaryUltraDark070">#B3413100</color>
+    <color name="PrimaryUltraDark080">#CC413100</color>
+    <color name="PrimaryUltraDark090">#E6413100</color>
+    <color name="PrimaryUltraDark100">#FF413100</color>
+
+    <color name="PrimaryDark000">#00785A00</color>
+    <color name="PrimaryDark010">#1A785A00</color>
+    <color name="PrimaryDark020">#33785A00</color>
+    <color name="PrimaryDark030">#4D785A00</color>
+    <color name="PrimaryDark040">#66785A00</color>
+    <color name="PrimaryDark050">#80785A00</color>
+    <color name="PrimaryDark060">#99785A00</color>
+    <color name="PrimaryDark070">#B3785A00</color>
+    <color name="PrimaryDark080">#CC785A00</color>
+    <color name="PrimaryDark090">#E6785A00</color>
+    <color name="PrimaryDark100">#FF785A00</color>
+
+    <color name="PrimaryMid000">#00AF8300</color>
+    <color name="PrimaryMid010">#1AAF8300</color>
+    <color name="PrimaryMid020">#33AF8300</color>
+    <color name="PrimaryMid030">#4DAF8300</color>
+    <color name="PrimaryMid040">#66AF8300</color>
+    <color name="PrimaryMid050">#80AF8300</color>
+    <color name="PrimaryMid060">#99AF8300</color>
+    <color name="PrimaryMid070">#B3AF8300</color>
+    <color name="PrimaryMid080">#CCAF8300</color>
+    <color name="PrimaryMid090">#E6AF8300</color>
+    <color name="PrimaryMid100">#FFAF8300</color>
+
+    <color name="PrimaryLight000">#00C8AA50</color>
+    <color name="PrimaryLight010">#1AC8AA50</color>
+    <color name="PrimaryLight020">#33C8AA50</color>
+    <color name="PrimaryLight030">#4DC8AA50</color>
+    <color name="PrimaryLight040">#66C8AA50</color>
+    <color name="PrimaryLight050">#80C8AA50</color>
+    <color name="PrimaryLight060">#99C8AA50</color>
+    <color name="PrimaryLight070">#B3C8AA50</color>
+    <color name="PrimaryLight080">#CCC8AA50</color>
+    <color name="PrimaryLight090">#E6C8AA50</color>
+    <color name="PrimaryLight100">#FFC8AA50</color>
+
+    <color name="PrimaryUltraLight000">#00E1D1A1</color>
+    <color name="PrimaryUltraLight010">#1AE1D1A1</color>
+    <color name="PrimaryUltraLight020">#33E1D1A1</color>
+    <color name="PrimaryUltraLight030">#4DE1D1A1</color>
+    <color name="PrimaryUltraLight040">#66E1D1A1</color>
+    <color name="PrimaryUltraLight050">#80E1D1A1</color>
+    <color name="PrimaryUltraLight060">#99E1D1A1</color>
+    <color name="PrimaryUltraLight070">#B3E1D1A1</color>
+    <color name="PrimaryUltraLight080">#CCE1D1A1</color>
+    <color name="PrimaryUltraLight090">#E6E1D1A1</color>
+    <color name="PrimaryUltraLight100">#FFE1D1A1</color>
+
+</resources>
