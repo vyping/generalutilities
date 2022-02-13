@@ -62,6 +62,7 @@ import com.vyping.libraries.general.Models.Tariff;
 import com.vyping.libraries.general.Models.Vehicle;
 import com.vyping.libraries.Incomes.IncomesActivity;
 import com.vyping.masterlibrary.ActionBar.MyActionBar;
+import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyActivity;
 import com.vyping.masterlibrary.Common.DateTools;
 import com.vyping.masterlibrary.Common.MyToast;

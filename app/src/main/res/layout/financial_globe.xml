@@ -30,7 +30,7 @@
             android:layout_weight="0"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/icon_money"
-            app:tint="@color/black"/>
+            app:tint="@color/colorNegro"/>
 
         <TextView
             android:id="@+id/Tv_Evt_Action"
@@ -57,7 +57,7 @@
             android:layout_weight="1"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/icon_car"
-            app:tint="@color/black"/>
+            app:tint="@color/colorNegro"/>
 
         <TextView
             android:id="@+id/Tv_Evt_Vehicle"
@@ -82,7 +82,7 @@
             android:layout_weight="0"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/icon_clock"
-            app:tint="@color/black" />
+            app:tint="@color/colorNegro" />
 
         <TextView
             android:id="@+id/Tv_Evt_Hour"

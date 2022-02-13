@@ -60,7 +60,7 @@
                 android:layout_weight="0"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/icon_clock"
-                app:tint="@color/black" />
+                app:tint="@color/colorNegro" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -102,7 +102,7 @@
                 android:layout_weight="0"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/icon_calendar"
-                app:tint="@color/black" />
+                app:tint="@color/colorNegro" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -142,7 +142,7 @@
                 android:layout_weight="0"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/icon_money"
-                app:tint="@color/black" />
+                app:tint="@color/colorNegro" />
 
             <TextView
                 android:id="@+id/textView2"

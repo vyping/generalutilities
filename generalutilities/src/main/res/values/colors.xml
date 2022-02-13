@@ -2,30 +2,6 @@
 
 <resources>
 
-    // Gray Color - Scale
-    
-    <color name="GreySolid00">#E6E6E6</color>
-    <color name="GreySolid01">#DFDFDF</color>
-    <color name="GreySolid02">#D8D8D8</color>
-    <color name="GreySolid03">#CCCCCC</color>
-    <color name="GreySolid04">#C3C3C3</color>
-    <color name="GreySolid05">#BABABA</color>
-    <color name="GreySolid06">#B1B0B0</color>
-    <color name="GreySolid07">#A8A8A8</color>
-    <color name="GreySolid08">#9C9B9B</color>
-    <color name="GreySolid09">#8E8E8E</color>
-    <color name="GreySolid10">#838383</color>
-    <color name="GreySolid11">#8A8A8A</color>
-    <color name="GreySolid12">#686868</color>
-    <color name="GreySolid13">#5E5E5E</color>
-    <color name="GreySolid14">#515151</color>
-    <color name="GreySolid15">#454545</color>
-    <color name="GreySolid16">#3C3C3C</color>
-    <color name="GreySolid17">#303030</color>
-    <color name="GreySolid18">#232323</color>
-    <color name="GreySolid19">#1C1C1C</color>
-    <color name="GreySolid20">#0C0C0C</color>
-
     // Indicator State - Scale
 
     <color name="IndicatorRedLight">#CCFF8080</color>

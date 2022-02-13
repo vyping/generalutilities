@@ -52,7 +52,7 @@
             android:layout_height="20dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
-            android:tint="@color/black"
+            app:tint="@color/colorNegro"
             app:srcCompat="@drawable/icon_vehicle_car" />
 
         <TextView

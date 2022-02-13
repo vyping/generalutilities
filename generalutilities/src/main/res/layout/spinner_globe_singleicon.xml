@@ -19,13 +19,14 @@
 
         <ImageView
             android:id="@+id/ivFlag"
+            android:background="@drawable/layout_rounded_white"
+            android:backgroundTint="?colorPrimary"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="4dp"
-            android:background="@drawable/vehicles_shape_type"
             android:padding="5dp"
             android:scaleType="centerInside"
-            app:tint="@color/colorPrimaryDark10" />
+            app:tint="?colorSecondary" />
 
         <TextView
             android:id="@+id/tvName"
@@ -37,7 +38,7 @@
             android:padding="5dp"
             android:text="Vehicle"
             android:textAlignment="gravity"
-            android:textColor="@color/black"
+            android:textColor="@color/colorNegro"
             android:textSize="22dp"
             android:textStyle="bold" />
     </LinearLayout>
