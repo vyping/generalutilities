@@ -7,16 +7,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Bucles.BucleFor;
-
-import org.jetbrains.annotations.Contract;
+import com.vyping.masterlibrary.Bucles.MyBucleFor;
 
 public class MyIntent {
 
     @NonNull
     public Intent Basic(Context context, Class activity) {
 
-       return new Intent(context, activity);
+        return new Intent(context, activity);
     }
 
     @NonNull
@@ -33,7 +31,7 @@ public class MyIntent {
 
         Intent intent = new Intent(context, activity);
 
-        new BucleFor().forInts(flags, new BucleFor.IntInterface() {
+        new MyBucleFor().integerList(flags, new MyBucleFor.IntInterface() {
 
             @Override
             public void intPosition(int flag) {
@@ -41,7 +39,10 @@ public class MyIntent {
                 intent.addFlags(flag);
             }
 
-            private void DummyVoid() {};
+            private void DummyVoid() {
+            }
+
+            ;
         });
 
         return intent;
@@ -58,6 +59,6 @@ public class MyIntent {
 
     public PendingIntent Pending(Context context) {
 
-       return PendingIntent.getActivity(context,0, new Intent(context, context.getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),0);
+        return PendingIntent.getActivity(context, 0, new Intent(context, context.getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
     }
 }

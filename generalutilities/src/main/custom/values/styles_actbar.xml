@@ -1,6 +1,6 @@
 <resources>
 
-    // Action Bar General - Section
+    // Action Bar General - Notice
 
     <style name="ActionBarMainLayout">
         <item name="android:layout_width">match_parent</item>
@@ -13,8 +13,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?colorActionBarVersion</item>
-        <item name="android:textSize">@dimen/fontPlus1</item>
-        <item name="android:hint">@string/version</item>
+        <item name="android:textSize">@dimen/fontBasic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:hint">@string/title</item>
         <item name="android:visibility">visible</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
@@ -23,7 +24,7 @@
     </style>
 
 
-    // Action Bar Menu - Section
+    // Action Bar Menu - Notice
 
     <style name="ActionBarTitleLayout">
         <item name="android:background">@drawable/actbar_container_main</item>
@@ -52,7 +53,7 @@
         <item name="android:gravity">start</item>
         <item name="android:textAlignment">gravity</item>
         <item name="android:textColor">?colorActionBarTitle</item>
-        <item name="android:textSize">@dimen/fontPlus6</item>
+        <item name="android:textSize">@dimen/fontPlus4</item>
         <item name="android:textStyle">bold</item>
         <item name="android:hint">@string/title</item>
     </style>
@@ -66,7 +67,7 @@
         <item name="android:textAlignment">gravity</item>
         <item name="android:textColor">?colorActionBarSubTitle</item>
         <item name="android:textSize">@dimen/fontMinus1</item>
-        <item name="android:textStyle">italic</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:hint">@string/subtitle</item>
     </style>
 
@@ -74,6 +75,7 @@
         <item name="android:background">@drawable/actbar_button_main</item>
         <item name="android:src">@drawable/icon_image</item>
         <item name="android:tint">?colorActionBarMainIcons</item>
+        <item name="android:rotation">-5</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_marginStart">8dp</item>
@@ -89,7 +91,7 @@
     </style>
 
 
-    // Action Bar Tools - Section
+    // Action Bar Tools - Notice
 
     <style name="ActionBarToolsLayout">
         <item name="android:background">@drawable/actbar_container_tools</item>
@@ -110,6 +112,7 @@
         <item name="android:background">@drawable/actbar_button_main</item>
         <item name="android:src">@drawable/icon_image</item>
         <item name="android:tint">?colorActionBarMainIcons</item>
+        <item name="android:rotation">-5</item>
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_marginStart">4dp</item>
@@ -133,10 +136,10 @@
         <item name="android:visibility">visible</item>
     </style>
 
-    <style name="ActionBarToolButtons" >
+    <style name="ActionBarToolsOptionsButtons">
         <item name="android:background">@drawable/actbar_button_tools</item>
         <item name="android:src">@drawable/icon_image</item>
-        <item name="android:tint">?colorActionBarSecundaryIcons</item>
+        <item name="android:tint">@color/colorBlanco</item>
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:layout_weight">1</item>
@@ -147,6 +150,7 @@
         <item name="android:paddingEnd">?paddingActionBarBarSecundaryButtons</item>
         <item name="android:paddingBottom">?paddingActionBarBarSecundaryButtons</item>
         <item name="android:scaleType">centerInside</item>
+        <item name="android:contentDescription">@string/contentdescription</item>
     </style>
 
 </resources>

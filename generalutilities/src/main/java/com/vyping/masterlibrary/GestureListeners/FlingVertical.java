@@ -19,7 +19,7 @@ public class FlingVertical extends GestureDetector.SimpleOnGestureListener {
     /*----- Methods -----*/
 
     @Override
-    public boolean onFling (MotionEvent event1, MotionEvent event2,float velocityX, float velocityY){
+    public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY) {
 
         float xVel = Math.abs(velocityX), yVel = Math.abs(velocityY);
         int minVel = 2000, offPath = 2000;

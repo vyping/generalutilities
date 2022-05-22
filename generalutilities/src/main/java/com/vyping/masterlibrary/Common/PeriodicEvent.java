@@ -12,7 +12,7 @@ public abstract class PeriodicEvent {
 
 
     /**
-     *-------- SetUp Section --------
+     * -------- SetUp Section --------
      */
 
     public PeriodicEvent(Context context, int delay, int period) {
@@ -24,7 +24,7 @@ public abstract class PeriodicEvent {
             public void run() {
 
                 Activity activity = (Activity) context;
-                activity.runOnUiThread(() ->  {
+                activity.runOnUiThread(() -> {
 
                     boolean active = startEvent();
 

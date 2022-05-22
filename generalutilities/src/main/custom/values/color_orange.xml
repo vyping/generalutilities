@@ -10,14 +10,16 @@
     <color name="OrangeDark17">#3C0E00</color>
     <color name="OrangeDark16">#471100</color>
     <color name="OrangeDark15">#531400</color>
-    <color name="OrangeDark14">#5E1700</color> -
+    <color name="OrangeDark14">#5E1700</color>
+    -
     <color name="OrangeDark13">#6A1900</color>
     <color name="OrangeDark12">#751C00</color>
     <color name="OrangeDark11">#811F00</color>
     <color name="OrangeDark10">#8C2200</color>
     <color name="OrangeDark9">#982400</color>
     <color name="OrangeDark8">#A32700</color>
-    <color name="OrangeDark7">#AF2A00</color> -
+    <color name="OrangeDark7">#AF2A00</color>
+    -
     <color name="OrangeDark6">#BA2D00</color>
     <color name="OrangeDark5">#C62F00</color>
     <color name="OrangeDark4">#D13200</color>
@@ -31,14 +33,16 @@
     <color name="OrangeLight4">#FF602E</color>
     <color name="OrangeLight5">#FF6939</color>
     <color name="OrangeLight6">#FF7145</color>
-    <color name="OrangeLight7">#FF7A50</color> -
+    <color name="OrangeLight7">#FF7A50</color>
+    -
     <color name="OrangeLight8">#FF835C</color>
     <color name="OrangeLight9">#FF8C67</color>
     <color name="OrangeLight10">#FF9473</color>
     <color name="OrangeLight11">#FF9D7E</color>
     <color name="OrangeLight12">#FFA68A</color>
     <color name="OrangeLight13">#FFAF95</color>
-    <color name="OrangeLight14">#FFB7A1</color> -
+    <color name="OrangeLight14">#FFB7A1</color>
+    -
     <color name="OrangeLight15">#FFC0AC</color>
     <color name="OrangeLight16">#FFC9B8</color>
     <color name="OrangeLight17">#FFD1C3</color>
@@ -46,7 +50,7 @@
     <color name="OrangeLight19">#FFE3DA</color>
     <color name="OrangeLight20">#FFECE6</color>
 
-    
+
     // Orange Color - Traslucid Scale
 
     <color name="OrangeUltraDark000">#005E1700</color>

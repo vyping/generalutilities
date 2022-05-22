@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <attr name="colorPopUpsContainers" format="color" />
+    <attr name="colorPopUpsButtons" format="color" />
+    <attr name="colorPopUpsIcons" format="color" />
+    <attr name="popupTextView" format="color" />
+    <attr name="popupListButtons" format="color" />
+
+</resources>

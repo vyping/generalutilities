@@ -7,8 +7,11 @@
     <string name="version">Version</string>
 
     <string name="contentdescription">Description</string>
-    <string name="iconinfo">\uf05a</string> //info-circle
-    <string name="iconback">\uf3e5</string>  //reply
+    <string name="iconinfo">\uf05a</string>
+    //info-circle
+    <string name="iconback">\uf3e5</string>
+    //reply
+    <string name="description">Description...</string>
     <string name="instructions">Instructions...</string>
     <string name="image"></string>
 

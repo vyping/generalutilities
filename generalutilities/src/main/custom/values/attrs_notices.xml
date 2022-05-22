@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <attr name="noticeBackground" format="reference" />
+    <attr name="noticeContainerHeader" format="reference" />
+    <attr name="noticeAuthPhoto" format="reference" />
+    <attr name="noticeContainerAuth" format="reference" />
+    <attr name="noticeAuth" format="reference" />
+    <attr name="noticeDate" format="reference" />
+    <attr name="noticeImageContainer" format="reference" />
+    <attr name="noticeImage" format="reference" />
+    <attr name="noticeTitle" format="reference" />
+    <attr name="noticeSubTitle" format="reference" />
+    <attr name="noticeContainerDescription" format="reference" />
+    <attr name="noticeSubContainerDescription" format="reference" />
+
+
+    // Colors
+
+    <attr name="colorNoticeBackground" format="reference|color" />
+    <attr name="colorNoticeImageBackground" format="reference|color" />
+    <attr name="colorNoticeSocialButtons" format="reference|color" />
+</resources>

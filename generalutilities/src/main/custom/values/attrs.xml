@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <declare-styleable name="CustomView">
+
+        <attr name="basicFont" format="reference|string" />
+        <attr name="italicFont" format="reference|string" />
+        <attr name="boldFont" format="reference|string" />
+
+        <attr name="colorAltern" format="color" />
+
+        <attr name="iconsWidth" format="dimension" />
+        <attr name="iconsHeight" format="dimension" />
+        <attr name="iconsColor" format="reference" />
+        <attr name="actbarToolsButtons" format="reference" />
+        <attr name="actbarToolsOptionButtons" format="reference" />
+        <attr name="android:windowBackground" format="reference" />
+        <attr name="paddingLayoutTopLeft" format="dimension" />
+        <attr name="paddingLayoutTopRight" format="dimension" />
+        <attr name="paddingLayoutBottomRight" format="dimension" />
+        <attr name="paddingLayoutBottomLeft" format="dimension" />
+
+        <attr name="colorButtonOutsidePressedMain" format="reference" />
+        <attr name="colorButtonOutsidePressedSecundary" format="reference" />
+        <attr name="colorButtonOutsideMain" format="reference" />
+        <attr name="colorButtonOutsideSecundary" format="reference" />
+
+        <attr name="colorButtonInsidePressedMain" format="reference" />
+        <attr name="colorButtonInsidePressedSecundary" format="reference" />
+        <attr name="colorButtonInsideMain" format="reference" />
+        <attr name="colorButtonInsideSecundary" format="reference" />
+
+        <attr name="colorActionBarBackground" format="color" />
+        <attr name="colorActionBarTitleBar" format="color" />
+        <attr name="colorActionBarToolBar" format="color" />
+        <attr name="colorActionBarTitle" format="color" />
+        <attr name="colorActionBarSubTitle" format="color" />
+        <attr name="colorActionBarVersion" format="color" />
+        <attr name="paddingActionBarBarMainButtons" format="dimension" />
+        <attr name="colorActionBarMainButtonsPressed" format="color" />
+        <attr name="colorActionBarMainButtons" format="color" />
+        <attr name="colorActionBarMainIcons" format="color" />
+        <attr name="paddingActionBarBarSecundaryButtons" format="dimension" />
+        <attr name="colorActionBarSecundaryButtonsPressed" format="color" />
+        <attr name="colorActionBarSecundaryButtons" format="color" />
+        <attr name="colorActionBarSecundaryIcons" format="color" />
+
+        <attr name="colorToolBarBackground" format="color" />
+        <attr name="colorToolBarIcons" format="color" />
+        <attr name="colorToolBarSearchBar" format="color" />
+        <attr name="colorToolBarSearchText" format="color" />
+        <attr name="colorToolBarSearchHint" format="color" />
+
+        <attr name="colorMenuButtonPressedDark" format="color" />
+        <attr name="colorMenuButtonPressedLight" format="color" />
+        <attr name="colorMenuButtonNonPressedDark" format="color" />
+        <attr name="colorMenuButtonNonPressedLight" format="color" />
+        <attr name="colorMenuButtonText" format="color" />
+
+        <attr name="recyclerView" format="reference" />
+        <attr name="recyclerViewHorizontal" format="reference" />
+        <attr name="layoutContainerDialogs" format="reference" />
+        <attr name="constraintLayoutCustom" format="reference" />
+        <attr name="iconIdCard" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="QuantityView">
+        <attr name="minQuantity" format="integer" />
+        <attr name="maxQuantity" format="integer" />
+        <attr name="startQuantity" format="integer" />
+        <attr name="deltaQuantity" format="integer" />
+        <attr name="isOutlined" format="boolean" />
+        <attr name="colorOfQuantity" format="color" />
+        <attr name="colorOfText" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MaskedEditText">
+        <attr name="mask" format="string" />
+        <attr name="char_representation" format="string" />
+        <attr name="mask_fill" format="string" />
+        <attr name="allowed_chars" format="string" />
+        <attr name="denied_chars" format="string" />
+        <attr name="keep_hint" format="boolean" />
+    </declare-styleable>
+
+</resources>

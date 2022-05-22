@@ -13,7 +13,7 @@ public class CircularTraslation extends Animation {
     private float prevDx, prevDy;
 
 
-    public CircularTraslation(View view, float r){
+    public CircularTraslation(View view, float r) {
 
         this.view = view;
         this.r = r;
@@ -42,7 +42,7 @@ public class CircularTraslation extends Animation {
 
         if (interpolatedTime == 0) {
 
-           t.getMatrix().setTranslate(prevDx, prevDy);
+            t.getMatrix().setTranslate(prevDx, prevDy);
             return;
         }
 

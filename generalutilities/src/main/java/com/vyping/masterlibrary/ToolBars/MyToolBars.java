@@ -3,6 +3,7 @@ package com.vyping.masterlibrary.ToolBars;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.vyping.masterlibrary.Common.Definitions.DATEPICKER_CALENDAR;
+import static com.vyping.masterlibrary.dialogs.CreateDialog.DIALOG_NORMAL;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -25,10 +26,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.vyping.masterlibrary.Common.DateTools;
-import com.vyping.masterlibrary.Common.GeneralTools;
 import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.dialogs.DialogPickerDate;
+import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.R;
+import com.vyping.masterlibrary.dialogs.DialogPickerDate;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -54,6 +55,7 @@ public abstract class MyToolBars {
 
     /**
      * Despliega un cuadro de dialogo con un calendario para seleccionar una fecha.
+     *
      * @param context : Desde el cual se desplego el dialogo.
      */
     @SuppressLint("SetTextI18n")
@@ -101,7 +103,8 @@ public abstract class MyToolBars {
                 dialogDatePicker(R.array.Dialogs_PickerDate);
             }
 
-            private void DummyVoid() {}
+            private void DummyVoid() {
+            }
         });
         Btn_FwdDate.setOnClickListener(v -> {
 
@@ -139,7 +142,8 @@ public abstract class MyToolBars {
                 dialogDatePicker(R.array.Dialogs_PickerDate);
             }
 
-            private void DummyVoid() {}
+            private void DummyVoid() {
+            }
         });
         Btn_FwdDate.setOnClickListener(v -> {
 
@@ -164,7 +168,8 @@ public abstract class MyToolBars {
         Et_Search.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void beforeTextChanged(CharSequence sequence, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence sequence, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence sequence, int start, int before, int count) {
@@ -184,7 +189,8 @@ public abstract class MyToolBars {
             }
 
             @Override
-            public void afterTextChanged(Editable sequence) { }
+            public void afterTextChanged(Editable sequence) {
+            }
         });
         Btn_Cancel.setOnClickListener(v -> {
 
@@ -193,7 +199,7 @@ public abstract class MyToolBars {
                 Et_Search.setText("");
                 Btn_Cancel.setVisibility(GONE);
 
-                new GeneralTools().hideSoftInput(context, Et_Search);
+                new MyGeneralTools().hideSoftInput(context, Et_Search);
             }
         });
     }
@@ -319,17 +325,19 @@ public abstract class MyToolBars {
     public void dialogDatePicker(int parameters) {
 
 
-        new DialogPickerDate(context, parameters, calendar, DATEPICKER_CALENDAR) {
+        new DialogPickerDate(context, parameters, DIALOG_NORMAL, DATEPICKER_CALENDAR, calendar) {
 
             @Override
-            protected void SetDate(Calendar Calendar, long milis, String date, String day, String month, String year) {
+            protected boolean SetDate(Calendar Calendar, long milis, String date, String day, String month, String year) {
 
                 calendar = Calendar;
 
                 String label = new DateTools().selectedDateToView(calendar);
 
                 Btn_SetDate.setText(label);
-                dateInterface.SelectedDate(Calendar, milis, date,  day, month, year);
+                dateInterface.SelectedDate(Calendar, milis, date, day, month, year);
+
+                return true;
             }
         };
     }

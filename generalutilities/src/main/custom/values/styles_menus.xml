@@ -1,75 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
-    <style name="MenuButton">
-        <item name="android:background">@drawable/menu_button</item>
-        <item name="android:textColor">?colorMenuButtonText</item>
+    <style name="MenuSlider">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:rotation">-5</item>
+    </style>
+
+    <style name="MenuTitle">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">64dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:paddingStart">12dp</item>
-        <item name="android:paddingTop">6dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:paddingBottom">6dp</item>
-        <item name="android:drawableTintMode">?colorMenuButtonText</item>
-        <item name="android:drawablePadding">-4dp</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/fontBasic</item>
-        <item name="android:windowEnterAnimation">@animator/zoom_in</item>
-        <item name="android:windowExitAnimation">@animator/zoom_out</item>
-    </style>
-
-    <style name="MenuVerticalButton">
-        <item name="android:background">@drawable/menu_button</item>
-        <item name="android:textColor">?colorMenuButtonText</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/fontPlus10</item>
-        <item name="android:windowEnterAnimation">@animator/zoom_in</item>
-        <item name="android:windowExitAnimation">@animator/zoom_out</item>
-    </style>
-
-    <style name="MenuHorizontalButton">
-        <item name="android:background">@drawable/menu_button</item>
-        <item name="android:textColor">?colorMenuButtonText</item>
-        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:paddingStart">24dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingEnd">24dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:drawablePadding">24dp</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginBottom">-8dp</item>
+        <item name="android:hint">Title</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/fontPlus10</item>
-        <item name="android:windowEnterAnimation">@animator/zoom_in</item>
-        <item name="android:windowExitAnimation">@animator/zoom_out</item>
+        <item name="android:textColor">?colorMenuTitle</item>
+    </style>
+
+    <style name="MenuSubTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:hint">Subtitle</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">?colorMenuSubTitle</item>
+    </style>
+
+    <style name="MenuButton">
+        <item name="buttonWidth">140dp</item>
+        <item name="buttonHeight">100dp</item>
+        <item name="buttonRotation">-5</item>
+        <item name="backgroundDrawable">@drawable/background_button</item>
+        <item name="backgroundColor">@color/Primary</item>
+        <item name="iconDrawable">@drawable/icon_image</item>
+        <item name="iconColor">@color/colorBlanco</item>
+        <item name="numberColor">@color/PrimaryLight10</item>
+        <item name="titleText">"Title"</item>
+        <item name="titleColor">@color/colorBlanco</item>
+        <item name="titleFont">?boldFont</item>
+        <item name="subtitleText">"Subtitle"</item>
+        <item name="subtitleColor">@color/PrimaryDark10</item>
+        <item name="subtitleFont">?boldFont</item>
+    </style>
+
+    <style name="MenuButtonHorizontal">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:rotation">-5</item>
     </style>
 
 </resources>

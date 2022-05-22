@@ -1,90 +1,134 @@
 package com.vyping.masterlibrary.dialogs;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static com.vyping.masterlibrary.Common.Definitions.BUTTONS_CANCEL;
-import static com.vyping.masterlibrary.Common.Definitions.BUTTONS_CANCEL_ACCEPT;
-import static com.vyping.masterlibrary.Common.Definitions.BUTTONS_CANCEL_REFRESH;
-import static com.vyping.masterlibrary.Common.Definitions.BUTTONS_INFO;
-import static com.vyping.masterlibrary.Common.Definitions.BUTTONS_NONE;
-import static com.vyping.masterlibrary.Common.Definitions.BUTTONS_REFRESH_ACCEPT;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
-import com.airbnb.paris.Paris;
-import com.vyping.masterlibrary.Common.Definitions;
-import com.vyping.masterlibrary.Common.GeneralTools;
+import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.Images.MyColor;
 import com.vyping.masterlibrary.Images.MyDrawable;
+import com.vyping.masterlibrary.Models.DialogParams;
 import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.databinding.DialogBinding;
+import com.vyping.masterlibrary.views.MyButton;
+import com.vyping.masterlibrary.views.MyImageButton;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
 
-public class CreateDialog {
+public class CreateDialog extends DialogParams {
 
-    private Context context;
-    private Dialog dialog;
     public DialogBinding binding;
-    private DialogInterface dialogInterface;
+    private Dialog dialog;
 
     private View viewGroup;
 
-    public static String title, info, help;
-    public static int prevMode;
-    public static Drawable icon;
-    public static String[] listParams;
+    public static final int DIALOG_NORMAL = 0, DIALOG_STEP_INITIAL = 1, DIALOG_STEP_INTERMEDIATE = 2, DIALOG_STEP_FINAL = 3, DIALOG_CUSTOM = 4;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({DIALOG_NORMAL, DIALOG_STEP_INITIAL, DIALOG_STEP_INTERMEDIATE, DIALOG_STEP_FINAL, DIALOG_CUSTOM})
+    public @interface DialogMode {
+    }
+
+    public static final int BUTTON_LEFT = 0, BUTTON_CENTER = 1, BUTTON_RIGHT = 2;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({BUTTON_LEFT, BUTTON_CENTER, BUTTON_RIGHT})
+    public @interface ModeButton {
+    }
 
 
     /*----- SetUp -----*/
 
-    public CreateDialog(@NonNull Context context, int parameters) {
+    public CreateDialog(@NonNull Context context, int arrayParameters) {
 
-        setParameters(context, parameters);
+        super(context, arrayParameters);
 
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_custom, null, false);
+        SetParameters();
+        SetDialog();
+        SetDialogViews();
+    }
+
+    public CreateDialog(@NonNull Context context, @DialogMode int dialogMode, int arrayParameters) {
+
+        super(context, dialogMode, arrayParameters);
+
+        SetParameters();
+        SetDialog();
+        SetDialogViews();
+    }
+
+    public CreateDialog(@NonNull Context context, Drawable icon, String title, String description, String help, String error, String success) {
+
+        super(context, icon, title, description, help, error, success);
+
+        SetParameters();
+        SetDialog();
+        SetDialogViews();
+    }
+
+    public CreateDialog(@NonNull Context context, @DialogMode int dialogMode, Drawable icon, String title, String description, String help, String error, String success) {
+
+        super(context, dialogMode, icon, title, description, help, error, success);
+
+        SetParameters();
+        SetDialog();
+        SetDialogViews();
+    }
+
+    public CreateDialog(@NonNull Context context, int icon, String title, String description, String help, String error, String success) {
+
+        super(context, icon, title, description, help, error, success);
+
+        SetParameters();
+        SetDialog();
+        SetDialogViews();
+    }
+
+    public CreateDialog(@NonNull Context context, @DialogMode int dialogMode, int icon, String title, String description, String help, String error, String success) {
+
+        super(context, dialogMode, icon, title, description, help, error, success);
+
+        SetParameters();
+        SetDialog();
+        SetDialogViews();
+    }
+
+    private void SetParameters() {
+
+        binding = DataBindingUtil.inflate(LayoutInflater.from(CONTEXT), R.layout.dialog_custom, null, false);
         binding.setCreateDialog(this);
+    }
 
-        dialog = new Dialog(context);
+    private void SetDialog() {
+
+        dialog = new Dialog(CONTEXT);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(binding.getRoot());
         dialog.setCancelable(false);
-
-        setDialogView();
     }
 
-    private void setParameters(@NonNull Context context, int parameters) {
-
-        this.context = context;
-        prevMode = BUTTONS_NONE;
-
-        listParams = context.getResources().getStringArray(parameters);
-
-        icon = new MyDrawable().extractFromString(context, listParams[0]);
-        title = listParams[1];
-        info = listParams[2];
-        help = listParams[3];
-    }
-
-    private void setDialogView() {
-
-        Drawable infoDrawable = new MyDrawable().extractFromResources(context, R.drawable.icon_info);
-        Drawable backDrawable = new MyDrawable().extractFromResources(context, R.drawable.icon_back);
+    private void SetDialogViews() {
 
         Window window = Objects.requireNonNull(dialog.getWindow());
         window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -101,9 +145,9 @@ public class CreateDialog {
                 binding.DialogContainer.setScaleY(0f);
                 binding.DialogContainer.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(500).start();
 
-                boolean isLandScape = new GeneralTools().isLandScape(context);
-                int windowWidth = new GeneralTools().windowWidth(context);
-                int windowHeight = new GeneralTools().windowHeight(context);
+                boolean isLandScape = new MyGeneralTools().isLandScape(CONTEXT);
+                int windowWidth = new MyGeneralTools().windowWidth(CONTEXT);
+                int windowHeight = new MyGeneralTools().windowHeight(CONTEXT);
 
                 WindowManager.LayoutParams layoutParams = window.getAttributes();
                 layoutParams.height = windowHeight;
@@ -122,9 +166,44 @@ public class CreateDialog {
                 dialog.show();
             }
 
-            private void DummyVoid() {};
+            private void DummyVoid() {
+            }
+
+            ;
         });
         viewGroup.animate().start();
+    }
+
+
+    /*----- SetUp Methods -----*/
+
+    public void ReloadDialog() {
+
+        SetIconImage();
+        SetTitleText();
+        SetHelpInfo();
+        setDescriptionInfo();
+    }
+
+    public void SetIconImage() {
+
+        binding.IvIcon.setImageDrawable(ICON);
+    }
+
+    public void SetTitleText() {
+
+        binding.TvTextTitle.setText(TITLE);
+    }
+
+    public void SetHelpInfo() {
+
+        Drawable infoDrawable = new MyDrawable().extractFromResources(CONTEXT, R.drawable.icon_info);
+        Drawable backDrawable = new MyDrawable().extractFromResources(CONTEXT, R.drawable.icon_back);
+
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = CONTEXT.getTheme();
+        theme.resolveAttribute(R.attr.colorDialogDescriptionText, typedValue, true);
+        @ColorInt int color = typedValue.data;
 
         binding.DialogInfoButton.setImageDrawable(infoDrawable);
         binding.DialogInfoButton.setOnClickListener(new View.OnClickListener() {
@@ -137,131 +216,373 @@ public class CreateDialog {
                 if (currentDrawable == infoDrawable) {
 
                     binding.DialogInfoButton.setImageDrawable(backDrawable);
-                    binding.TvInformation.setText(help);
+                    binding.TvDescription.setText(HELP);
 
                 } else if (currentDrawable == backDrawable) {
 
                     binding.DialogInfoButton.setImageDrawable(infoDrawable);
-                    binding.TvInformation.setText(info);
+                    binding.TvDescription.setText(DESCRIPTION);
                 }
+
+                binding.TvDescription.setTextColor(color);
             }
 
-            private void DummyVoid() {}
+            private void DummyVoid() {
+            }
         });
     }
 
-    public void setDialogListener(DialogInterface dialogInterface) {
+    public void setDescriptionInfo() {
 
-        this.dialogInterface =  dialogInterface;
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = CONTEXT.getTheme();
+        theme.resolveAttribute(R.attr.colorDialogDescriptionText, typedValue, true);
+        @ColorInt int color = typedValue.data;
+
+        binding.TvDescription.setText(DESCRIPTION);
+        binding.TvDescription.setTextColor(color);
+    }
+
+    public void SetErrorMessage() {
+
+        int color = new MyColor().extractFromResources(CONTEXT, R.color.RedMid100);
+
+        binding.TvDescription.setText(ERROR);
+        binding.TvDescription.setTextColor(color);
+    }
+
+    public void SetErrorMessage(String error) {
+
+        int color = new MyColor().extractFromResources(CONTEXT, R.color.RedMid100);
+
+        binding.TvDescription.setText(error);
+        binding.TvDescription.setTextColor(color);
+    }
+
+    public ImageButton SetButtonCancel(Interfase interfase) {
+
+        int attr = R.attr.dialogButtonCancel;
+        int style = R.style.DialogButtonCancel;
+
+        ImageButton Ib_Cancel = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Cancel, BUTTON_LEFT);
+
+        return Ib_Cancel;
+    }
+
+    public ImageButton SetButtonCancel(@ModeButton int position, Interfase interfase) {
+
+        int attr = R.attr.dialogButtonCancel;
+        int style = R.style.DialogButtonCancel;
+
+        ImageButton Ib_Cancel = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Cancel, position);
+
+        return Ib_Cancel;
+    }
+
+    public ImageButton SetButtonBack(Interfase interfase) {
+
+        int attr = R.attr.dialogButtonBack;
+        int style = R.style.DialogButtonBack;
+
+        ImageButton Ib_Back = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Back, BUTTON_LEFT);
+
+        return Ib_Back;
+    }
+
+    public ImageButton SetButtonBack(@ModeButton int position, Interfase interfase) {
+
+        int attr = R.attr.dialogButtonBack;
+        int style = R.style.DialogButtonBack;
+
+        ImageButton Ib_Back = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Back, position);
+
+        return Ib_Back;
+    }
+
+    public ImageButton SetButtonNeutral(Interfase interfase) {
+
+        int attr = R.attr.dialogButtonNeutral;
+        int style = R.style.DialogButtonNeutral;
+
+        ImageButton Ib_Neutral = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Neutral, BUTTON_CENTER);
+
+        return Ib_Neutral;
+    }
+
+    public ImageButton SetButtonNeutral(@ModeButton int position, Interfase interfase) {
+
+        int attr = R.attr.dialogButtonNeutral;
+        int style = R.style.DialogButtonNeutral;
+
+        ImageButton Ib_Neutral = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Neutral, position);
+
+        return Ib_Neutral;
+    }
+
+    public ImageButton SetButtonNext(Interfase interfase) {
+
+        int attr = R.attr.dialogButtonNext;
+        int style = R.style.DialogButtonNext;
+
+        ImageButton Ib_Next = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Next, BUTTON_RIGHT);
+
+        return Ib_Next;
+    }
+
+    public ImageButton SetButtonNext(@ModeButton int position, Interfase interfase) {
+
+        int attr = R.attr.dialogButtonNext;
+        int style = R.style.DialogButtonNext;
+
+        ImageButton Ib_Next = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Next, position);
+
+        return Ib_Next;
+    }
+
+    public ImageButton SetButtonConfirm(Interfase interfase) {
+
+        int attr = R.attr.dialogButtonConfirm;
+        int style = R.style.DialogButtonConfirm;
+
+        ImageButton Ib_Confirm = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Confirm, BUTTON_RIGHT);
+
+        return Ib_Confirm;
+    }
+
+    public ImageButton SetButtonConfirm(@ModeButton int position, Interfase interfase) {
+
+        int attr = R.attr.dialogButtonConfirm;
+        int style = R.style.DialogButtonConfirm;
+
+        ImageButton Ib_Confirm = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Confirm, position);
+
+        return Ib_Confirm;
+    }
+
+    public ImageButton SetImageButtonCustom(@ModeButton int position, int attr, int style, Interfase interfase) {
+
+        ImageButton Ib_Custom = new MyImageButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Custom, position);
+
+        return Ib_Custom;
+    }
+
+    public ImageButton SetImageButtonCustom(@ModeButton int position, int attr, int style, Drawable drawable, Interfase interfase) {
+
+        ImageButton Ib_Custom = new MyImageButton().createByAttributes(CONTEXT, attr, style, drawable, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Custom, position);
+
+        return Ib_Custom;
+    }
+
+    public ImageButton SetImageButtonCustom(@ModeButton int position, int attr, int style, int drawResource, Interfase interfase) {
+
+        ImageButton Ib_Custom = new MyImageButton().createByAttributes(CONTEXT, attr, style, drawResource, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Ib_Custom, position);
+
+        return Ib_Custom;
+    }
+
+    public Button SetTextButtonCustom(@ModeButton int position, int attr, int style, Interfase interfase) {
+
+        Button Btn_Custom = new MyButton().createByAttributes(CONTEXT, attr, style, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Btn_Custom, position);
+
+        return Btn_Custom;
+    }
+
+    public Button SetTextButtonCustom(@ModeButton int position, int attr, int style, String text, Interfase interfase) {
+
+        Button Btn_Custom = new MyButton().createByAttributes(CONTEXT, attr, style, text, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                evaluateDissmiss(interfase);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+        setButtonPosition(Btn_Custom, position);
+
+        return Btn_Custom;
     }
 
 
-    /*----- Methods -----*/
+    /*----- Other Methods -----*/
 
-    public void setModeButtons(@Definitions.ModeButtons int mode) {
-
-        int styleNegative = R.style.DialogButtonNegative;
-        int styleRefresh = R.style.DialogButtonNeutral;
-        int stylePositive = R.style.DialogButtonPositive;
-
-        if (mode == BUTTONS_NONE && prevMode != BUTTONS_NONE) {
-
-            binding.BtnNegative.setVisibility(GONE);
-
-            binding.BtnPositive.setVisibility(GONE);
-
-        } else if (mode == BUTTONS_CANCEL && prevMode != BUTTONS_CANCEL) {
-
-            binding.BtnNegative.setVisibility(GONE);
-
-            Paris.style(binding.BtnPositive).apply(styleNegative);
-            binding.BtnPositive.setVisibility(VISIBLE);
-            binding.BtnPositive.setOnClickListener(NegativeClickListener);
-
-        } else if (mode == BUTTONS_INFO && prevMode != BUTTONS_INFO) {
-
-            binding.BtnNegative.setVisibility(GONE);
-
-            Paris.style(binding.BtnPositive).apply(stylePositive);
-            binding.BtnPositive.setVisibility(VISIBLE);
-            binding.BtnPositive.setOnClickListener(PositiveClickListener);
-
-        } else if (mode == BUTTONS_CANCEL_REFRESH && prevMode != BUTTONS_CANCEL_REFRESH) {
-
-            Paris.style(binding.BtnNegative).apply(styleNegative);
-            binding.BtnNegative.setVisibility(VISIBLE);
-            binding.BtnNegative.setOnClickListener(NegativeClickListener);
-
-            Paris.style(binding.BtnPositive).apply(styleRefresh);
-            binding.BtnPositive.setVisibility(VISIBLE);
-            binding.BtnPositive.setOnClickListener(RefreshClickListener);
-
-        } else if (mode == BUTTONS_REFRESH_ACCEPT && prevMode != BUTTONS_REFRESH_ACCEPT) {
-
-            Paris.style(binding.BtnNegative).apply(styleRefresh);
-            binding.BtnNegative.setVisibility(VISIBLE);
-            binding.BtnNegative.setOnClickListener(RefreshClickListener);
-
-            Paris.style(binding.BtnPositive).apply(stylePositive);
-            binding.BtnPositive.setVisibility(VISIBLE);
-            binding.BtnPositive.setOnClickListener(PositiveClickListener);
-
-        } else if (mode == BUTTONS_CANCEL_ACCEPT && prevMode != BUTTONS_CANCEL_ACCEPT) {
-
-            Paris.style(binding.BtnNegative).apply(styleNegative);
-            binding.BtnNegative.setVisibility(VISIBLE);
-            binding.BtnNegative.setOnClickListener(NegativeClickListener);
-
-            Paris.style(binding.BtnPositive).apply(stylePositive);
-            binding.BtnPositive.setVisibility(VISIBLE);
-            binding.BtnPositive.setOnClickListener(PositiveClickListener);
-        }
-
-        prevMode = mode;
-    }
-
-    public void showInstructions(String text) {
-
-        //TypedValue typedValue = new TypedValue();
-        //Resources.Theme theme = context.getTheme();
-        //theme.resolveAttribute(R.attr.colorDialogInstructionsText, typedValue, true);
-       // @ColorInt int color = typedValue.data;
-
-        int color = new MyColor().getColor(context, R.color.Primary);
-
-        binding.TvInformation.setText(text);
-        binding.TvInformation.setTextColor(color);
-    }
-
-    public void showError(String error) {
-
-        int color = new MyColor().getColor(context, R.color.RedMid100);
-
-        binding.TvInformation.setText(error);
-        binding.TvInformation.setTextColor(color);
-    }
-
-    public LinearLayout getContainer() {
-
-        return binding.LlMainContainer;
-    }
-
-    public void setContainerOrientation(int orientation) {
-
-        binding.LlMainContainer.setOrientation(orientation);
-    }
-
-    public void addCustomView(View view) {
-
-        binding.LlMainContainer.addView(view);
-    }
-
-    public Dialog getDialog() {
+    public Dialog GetDialog() {
 
         return dialog;
     }
 
-    public void dismissDialog() {
+    public LinearLayout GetContainer() {
+
+        return binding.LlMainContainer;
+    }
+
+    public void SetContainerOrientation(int orientation) {
+
+        binding.LlMainContainer.setOrientation(orientation);
+    }
+
+    public void AddCustomView(View view) {
+
+        binding.LlMainContainer.addView(view);
+    }
+
+    public void DismissDialog() {
 
         if (dialog.isShowing()) {
 
@@ -279,70 +600,91 @@ public class CreateDialog {
                         @Override
                         public void onAnimationEnd(Animator animation) {
 
-                            new GeneralTools().hideSoftInput(context);
+                            new MyGeneralTools().hideSoftInput(CONTEXT);
 
-                            dialog.dismiss();
-                            dialog.hide();
+                            if (dialog != null) {
+
+                                if (dialog.isShowing()) {
+
+                                    dialog.dismiss();
+                                    dialog.hide();
+                                }
+                            }
                         }
 
-                        private void DummyVoid() {};
+                        private void DummyVoid() {
+                        }
+
+                        ;
                     });
                 }
 
-                private void DummyVoid() {};
+                private void DummyVoid() {
+                }
+
+                ;
             });
         }
     }
 
 
-    /*----- Listeners -----*/
+    /*----- Tools -----*/
 
-    private final View.OnClickListener NegativeClickListener = new View.OnClickListener() {
+    private void setButtonPosition(Button button, @ModeButton int position) {
 
-        @Override
-        public void onClick(View view) {
+        if (position == BUTTON_LEFT) {
 
-            dialogInterface.NegativeClick();
+            binding.LlLeft.addView(button);
 
-            dismissDialog();
+        } else if (position == BUTTON_CENTER) {
+
+            binding.LlCenter.addView(button);
+
+        } else if (position == BUTTON_RIGHT) {
+
+            binding.LlRight.addView(button);
         }
+    }
 
-        private void DummyVoid(){ }
-    };
+    private void setButtonPosition(ImageButton imageButton, @ModeButton int position) {
 
-    private final View.OnClickListener RefreshClickListener = new View.OnClickListener() {
+        if (position == BUTTON_LEFT) {
 
-        @Override
-        public void onClick(View view) {
+            binding.LlLeft.addView(imageButton);
 
-            dialogInterface.RefreshClick();
+        } else if (position == BUTTON_CENTER) {
 
-            setModeButtons(BUTTONS_CANCEL);
+            binding.LlCenter.addView(imageButton);
+
+        } else if (position == BUTTON_RIGHT) {
+
+            binding.LlRight.addView(imageButton);
         }
+    }
 
-        private void DummyVoid(){ }
-    };
+    public void removeButtons() {
 
-    private final View.OnClickListener PositiveClickListener = new View.OnClickListener() {
+        binding.LlLeft.removeAllViews();
+        binding.LlCenter.removeAllViews();
+        binding.LlRight.removeAllViews();
 
-        @Override
-        public void onClick(View view) {
+    }
 
-            dialogInterface.PositiveClick();
+    private void evaluateDissmiss(@NonNull Interfase interfase) {
 
-            dismissDialog();
+        boolean dissmis = interfase.ClickButton();
+
+        if (dissmis) {
+
+            DismissDialog();
         }
-
-        private void DummyVoid(){ }
-    };
+    }
 
 
-    /*----- Return -----*/
+    // ----- Interface ----- //
 
-    public abstract interface DialogInterface {
+    public interface Interfase {
 
-        void NegativeClick();
-        void RefreshClick();
-        void PositiveClick();
+        boolean ClickButton();
     }
 }

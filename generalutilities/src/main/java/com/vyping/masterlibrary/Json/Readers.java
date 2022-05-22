@@ -102,16 +102,16 @@ public class Readers {
 
     public String getJsonDate(@NonNull JSONArray array, int index) {
 
-       long longDate = getJsonLong(array, 0);
+        long longDate = getJsonLong(array, 0);
 
-       if (longDate!= 0L) {
+        if (longDate != 0L) {
 
-           return new DateTools().getTime("dd/MM/yy", longDate);
+            return new DateTools().getTime("dd/MM/yy", longDate);
 
-       } else {
+        } else {
 
-           return "";
-       }
+            return "";
+        }
     }
 
     public String getJsonHour(@NonNull JSONArray array, int index) {
@@ -205,7 +205,7 @@ public class Readers {
 
         try {
 
-            for (int i=0; i<jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
 
                 arrayList.add(jsonArray.getString(i));
             }
@@ -268,7 +268,7 @@ public class Readers {
      * -------- Tools Section
      */
 
-    public ArrayList<String> toArrayList(@NonNull Context context, int JsonList, String tag){
+    public ArrayList<String> toArrayList(@NonNull Context context, int JsonList, String tag) {
 
         Tag = tag;
         InputStream imputStream = context.getResources().openRawResource(JsonList);
@@ -277,7 +277,9 @@ public class Readers {
 
             return readJsonStream(imputStream);
 
-        } catch (Exception e) { return null; }
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @NonNull

@@ -68,8 +68,9 @@ public class Storage {
     /**
      * Info:
      * Carga en la actual referencia de Firebase Storage el archivo seleccionado con la ruta especificada.
+     *
      * @param storagePath [String] Ruta al archivo en el Storage (Users/Pedro.png).
-     * @param file [File] Archivo a cargar desde el dispositivo (new File).
+     * @param file        [File] Archivo a cargar desde el dispositivo (new File).
      */
     public void uploadFile(String storagePath, File file) {
 
@@ -119,15 +120,17 @@ public class Storage {
                 listener.Failure();
             }
 
-            private void DummyVoid() { }
+            private void DummyVoid() {
+            }
         });
     }
 
     /**
      * Info:
      * Descarga de la actual referencia de Firebase Storage el archivo indicado desde la ruta especificada.
+     *
      * @param storagePath [String] Ruta al archivo en el Storage (Users/Pedro.png).
-     * @param file [File] Archivo a descargar en el dispositivo (new File).
+     * @param file        [File] Archivo a descargar en el dispositivo (new File).
      */
     public void downloadFile(String storagePath, File file) {
 
@@ -146,7 +149,6 @@ public class Storage {
 
             private void DummyVoid() {
             }
-
         });
     }
 
@@ -165,14 +167,15 @@ public class Storage {
 
         }).addOnFailureListener(new OnFailureListener() {
 
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
 
-                        listener.Failure();
-                    }
+                listener.Failure();
+            }
 
-                    private void DummyVoid() { }
-                });
+            private void DummyVoid() {
+            }
+        });
     }
 
 
@@ -186,6 +189,7 @@ public class Storage {
     public interface CompleteListener {
 
         void Success();
+
         void Failure();
     }
 }

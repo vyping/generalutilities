@@ -1,13 +1,13 @@
 package com.vyping.masterlibrary.Images;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+
+import com.vyping.masterlibrary.R;
 
 public class MyDrawable {
 
@@ -26,7 +26,7 @@ public class MyDrawable {
 
         } else {
 
-            return null;
+            return extractFromResources(context, R.drawable.icon_image);
         }
     }
 
@@ -38,18 +38,26 @@ public class MyDrawable {
 
         } else {
 
-            return null;
+            return ContextCompat.getDrawable(context, R.drawable.icon_image);
         }
     }
 
-    public Bitmap changeToBitmap(@NonNull Drawable drawable) {
+    public String extractNameFromResources(@NonNull Context context, int resourceDrawable) {
 
-        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),drawable.getIntrinsicHeight());
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        drawable.draw(canvas);
+        return context.getResources().getResourceEntryName(resourceDrawable);
+    }
 
-        return bitmap;
+    public int extractIdFromString(@NonNull Context context, String stringDrawable) {
+
+        return context.getResources().getIdentifier(stringDrawable, "drawable", context.getPackageName());
+    }
+
+    public Drawable changeSizeBounds(Context context, int resourceDrawable, int weight, int height) {
+
+        Drawable drawable = extractFromResources(context, resourceDrawable);
+        drawable.setBounds(0, 0, weight, height);
+
+        return drawable;
     }
 
     public Drawable changeDrawableColor(Context context, Drawable drawable, int resourceColor) {
@@ -71,14 +79,6 @@ public class MyDrawable {
 
     public Drawable changeSizeBounds(@NonNull Drawable drawable, int weight, int height) {
 
-        drawable.setBounds(0, 0, weight, height);
-
-        return drawable;
-    }
-
-    public Drawable changeSizeBounds(Context context, int resourceDrawable, int weight, int height) {
-
-        Drawable drawable = extractFromResources(context, resourceDrawable);
         drawable.setBounds(0, 0, weight, height);
 
         return drawable;

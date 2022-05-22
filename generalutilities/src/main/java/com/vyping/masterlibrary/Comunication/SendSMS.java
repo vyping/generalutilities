@@ -1,36 +1,92 @@
 package com.vyping.masterlibrary.Comunication;
 
-import android.Manifest;
+import static com.vyping.masterlibrary.Common.MyPermissions.PERMISSIONS_GRANTED;
+import static com.vyping.masterlibrary.Common.MyPermissions.PERMISSION_CODE_SMS;
+import static com.vyping.masterlibrary.Common.MyPermissions.PERMISSION_SMS;
+
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-public class SendSMS {
+import com.vyping.masterlibrary.Common.MyPermissions;
+
+public class SendSMS extends MyPermissions {
+
+    private Context context;
+
+    private static String PHONE, MESSAGE;
 
 
-    /**
-     * -------- Main Process - Section
-     */
+    // ----- Setup ----- //
+
+    public SendSMS(Context context, int parameters, String phone, String message) {
+
+        super(context, parameters, new String[]{PERMISSION_SMS}, PERMISSION_CODE_SMS);
+
+        SetParameters(context, phone, message);
+        RequestPermissions(permissionsInterfase);
+    }
 
 
-    public SendSMS(Context context, String phone, String message) {
+    // ----- Methods ----- //
 
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+    private void sendSMS() {
 
-            if (!phone.equals("")) {
+        if (ContextCompat.checkSelfPermission(context, PERMISSION_SMS) == PERMISSIONS_GRANTED) {
 
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(phone, null, message, null, null);
+            if (!PHONE.equals("") && !MESSAGE.equals("")) {
 
-                Toast.makeText(context, "¡Mensaje enviado con éxito!", Toast.LENGTH_LONG).show();
+                try {
+
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(PHONE, null, MESSAGE, null, null);
+
+                    Toast.makeText(context, "¡Mensaje enviado con éxito!", Toast.LENGTH_LONG).show();
+
+                } catch (Exception e) {
+
+                    Toast.makeText(context, "¡No se ha podido enviar el mensaje: " + e + "!", Toast.LENGTH_LONG).show();
+                }
 
             } else {
 
-                Toast.makeText(context, "¡El destinatario no tiene teléfono registrado!", Toast.LENGTH_LONG).show();
+                if (PHONE.equals("")) {
+
+                    Toast.makeText(context, "¡No existe el destinatario indicado!", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    Toast.makeText(context, "¡No existe texto en el mensaje para enviar!", Toast.LENGTH_LONG).show();
+                }
             }
         }
+    }
+
+
+    // ----- Listeners ----- //
+
+    private final MyPermissions.Interfase permissionsInterfase = new MyPermissions.Interfase() {
+
+        @Override
+        public void PermissionsResult(int result) {
+
+            sendSMS();
+        }
+
+        private void DummyVoid() {
+        }
+    };
+
+
+    // ----- Tools ----- //
+
+    private void SetParameters(Context context, String phone, String message) {
+
+        this.context = context;
+
+        PHONE = phone;
+        MESSAGE = message;
     }
 }

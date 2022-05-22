@@ -4,7 +4,6 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -113,7 +112,9 @@ public class JsonFile extends Readers {
     public interface Interface {
 
         void StartListen(boolean exist, long childCount);
+
         void ValueListen(String key, JSONArray valueArray, int count);
+
         void FinishListen();
     }
 }

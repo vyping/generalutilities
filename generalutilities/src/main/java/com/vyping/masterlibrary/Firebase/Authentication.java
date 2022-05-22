@@ -5,6 +5,9 @@ import static com.vyping.masterlibrary.Common.Definitions.AUTH_DELETED;
 import static com.vyping.masterlibrary.Common.Definitions.AUTH_DISABLED;
 import static com.vyping.masterlibrary.Common.Definitions.AUTH_INVALID;
 
+import android.app.Activity;
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,10 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.vyping.masterlibrary.Common.Definitions;
 
-import java.util.concurrent.Executor;
-
 public class Authentication {
 
+    private Activity activity;
     private static FirebaseAuth firebaseAuth;
     private Interface Interface;
 
@@ -28,8 +30,9 @@ public class Authentication {
 
     //----- Setup -----//
 
-    public Authentication() {
+    public Authentication(Context context) {
 
+        activity = (Activity) context;
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
@@ -42,7 +45,7 @@ public class Authentication {
         password = Password;
         this.Interface = Interface;
 
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((Executor) this, new OnCompleteListener<>() {
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(activity, new OnCompleteListener<>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -58,7 +61,7 @@ public class Authentication {
             private void DumyVoid() {
             }
 
-        }).addOnFailureListener((Executor) this, new OnFailureListener() {
+        }).addOnFailureListener(activity, new OnFailureListener() {
 
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -68,7 +71,8 @@ public class Authentication {
                 Interface.Failure(errorMessage);
             }
 
-            private void DumyVoid() {}
+            private void DumyVoid() {
+            }
         });
     }
 
@@ -78,7 +82,7 @@ public class Authentication {
         password = Password;
         this.Interface = Interface;
 
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener((Executor) this, new OnCompleteListener<>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity, new OnCompleteListener<>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -94,7 +98,7 @@ public class Authentication {
             private void DumyVoid() {
             }
 
-        }).addOnFailureListener((Executor) this, new OnFailureListener() {
+        }).addOnFailureListener(activity, new OnFailureListener() {
 
             @Override
             public void onFailure(@NonNull Exception error) {
@@ -104,7 +108,8 @@ public class Authentication {
                 setError(Error);
             }
 
-            private void DumyVoid() {}
+            private void DumyVoid() {
+            }
         });
     }
 
@@ -139,7 +144,6 @@ public class Authentication {
 
             errorMessage = "Su usuario ha sido inhabilitado por el administrador.\nContacte al administrador o intente con otra cuenta";
 
-
         } else if (error.contains(AUTH_BLOCKED)) {
 
             errorMessage = "Su cuenta se ha bloqueado temporalmente por actividad inusual.\nContacte al administrador o intente mas tarde.";
@@ -156,12 +160,18 @@ public class Authentication {
         Interface.Failure(errorMessage);
     }
 
+    public void resetPassword(String Email) {
+
+        firebaseAuth.sendPasswordResetEmail(Email);
+    }
+
 
     // ----- Interface ----- //
 
     public interface Interface {
 
         void Successfully(FirebaseUser user);
+
         void Failure(String errorMessage);
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <stroke android:color="?colorActionBarMainButtonsPressed" android:width="1dp" />
+            <solid android:color="?colorActionBarMainButtonsPressed" />
+            <corners android:topLeftRadius="16dp" android:topRightRadius="20dp" android:bottomLeftRadius="20dp" android:bottomRightRadius="16dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:color="?colorActionBarMainButtons" android:width="1dp" />
+            <solid android:color="?colorActionBarMainButtons" />
+            <corners android:topLeftRadius="18dp" android:topRightRadius="18dp" android:bottomLeftRadius="18dp" android:bottomRightRadius="18dp" />
+        </shape>
+    </item>
+</selector>

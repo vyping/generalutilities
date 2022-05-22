@@ -1,0 +1,17 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <stroke android:color="?colorActionBarSecundaryButtonsPressed" android:width="1dp" />
+            <solid android:color="?colorActionBarSecundaryButtonsPressed" />
+            <corners android:topLeftRadius="12dp" android:topRightRadius="12dp" android:bottomLeftRadius="12dp" android:bottomRightRadius="12dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:color="?colorActionBarSecundaryButtons" android:width="1dp" />
+            <solid android:color="?colorActionBarSecundaryButtons" />
+            <corners android:topLeftRadius="12dp" android:topRightRadius="12dp" android:bottomLeftRadius="12dp" android:bottomRightRadius="12dp" />
+        </shape>
+    </item>
+</selector>

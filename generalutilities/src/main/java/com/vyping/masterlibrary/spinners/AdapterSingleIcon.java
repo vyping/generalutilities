@@ -40,7 +40,8 @@ public class AdapterSingleIcon extends ArrayAdapter<String> {
         return arrayItems.size();
     }
 
-    @Override @NonNull
+    @Override
+    @NonNull
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         ViewHolder mViewHolder = new ViewHolder();
@@ -72,7 +73,7 @@ public class AdapterSingleIcon extends ArrayAdapter<String> {
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-       return getView(position, convertView, parent);
+        return getView(position, convertView, parent);
     }
 
     public static class Item {

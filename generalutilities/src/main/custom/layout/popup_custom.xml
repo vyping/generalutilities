@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="PopUpCustomBinding">
+
+        <import type="com.vyping.masterlibrary.R" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+        <variable
+            name="createPopUp"
+            type="com.vyping.masterlibrary.popups.MyPopUp" />
+
+    </data>
+
+    <LinearLayout
+
+        android:id="@+id/Ll_Pop_Container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_window"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+    </LinearLayout>
+
+</layout>

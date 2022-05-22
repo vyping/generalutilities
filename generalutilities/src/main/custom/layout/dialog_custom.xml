@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="DialogBinding">
+
+        <import type="com.vyping.masterlibrary.R" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+        <variable
+            name="createDialog"
+            type="com.vyping.masterlibrary.dialogs.CreateDialog" />
+
+    </data>
+
+    <RelativeLayout style="@style/DialogWindowContainer">
+
+        <LinearLayout
+            android:id="@+id/DialogContainer"
+            style="@style/DialogBodyContainerWrap">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                style="@style/DialogTitleHeader">
+
+                <LinearLayout style="@style/DialogTitleContainer">
+
+                    <ImageView
+                        android:id="@+id/Iv_Icon"
+                        style="@style/DialogTitleIcon"
+                        android:src="@{createDialog.ICON}" />
+
+                    <TextView
+                        android:id="@+id/Tv_TextTitle"
+                        style="@style/DialogTitleText"
+                        android:text="@{createDialog.TITLE}" />
+
+                </LinearLayout>
+
+                <Space style="@style/DialogSpace" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/DialogInfoButton"
+                    style="@style/DialogInfoButton" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/DialogBackground">
+
+                <TextView
+                    android:id="@+id/Tv_Description"
+                    style="@style/DialogDescription"
+                    android:text="@{createDialog.DESCRIPTION}" />
+
+                <LinearLayout
+                    android:id="@+id/Ll_MainContainer"
+                    style="@style/DialogMainContainerMatch"></LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Ll_Footer"
+                style="@style/DialogOptionsFooter">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <LinearLayout
+                        android:id="@+id/Ll_Left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="start|top"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Ll_Center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|top"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Ll_Right"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="top|end"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>
+

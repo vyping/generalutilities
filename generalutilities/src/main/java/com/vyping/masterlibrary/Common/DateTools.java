@@ -30,8 +30,9 @@ public class DateTools {
     public static final int TIME_BEFORE = 0, TIME_EQUALS = 1, TIME_AFTER = 2;
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({TIME_BEFORE, TIME_EQUALS , TIME_AFTER})
-    public @interface TypeClock {}
+    @IntDef({TIME_BEFORE, TIME_EQUALS, TIME_AFTER})
+    public @interface TypeClock {
+    }
 
     /**
      * -------- Time to String Section
@@ -54,7 +55,7 @@ public class DateTools {
 
     public String getTime(String Format, Object Time) {
 
-        long longTime = new Numbers().objectToLong(Time);
+        long longTime = new MyNumbers().objectToLong(Time);
 
         return getTime(Format, longTime);
     }
@@ -127,7 +128,7 @@ public class DateTools {
         calendar.setTimeInMillis(Long.parseLong(Instant));
         String instante = DateFormat.format("MMM dd - HH:mm", calendar).toString();
 
-        return new Strings().firstLetterUpperCase(instante);
+        return new MyStrings().firstLetterUpperCase(instante);
     }
 
     public String intsToStringDate(int day, int month, int year) {
@@ -153,7 +154,7 @@ public class DateTools {
 
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         calendar.set(Calendar.DAY_OF_MONTH, day);
-        calendar.set(Calendar.MONTH, month-1);
+        calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.YEAR, year);
 
         return calendar.get(Calendar.DAY_OF_WEEK);
@@ -190,7 +191,7 @@ public class DateTools {
 
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         calendar.set(Calendar.DAY_OF_MONTH, day);
-        calendar.set(Calendar.MONTH, month-1);
+        calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.YEAR, year);
 
         return calendar.get(Calendar.MONTH);
@@ -211,7 +212,7 @@ public class DateTools {
         int monthOfYear = mothOfYearInteger(day, month, year);
         String Month = months[monthOfYear];
 
-        return Month.substring(0,1).toUpperCase() + Month.substring(1);
+        return Month.substring(0, 1).toUpperCase() + Month.substring(1);
     }
 
     public String mothOfYearString(String day, String month, String year) {
@@ -254,7 +255,7 @@ public class DateTools {
 
     public String selectedDateToView(Calendar date) {
 
-        String dayOfWeek = new Strings().firstLetterUpperCase(dayOfWeek(date));
+        String dayOfWeek = new MyStrings().firstLetterUpperCase(dayOfWeek(date));
         String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
         String textMonth = convertToTextMonth(date.get(Calendar.MONTH));
 
@@ -278,6 +279,20 @@ public class DateTools {
 
             return null;
         }
+    }
+
+    public String getMonthFromString(String stringDate) {
+
+        Calendar calendar = getCalendarFromString(stringDate);
+
+        return completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
+    }
+
+    public String getYearFromString(String stringDate) {
+
+        Calendar calendar = getCalendarFromString(stringDate);
+
+        return String.valueOf(calendar.get(Calendar.YEAR));
     }
 
     public String setStartHourForServer(long time, int delay) {
@@ -443,7 +458,7 @@ public class DateTools {
         calendar.setTimeInMillis(time);
         int prevMonth = calendar.get(Calendar.MONTH);
 
-        return new Strings().formatDigits(prevMonth, 2);
+        return new MyStrings().formatDigits(prevMonth, 2);
     }
 
     public boolean comparateWhitToday(Calendar otherCalendar, long otherTime) {
@@ -505,7 +520,7 @@ public class DateTools {
 
         } else {
 
-           return FALSE;
+            return FALSE;
         }
     }
 
@@ -556,12 +571,49 @@ public class DateTools {
         return comparateWithToday(Day, Month, Year);
     }
 
+    public boolean isBeforeToday(String stringDate) {
+
+        boolean isBeforeToday = FALSE;
+
+        Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
+        int currentYear = currentCalendar.get(Calendar.YEAR);
+        int currentMonth = currentCalendar.get(Calendar.MONTH);
+        int currentDay = currentCalendar.get(Calendar.DAY_OF_MONTH);
+
+        Calendar compareCalendar = getCalendarFromString(stringDate);
+        int compareYear = compareCalendar.get(Calendar.YEAR);
+        int compareMonth = compareCalendar.get(Calendar.MONTH);
+        int compareDay = compareCalendar.get(Calendar.DAY_OF_MONTH);
+
+        if (currentYear > compareYear) {
+
+            isBeforeToday = TRUE;
+
+        } else if (currentYear == compareYear) {
+
+            if (currentMonth > compareMonth) {
+
+                isBeforeToday = TRUE;
+
+            } else if (currentMonth == compareMonth) {
+
+                if (currentDay > compareDay) {
+
+                    isBeforeToday = TRUE;
+                }
+            }
+        }
+
+        return isBeforeToday;
+    }
+
+
     public boolean comparateWhitThisMoment(Long time, int positiveDelay, int negativeDelay) {
 
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         long thisMoment = calendar.getTimeInMillis();
-        long minLimit = time - 1000L*60*negativeDelay;
-        long maxLimit = time + 1000L*60*positiveDelay;
+        long minLimit = time - 1000L * 60 * negativeDelay;
+        long maxLimit = time + 1000L * 60 * positiveDelay;
 
         if (minLimit <= thisMoment && maxLimit >= thisMoment) {
 
@@ -740,7 +792,7 @@ public class DateTools {
 
         long thisMoment = timeInThisMidNight();
         long diference = Time - thisMoment;
-        long months = 30*24*60*60*1000L;
+        long months = 30 * 24 * 60 * 60 * 1000L;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 
@@ -754,7 +806,6 @@ public class DateTools {
 
 
     /**
-     *
      * -------- Tools Section
      */
 
@@ -776,7 +827,9 @@ public class DateTools {
 
                 Return = calendar;
 
-            } catch (ParseException e) { e.printStackTrace(); }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         return Return;
@@ -802,7 +855,9 @@ public class DateTools {
 
                 Return = calendar;
 
-            } catch (ParseException e) { e.printStackTrace(); }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         return Return;
@@ -828,7 +883,9 @@ public class DateTools {
 
                 Return = calendar;
 
-            } catch (ParseException e) { e.printStackTrace(); }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         return Return;
@@ -842,9 +899,9 @@ public class DateTools {
 
         if (year.length() == 4) {
 
-            new LogCat("year", year.substring(2,4));
+            new LogCat("year", year.substring(2, 4));
 
-            return year.substring(2,4);
+            return year.substring(2, 4);
 
         } else {
 
@@ -854,11 +911,11 @@ public class DateTools {
 
     public String completeDigitsDate(int date) {
 
-        if (date < 10 ) {
+        if (date < 10) {
 
             return "0" + date;
 
-        } else  {
+        } else {
 
             return String.valueOf(date);
         }
@@ -929,7 +986,6 @@ public class DateTools {
 
 
     /**
-     *
      * -------- Tools Section
      */
 

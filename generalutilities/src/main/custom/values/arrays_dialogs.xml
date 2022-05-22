@@ -2,10 +2,21 @@
 
 <resources>
 
-    // Dialogs PickerDate - Section
+
+    <string-array name="Dialog_LogOut">
+        <item name="LogOut_Icon">icon_logout</item>
+        //calendar-alt
+        <item name="LogOut_Title">Cerrar Sesión</item>
+        <item name="LogOut_Description">¿Realmente desea cerrar su seción actual?</item>
+        <item name="LogOut_Information">Tu información personal se perderá y deberás digitar tu usuario y contraseña para volver a ingresar.</item>
+    </string-array>
+
+
+    // Dialogs PickerDate - Notice
 
     <string-array name="Dialogs_PickerDate">
-        <item name="PickerDate_IconTitle">\uf073</item>   //calendar-alt
+        <item name="PickerDate_IconTitle">\uf073</item>
+        //calendar-alt
         <item name="PickerDate_TextTitle">Fecha</item>
         <item name="PickerDate_Information">Seleccione la fecha a visualizar:</item>
         <item name="PickerDate_Description">En este campo se debe seleccionar la fecha deseada para visualizar la información correspondiente.</item>
@@ -14,10 +25,11 @@
     </string-array>
 
 
-    // Dialogs SlideEraseVehicle - Section
+    // Dialogs SlideEraseVehicle - Notice
 
     <string-array name="Dialogs_SlideEraseVehicle">
-        <item name="PickerDate_IconTitle">\uf00d</item>   //times
+        <item name="PickerDate_IconTitle">\uf00d</item>
+        //times
         <item name="PickerDate_TextTitle">Eliminar</item>
         <item name="PickerDate_Information">Deslice para eliminar el vehículo:</item>
         <item name="PickerDate_Description">Deslice el botón para confirmar la eliminicación del vehículo.</item>
@@ -26,10 +38,11 @@
     </string-array>
 
 
-    // Dialogs SlideEraseVehicle - Section
+    // Dialogs SlideEraseVehicle - Notice
 
     <string-array name="Dialog_Vehicle_Exit">
-        <item name="PickerDate_IconTitle">icon_car</item>   //times
+        <item name="PickerDate_IconTitle">icon_car</item>
+        //times
         <item name="PickerDate_TextTitle">Eliminar</item>
         <item name="PickerDate_Information">Deslice para eliminar el vehículo:</item>
         <item name="PickerDate_Description">Deslice el botón para confirmar la eliminicación del vehículo.</item>
@@ -40,7 +53,8 @@
     // Dialogs Create Veicle
 
     <string-array name="Dialogs_CreateVehicle">
-        <item name="PickerDate_IconTitle">icon_car</item>   //calendar-alt
+        <item name="PickerDate_IconTitle">icon_car</item>
+        //calendar-alt
         <item name="PickerDate_TextTitle">Registro</item>
         <item name="PickerDate_Information">Seleccione la fecha a visualizar:</item>
         <item name="PickerDate_Description">En este campo se debe seleccionar la fecha deseada para visualizar la información correspondiente.</item>

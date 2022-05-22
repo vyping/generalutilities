@@ -41,7 +41,8 @@ public class AdapterSingle extends ArrayAdapter<String> {
         return spinnerTitles.size();
     }
 
-    @Override @NonNull
+    @Override
+    @NonNull
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         ViewHolder mViewHolder = new ViewHolder();
@@ -68,6 +69,6 @@ public class AdapterSingle extends ArrayAdapter<String> {
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-       return getView(position, convertView, parent);
+        return getView(position, convertView, parent);
     }
 }

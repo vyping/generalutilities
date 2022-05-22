@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <attr name="menuSlider" format="reference" />
+    <attr name="menuTitle" format="reference" />
+    <attr name="menuSubTitle" format="reference" />
+    <attr name="menuButton" format="reference" />
+    <attr name="colorMenuSlider" format="reference|color" />
+    <attr name="colorMenuTitle" format="reference|color" />
+    <attr name="colorMenuSubTitle" format="reference|color" />
+
+
+    // Custom Button
+
+    <attr name="menuButtonHorizontal" format="reference" />
+
+    <declare-styleable name="menuButton">
+        <attr name="buttonWidth" format="dimension" />
+        <attr name="buttonHeight" format="dimension" />
+        <attr name="buttonRotation" format="integer" />
+        <attr name="backgroundDrawable" format="reference" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="iconDrawable" format="reference" />
+        <attr name="iconColor" format="reference" />
+        <attr name="numberColor" format="reference|color" />
+        <attr name="titleText" format="string" />
+        <attr name="titleColor" format="reference" />
+        <attr name="titleFont" format="reference" />
+        <attr name="subtitleText" format="string" />
+        <attr name="subtitleColor" format="reference" />
+        <attr name="subtitleFont" format="reference" />
+    </declare-styleable>
+
+
+    // Buttons
+
+    <attr name="menuButtonFucshias" format="reference" />
+
+    // Colors
+
+    <attr name="MenuColors" format="reference" />
+
+    <attr name="colorMenuBlueBackground" format="color" />
+    <attr name="colorMenuBlueNumber" format="color" />
+    <attr name="colorMenuBlueIcon" format="color" />
+    <attr name="colorMenuBlueTitle" format="color" />
+    <attr name="colorMenuBlueSubtitle" format="color" />
+
+    <attr name="colorMenuFucshiasBackground" format="color" />
+    <attr name="colorMenuFucshiasNumber" format="color" />
+    <attr name="colorMenuFucshiasIcon" format="color" />
+    <attr name="colorMenuFucshiasTitle" format="color" />
+    <attr name="colorMenuFucshiasSubtitle" format="color" />
+
+    <attr name="colorMenuEsmeraldBackground" format="color" />
+    <attr name="colorMenuEsmeraldNumber" format="color" />
+    <attr name="colorMenuEsmeraldIcon" format="color" />
+    <attr name="colorMenuEsmeraldTitle" format="color" />
+    <attr name="colorMenuEsmeraldSubtitle" format="color" />
+
+    <attr name="colorMenuViolettBackground" format="color" />
+    <attr name="colorMenuViolettNumber" format="color" />
+    <attr name="colorMenuViolettIcon" format="color" />
+    <attr name="colorMenuViolettTitle" format="color" />
+    <attr name="colorMenuViolettSubtitle" format="color" />
+
+    <attr name="colorMenuOrangeBackground" format="color" />
+    <attr name="colorMenuOrangeNumber" format="color" />
+    <attr name="colorMenuOrangeIcon" format="color" />
+    <attr name="colorMenuOrangeTitle" format="color" />
+    <attr name="colorMenuOrangeSubtitle" format="color" />
+
+    <attr name="colorMenuCelesteBackground" format="color" />
+    <attr name="colorMenuCelesteNumber" format="color" />
+    <attr name="colorMenuCelesteIcon" format="color" />
+    <attr name="colorMenuCelesteTitle" format="color" />
+    <attr name="colorMenuCelesteSubtitle" format="color" />
+
+    <attr name="colorMenuOliveBackground" format="color" />
+    <attr name="colorMenuOliveNumber" format="color" />
+    <attr name="colorMenuOliveIcon" format="color" />
+    <attr name="colorMenuOliveTitle" format="color" />
+    <attr name="colorMenuOliveSubtitle" format="color" />
+
+    <attr name="colorMenuPurpleBackground" format="color" />
+    <attr name="colorMenuPurpleNumber" format="color" />
+    <attr name="colorMenuPurpleIcon" format="color" />
+    <attr name="colorMenuPurpleTitle" format="color" />
+    <attr name="colorMenuPurpleSubtitle" format="color" />
+
+    <attr name="colorMenuYellowBackground" format="color" />
+    <attr name="colorMenuYellowNumber" format="color" />
+    <attr name="colorMenuYellowIcon" format="color" />
+    <attr name="colorMenuYellowTitle" format="color" />
+    <attr name="colorMenuYellowSubtitle" format="color" />
+
+    <attr name="colorMenuTurquoiseBackground" format="color" />
+    <attr name="colorMenuTurquoiseNumber" format="color" />
+    <attr name="colorMenuTurquoiseIcon" format="color" />
+    <attr name="colorMenuTurquoiseTitle" format="color" />
+    <attr name="colorMenuTurquoiseSubtitle" format="color" />
+
+    <attr name="colorMenuRedBackground" format="color" />
+    <attr name="colorMenuRedNumber" format="color" />
+    <attr name="colorMenuRedIcon" format="color" />
+    <attr name="colorMenuRedTitle" format="color" />
+    <attr name="colorMenuRedSubtitle" format="color" />
+
+</resources>

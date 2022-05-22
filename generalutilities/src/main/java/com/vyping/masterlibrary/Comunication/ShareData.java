@@ -2,6 +2,7 @@ package com.vyping.masterlibrary.Comunication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
@@ -23,5 +24,19 @@ public class ShareData {
         sharingIntent.putExtra(Intent.EXTRA_TEXT, uri);
 
         context.startActivity(Intent.createChooser(sharingIntent, "Compartir vía:"));
+    }
+
+    public void ImageAndData(@NonNull Context context, Uri urlImage, String Title, String text) {
+
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, Title);
+        shareIntent.putExtra(Intent.EXTRA_TITLE, Title);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, urlImage);
+        shareIntent.setType("image/*");
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        context.startActivity(Intent.createChooser(shareIntent, "Share images..."));
     }
 }
