@@ -44,6 +44,7 @@ android {
     lint {
         checkDependencies true
     }
+    namespace 'com.vyping.libraries'
 }
 
 dependencies {

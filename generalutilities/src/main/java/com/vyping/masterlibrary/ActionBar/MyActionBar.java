@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.Toolbar;
 
 import com.vyping.masterlibrary.Common.GeneralTools;
@@ -32,7 +33,7 @@ public abstract class MyActionBar {
     private TouchInterface interfase;
 
     private View viewActionBar;
-    private ImageButton Btn_actbarMenu,Btn_actbarTools;
+    private ImageButton Btn_actbarMenu, Btn_actbarTools;
 
     private boolean menuVisible;
 
@@ -68,7 +69,7 @@ public abstract class MyActionBar {
 
     public View setActionBar() {
 
-     return viewActionBar;
+        return viewActionBar;
     }
 
     public void setTitle(int icon) {
@@ -103,7 +104,7 @@ public abstract class MyActionBar {
         int color = R.color.colorBlanco;
         Drawable image =  new MyDrawable().changeDrawableColor(context, R.drawable.icon_tools, color);
 
-        Btn_actbarTools = viewActionBar.findViewById(R.id.Btn_Acb_Menu2);
+        Btn_actbarTools = viewActionBar.findViewById(R.id.Btn_Acb_Tools);
         Btn_actbarTools.setImageDrawable(image);
         Btn_actbarTools.setVisibility(VISIBLE);
         Btn_actbarTools.setOnClickListener(new View.OnClickListener() {
