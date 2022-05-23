@@ -18,7 +18,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
-public class JsonFile extends Readers {
+public class JsonFile extends MyJsonReader {
 
 
     // ----- Setup ----- //

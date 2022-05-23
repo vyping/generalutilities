@@ -9,14 +9,14 @@ import androidx.annotation.StringDef;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
 import com.vyping.masterlibrary.Common.MyStrings;
-import com.vyping.masterlibrary.Firebase.Readers;
+import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
 
 import java.io.Serializable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 
-public class Session extends Readers implements Serializable {
+public class Session extends MyRealtimeReader implements Serializable {
 
     public String Document, Email, Name, Password, Type;
     @Exclude

@@ -15,7 +15,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Readers {
+public class MyRealtimeReader {
 
     // ----- Key Readers ----- //
 

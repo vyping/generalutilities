@@ -3,7 +3,7 @@ package com.vyping.masterlibrary.Firebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ServerValue;
 
-public class Timestamp extends Readers {
+public class Timestamp extends MyRealtimeReader {
 
     private final MyRealtime databaseRealtime;
     private final Interfase interfase;

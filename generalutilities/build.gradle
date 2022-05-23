@@ -36,10 +36,9 @@ android {
         }
     }
 
-    compileOptions {
+    dataBinding {
 
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        enabled = true
     }
 
     buildFeatures {
@@ -47,6 +46,13 @@ android {
         viewBinding true
         dataBinding true
     }
+
+    compileOptions {
+
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
     namespace 'com.vyping.masterlibrary'
 }
 

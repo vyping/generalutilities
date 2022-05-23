@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
 import com.vyping.masterlibrary.Common.MyStrings;
-import com.vyping.masterlibrary.Firebase.Readers;
+import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
 import com.vyping.masterlibrary.Images.MyColor;
 import com.vyping.masterlibrary.Images.MyDrawable;
 import com.vyping.masterlibrary.R;
@@ -56,17 +56,17 @@ public class MenuParams {
 
     public MenuParams(Context context, @NonNull DataSnapshot snapshot) {
 
-        String background = new Readers().getString(snapshot.child("Background"));
-        String backgroundColor = new Readers().getString(snapshot.child("BackgroundColor"));
-        String icon = new Readers().getString(snapshot.child("Icon"));
-        String iconColor = new Readers().getString(snapshot.child("TraductionColor"));
+        String background = new MyRealtimeReader().getString(snapshot.child("Background"));
+        String backgroundColor = new MyRealtimeReader().getString(snapshot.child("BackgroundColor"));
+        String icon = new MyRealtimeReader().getString(snapshot.child("Icon"));
+        String iconColor = new MyRealtimeReader().getString(snapshot.child("TraductionColor"));
 
         this.Background = new MyDrawable().extractFromString(context, background);
         this.BackgroundColor = new MyColor().extractFromString(context, backgroundColor);
         this.Icon = new MyDrawable().extractFromString(context, icon);
         this.IconColor = new MyColor().extractFromString(context, iconColor);
-        this.Title = new Readers().getString(snapshot.child("Name"));
-        this.SubTitle = new Readers().getString(snapshot.child("Traduction"));
-        this.Description = new Readers().getString(snapshot.child("Description"));
+        this.Title = new MyRealtimeReader().getString(snapshot.child("Name"));
+        this.SubTitle = new MyRealtimeReader().getString(snapshot.child("Traduction"));
+        this.Description = new MyRealtimeReader().getString(snapshot.child("Description"));
     }
 }

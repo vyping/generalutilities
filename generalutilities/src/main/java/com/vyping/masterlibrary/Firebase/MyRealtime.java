@@ -21,7 +21,7 @@ import com.vyping.masterlibrary.Timers.MyCounter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MyRealtime extends Readers {
+public class MyRealtime extends MyRealtimeReader {
 
     private DatabaseReference databaseReference;
     private DataSnapshot dataSnapshot;
