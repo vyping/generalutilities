@@ -69,11 +69,42 @@ public class MyJsonReader {
         }
     }
 
+    public long getJsonLong(@NonNull JSONObject jsonObject, String key) {
+
+        try {
+
+            return jsonObject.getLong(key);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return 0L;
+        }
+    }
+
+
+    // ----- Double Readers ----- //
+
     public double getJsonDouble(@NonNull JSONArray array, int index) {
 
         try {
 
             return array.getDouble(index);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return 0.0;
+        }
+    }
+
+    public double getJsonDouble(@NonNull JSONObject jsonObject, String key) {
+
+        try {
+
+            return jsonObject.getDouble(key);
 
         } catch (JSONException e) {
 
@@ -99,6 +130,69 @@ public class MyJsonReader {
             return 0;
         }
     }
+
+    public int getJsonInt(@NonNull JSONObject jsonObject, String key) {
+
+        try {
+
+            return jsonObject.getInt(key);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return 0;
+        }
+    }
+
+
+    // ----- ArrayList Readers ----- //
+
+    public ArrayList<String> getArrayList(@NonNull JSONArray jsonArray) {
+
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        try {
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                arrayList.add(jsonArray.getString(i));
+            }
+
+            return arrayList;
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return arrayList;
+        }
+    }
+
+    public ArrayList<String> getArrayList(@NonNull JSONObject jsonObject, String key) {
+
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        try {
+
+            JSONArray jsonArray = jsonObject.getJSONArray(key);
+
+            for (int i = 0; i < jsonObject.length(); i++) {
+
+                arrayList.add(getJsonString(jsonArray, i));
+            }
+
+            return arrayList;
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return arrayList;
+        }
+    }
+
+
 
     public String getJsonDate(@NonNull JSONArray array, int index) {
 
@@ -199,26 +293,7 @@ public class MyJsonReader {
         }
     }
 
-    public ArrayList<String> getArrayList(@NonNull JSONArray jsonArray) {
 
-        ArrayList<String> arrayList = new ArrayList<>();
-
-        try {
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-                arrayList.add(jsonArray.getString(i));
-            }
-
-            return arrayList;
-
-        } catch (JSONException e) {
-
-            e.printStackTrace();
-
-            return arrayList;
-        }
-    }
 
     public String selectPlaceOrAddress(@NonNull JSONArray place) {
 
