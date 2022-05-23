@@ -49,8 +49,7 @@ public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
                 return true;
             }
 
-            public void DummyVoid() {
-            }
+            public void DummyVoid() {}
         });
     }
 
@@ -88,7 +87,7 @@ public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
     }
 
     @Override
-    public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent motionEvent) {
+    public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
 
         if (touchInterface != null) {
 
