@@ -25,9 +25,9 @@ public class MyArrayList {
         return list;
     }
 
-    public ArrayList<?> objectToArrayList(@NonNull Object object) {
+    public ArrayList<String> objectToArrayList(@NonNull Object object) {
 
-        ArrayList<?> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         if (object.getClass().isArray()) {
 
@@ -35,7 +35,7 @@ public class MyArrayList {
 
         } else if (object instanceof Collection) {
 
-            list = new ArrayList<>((Collection<?>) object);
+            list = new ArrayList<String>((Collection<String>) object);
         }
 
         return list;
