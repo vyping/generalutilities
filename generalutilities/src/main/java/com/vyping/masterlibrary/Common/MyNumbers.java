@@ -10,6 +10,11 @@ public class MyNumbers {
         return text.matches("(\\-)?+[0-9]+(\\.[0-9]+)?");
     }
 
+    public boolean isNumberPair(int number) {
+
+        return number % 2 == 0;
+    }
+
     public long objectToLong(Object object) {
 
         String text = String.valueOf(object);

@@ -44,6 +44,7 @@ public class MyTouchListener implements View.OnTouchListener {
 
         if (gestureDetector.onTouchEvent(motionEvent)) {
 
+            selectedView.getRootView().getVerticalScrollbarPosition()
             setAnimation(selectedView, motionEvent);
 
             touchInterface.TouchEvent();
