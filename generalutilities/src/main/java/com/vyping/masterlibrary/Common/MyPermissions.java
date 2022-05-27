@@ -7,9 +7,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -18,6 +20,7 @@ import com.vyping.masterlibrary.dialogs.DialogShowInfo;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
 
 public class MyPermissions {
 
@@ -32,17 +35,22 @@ public class MyPermissions {
     public static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;  //     <uses-permission android:name="android.permission.CAMERA" />
     public static final String PERMISSION_LOCATION_FINE = Manifest.permission.ACCESS_FINE_LOCATION;  // <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     public static final String PERMISSION_LOCATION_COARSE = Manifest.permission.ACCESS_COARSE_LOCATION; //  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    public static final int PERMISSIONS_GRANTED = PackageManager.PERMISSION_GRANTED;
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public static final String PERMISSION_RECOGNITION = Manifest.permission.ACTIVITY_RECOGNITION; //  <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+
+    public static final int PERMISSIONS_GRANTED = PackageManager.PERMISSION_GRANTED;  //
 
     public static final int PERMISSION_CODE_PHONE = 10000;
     public static final int PERMISSION_CODE_SMS = 20000;
     public static final int PERMISSION_CODE_CAMERA = 30000;
     public static final int PERMISSION_CODE_LOCATION = 40000;
+    public static final int PERMISSION_CODE_RECOGNITION = 50000;
+
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({PERMISSION_CODE_PHONE, PERMISSION_CODE_SMS, PERMISSION_CODE_CAMERA, PERMISSION_CODE_LOCATION})
-    public @interface RequestCode {
-    }
+    @IntDef({PERMISSION_CODE_PHONE, PERMISSION_CODE_SMS, PERMISSION_CODE_CAMERA, PERMISSION_CODE_LOCATION, PERMISSION_CODE_RECOGNITION})
+    public @interface RequestCode { }
 
 
     // ----- Setup ----- //
@@ -170,6 +178,14 @@ public class MyPermissions {
                 if (permissions[0].equals(PERMISSION_LOCATION_FINE) && grantResults[0] == PERMISSIONS_GRANTED && permissions[1].equals(PERMISSION_LOCATION_COARSE) && grantResults[1] == PERMISSIONS_GRANTED) {
 
                     interfase.PermissionsResult(PERMISSION_CODE_LOCATION);
+                }
+            }
+
+            case PERMISSION_CODE_RECOGNITION: {
+
+                if (permissions[0].equals(PERMISSION_RECOGNITION) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
+
+                    interfase.PermissionsResult(PERMISSION_CODE_RECOGNITION);
                 }
             }
         }
