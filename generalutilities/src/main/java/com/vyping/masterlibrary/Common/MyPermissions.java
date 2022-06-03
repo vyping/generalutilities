@@ -204,6 +204,7 @@ public class MyPermissions {
             @Override
             protected boolean PositiveButton() {
 
+                ActivityCompat.requestPermissions(((Activity) context), permissions, requestCode);
                 return false;
             }
         };

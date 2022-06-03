@@ -66,9 +66,9 @@ dependencies {
     implementation "androidx.biometric:biometric:1.2.0-alpha04"
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.databinding:databinding-common:7.2.0'
-    implementation 'androidx.databinding:databinding-runtime:7.2.0'
-    implementation 'androidx.databinding:databinding-adapters:7.2.0'
+    implementation 'androidx.databinding:databinding-common:7.2.1'
+    implementation 'androidx.databinding:databinding-runtime:7.2.1'
+    implementation 'androidx.databinding:databinding-adapters:7.2.1'
 
     implementation 'com.android.support:support-annotations:28.0.0'
 
@@ -77,15 +77,15 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.0.2'   //Maps
 
     implementation 'com.google.maps.android:android-maps-utils:2.2.0'   //Maps
-    implementation 'com.google.code.gson:gson:2.8.6' //Gson
+    implementation 'com.google.code.gson:gson:2.9.0' //Gson
 
     implementation platform ('com.google.firebase:firebase-bom:28.4.2')
     implementation 'com.google.firebase:firebase-core:21.0.0'
-    implementation 'com.google.firebase:firebase-auth:21.0.4'
+    implementation 'com.google.firebase:firebase-auth:21.0.5'
     implementation 'com.google.firebase:firebase-config:21.1.0'
     implementation 'com.google.firebase:firebase-database:20.0.5'
     implementation 'com.google.firebase:firebase-storage:20.0.1'
-    implementation 'com.google.firebase:firebase-perf:20.0.6'
+    implementation 'com.google.firebase:firebase-perf:20.1.0'
     implementation 'com.google.firebase:firebase-messaging:23.0.5'
     implementation 'com.google.firebase:firebase-messaging-directboot:23.0.5'
     implementation 'com.google.firebase:firebase-analytics'
@@ -108,6 +108,7 @@ dependencies {
     implementation 'com.airbnb.android:paris:2.0.0' // ApplyStyles
     implementation 'io.github.pilgr:paperdb:2.7.1' //PaperDB - Save Paternlock
     implementation 'me.relex:circleindicator:2.1.6'  // ViewPagerCircleIndicator
+    implementation 'com.github.barteksc:AndroidPdfViewer:master-SNAPSHOT' // PdfViewer
 
     //implementation 'ru.egslava:MaskedEditText:1.0.5' // Masked EditTex
 
@@ -125,7 +126,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.vyping'
                 artifactId = 'generalutilities'
-                version = 'v1.0.6'
+                version = 'v1.0.7'
             }
         }
     }

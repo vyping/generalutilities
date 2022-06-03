@@ -12,6 +12,6 @@
         android:color="@color/Primary"
         android:width="2dp" />
 
-    <corners android:radius="32dp" />
+    <corners android:radius="0dp" />
 
 </shape>

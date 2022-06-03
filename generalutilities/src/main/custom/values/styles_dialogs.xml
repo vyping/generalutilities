@@ -40,7 +40,7 @@
     </style>
 
     <style name="DialogTitleContainer">
-        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:background">@drawable/background_window</item>
         <item name="android:backgroundTint">?colorDialogTitle</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">44dp</item>
@@ -95,7 +95,7 @@
     // Dialogs Body - Notice
 
     <style name="DialogBackground">
-        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:background">@drawable/background_window</item>
         <item name="android:backgroundTint">?colorDialogBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -135,7 +135,7 @@
     </style>
 
     <style name="DialogMainContainerMatch">
-        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:background">@drawable/background_window</item>
         <item name="android:backgroundTint">?colorDialogMainContainer</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -150,7 +150,7 @@
     </style>
 
     <style name="DialogMainContainerWrap">
-        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:background">@drawable/background_window</item>
         <item name="android:backgroundTint">?colorDialogMainContainer</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -189,7 +189,7 @@
     </style>
 
     <style name="DialogShowButtons">
-        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:background">@drawable/background_window</item>
         <item name="android:backgroundTint">?colorDialogMainButton</item>
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
@@ -222,7 +222,7 @@
     </style>
 
     <style name="DialogInputText" parent="@android:style/Widget.Material.Light.EditText">
-        <item name="android:background">@drawable/dialog_background_window</item>
+        <item name="android:background">@drawable/background_window</item>
         <item name="android:backgroundTint">?colorDialogInputTextBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

@@ -118,6 +118,7 @@ public class CreateDialog extends DialogParams {
 
         binding = DataBindingUtil.inflate(LayoutInflater.from(CONTEXT), R.layout.dialog_custom, null, false);
         binding.setCreateDialog(this);
+        binding.setContext(CONTEXT);
     }
 
     private void SetDialog() {
