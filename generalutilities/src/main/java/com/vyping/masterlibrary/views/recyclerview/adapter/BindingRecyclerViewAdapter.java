@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +28,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     private LayoutInflater inflater;
     private ClickHandler<T> clickHandler;
     private LongClickHandler<T> longClickHandler;
-
+    private ViewDataBinding binding;
 
     // ----- SetUp ----- //
 
@@ -46,7 +47,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
             inflater = LayoutInflater.from(viewGroup.getContext());
         }
 
-        ViewDataBinding binding = DataBindingUtil.inflate(inflater, layoutId, viewGroup, false);
+        binding = DataBindingUtil.inflate(inflater, layoutId, viewGroup, false);
 
         return new ViewHolder(binding);
     }
@@ -138,12 +139,13 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
 
         if (clickHandler != null) {
 
-            T item = (T) v.getTag(ITEM_MODEL);
-            clickHandler.onClick(item);
+            ViewHolder viewHolder = new ViewHolder(binding);
+            T item = (T) view.getTag(ITEM_MODEL);
+            clickHandler.onClick(viewHolder, view, item);
         }
     }
 
@@ -153,12 +155,13 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     }
 
     @Override
-    public boolean onLongClick(View v) {
+    public boolean onLongClick(View view) {
 
         if (longClickHandler != null) {
 
-            T item = (T) v.getTag(ITEM_MODEL);
-            longClickHandler.onLongClick(item);
+            ViewHolder viewHolder = new ViewHolder(binding);
+            T item = (T) view.getTag(ITEM_MODEL);
+            longClickHandler.onLongClick(viewHolder, view, item);
             return true;
         }
         return false;
