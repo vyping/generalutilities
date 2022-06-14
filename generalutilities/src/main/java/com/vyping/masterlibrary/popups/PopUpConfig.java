@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.vyping.masterlibrary.Common.MyDisplay;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.Common.MyServices;
 import com.vyping.masterlibrary.Firebase.CloudMessaging;
@@ -81,8 +82,8 @@ public class PopUpConfig {
 
         popUp = new PopupWindow(context);
         popUp.setContentView(inflate);
-        popUp.setHeight(new MyGeneralTools().windowHeight(context));
-        popUp.setWidth(new MyGeneralTools().windowWidth(context));
+        popUp.setHeight(new MyDisplay().displayHeight(context));
+        popUp.setWidth(new MyDisplay().displayWidth(context));
         popUp.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         popUp.setAnimationStyle(R.style.blink_animation);
         popUp.showAsDropDown(actionBar, 0, -actionBar.getHeight());

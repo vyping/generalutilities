@@ -23,6 +23,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
+import com.vyping.masterlibrary.Common.MyDisplay;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.Images.MyColor;
 import com.vyping.masterlibrary.Images.MyDrawable;
@@ -146,9 +147,9 @@ public class CreateDialog extends DialogParams {
                 binding.DialogContainer.setScaleY(0f);
                 binding.DialogContainer.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(500).start();
 
-                boolean isLandScape = new MyGeneralTools().isLandScape(CONTEXT);
-                int windowWidth = new MyGeneralTools().windowWidth(CONTEXT);
-                int windowHeight = new MyGeneralTools().windowHeight(CONTEXT);
+                boolean isLandScape = new MyDisplay().isLandScape(CONTEXT);
+                int windowWidth = new MyDisplay().displayWidth(CONTEXT);
+                int windowHeight = new MyDisplay().displayHeight(CONTEXT);
 
                 WindowManager.LayoutParams layoutParams = window.getAttributes();
                 layoutParams.height = windowHeight;

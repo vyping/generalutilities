@@ -98,46 +98,6 @@ public class MyGeneralTools {
         }
     }
 
-    public int windowHeight(@NonNull Context context) {
-
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-
-        return metrics.heightPixels;
-    }
-
-    public int windowWidth(@NonNull Context context) {
-
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-
-        return metrics.widthPixels;
-    }
-
-    public boolean isLandScape(@NonNull Context context) {
-
-        int orientation = context.getResources().getConfiguration().orientation;
-
-        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-            return TRUE;
-
-        } else {
-
-            return FALSE;
-        }
-    }
-
-    public int getWidthDialog(Context context) {
-
-        if (!isLandScape(context)) {
-
-            return WindowManager.LayoutParams.MATCH_PARENT - 16;
-
-        } else {
-
-            return 640;
-        }
-    }
-
     public void startVibration(@NonNull Context context, int delay) {
 
         Vibrator vibrator = (Vibrator) context.getSystemService(VIBRATOR_SERVICE);
