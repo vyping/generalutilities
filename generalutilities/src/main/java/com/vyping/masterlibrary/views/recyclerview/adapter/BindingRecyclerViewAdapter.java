@@ -1,7 +1,10 @@
 package com.vyping.masterlibrary.views.recyclerview.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,21 +17,26 @@ import androidx.databinding.ObservableList;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vyping.masterlibrary.Animations.MyAnimation;
 import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 
-public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener {
+public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
 
+    private Context context;
     private static final int ITEM_MODEL = -124;
+    private GestureDetector gestureDetector;
     private final WeakReferenceOnListChangedCallback<T>  onListChangedCallback;
     private final ItemBinder<T> itemBinder;
     private ObservableList<T> base, items;
     private LayoutInflater inflater;
     private ClickHandler<T> clickHandler;
     private LongClickHandler<T> longClickHandler;
+    private TouchHandler<T> touchHandler;
     private ViewDataBinding binding;
+
 
     // ----- SetUp ----- //
 
@@ -67,12 +75,26 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
+
         final T item = items.get(position);
+
+        gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+
+                return true;
+            }
+
+            public void DummyVoid() {
+            }
+        });
 
         viewHolder.binding.setVariable(itemBinder.getBindingVariable(item), item);
         viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
         viewHolder.binding.getRoot().setOnClickListener(this);
         viewHolder.binding.getRoot().setOnLongClickListener(this);
+        viewHolder.binding.getRoot().setOnTouchListener(this);
         viewHolder.binding.executePendingBindings();
     }
 
@@ -87,8 +109,6 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         return items == null ? 0 : items.size();
     }
-
-
 
     public ObservableList<T> getItems() {
 
@@ -136,7 +156,42 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     }
 
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
 
+        int action = motionEvent.getActionMasked();
+
+        if (action == MotionEvent.ACTION_DOWN) {
+
+            new MyAnimation().ScaleAmpliate(view, 100, 0.9f, 1.1f, 0.9f, 1.1f);
+
+        } else if (action == MotionEvent.ACTION_OUTSIDE) {
+
+            new MyAnimation().ScaleAmpliate(view, 100, 1.05f, 1.0f, 1.05f, 1.0f);
+
+        } else if (action == MotionEvent.ACTION_CANCEL) {
+
+            new MyAnimation().ScaleAmpliate(view, 100, 1.1f, 1.0f, 1.1f, 1.0f);
+
+        } else if (action == MotionEvent.ACTION_UP) {
+
+            new MyAnimation().ScaleAmpliate(view, 100, 1.1f, 1.0f, 1.1f, 1.0f);
+        }
+
+        if (gestureDetector.onTouchEvent(motionEvent)) {
+
+            ViewHolder viewHolder = new ViewHolder(binding);
+            T item = (T) view.getTag(ITEM_MODEL);
+            touchHandler.onTouch(viewHolder, view, item);
+        }
+
+        return true;
+    }
+
+    public void setTouchHandler(TouchHandler<T> touchHandler) {
+
+        this.touchHandler = touchHandler;
+    }
 
     @Override
     public void onClick(View view) {

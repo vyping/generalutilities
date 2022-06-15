@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.vyping.masterlibrary.views.recyclerview.adapter.BindingRecyclerViewAdapter;
 import com.vyping.masterlibrary.views.recyclerview.adapter.ClickHandler;
 import com.vyping.masterlibrary.views.recyclerview.adapter.LongClickHandler;
+import com.vyping.masterlibrary.views.recyclerview.adapter.TouchHandler;
 import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ public class RecyclerViewBindings {
     private static final int KEY_ITEMS = -123;
     private static final int KEY_CLICK_HANDLER = -124;
     private static final int KEY_LONG_CLICK_HANDLER = -125;
+    private static final int KEY_TOUCH_HANDLER = -126;
 
     @SuppressWarnings("unchecked")
     @BindingAdapter("items")
@@ -30,6 +32,22 @@ public class RecyclerViewBindings {
         } else {
 
             recyclerView.setTag(KEY_ITEMS, items);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    @BindingAdapter("touchHandler")
+    public static <T> void setHandler(@NonNull RecyclerView recyclerView, TouchHandler<T> handler) {
+
+        BindingRecyclerViewAdapter<T> adapter = (BindingRecyclerViewAdapter<T>) recyclerView.getAdapter();
+
+        if (adapter != null) {
+
+            adapter.setTouchHandler(handler);
+
+        } else {
+
+            recyclerView.setTag(KEY_TOUCH_HANDLER, handler);
         }
     }
 

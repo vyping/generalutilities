@@ -101,6 +101,18 @@ public class MyDrawable {
         }
     }
 
+    public Drawable extractFromAssets(@NonNull Context context, @NonNull String stringDrawable, @Type String type) {
+
+        try {
+
+            return Drawable.createFromStream(context.getAssets().open(stringDrawable + type), null);
+
+        } catch (IOException ignored) {
+
+            return extractFromResources(context, R.drawable.icon_image);
+        }
+    }
+
     public Drawable extractFromAssets(@NonNull View view, @NonNull String stringDrawable) {
 
         Context context = view.getContext();
@@ -108,6 +120,20 @@ public class MyDrawable {
         try {
 
             return Drawable.createFromStream(context.getAssets().open(stringDrawable), null);
+
+        } catch (IOException ignored) {
+
+            return extractFromResources(context, R.drawable.icon_image);
+        }
+    }
+
+    public Drawable extractFromAssets(@NonNull View view, @NonNull String stringDrawable, @Type String type) {
+
+        Context context = view.getContext();
+
+        try {
+
+            return Drawable.createFromStream(context.getAssets().open(stringDrawable + type), null);
 
         } catch (IOException ignored) {
 
