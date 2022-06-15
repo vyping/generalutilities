@@ -89,7 +89,7 @@ public abstract class MyToolBars {
 
         Btn_BckDate.setOnClickListener(v -> {
 
-            calendar.add(Calendar.DAY_OF_YEAR, -1);
+            calendar = new MyTime().addDays(calendar, -1);
 
             setDate();
         });
@@ -106,7 +106,7 @@ public abstract class MyToolBars {
         });
         Btn_FwdDate.setOnClickListener(v -> {
 
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            calendar = new MyTime().addDays(calendar, 1);
 
             setDate();
         });
@@ -257,12 +257,12 @@ public abstract class MyToolBars {
 
     public void setDate() {
 
-        long milis = calendar.getTimeInMillis();
+        long milis = new MyTime().getMillis(calendar);
+        String day = new MyTime().getDayOfMonthOnString(calendar);
+        String month = new MyTime().getMonthOnString(calendar);
+        String year = new MyTime().getYearOnString(calendar);
         String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
         label = new MyStrings().firstLetterUpperCase(label);
-        String day = new MyTime().completeDigitsDate(calendar.get(Calendar.DAY_OF_MONTH));
-        String month = new MyTime().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
-        String year = new MyTime().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
 
         Btn_SetDate.setText(label);
 
@@ -277,9 +277,10 @@ public abstract class MyToolBars {
         int Day = Integer.parseInt(day);
         int Month = Integer.parseInt(month) - 1;
         int Year = Integer.parseInt(year);
-        calendar.set(Year, Month, Day);
 
-        long milis = calendar.getTimeInMillis();
+        calendar = new MyTime().getCalendar(Day, Month, Year);
+        long milis = new MyTime().getMillis(calendar);
+
         String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
         label = new MyStrings().firstLetterUpperCase(label);
 

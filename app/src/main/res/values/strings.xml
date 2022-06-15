@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Parqueadero</string>
+    <string name="module_main">Principal</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.Common;
+package com.vyping.libraries.utilities.Generals;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 import static java.lang.Boolean.FALSE;
@@ -24,25 +24,10 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.multidex.BuildConfig;
 
 import java.util.Objects;
 
-public class MyGeneralTools {
-
-    public void appUpdate(@NonNull Context context) {
-
-        final String appPackageName = context.getPackageName();
-
-        try {
-
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-
-        } catch (android.content.ActivityNotFoundException anfe) {
-
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-        }
-    }
+public class GeneralTools {
 
     public boolean isOnline(@NonNull Context context) {
 
@@ -93,6 +78,46 @@ public class MyGeneralTools {
         }
     }
 
+    public int windowHeight(@NonNull Context context) {
+
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+
+        return metrics.heightPixels;
+    }
+
+    public int windowWidth(@NonNull Context context) {
+
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+
+        return metrics.widthPixels;
+    }
+
+    public boolean isLandScape(@NonNull Context context) {
+
+        int orientation = context.getResources().getConfiguration().orientation;
+
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            return TRUE;
+
+        } else {
+
+            return FALSE;
+        }
+    }
+
+    public int getWidthDialog(Context context) {
+
+        if (!isLandScape(context)) {
+
+            return WindowManager.LayoutParams.MATCH_PARENT - 16;
+
+        } else {
+
+            return 640;
+        }
+    }
+
     public void startVibration(@NonNull Context context, int delay) {
 
         Vibrator vibrator = (Vibrator) context.getSystemService(VIBRATOR_SERVICE);
@@ -102,7 +127,7 @@ public class MyGeneralTools {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                 vibrator.vibrate(VibrationEffect.createOneShot(delay, VibrationEffect.DEFAULT_AMPLITUDE));
-
+                
             } else {
 
                 vibrator.vibrate(delay);
