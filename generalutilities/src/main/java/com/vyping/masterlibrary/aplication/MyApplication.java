@@ -1,4 +1,4 @@
-package com.vyping.libraries.Aplication;
+package com.vyping.masterlibrary.aplication;
 
 import android.app.Activity;
 import android.app.Application;
@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
-import com.vyping.libraries.R;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +19,6 @@ public class MyApplication extends MultiDexApplication {
     public static MyApplication myApplication;
     private static Context context;
 
-    public static int APP_NAME;
     private static List<Activity> activitys;
 
 
@@ -34,7 +31,6 @@ public class MyApplication extends MultiDexApplication {
 
         myApplication = this;
         context = getApplicationContext();
-        APP_NAME = R.string.app_name;
         activitys = Collections.synchronizedList(new LinkedList());
 
         MultiDex.install(this);

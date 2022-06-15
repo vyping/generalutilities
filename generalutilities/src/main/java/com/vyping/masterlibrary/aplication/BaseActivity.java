@@ -1,6 +1,5 @@
-package com.vyping.libraries.Aplication;
+package com.vyping.masterlibrary.aplication;
 
-import static com.vyping.libraries.Aplication.MyApplication.APP_NAME;
 import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
@@ -14,10 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.vyping.masterlibrary.ActionBar.MyActionBar;
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyActivity;
-import com.vyping.masterlibrary.Common.MyApp;
-import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
 

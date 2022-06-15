@@ -14,7 +14,7 @@
         android:required="true" />
 
     <application
-        android:name=".Aplication.MyApplication"
+        android:name="com.vyping.masterlibrary.aplication.MyApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
