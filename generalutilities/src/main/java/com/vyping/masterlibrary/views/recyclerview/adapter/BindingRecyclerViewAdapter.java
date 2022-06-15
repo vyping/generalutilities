@@ -18,12 +18,13 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vyping.masterlibrary.Animations.MyAnimation;
+import com.vyping.masterlibrary.GestureListeners.MyItemTouchListener;
 import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 
-public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
+public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener{
 
     private Context context;
     private static final int ITEM_MODEL = -124;
@@ -36,6 +37,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     private LongClickHandler<T> longClickHandler;
     private TouchHandler<T> touchHandler;
     private ViewDataBinding binding;
+    private RecyclerView recyclerView;
 
 
     // ----- SetUp ----- //
@@ -94,7 +96,6 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
         viewHolder.binding.getRoot().setOnClickListener(this);
         viewHolder.binding.getRoot().setOnLongClickListener(this);
-        viewHolder.binding.getRoot().setOnTouchListener(this);
         viewHolder.binding.executePendingBindings();
     }
 
@@ -147,45 +148,32 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     }
 
     @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+
+        super.onAttachedToRecyclerView(recyclerView);
+
+        this.recyclerView = recyclerView;
+
+        recyclerView.addOnItemTouchListener(new MyItemTouchListener(context, new MyItemTouchListener.SelectInterface() {
+
+            @Override
+            public void SelectedItem(View selectedView, int position, RecyclerView.ViewHolder viewHolder) {
+
+                T item = (T) selectedView.getTag(ITEM_MODEL);
+                touchHandler.onTouch((ViewHolder) viewHolder, selectedView, item, position);
+            }
+
+            private void DummyVOid() {}
+        }));
+    }
+
+    @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
 
         if (items != null) {
 
             items.removeOnListChangedCallback(onListChangedCallback);
         }
-    }
-
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-
-        int action = motionEvent.getActionMasked();
-
-        if (action == MotionEvent.ACTION_DOWN) {
-
-            new MyAnimation().ScaleAmpliate(view, 100, 0.9f, 1.1f, 0.9f, 1.1f);
-
-        } else if (action == MotionEvent.ACTION_OUTSIDE) {
-
-            new MyAnimation().ScaleAmpliate(view, 100, 1.05f, 1.0f, 1.05f, 1.0f);
-
-        } else if (action == MotionEvent.ACTION_CANCEL) {
-
-            new MyAnimation().ScaleAmpliate(view, 100, 1.1f, 1.0f, 1.1f, 1.0f);
-
-        } else if (action == MotionEvent.ACTION_UP) {
-
-            new MyAnimation().ScaleAmpliate(view, 100, 1.1f, 1.0f, 1.1f, 1.0f);
-        }
-
-        if (gestureDetector.onTouchEvent(motionEvent)) {
-
-            ViewHolder viewHolder = new ViewHolder(binding);
-            T item = (T) view.getTag(ITEM_MODEL);
-            touchHandler.onTouch(viewHolder, view, item);
-        }
-
-        return true;
     }
 
     public void setTouchHandler(TouchHandler<T> touchHandler) {
