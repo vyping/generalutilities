@@ -6,7 +6,8 @@ import android.util.JsonReader;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Common.DateTools;
+import com.vyping.masterlibrary.time.MyTime;
+import com.vyping.masterlibrary.time.MyTimeTools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -200,7 +201,7 @@ public class MyJsonReader {
 
         if (longDate != 0L) {
 
-            return new DateTools().getTime("dd/MM/yy", longDate);
+            return new MyTime().getTime("dd/MM/yy", longDate);
 
         } else {
 
@@ -310,33 +311,6 @@ public class MyJsonReader {
         }
     }
 
-    public String getJsonHourServer(@NonNull JSONArray jsonArray, int index, int delay) {
-
-        long timeMillis = getJsonLong(jsonArray, index);
-
-        if (timeMillis != 0L) {
-
-            return new DateTools().setStartHourForServer(timeMillis, delay);
-
-        } else {
-
-            return "";
-        }
-    }
-
-    public long readJsonStampServer(@NonNull JSONArray jsonArray, int index, int delay) {
-
-        long timeMillis = getJsonLong(jsonArray, index);
-
-        if (timeMillis != 0L) {
-
-            return new DateTools().setStartStampForServer(timeMillis, delay);
-
-        } else {
-
-            return 0L;
-        }
-    }
 
 
     /**

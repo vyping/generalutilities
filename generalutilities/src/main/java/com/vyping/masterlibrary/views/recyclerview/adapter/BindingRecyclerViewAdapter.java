@@ -24,20 +24,20 @@ import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 
-public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener{
+public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener, MyItemTouchListener.SelectInterface{
 
-    private Context context;
-    private static final int ITEM_MODEL = -124;
-    private GestureDetector gestureDetector;
+    private LayoutInflater inflater;
+    private ViewDataBinding binding;
+
     private final WeakReferenceOnListChangedCallback<T>  onListChangedCallback;
     private final ItemBinder<T> itemBinder;
-    private ObservableList<T> base, items;
-    private LayoutInflater inflater;
+
     private ClickHandler<T> clickHandler;
     private LongClickHandler<T> longClickHandler;
     private TouchHandler<T> touchHandler;
-    private ViewDataBinding binding;
-    private RecyclerView recyclerView;
+
+    private ObservableList<T> items;
+    private static final int ITEM_MODEL = -124;
 
 
     // ----- SetUp ----- //
@@ -46,7 +46,16 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         this.itemBinder = itemBinder;
         this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
+
         setItems(items);
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+
+        super.onAttachedToRecyclerView(recyclerView);
+
+        recyclerView.addOnItemTouchListener(new MyItemTouchListener(recyclerView.getContext(), this));
     }
 
     @Override @NonNull
@@ -77,20 +86,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-
         final T item = items.get(position);
-
-        gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-
-                return true;
-            }
-
-            public void DummyVoid() {
-            }
-        });
 
         viewHolder.binding.setVariable(itemBinder.getBindingVariable(item), item);
         viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
@@ -110,6 +106,18 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         return items == null ? 0 : items.size();
     }
+
+    @Override
+    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+
+        if (items != null) {
+
+            items.removeOnListChangedCallback(onListChangedCallback);
+        }
+    }
+
+
+    // ----- Methods ----- //
 
     public ObservableList<T> getItems() {
 
@@ -147,39 +155,23 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         }
     }
 
-    @Override
-    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+    public void setClickHandler(ClickHandler<T> clickHandler) {
 
-        super.onAttachedToRecyclerView(recyclerView);
-
-        this.recyclerView = recyclerView;
-
-        recyclerView.addOnItemTouchListener(new MyItemTouchListener(context, new MyItemTouchListener.SelectInterface() {
-
-            @Override
-            public void SelectedItem(View selectedView, int position, RecyclerView.ViewHolder viewHolder) {
-
-                T item = (T) selectedView.getTag(ITEM_MODEL);
-                touchHandler.onTouch((ViewHolder) viewHolder, selectedView, item, position);
-            }
-
-            private void DummyVOid() {}
-        }));
+        this.clickHandler = clickHandler;
     }
 
-    @Override
-    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+    public void setLongClickHandler(LongClickHandler<T> clickHandler) {
 
-        if (items != null) {
-
-            items.removeOnListChangedCallback(onListChangedCallback);
-        }
+        this.longClickHandler = clickHandler;
     }
 
     public void setTouchHandler(TouchHandler<T> touchHandler) {
 
         this.touchHandler = touchHandler;
     }
+
+
+    // ----- Listeners ----- //
 
     @Override
     public void onClick(View view) {
@@ -190,11 +182,6 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
             T item = (T) view.getTag(ITEM_MODEL);
             clickHandler.onClick(viewHolder, view, item);
         }
-    }
-
-    public void setClickHandler(ClickHandler<T> clickHandler) {
-
-        this.clickHandler = clickHandler;
     }
 
     @Override
@@ -210,13 +197,15 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         return false;
     }
 
-    public void setLongClickHandler(LongClickHandler<T> clickHandler) {
+    @Override
+    public void SelectedItem(View selectedView, int position, RecyclerView.ViewHolder viewHolder) {
 
-        this.longClickHandler = clickHandler;
+        T item = (T) selectedView.getTag(ITEM_MODEL);
+        touchHandler.onTouch((ViewHolder) viewHolder, selectedView, item, position);
     }
 
 
-
+    // -----Callbacks ----- //
 
     private static class WeakReferenceOnListChangedCallback<T> extends ObservableList.OnListChangedCallback<ObservableList<T>> {
 

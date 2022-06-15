@@ -25,7 +25,8 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.vyping.masterlibrary.Common.DateTools;
+import com.vyping.masterlibrary.time.MyTime;
+import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.R;
@@ -75,7 +76,7 @@ public abstract class MyToolBars {
 
         dateInterface = DateInterface;
         calendar = Calendar.getInstance(Locale.getDefault());
-        String label = new DateTools().selectedDateToView(calendar);
+        String label = new MyTimeTools().selectedDateToView(calendar);
 
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
@@ -87,11 +88,7 @@ public abstract class MyToolBars {
 
         Btn_BckDate.setOnClickListener(v -> {
 
-            new LogCat("1 - day", calendar.get(Calendar.DAY_OF_MONTH), "month", calendar.get(Calendar.MONTH), "year", calendar.get(Calendar.YEAR));
-
             calendar.add(Calendar.DAY_OF_YEAR, -1);
-
-            new LogCat("2 - day", calendar.get(Calendar.DAY_OF_MONTH), "month", calendar.get(Calendar.MONTH), "year", calendar.get(Calendar.YEAR));
 
             setDate();
         });
@@ -118,7 +115,7 @@ public abstract class MyToolBars {
 
         monthInterface = MonthInterface;
         calendar = Calendar.getInstance(Locale.getDefault());
-        String label = new DateTools().mothOfYearString(calendar);
+        String label = new MyTime().getMonthName(calendar);
 
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
@@ -260,19 +257,16 @@ public abstract class MyToolBars {
     public void setDate() {
 
         long milis = calendar.getTimeInMillis();
-        String label = new DateTools().selectedDateToView(calendar);
-        String date = new DateTools().selectedDateToTag(calendar);
-        String day = new DateTools().completeDigitsDate(calendar.get(Calendar.DAY_OF_MONTH));
-        String month = new DateTools().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
-        String year = new DateTools().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
+        String label = new MyTime().selectedDateToView(calendar);
+        String day = new MyTime().completeDigitsDate(calendar.get(Calendar.DAY_OF_MONTH));
+        String month = new MyTime().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
+        String year = new MyTime().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
 
-        new LogCat("3 - day", calendar.get(Calendar.DAY_OF_MONTH), "month", calendar.get(Calendar.MONTH), "year", calendar.get(Calendar.YEAR));
-        new LogCat("4 - day", day, "month", month, "year", year);
         Btn_SetDate.setText(label);
 
         if (dateInterface != null) {
 
-            dateInterface.SelectedDate(calendar, milis, date, day, month, year);
+            dateInterface.SelectedDate(calendar, milis, day, month, year);
         }
     }
 
@@ -284,25 +278,23 @@ public abstract class MyToolBars {
         calendar.set(Year, Month, Day);
 
         long milis = calendar.getTimeInMillis();
-        String label = new DateTools().selectedDateToView(calendar);
-        String date = new DateTools().selectedDateToTag(calendar);
+        String label = new MyTimeTools().selectedDateToView(calendar);
 
         Btn_SetDate.setText(label);
 
         if (dateInterface != null) {
 
-            dateInterface.SelectedDate(calendar, milis, date, day, month, year);
+            dateInterface.SelectedDate(calendar, milis, day, month, year);
         }
     }
 
     public void setMonth() {
 
         long milis = calendar.getTimeInMillis();
-        String label = new DateTools().mothOfYearString(calendar);
-        String month = new DateTools().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
-        String year = new DateTools().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
-        new LogCat("a - month", calendar.get(Calendar.MONTH), "year", calendar.get(Calendar.YEAR));
-        new LogCat("b - month", month, "year", year);
+        String label = new MyTime().getMonthName(calendar);
+        String month = new MyTime().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
+        String year = new MyTime().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
+
         Btn_SetDate.setText(label);
 
         if (monthInterface != null) {
@@ -324,18 +316,17 @@ public abstract class MyToolBars {
     @SuppressLint("SetTextI18n")
     public void dialogDatePicker(int parameters) {
 
-
         new DialogPickerDate(context, parameters, DIALOG_NORMAL, DATEPICKER_CALENDAR, calendar) {
 
             @Override
-            protected boolean SetDate(Calendar Calendar, long milis, String date, String day, String month, String year) {
+            protected boolean SetDate(Calendar Calendar, long milis, String day, String month, String year) {
 
                 calendar = Calendar;
 
-                String label = new DateTools().selectedDateToView(calendar);
+                String label = new MyTimeTools().selectedDateToView(calendar);
 
                 Btn_SetDate.setText(label);
-                dateInterface.SelectedDate(Calendar, milis, date, day, month, year);
+                dateInterface.SelectedDate(Calendar, milis, day, month, year);
 
                 return true;
             }
@@ -347,7 +338,7 @@ public abstract class MyToolBars {
 
     public interface DateInterface {
 
-        void SelectedDate(Calendar Calendar, long milis, String date, String day, String month, String year);
+        void SelectedDate(Calendar Calendar, long milis, String day, String month, String year);
     }
 
     public interface MonthInterface {

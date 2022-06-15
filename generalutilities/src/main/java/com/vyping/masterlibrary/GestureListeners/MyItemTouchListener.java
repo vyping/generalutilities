@@ -32,8 +32,7 @@ public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
                 return true;
             }
 
-            public void DummyVoid() {
-            }
+            public void DummyVoid() {}
         });
     }
 

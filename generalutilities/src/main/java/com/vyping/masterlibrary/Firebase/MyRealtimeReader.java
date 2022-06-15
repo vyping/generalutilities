@@ -8,7 +8,8 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
-import com.vyping.masterlibrary.Common.DateTools;
+import com.vyping.masterlibrary.time.MyTime;
+import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.Common.MyNumbers;
 
 import java.text.MessageFormat;
@@ -53,7 +54,7 @@ public class MyRealtimeReader {
 
         long number = getKeyLong(dataSnapshot);
 
-        return new DateTools().getTime(format, number);
+        return new MyTime().getTime(format, number);
     }
 
 
@@ -235,7 +236,7 @@ public class MyRealtimeReader {
 
                 long number = Long.parseLong(value);
 
-                hourDefault = new DateTools().getTime("HH:mm", number);
+                return new MyTime().getTime("HH:mm", number);
             }
         }
 
@@ -261,7 +262,7 @@ public class MyRealtimeReader {
 
                 long number = Long.parseLong(value);
 
-                dateDefault = new DateTools().getTime("dd-MM-yy", number);
+                dateDefault = new MyTime().getTime("dd-MM-yy", number);
             }
         }
 
@@ -287,7 +288,7 @@ public class MyRealtimeReader {
 
                 long number = Long.parseLong(value);
 
-                timeDefault = new DateTools().getTime(format, number);
+                timeDefault = new MyTime().getTime(format, number);
             }
         }
 

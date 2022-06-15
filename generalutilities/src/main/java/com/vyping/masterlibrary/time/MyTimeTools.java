@@ -1,31 +1,28 @@
-package com.vyping.masterlibrary.Common;
+package com.vyping.masterlibrary.time;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
 import android.os.Build;
 import android.text.format.DateFormat;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
+
+import com.vyping.masterlibrary.Common.LogCat;
+import com.vyping.masterlibrary.Common.MyNumbers;
+import com.vyping.masterlibrary.Common.MyStrings;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.TimeZone;
 
-public class DateTools {
+public class MyTimeTools {
 
     public static final int TIME_BEFORE = 0, TIME_EQUALS = 1, TIME_AFTER = 2;
 
@@ -34,330 +31,179 @@ public class DateTools {
     public @interface TypeClock {
     }
 
-    /**
-     * -------- Time to String Section
-     */
 
-    public Calendar setCalendar(long timeMillis) {
+    // ----- Add Days - Operators ----- //
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(timeMillis);
+    public Calendar addDays(int days) {
+
+        Calendar calendar = new MyTime().getCalendar();
+
+        return addDays(calendar, days);
+    }
+
+    public Calendar addDays(String days) {
+
+        Calendar calendar = new MyTime().getCalendar();
+
+        return addDays(calendar, days);
+    }
+
+    public Calendar addDays(@NonNull Calendar calendar, int days) {
+
+        calendar.add(Calendar.DAY_OF_YEAR, days);
 
         return calendar;
     }
 
-    public String getTime(@NonNull String Format) {
+    public Calendar addDays(@NonNull Calendar calendar, String days) {
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        boolean isNumber = new MyNumbers().isNumber(days);
 
-        return DateFormat.format(Format, calendar).toString();
-    }
+        if (isNumber) {
 
-    public String getTime(String Format, Object Time) {
+            int Days = new MyNumbers().objectToInteger(days);
 
-        long longTime = new MyNumbers().objectToLong(Time);
-
-        return getTime(Format, longTime);
-    }
-
-    public String getTime(String Format, long Time) {
-
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(Time);
-
-        return DateFormat.format(Format, calendar).toString();
-    }
-
-    public long getMillisLong() {
-
-        Locale locale = Locale.getDefault();
-        Calendar calendar = Calendar.getInstance(locale);
-
-        return getMillisLong(calendar);
-    }
-
-    public long getMillisLong(@NonNull Calendar calendar) {
-
-        return calendar.getTimeInMillis();
-    }
-
-    public String getMillisString() {
-
-        Locale locale = Locale.getDefault();
-        Calendar calendar = Calendar.getInstance(locale);
-
-        return getMillisString(calendar);
-    }
-
-    public String getMillisString(@NonNull Calendar calendar) {
-
-        return String.valueOf(calendar.getTimeInMillis());
-    }
-
-    public long getMillisLongFromServer(@NonNull Context context) {
-
-        LocationManager locMan = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            return locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getTime();
+            return addDays(calendar, Days);
 
         } else {
 
-            return 0L;
+            return calendar;
         }
     }
 
-    public String getMillisStringFromServer(@NonNull Context context) {
+    public Calendar addDays(long instant, int days) {
 
-        LocationManager locMan = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        Calendar calendar = new MyTime().getCalendar(instant);
 
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        return addDays(calendar, days);
+    }
 
-            return String.valueOf(locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getTime());
+    public Calendar addDays(long instant, String days) {
+
+        Calendar calendar = new MyTime().getCalendar(instant);
+
+        return addDays(calendar, days);
+    }
+
+    public Calendar addDays(String instant, int days) {
+
+        Calendar calendar = new MyTime().getCalendar(instant);
+
+        return addDays(calendar, days);
+    }
+
+    public Calendar addDays(String instant, String days) {
+
+        Calendar calendar = new MyTime().getCalendar(instant);
+
+        return addDays(calendar, days);
+    }
+
+    public Calendar addDays(String date, String format, int days) {
+
+        Calendar calendar = new MyTime().getCalendar(date, format);
+
+        return addDays(calendar, days);
+    }
+
+    public Calendar addDays(String date, String format, String days) {
+
+        Calendar calendar = new MyTime().getCalendar(date, format);
+
+        return addDays(calendar, days);
+    }
+
+    public void addDays(int days, AddDayInterface interfase) {
+
+        Calendar calendar = new MyTime().getCalendar();
+
+        addDays(calendar, days, interfase);
+    }
+
+    public void addDays(String days, AddDayInterface interfase) {
+
+        Calendar calendar = new MyTime().getCalendar();
+
+        addDays(calendar, days, interfase);
+    }
+
+    public void addDays(@NonNull Calendar calendar, int days, @NonNull AddDayInterface interfase) {
+
+        calendar.add(Calendar.DAY_OF_YEAR, days);
+
+        long millis = calendar.getTimeInMillis();
+        String day = new MyTime().getDayOfMonthOnString(calendar);
+        String month = new MyTime().getMonthOnString(calendar);
+        String year = new MyTime().getYearOnString(calendar);
+
+        interfase.AddDay(calendar, millis, day, month, year);
+    }
+
+    public void addDays(@NonNull Calendar calendar, String days, AddDayInterface interfase) {
+
+        boolean isNumber = new MyNumbers().isNumber(days);
+
+        if (isNumber) {
+
+            int Days = new MyNumbers().objectToInteger(days);
+
+            addDays(calendar, Days,  interfase);
 
         } else {
 
-            return "0";
+          interfase.Error("Los Dias indicados no son un número");
         }
     }
 
-    public String InstantToTimeToString(String Instant) {
+    public void addDays(long instant, int days, @NonNull AddDayInterface interfase) {
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(Long.parseLong(Instant));
-        String instante = DateFormat.format("MMM dd - HH:mm", calendar).toString();
+        Calendar calendar = new MyTime().getCalendar(instant);
 
-        return new MyStrings().firstLetterUpperCase(instante);
+        addDays(calendar, days,  interfase);
     }
 
-    public String intsToStringDate(int day, int month, int year) {
+    public void addDays(long instant, String days, AddDayInterface interfase) {
 
-        String Day = completeDigitsDate(day);
-        String Month = completeDigitsDate(month + 1);
-        String Year = convertTwoDigitsYear(year);
+        Calendar calendar = new MyTime().getCalendar(instant);
 
-        return Day + "-" + Month + "-" + Year;
+        addDays(calendar, days,  interfase);
     }
 
-    public int daysOfMonth(long instant) {
+    public void addDays(String instant, int days, @NonNull AddDayInterface interfase) {
 
-        String Instant = String.valueOf(instant);
+        Calendar calendar = new MyTime().getCalendar(instant);
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(Long.parseLong(Instant));
-
-        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        addDays(calendar, days,  interfase);
     }
 
-    public int dayOfWeekInteger(int day, int month, int year) {
+    public void addDays(String instant, String days, AddDayInterface interfase) {
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-        calendar.set(Calendar.MONTH, month - 1);
-        calendar.set(Calendar.YEAR, year);
+        Calendar calendar = new MyTime().getCalendar(instant);
 
-        return calendar.get(Calendar.DAY_OF_WEEK);
+        addDays(calendar, days,  interfase);
     }
 
-    public int dayOfWeekInteger(String day, String month, String year) {
+    public void addDays(String date, String format, int days, @NonNull AddDayInterface interfase) {
 
-        int Day = Integer.parseInt(day);
-        int Month = Integer.parseInt(month);
-        int Year = Integer.parseInt(year);
+        Calendar calendar = new MyTime().getCalendar(date, format);
 
-        return dayOfWeekInteger(Day, Month, Year);
+        addDays(calendar, days,  interfase);
     }
 
-    public String dayOfWeekString(int day, int month, int year) {
+    public void addDays(String date, String format, String days, AddDayInterface interfase) {
 
-        String[] weekdays = new DateFormatSymbols(Locale.getDefault()).getWeekdays();
-        int dayOfWeek = dayOfWeekInteger(day, month, year);
+        Calendar calendar = new MyTime().getCalendar(date, format);
 
-        return weekdays[dayOfWeek];
-    }
-
-    public String dayOfWeekString(String day, String month, String year) {
-
-        int Day = Integer.parseInt(day);
-        int Month = Integer.parseInt(month);
-        int Year = Integer.parseInt(year);
-
-        return dayOfWeekString(Day, Month, Year);
+        addDays(calendar, days,  interfase);
     }
 
 
-    public int mothOfYearInteger(int day, int month, int year) {
+    //----- Interface - Section-----//
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-        calendar.set(Calendar.MONTH, month - 1);
-        calendar.set(Calendar.YEAR, year);
+    public interface AddDayInterface {
 
-        return calendar.get(Calendar.MONTH);
-    }
-
-    public int mothOfYearInteger(String day, String month, String year) {
-
-        int Day = Integer.parseInt(day);
-        int Month = Integer.parseInt(month);
-        int Year = Integer.parseInt(year);
-
-        return mothOfYearInteger(Day, Month, Year);
-    }
-
-    public String mothOfYearString(int day, int month, int year) {
-
-        String[] months = new DateFormatSymbols(Locale.getDefault()).getMonths();
-        int monthOfYear = mothOfYearInteger(day, month, year);
-        String Month = months[monthOfYear];
-
-        return Month.substring(0, 1).toUpperCase() + Month.substring(1);
-    }
-
-    public String mothOfYearString(String day, String month, String year) {
-
-        int Day = Integer.parseInt(day);
-        int Month = Integer.parseInt(month);
-        int Year = Integer.parseInt(year);
-
-        return mothOfYearString(Day, Month, Year);
-    }
-
-    public String mothOfYearString(long time) {
-
-        String[] months = new DateFormatSymbols(Locale.getDefault()).getMonths();
-
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(time);
-        int monthOfYear = calendar.get(Calendar.MONTH);
-
-        return months[monthOfYear];
-    }
-
-    public String mothOfYearString(@NonNull Calendar calendar) {
-
-        int Day = calendar.get(Calendar.DAY_OF_MONTH);
-        int Month = calendar.get(Calendar.MONTH) + 1;
-        int Year = calendar.get(Calendar.YEAR);
-        new LogCat("Month", Month);
-        return mothOfYearString(Day, Month, Year);
-    }
-
-    public String selectedDateToTag(@NonNull Calendar date) {
-
-        String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
-        String month = completeDigitsDate(date.get(Calendar.MONTH) + 1);
-        String year = convertTwoDigitsYear(date.get(Calendar.YEAR));
-
-        return day + "-" + month + "-" + year;
-    }
-
-    public String selectedDateToView(Calendar date) {
-
-        String dayOfWeek = new MyStrings().firstLetterUpperCase(dayOfWeek(date));
-        String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
-        String textMonth = convertToTextMonth(date.get(Calendar.MONTH));
-
-        return dayOfWeek + " " + day + " de " + textMonth;
-    }
-
-    public Calendar getCalendarFromString(String stringDate) {
-
-        try {
-
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy", Locale.getDefault());
-            Date date = Objects.requireNonNull(dateFormat.parse(stringDate));
-            calendar.setTime(date);
-
-            return dateFormat.getCalendar();
-
-        } catch (ParseException e) {
-
-            e.printStackTrace();
-
-            return null;
-        }
-    }
-
-    public String getMonthFromString(String stringDate) {
-
-        Calendar calendar = getCalendarFromString(stringDate);
-
-        return completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
-    }
-
-    public String getYearFromString(String stringDate) {
-
-        Calendar calendar = getCalendarFromString(stringDate);
-
-        return String.valueOf(calendar.get(Calendar.YEAR));
-    }
-
-    public String setStartHourForServer(long time, int delay) {
-
-        Calendar calendar = setCalendar(time);
-        calendar.add(Calendar.MINUTE, delay);
-        String year = String.valueOf(calendar.get(Calendar.YEAR));
-        String day = completeDigitsDate(calendar.get(Calendar.DAY_OF_MONTH));
-        String month = completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
-        String hour = completeDigitsDate(calendar.get(Calendar.HOUR_OF_DAY));
-        String minutes = completeDigitsDate(calendar.get(Calendar.MINUTE));
-
-        return year + "-" + month + "-" + day + "T" + hour + ":" + minutes + ":00-05:00";
-    }
-
-    public long setStartStampForServer(long time, int delay) {
-
-        Calendar calendar = setCalendar(time);
-        calendar.add(Calendar.MINUTE, delay);
-
-        return calendar.getTimeInMillis();
-    }
-
-    public long getStampFromServer(String stringDate) {
-
-        try {
-
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss Z yyyy", Locale.ENGLISH);
-            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            Date date = Objects.requireNonNull(dateFormat.parse(stringDate));
-            calendar.setTime(date);
-
-            return calendar.getTimeInMillis();
-
-        } catch (ParseException e) {
-
-            e.printStackTrace();
-
-            return 0L;
-        }
-    }
-
-    public String getTimeFromServer(String stringDate) {
-
-        try {
-
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss Z yyyy", Locale.ENGLISH);
-            dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-            Date date = Objects.requireNonNull(dateFormat.parse(stringDate));
-            calendar.setTime(date);
-
-            String hour = completeDigitsDate(calendar.get(Calendar.HOUR_OF_DAY));
-            String minutes = completeDigitsDate(calendar.get(Calendar.MINUTE));
-            String seconds = completeDigitsDate(calendar.get(Calendar.SECOND));
-
-            return hour + ":" + minutes + ":" + seconds;
-
-        } catch (ParseException e) {
-
-            e.printStackTrace();
-
-            return "";
-        }
+        void AddDay(Calendar Calendar, long millis, String day, String month, String year);
+        void Error(String error);
     }
 
 
@@ -414,11 +260,11 @@ public class DateTools {
 
     public boolean isSameMonth(long time, long otherTime) {
 
-        Calendar calendar = setCalendar(time);
+        Calendar calendar = new MyTime().getCalendar(time);
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
 
-        Calendar otherCalendar = setCalendar(otherTime);
+        Calendar otherCalendar = new MyTime().getCalendar(otherTime);
         int otherMonth = otherCalendar.get(Calendar.MONTH);
         int otherYear = otherCalendar.get(Calendar.YEAR);
 
@@ -580,7 +426,7 @@ public class DateTools {
         int currentMonth = currentCalendar.get(Calendar.MONTH);
         int currentDay = currentCalendar.get(Calendar.DAY_OF_MONTH);
 
-        Calendar compareCalendar = getCalendarFromString(stringDate);
+        Calendar compareCalendar = new MyTime().getCalendar(stringDate);
         int compareYear = compareCalendar.get(Calendar.YEAR);
         int compareMonth = compareCalendar.get(Calendar.MONTH);
         int compareDay = compareCalendar.get(Calendar.DAY_OF_MONTH);
@@ -703,7 +549,7 @@ public class DateTools {
 
     public boolean belongsToThisMonth(String date) {
 
-        Calendar compareCalendar = getCalendarFromString(date);
+        Calendar compareCalendar = new MyTime().getCalendar(date);
         int compareMonth = compareCalendar.get(Calendar.MONTH) + 1;
 
         Calendar todayCalendar = Calendar.getInstance(Locale.getDefault());
@@ -720,13 +566,54 @@ public class DateTools {
     }
 
 
+
+    public String InstantToTimeToString(String Instant) {
+
+        Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        calendar.setTimeInMillis(Long.parseLong(Instant));
+        String instante = DateFormat.format("MMM dd - HH:mm", calendar).toString();
+
+        return new MyStrings().firstLetterUpperCase(instante);
+    }
+
+    public String intsToStringDate(int day, int month, int year) {
+
+        String Day = completeDigitsDate(day);
+        String Month = completeDigitsDate(month + 1);
+        String Year = convertTwoDigitsYear(year);
+
+        return Day + "-" + Month + "-" + Year;
+    }
+
+
+
+    public String selectedDateToTag(@NonNull Calendar date) {
+
+        String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
+        String month = completeDigitsDate(date.get(Calendar.MONTH) + 1);
+        String year = convertTwoDigitsYear(date.get(Calendar.YEAR));
+
+        return day + "-" + month + "-" + year;
+    }
+
+    public String selectedDateToView(Calendar date) {
+
+        String dayOfWeek = new MyStrings().firstLetterUpperCase(String.valueOf(new MyTime().getDayOfWeek(date)));
+        String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
+        String textMonth = convertToTextMonth(date.get(Calendar.MONTH));
+
+        return dayOfWeek + " " + day + " de " + textMonth;
+    }
+
+
+
     /**
      * -------- Request Section
      */
 
     public boolean requestAuthByDate(long otherTime, long rankHours) {
 
-        long thisTime = getMillisLong();
+        long thisTime = new MyTime().getMillis();
         long rankTime = otherTime + rankHours * 60 * 60 * 1000;
 
         if (rankTime >= thisTime) {
@@ -787,7 +674,6 @@ public class DateTools {
         return calendar.getTimeInMillis();
     }
 
-
     public int getNumberOfMonths(long Time) {
 
         long thisMoment = timeInThisMidNight();
@@ -809,97 +695,11 @@ public class DateTools {
      * -------- Tools Section
      */
 
-    public Calendar stringTimeToCalendar(@NonNull String Time) {
-
-        Calendar Return = Calendar.getInstance(Locale.getDefault());
-
-        if (!Time.equals("")) {
-
-            Calendar calendar = Calendar.getInstance(Locale.getDefault());
-            String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
-            String month = String.valueOf(calendar.get(Calendar.MONTH));
-            String year = String.valueOf(calendar.get(Calendar.YEAR));
-
-            try {
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
-                calendar.setTime(Objects.requireNonNull(dateFormat.parse(day + "-" + month + "-" + year + " " + Time)));
-
-                Return = calendar;
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return Return;
-    }
-
-    public Calendar readStringDate(@NonNull final String Date) {
-
-        Calendar Return = Calendar.getInstance(Locale.getDefault());
-
-        if (!Date.equals("")) {
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy", Locale.getDefault());
-
-            try {
-
-                Calendar calendar = Calendar.getInstance();
-                java.util.Date date = dateFormat.parse(Date);
-
-                if (date != null) {
-
-                    calendar.setTime(date);
-                }
-
-                Return = calendar;
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return Return;
-    }
-
-    public Calendar readStringTime(@NonNull final String Date) {
-
-        Calendar Return = Calendar.getInstance(Locale.getDefault());
-
-        if (!Date.equals("")) {
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm", Locale.getDefault());
-
-            try {
-
-                Calendar calendar = Calendar.getInstance();
-                java.util.Date date = dateFormat.parse(Date);
-
-                if (date != null) {
-
-                    calendar.setTime(date);
-                }
-
-                Return = calendar;
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return Return;
-    }
-
     public String convertTwoDigitsYear(int Year) {
 
         String year = String.valueOf(Year);
 
-        new LogCat("Year", Year, "year", year);
-
         if (year.length() == 4) {
-
-            new LogCat("year", year.substring(2, 4));
 
             return year.substring(2, 4);
 
@@ -978,17 +778,6 @@ public class DateTools {
 
         return textMonth;
     }
-
-    public String dayOfWeek(@NonNull Calendar calendar) {
-
-        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-    }
-
-
-    /**
-     * -------- Tools Section
-     */
-
 
     public String setHoursUnits(int hours) {
 

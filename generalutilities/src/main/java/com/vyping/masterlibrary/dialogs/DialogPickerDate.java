@@ -1,7 +1,5 @@
 package com.vyping.masterlibrary.dialogs;
 
-import static com.vyping.masterlibrary.Models.DialogParams.MODE;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -11,7 +9,8 @@ import android.widget.DatePicker;
 import androidx.annotation.NonNull;
 
 import com.airbnb.paris.Paris;
-import com.vyping.masterlibrary.Common.DateTools;
+import com.vyping.masterlibrary.time.MyTime;
+import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.Common.Definitions;
 import com.vyping.masterlibrary.R;
 
@@ -249,7 +248,7 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         if (!date.equals("")) {
 
-            calendar = new DateTools().readStringDate(date);
+            calendar = new MyTime().getCalendar(date);
         }
 
         prevDay = day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -320,15 +319,14 @@ public abstract class DialogPickerDate extends CreateDialog {
 
     private void setPickerDate() {
 
-        String day = new DateTools().completeDigitsDate(Dp_Picker.getDayOfMonth());
-        String month = new DateTools().completeDigitsDate(Dp_Picker.getMonth() + 1);
-        String year = new DateTools().convertTwoDigitsYear(Dp_Picker.getYear());
-        String date = day + "-" + month + "-" + year;
+        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
+        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
+        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
 
-        Calendar calendar = new DateTools().readStringDate(date);
+        Calendar calendar = new MyTime().getCalendar(day, month, year);
         long milis = calendar.getTimeInMillis();
 
-        SetDate(calendar, milis, date, day, month, year);
+        SetDate(calendar, milis, day, month, year);
     }
 
 
@@ -407,15 +405,14 @@ public abstract class DialogPickerDate extends CreateDialog {
                     @Override
                     public boolean ClickButton() {
 
-                        String day = new DateTools().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new DateTools().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new DateTools().convertTwoDigitsYear(Dp_Picker.getYear());
-                        String date = day + "-" + month + "-" + year;
+                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
+                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
+                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
 
-                        Calendar calendar = new DateTools().readStringDate(date);
+                        Calendar calendar = new MyTime().getCalendar(day, month, year);
                         long milis = calendar.getTimeInMillis();
 
-                        return SetDate(calendar, milis, date, day, month, year);
+                        return SetDate(calendar, milis, day, month, year);
                     }
 
                     private void DummyVoid() {
@@ -440,15 +437,14 @@ public abstract class DialogPickerDate extends CreateDialog {
                     @Override
                     public boolean ClickButton() {
 
-                        String day = new DateTools().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new DateTools().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new DateTools().convertTwoDigitsYear(Dp_Picker.getYear());
-                        String date = day + "-" + month + "-" + year;
+                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
+                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
+                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
 
-                        Calendar calendar = new DateTools().readStringDate(date);
+                        Calendar calendar = new MyTime().getCalendar(day, month, year);
                         long milis = calendar.getTimeInMillis();
 
-                        return SetDate(calendar, milis, date, day, month, year);
+                        return SetDate(calendar, milis, day, month, year);
                     }
 
                     private void DummyVoid() {
@@ -473,15 +469,14 @@ public abstract class DialogPickerDate extends CreateDialog {
                     @Override
                     public boolean ClickButton() {
 
-                        String day = new DateTools().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new DateTools().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new DateTools().convertTwoDigitsYear(Dp_Picker.getYear());
-                        String date = day + "-" + month + "-" + year;
+                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
+                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
+                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
 
-                        Calendar calendar = new DateTools().readStringDate(date);
+                        Calendar calendar = new MyTime().getCalendar(day, month, year);
                         long milis = calendar.getTimeInMillis();
 
-                        return SetDate(calendar, milis, date, day, month, year);
+                        return SetDate(calendar, milis, day, month, year);
                     }
 
                     private void DummyVoid() {
@@ -506,15 +501,14 @@ public abstract class DialogPickerDate extends CreateDialog {
                     @Override
                     public boolean ClickButton() {
 
-                        String day = new DateTools().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new DateTools().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new DateTools().convertTwoDigitsYear(Dp_Picker.getYear());
-                        String date = day + "-" + month + "-" + year;
+                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
+                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
+                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
 
-                        Calendar calendar = new DateTools().readStringDate(date);
+                        Calendar calendar = new MyTime().getCalendar(day, month, year);
                         long milis = calendar.getTimeInMillis();
 
-                        return SetDate(calendar, milis, date, day, month, year);
+                        return SetDate(calendar, milis, day, month, year);
                     }
 
                     private void DummyVoid() {
@@ -527,5 +521,5 @@ public abstract class DialogPickerDate extends CreateDialog {
 
     /*----------- Return - Section ----------*/
 
-    protected abstract boolean SetDate(Calendar calendar, long milis, String date, String day, String month, String year);
+    protected abstract boolean SetDate(Calendar calendar, long milis, String day, String month, String year);
 }
