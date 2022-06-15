@@ -75,8 +75,8 @@ public abstract class MyToolBars {
     public void setDateToolBar(DateInterface DateInterface) {
 
         dateInterface = DateInterface;
-        calendar = Calendar.getInstance(Locale.getDefault());
-        String label = new MyTimeTools().selectedDateToView(calendar);
+        calendar = new MyTime().getCalendar();
+        String label = new MyTime().getTime("EEEEEEE dd 'de' MMM", calendar);
 
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
@@ -114,7 +114,7 @@ public abstract class MyToolBars {
     public void setMonthToolBar(MonthInterface MonthInterface) {
 
         monthInterface = MonthInterface;
-        calendar = Calendar.getInstance(Locale.getDefault());
+        calendar = new MyTime().getCalendar();
         String label = new MyTime().getMonthName(calendar);
 
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);

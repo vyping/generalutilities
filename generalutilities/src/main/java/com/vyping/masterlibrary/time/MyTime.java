@@ -3,6 +3,7 @@ package com.vyping.masterlibrary.time;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
+import android.content.Context;
 import android.os.Build;
 import android.text.format.DateFormat;
 
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyNumbers;
 import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Images.MyDrawable;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -97,7 +99,9 @@ public class MyTime extends MyTimeTools {
 
 
     /*----- Time - Methods -----*/
-
+    /**
+     * Examples: "dd-MM-yyyy HH:mm", "dd 'de' MMM 'a las' HH:mm" , etc...
+     */
     public String getTime(@NonNull String Format) {
 
         Calendar calendar = getCalendar();

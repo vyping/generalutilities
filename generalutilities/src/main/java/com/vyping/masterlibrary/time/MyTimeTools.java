@@ -598,9 +598,9 @@ public class MyTimeTools {
 
     public String selectedDateToView(Calendar date) {
 
-        String dayOfWeek = new MyStrings().firstLetterUpperCase(String.valueOf(new MyTime().getDayOfWeek(date)));
+        String dayOfWeek = new MyTime().getDayName(date);
         String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
-        String textMonth = convertToTextMonth(date.get(Calendar.MONTH));
+        String textMonth = new MyTime().getMonthName(date);
 
         return dayOfWeek + " " + day + " de " + textMonth;
     }
