@@ -586,27 +586,6 @@ public class MyTimeTools {
     }
 
 
-
-    public String selectedDateToTag(@NonNull Calendar date) {
-
-        String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
-        String month = completeDigitsDate(date.get(Calendar.MONTH) + 1);
-        String year = convertTwoDigitsYear(date.get(Calendar.YEAR));
-
-        return day + "-" + month + "-" + year;
-    }
-
-    public String selectedDateToView(Calendar date) {
-
-        String dayOfWeek = new MyTime().getDayName(date);
-        String day = completeDigitsDate(date.get(Calendar.DAY_OF_MONTH));
-        String textMonth = new MyTime().getMonthName(date);
-
-        return dayOfWeek + " " + day + " de " + textMonth;
-    }
-
-
-
     /**
      * -------- Request Section
      */

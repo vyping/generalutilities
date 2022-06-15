@@ -4,6 +4,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.vyping.masterlibrary.Common.Definitions.DATEPICKER_CALENDAR;
 import static com.vyping.masterlibrary.dialogs.CreateDialog.DIALOG_NORMAL;
+import static com.vyping.masterlibrary.time.MyTime.FORMAT_DATE_16;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -25,9 +26,9 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.vyping.masterlibrary.Common.MyStrings;
 import com.vyping.masterlibrary.time.MyTime;
 import com.vyping.masterlibrary.time.MyTimeTools;
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.dialogs.DialogPickerDate;
@@ -76,8 +77,8 @@ public abstract class MyToolBars {
 
         dateInterface = DateInterface;
         calendar = new MyTime().getCalendar();
-        String label = new MyTime().getTime("EEEEEEE dd 'de' MMM", calendar);
-
+        String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
+        label = new MyStrings().firstLetterUpperCase(label);
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
         Btn_SetDate = inflated.findViewById(R.id.Btn_DyS_calDate);
@@ -257,7 +258,8 @@ public abstract class MyToolBars {
     public void setDate() {
 
         long milis = calendar.getTimeInMillis();
-        String label = new MyTime().selectedDateToView(calendar);
+        String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
+        label = new MyStrings().firstLetterUpperCase(label);
         String day = new MyTime().completeDigitsDate(calendar.get(Calendar.DAY_OF_MONTH));
         String month = new MyTime().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
         String year = new MyTime().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
@@ -278,7 +280,8 @@ public abstract class MyToolBars {
         calendar.set(Year, Month, Day);
 
         long milis = calendar.getTimeInMillis();
-        String label = new MyTimeTools().selectedDateToView(calendar);
+        String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
+        label = new MyStrings().firstLetterUpperCase(label);
 
         Btn_SetDate.setText(label);
 
@@ -323,7 +326,8 @@ public abstract class MyToolBars {
 
                 calendar = Calendar;
 
-                String label = new MyTimeTools().selectedDateToView(calendar);
+                String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
+                label = new MyStrings().firstLetterUpperCase(label);
 
                 Btn_SetDate.setText(label);
                 dateInterface.SelectedDate(Calendar, milis, day, month, year);
