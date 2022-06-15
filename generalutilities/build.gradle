@@ -127,7 +127,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.vyping'
                 artifactId = 'generalutilities'
-                version = 'v1.0.17'
+                version = 'v1.0.18'
             }
         }
     }

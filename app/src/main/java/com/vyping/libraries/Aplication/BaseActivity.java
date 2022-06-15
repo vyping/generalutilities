@@ -98,9 +98,6 @@ public class BaseActivity extends AppCompatActivity {
         setActivityViews();
     }
 
-
-    /*----- Methods -----*/
-
     public void setStartProcess(Activity activity, int layout) {
 
         context = new MyActivity().setTheme(activity);
@@ -148,7 +145,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setActionBar(int icon, int module) {
 
-        actionBar = new MyActionBar(context, APP_NAME, icon, module, new MyApp().getVersion(context)) {};
+        actionBar = new MyActionBar(context, icon, module) {};
 
         callback.setActionBar();
     }

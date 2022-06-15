@@ -48,7 +48,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.StartCall
         });
     }
 
-
     @Override
     public void setStartBindingProcess(ViewDataBinding binding) {
 

@@ -7,7 +7,6 @@ import static java.lang.Boolean.TRUE;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.GestureDetector;
@@ -22,6 +21,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.vyping.masterlibrary.Common.MyApp;
 import com.vyping.masterlibrary.Common.MyStrings;
 import com.vyping.masterlibrary.Images.MyDrawable;
 import com.vyping.masterlibrary.R;
@@ -37,14 +37,15 @@ public abstract class MyActionBar {
     private TouchInterface interfase;
 
     private View viewActionBar;
-    private ImageButton Btn_actbarMenu, Btn_actbarTools;
+    private ImageButton Btn_actbarMenu;
 
     private boolean menuVisible;
     private static ArrayList<String> filters;
 
+
     //----- Setup - Section-----//
 
-    public MyActionBar(Context Context, int title, int icon, int subtitle, String version) {
+    public MyActionBar(Context Context, int icon, int subtitle) {
 
         context = Context;
 
@@ -62,13 +63,12 @@ public abstract class MyActionBar {
             parent.setPadding(0, 0, 0, 0);
             parent.setContentInsetsAbsolute(0, 0);
 
-            setTitle(title, icon);
+            SetActionBarViews(icon);
             setSubtitle(subtitle);
-            setVersion(version);
         }
     }
 
-    public MyActionBar(Context Context, String title, int icon, String subtitle, String version) {
+    public MyActionBar(Context Context, Drawable icon, int subtitle) {
 
         context = Context;
 
@@ -86,10 +86,78 @@ public abstract class MyActionBar {
             parent.setPadding(0, 0, 0, 0);
             parent.setContentInsetsAbsolute(0, 0);
 
-            setTitle(title, icon);
+            SetActionBarViews(icon);
             setSubtitle(subtitle);
-            setVersion(version);
         }
+    }
+
+    public MyActionBar(Context Context, int icon, String subtitle) {
+
+        context = Context;
+
+        ActionBar actionBar = ((AppCompatActivity) context).getSupportActionBar();
+
+        if (actionBar != null) {
+
+            actionBar.setDisplayOptions(DISPLAY_SHOW_CUSTOM);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setCustomView(R.layout.myactionbar);
+
+            viewActionBar = actionBar.getCustomView();
+
+            Toolbar parent = (Toolbar) viewActionBar.getParent();
+            parent.setPadding(0, 0, 0, 0);
+            parent.setContentInsetsAbsolute(0, 0);
+
+            SetActionBarViews(icon);
+            setSubtitle(subtitle);
+        }
+    }
+
+    public MyActionBar(Context Context, Drawable icon, String subtitle) {
+
+        context = Context;
+
+        ActionBar actionBar = ((AppCompatActivity) context).getSupportActionBar();
+
+        if (actionBar != null) {
+
+            actionBar.setDisplayOptions(DISPLAY_SHOW_CUSTOM);
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setCustomView(R.layout.myactionbar);
+
+            viewActionBar = actionBar.getCustomView();
+
+            Toolbar parent = (Toolbar) viewActionBar.getParent();
+            parent.setPadding(0, 0, 0, 0);
+            parent.setContentInsetsAbsolute(0, 0);
+
+            SetActionBarViews(icon);
+            setSubtitle(subtitle);
+        }
+    }
+
+    public void SetActionBarViews(Drawable icon) {
+
+        String title = new MyApp().getName(context);
+        TextView Tv_actbarTitle = viewActionBar.findViewById(R.id.Tv_Acb_Titulo);
+        Tv_actbarTitle.setText(title);
+
+        Btn_actbarMenu = viewActionBar.findViewById(R.id.Btn_Acb_Menu);
+        Btn_actbarMenu.setImageDrawable(icon);
+        Btn_actbarMenu.setVisibility(VISIBLE);
+        Btn_actbarMenu.setOnClickListener(view -> slideBars());
+
+        String version = new MyApp().getVersion(context);
+        TextView Tv_actbarVersion = viewActionBar.findViewById(R.id.Tv_Version);
+        Tv_actbarVersion.setText(version);
+    }
+
+    public void SetActionBarViews(int icon) {
+
+        Drawable drawableIcon = new MyDrawable().extractFromResources(context, icon);
+
+        SetActionBarViews(drawableIcon);
     }
 
 
@@ -100,46 +168,11 @@ public abstract class MyActionBar {
         return viewActionBar;
     }
 
-    public void setTitle(int title, int icon) {
-
-        String Title = new MyStrings().getStringResources(context, title);
-        Drawable image = new MyDrawable().extractFromResources(context, icon);
-
-        TextView Tv_actbarTitle = viewActionBar.findViewById(R.id.Tv_Acb_Titulo);
-        Tv_actbarTitle.setText(Title);
-
-        Btn_actbarMenu = viewActionBar.findViewById(R.id.Btn_Acb_Menu);
-        Btn_actbarMenu.setImageDrawable(image);
-        Btn_actbarMenu.setVisibility(VISIBLE);
-        Btn_actbarMenu.setOnClickListener(view -> slideBars());
-    }
-
-    public void setTitle(String title, int icon) {
-
-        Drawable image = new MyDrawable().extractFromResources(context, icon);
-
-        TextView Tv_actbarTitle = viewActionBar.findViewById(R.id.Tv_Acb_Titulo);
-        Tv_actbarTitle.setText(title);
-
-        Btn_actbarMenu = viewActionBar.findViewById(R.id.Btn_Acb_Menu);
-        Btn_actbarMenu.setImageDrawable(image);
-        Btn_actbarMenu.setVisibility(VISIBLE);
-        Btn_actbarMenu.setOnClickListener(view -> slideBars());
-    }
-
-    public void setTitleFont(Context context, int font) {
-
-        Typeface typeface = new MyStrings().getFontInResources(context, font);
-        TextView Tv_actbarTitle = viewActionBar.findViewById(R.id.Tv_Acb_Titulo);
-        Tv_actbarTitle.setTypeface(typeface);
-    }
-
     public void setSubtitle(int subtitle) {
 
         String Subtitle = new MyStrings().getStringResources(context, subtitle);
 
-        TextView Tv_actbarSubtitle = viewActionBar.findViewById(R.id.Tv_Acb_Subtitulo);
-        Tv_actbarSubtitle.setText(Subtitle);
+        setSubtitle(Subtitle);
     }
 
     public void setSubtitle(String subtitle) {
@@ -148,21 +181,15 @@ public abstract class MyActionBar {
         Tv_actbarSubtitle.setText(subtitle);
     }
 
-    private void setVersion(String version) {
-
-        TextView Tv_actbarVersion = viewActionBar.findViewById(R.id.Tv_Version);
-        Tv_actbarVersion.setText(version);
-    }
-
     public void showButtonTools() {
 
         int color = R.color.colorBlanco;
         Drawable image = new MyDrawable().changeDrawableColor(context, R.drawable.icon_tools, color);
 
-        Btn_actbarTools = viewActionBar.findViewById(R.id.Btn_Acb_Tools);
-        Btn_actbarTools.setImageDrawable(image);
-        Btn_actbarTools.setVisibility(VISIBLE);
-        Btn_actbarTools.setOnClickListener(new View.OnClickListener() {
+        ImageButton btn_actbarTools = viewActionBar.findViewById(R.id.Btn_Acb_Tools);
+        btn_actbarTools.setImageDrawable(image);
+        btn_actbarTools.setVisibility(VISIBLE);
+        btn_actbarTools.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
