@@ -12,6 +12,8 @@ android {
 
         minSdk 21
         targetSdk 31
+        versionCode 1
+        versionName 'Beta 1.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -127,7 +129,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.vyping'
                 artifactId = 'generalutilities'
-                version = 'v1.0.19'
+                version = 'v1.0.20'
             }
         }
     }

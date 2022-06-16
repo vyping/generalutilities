@@ -3,6 +3,7 @@ package com.vyping.libraries.activity;
 import static com.vyping.libraries.utilities.definitions.Modules.MODULE_ICON_MAIN;
 import static com.vyping.libraries.utilities.definitions.Modules.MODULE_NAME_MAIN;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import com.vyping.masterlibrary.aplication.BaseActivity;
 import com.vyping.libraries.R;
 import com.vyping.libraries.databinding.MainActivityBinding;
 import com.vyping.masterlibrary.Common.LogCat;
+import com.vyping.masterlibrary.time.MyTime;
+import com.vyping.masterlibrary.time.MyTimeTools;
 
 import java.util.Calendar;
 
@@ -37,17 +40,27 @@ public class MainActivity extends BaseActivity implements BaseActivity.StartCall
 
             private void DummyVoid() {}
         });
+
+        methodTest();
     }
 
     @Override
-    public void setStartBindingProcess(ViewDataBinding binding) {
+    public void SetStartBindingProcess(ViewDataBinding binding) {
 
         this.binding = (MainActivityBinding) binding;
     }
 
     @Override
-    public void setActionBar() {}
+    public void SetActionBar() {}
 
     @Override
-    public void setActivityViews() {}
+    public boolean SetActivityViews() {
+
+        return true;
+    }
+
+
+    // ----- Methods ----- //
+
+    private void methodTest() {}
 }

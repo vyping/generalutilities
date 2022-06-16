@@ -23,6 +23,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public MyApplication application;
     public Context context;
+    public ViewDataBinding binding;
     public StartCallBack callback;
 
     public MyActionBar actionBar;
@@ -98,7 +99,7 @@ public class BaseActivity extends AppCompatActivity {
 
         context = new MyActivity().setTheme(activity);
         callback = (StartCallBack) activity;
-        callback.setStartProcess();
+        callback.SetStartProcess();
 
         setContentView(layout);
     }
@@ -107,7 +108,7 @@ public class BaseActivity extends AppCompatActivity {
 
         context = activity;
         callback = (StartCallBack) activity;
-        callback.setStartProcess();
+        callback.SetStartProcess();
 
         this.backActivity = backActivity;
 
@@ -119,11 +120,11 @@ public class BaseActivity extends AppCompatActivity {
         context = new MyActivity().setTheme(activity);
         callback = (StartCallBack) activity;
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
+        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
         View view = binding.getRoot();
         setContentView(view);
 
-        callback.setStartBindingProcess(binding);
+        callback.SetStartBindingProcess(binding);
     }
 
     public void setStartBindingProcess(Activity activity, int layout, Class<Activity> backActivity) {
@@ -132,18 +133,18 @@ public class BaseActivity extends AppCompatActivity {
         callback = (StartCallBack) activity;
         this.backActivity = backActivity;
 
-        ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
+        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
         View view = binding.getRoot();
         setContentView(view);
 
-        callback.setStartBindingProcess(binding);
+        callback.SetStartBindingProcess(binding);
     }
 
     public void setActionBar(int icon, int module) {
 
         actionBar = new MyActionBar(context, icon, module) {};
 
-        callback.setActionBar();
+        callback.SetActionBar();
     }
 
     public void setSearchBar(int container, ToolBarsInterfase interfase) {
@@ -265,7 +266,12 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setActivityViews() {
 
-        callback.setActivityViews();
+        boolean executePendings = callback.SetActivityViews();
+
+        if (executePendings) {
+
+            binding.executePendingBindings();
+        }
     }
 
 
@@ -300,10 +306,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public interface StartCallBack {
 
-        default void setStartProcess() {};
-        default void setStartBindingProcess(ViewDataBinding binding) {};
-        default void setActionBar() {};
-        void setActivityViews();
+        default void SetStartProcess() {};
+        default void SetStartBindingProcess(ViewDataBinding binding) {};
+        default void SetActionBar() {};
+        boolean SetActivityViews();
     }
 
     public interface ToolBarsInterfase {

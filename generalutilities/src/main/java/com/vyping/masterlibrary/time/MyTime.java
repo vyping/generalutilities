@@ -625,6 +625,8 @@ public class MyTime extends MyTimeTools {
 
     public int getMonth(@NonNull Calendar calendar) {
 
+        calendar.add(Calendar.MONTH, 1);
+
         return calendar.get(Calendar.MONTH);
     }
 
@@ -672,7 +674,7 @@ public class MyTime extends MyTimeTools {
 
     public String getMonthOnString(@NonNull Calendar calendar) {
 
-        int month = calendar.get(Calendar.MONTH);
+        int month = getMonth(calendar);
 
         return completeDigitsDate(month);
     }
