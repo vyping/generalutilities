@@ -286,7 +286,7 @@ public class BaseActivity extends AppCompatActivity {
     public void setFirebaseService(String instance, String child, MyRealtime.SingleListener listener) {
 
         myRealtime = new MyRealtime(instance, child);
-        myRealtime.getSingleValue(child, listener);
+        myRealtime.getSingleValue(listener);
     }
 
     public void setFirebaseService(String instance, MyRealtime.ValueListener valueListener) {
