@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyStrings;
 import com.vyping.masterlibrary.time.MyTime;
 import com.vyping.masterlibrary.time.MyTimeTools;
@@ -89,9 +90,7 @@ public abstract class MyToolBars {
 
         Btn_BckDate.setOnClickListener(v -> {
 
-            calendar = new MyTime().addDays(calendar, -1);
-
-            setDate();
+            setDate(-1);
         });
         Btn_SetDate.setOnClickListener(new View.OnClickListener() {
 
@@ -106,9 +105,7 @@ public abstract class MyToolBars {
         });
         Btn_FwdDate.setOnClickListener(v -> {
 
-            calendar = new MyTime().addDays(calendar, 1);
-
-            setDate();
+            setDate(1);
         });
     }
 
@@ -255,21 +252,27 @@ public abstract class MyToolBars {
         }
     }
 
-    public void setDate() {
+    public void setDate(int day) {
 
-        long milis = new MyTime().getMillis(calendar);
-        String day = new MyTime().getDayOfMonthOnString(calendar);
-        String month = new MyTime().getMonthOnString(calendar);
-        String year = new MyTime().getYearOnString(calendar);
-        String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
-        label = new MyStrings().firstLetterUpperCase(label);
+        new MyTime().addDays(calendar, day, new MyTimeTools.AddDayInterface() {
 
-        Btn_SetDate.setText(label);
+            @Override
+            public void AddDay(Calendar Calendar2, long millis, String day, String month, String year) {
 
-        if (dateInterface != null) {
+                calendar = Calendar2;
+                String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
 
-            dateInterface.SelectedDate(calendar, milis, day, month, year);
-        }
+                Btn_SetDate.setText(label);
+
+                if (dateInterface != null) {
+
+                    dateInterface.SelectedDate(calendar, millis, day, month, year);
+                }
+            }
+
+            @Override
+            public void Error(String error) {}
+        });
     }
 
     public void setDate(String day, String month, String year) {

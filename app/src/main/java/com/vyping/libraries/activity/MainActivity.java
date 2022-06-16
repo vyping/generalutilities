@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity implements BaseActivity.StartCall
             @Override
             public void setDate(Calendar calendar, long milis, String day, String month, String year) {
 
-                new LogCat("day", day, "month", month, "year", year);
+                new LogCat("MainActivity - day", day, "month", month, "year", year);
             }
 
             private void DummyVoid() {}
