@@ -102,6 +102,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0' //PopulateImageView From Url
     implementation 'com.github.smarteist:autoimageslider:1.3.9' // ImageSlider
+    implementation 'com.github.barteksc:AndroidPdfViewer:master-SNAPSHOT' // PdfViewer
 
     implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'  //Patternlock
     implementation 'com.andrognito.patternlockview:patternlockview-reactive:1.0.0'  //Patternlock
@@ -111,7 +112,6 @@ dependencies {
     implementation 'com.airbnb.android:paris:2.0.0' // ApplyStyles
     implementation 'io.github.pilgr:paperdb:2.7.1' //PaperDB - Save Paternlock
     implementation 'me.relex:circleindicator:2.1.6'  // ViewPagerCircleIndicator
-    implementation 'com.github.barteksc:AndroidPdfViewer:master-SNAPSHOT' // PdfViewer
 
     //implementation 'ru.egslava:MaskedEditText:1.0.5' // Masked EditTex
 
@@ -129,7 +129,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.vyping'
                 artifactId = 'generalutilities'
-                version = 'v1.0.24'
+                version = 'v1.0.25'
             }
         }
     }
