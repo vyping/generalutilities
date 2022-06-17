@@ -1,5 +1,7 @@
 package com.vyping.masterlibrary.views.recyclerview.adapter;
 
+import static java.lang.Boolean.TRUE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.GestureDetector;
@@ -22,6 +24,7 @@ import com.vyping.masterlibrary.GestureListeners.MyItemTouchListener;
 import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener, MyItemTouchListener.SelectInterface{
@@ -30,7 +33,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     private ViewDataBinding binding;
 
     private final WeakReferenceOnListChangedCallback<T>  onListChangedCallback;
-    private final ItemBinder<T> itemBinder;
+    private ItemBinder<T> itemBinder;
 
     private ClickHandler<T> clickHandler;
     private LongClickHandler<T> longClickHandler;
@@ -38,6 +41,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
     private ObservableList<T> items;
     private static final int ITEM_MODEL = -124;
+    private boolean touchable;
 
 
     // ----- SetUp ----- //
@@ -45,6 +49,16 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items) {
 
         this.itemBinder = itemBinder;
+        this.touchable = TRUE;
+        this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
+
+        setItems(items);
+    }
+
+    public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items, boolean touchable) {
+
+        this.itemBinder = itemBinder;
+        this.touchable = touchable;
         this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
 
         setItems(items);
@@ -55,18 +69,22 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         super.onAttachedToRecyclerView(recyclerView);
 
-        recyclerView.addOnItemTouchListener(new MyItemTouchListener(recyclerView.getContext(), this));
+        if (touchable) {
+
+            recyclerView.addOnItemTouchListener(new MyItemTouchListener(recyclerView.getContext(), this));
+        }
     }
 
     @Override @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int layoutId) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
-        if (inflater == null) {
+        //if (inflater == null) {
 
-            inflater = LayoutInflater.from(viewGroup.getContext());
-        }
+            //inflater = LayoutInflater.from(viewGroup.getContext());
+        //}
 
-        binding = DataBindingUtil.inflate(inflater, layoutId, viewGroup, false);
+        inflater = LayoutInflater.from(viewGroup.getContext());
+        binding = DataBindingUtil.inflate(inflater, viewType, viewGroup, false);
 
         return new ViewHolder(binding);
     }
@@ -118,6 +136,10 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
 
     // ----- Methods ----- //
+
+
+    public void setLayouts(@Nullable Collection<T> items) { }
+
 
     public ObservableList<T> getItems() {
 

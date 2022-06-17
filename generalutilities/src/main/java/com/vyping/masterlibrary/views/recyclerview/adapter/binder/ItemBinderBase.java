@@ -1,12 +1,12 @@
 package com.vyping.masterlibrary.views.recyclerview.adapter.binder;
 
-public class ItemBinderBase<T> implements ItemBinder<T>
-{
+public class ItemBinderBase<T> implements ItemBinder<T> {
+
     protected final int bindingVariable;
     protected final int layoutId;
 
-    public ItemBinderBase(int bindingVariable, int layoutId)
-    {
+    public ItemBinderBase(int bindingVariable, int layoutId) {
+
         this.bindingVariable = bindingVariable;
         this.layoutId = layoutId;
     }

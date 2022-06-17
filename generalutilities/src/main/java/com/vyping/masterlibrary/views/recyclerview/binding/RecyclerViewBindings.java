@@ -10,6 +10,7 @@ import com.vyping.masterlibrary.views.recyclerview.adapter.LongClickHandler;
 import com.vyping.masterlibrary.views.recyclerview.adapter.TouchHandler;
 import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class RecyclerViewBindings {
@@ -90,6 +91,21 @@ public class RecyclerViewBindings {
         Collection<T> items = (Collection<T>) recyclerView.getTag(KEY_ITEMS);
         ClickHandler<T> clickHandler = (ClickHandler<T>) recyclerView.getTag(KEY_CLICK_HANDLER);
         BindingRecyclerViewAdapter<T> adapter = new BindingRecyclerViewAdapter<>(itemViewMapper, items);
+
+        if(clickHandler != null) {
+
+            adapter.setClickHandler(clickHandler);
+        }
+
+        recyclerView.setAdapter(adapter);
+    }
+
+    @BindingAdapter(value={"itemViewBinder", "touchable"},  requireAll=true)
+    public static <T> void setItemViewBinder(@NonNull RecyclerView recyclerView, ItemBinder<T> itemViewMapper, boolean touchable) {
+
+        Collection<T> items = (Collection<T>) recyclerView.getTag(KEY_ITEMS);
+        ClickHandler<T> clickHandler = (ClickHandler<T>) recyclerView.getTag(KEY_CLICK_HANDLER);
+        BindingRecyclerViewAdapter<T> adapter = new BindingRecyclerViewAdapter<>(itemViewMapper, items, touchable);
 
         if(clickHandler != null) {
 

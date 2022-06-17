@@ -9,7 +9,7 @@ public abstract class ConditionalDataBinder<T> extends ItemBinderBase<T> {
 
     public abstract boolean canHandle(T model);
 
-    public  boolean canHandle(int layoutId) {
+    public boolean canHandle(int layoutId) {
 
         return this.layoutId == layoutId;
     }
