@@ -29,6 +29,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".shop.ShopActivity" android:exported="true"/>
+
     </application>
 
 </manifest>

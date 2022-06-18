@@ -76,4 +76,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
     implementation 'com.airbnb.android:paris:2.0.0' // ApplyStyles
+    implementation 'com.github.bumptech.glide:glide:4.11.0' //PopulateImageView From Url
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.ms-square:expandableTextView:0.1.4'  // Expand TextView
 }

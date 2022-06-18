@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/background_discount.xml" value="0.2045" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/buton_negative.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/buton_negative.xml.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_action_enter.xml" value="0.3927083333333333" />
@@ -13,6 +14,8 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/button_neutral.xml.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/icon_image.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/icon_shopping_basket.xml" value="0.1735" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/icon_shoppingcart.xml" value="0.297" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/shape_pink_circle.xml" value="0.37962962962962965" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/shape_purple_circle.xml" value="0.37592592592592594" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_enter.xml" value="0.2833333333333333" />
@@ -22,6 +25,7 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_new.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_outside.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable-v24/vehicles_shape_type.xml" value="0.3927083333333333" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/background_discount.xml" value="0.2695" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/background_sweep_rotations.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/button_positive.xml.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/drawable/calendar_shape_day.xml" value="0.2955" />
@@ -77,12 +81,15 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/layout_selected_exercise_item.xml" value="0.30842391304347827" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/main_vehicles.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/menu_activity.xml" value="0.33" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/shop_activity.xml" value="0.36277173913043476" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/sppiner_layout.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_activity.xml" value="0.3222591362126246" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_inside.xml" value="0.67" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_inside.xml.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_outside.xml" value="0.75" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/actbar_button_tools.xml" value="0.343" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/background_window.xml" value="0.377" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/button_text.xml" value="0.343" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/dialog_background_window.xml" value="0.377" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/icon_history.xml" value="0.377" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/icon_info.xml" value="0.242" />
@@ -103,6 +110,7 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/popup_bubbles.xml" value="0.3625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/popup_config.xml" value="0.3625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/popup_custom.xml" value="0.3625" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/shop_activity.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/toolbars_datesearch.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/view_dialog.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/res/drawable/actbar_button_main.xml" value="0.18888888888888888" />
