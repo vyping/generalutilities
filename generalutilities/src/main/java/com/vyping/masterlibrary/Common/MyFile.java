@@ -38,8 +38,7 @@ public class MyFile {
     @StringDef({TYPE_JPG, TYPE_PNG, TYPE_BMP, TYPE_ICO, TYPE_PDF, TYPE_GIF, TYPE_PDF})
     public @interface Type {}
 
-
-    public String setName(String name, @Type String type) {
+    public String setName(String name) {
 
         if (name != null) {
 
@@ -50,7 +49,22 @@ public class MyFile {
 
         } else {
 
-            return "" + type;
+            return "";
+        }
+    }
+
+    public String setName(String name, @Type String type) {
+
+        if (name != null) {
+
+            String trimed = name.trim();
+            String whithOutSpace = new MyString().replaceSpaceByUnderScore(trimed);
+
+            return new MyString().removeAccentMark(whithOutSpace) + type;
+
+        } else {
+
+            return "";
         }
     }
 

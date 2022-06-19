@@ -24,12 +24,11 @@ public class MyAsset {
         return context.getResources().getAssets();
     }
 
-    public boolean exists(@NonNull Context context, String asset, @MyFile.Type String type) {
+    public boolean exists(@NonNull Context context, String asset) {
 
         boolean exist = FALSE;
 
-        String file = asset + type;
-        InputStream inputStream = open(context, asset, type);
+        InputStream inputStream = open(context, asset);
 
         if (null != inputStream) {
 
@@ -39,19 +38,32 @@ public class MyAsset {
         return exist;
     }
 
-    public InputStream open(@NonNull Context context, String asset, @MyFile.Type String type) {
+    public boolean exists(@NonNull Context context, String asset, @MyFile.Type String type) {
+
+        String file = asset + type;
+
+        return exists(context, file);
+    }
+
+    public InputStream open(@NonNull Context context, String asset) {
 
         AssetManager assetManager = getAssetManager(context);
         InputStream inputStream = null;
 
         try {
 
-            String assetName = asset + type;
-            inputStream = assetManager.open(assetName);
+            inputStream = assetManager.open(asset);
 
         } catch (IOException ignored) {}
 
         return inputStream;
+    }
+
+    public InputStream open(@NonNull Context context, String asset, @MyFile.Type String type) {
+
+        String assetName = asset + type;
+
+        return open(context, assetName);
     }
 
     public Uri getUri(String asset) {

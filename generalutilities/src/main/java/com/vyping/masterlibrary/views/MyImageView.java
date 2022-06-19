@@ -19,6 +19,7 @@ import com.vyping.masterlibrary.Images.MyDrawable;
 import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.resources.MyAsset;
 import com.vyping.masterlibrary.resources.MyResource;
+import com.vyping.masterlibrary.web.MyWeb;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -197,110 +198,81 @@ public class MyImageView {
 
     public void putImageFromAssets(@NonNull ImageView imageView, String nameFile, @MyFile.Type String type) {
 
-        Context context = imageView.getContext();
-        Uri uri = new MyAsset().getUri(nameFile, type);
+        String file = nameFile + type;
 
-        Glide.with(context).load(uri).error(errorImage).into(imageView);
+        putImageFromAssets(imageView, file);
     }
 
-    public void putImageFromResourcesOrWeb(@NonNull ImageView imageView, int resource, Uri uriFile) {
+    public void putImageFromResourcesOrWeb(@NonNull ImageView imageView, int resource, String urlFile) {
 
         Context context = imageView.getContext();
         boolean exist =new MyResource().exist(context, resource);
 
         if (exist) {
 
-            Glide.with(context).load(resource).error(errorImage).into(imageView);
+            putImageFromResources(imageView, resource);
 
         } else {
 
-            Glide.with(context).load(uriFile).error(errorImage).into(imageView);
+            putImageFromWeb(imageView, urlFile);
         }
     }
 
-    public void putImageFromAssetsOrWeb(@NonNull ImageView imageView, String nameFile, @MyFile.Type String type, String uriFile) {
+    public void putImageFromAssetsOrWeb(@NonNull ImageView imageView, String nameFile, String urlFile) {
 
         Context context = imageView.getContext();
-        boolean exist =new MyAsset().exists(context, nameFile, type);
+        boolean exist =new MyAsset().exists(context, nameFile);
 
         if (exist) {
 
-            Uri uri = new MyAsset().getUri(nameFile, type);
-            Glide.with(context).load(uri).error(errorImage).into(imageView);
+            putImageFromAssets(imageView, nameFile);
 
         } else {
 
-            Glide.with(context).load(uriFile).error(errorImage).into(imageView);
+            putImageFromWeb(imageView, urlFile);
         }
     }
 
-    public void putImageFromWebOrAssets(@NonNull ImageView imageView, String uriFile, String nameFile) {
+    public void putImageFromAssetsOrWeb(@NonNull ImageView imageView, String nameFile, @MyFile.Type String type, String urlFile) {
 
-        Context context = imageView.getContext();
+        String file = nameFile + type;
 
-        try {
-
-            URL url = new URL(uriFile);
-            HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-            int responseCode = huc.getResponseCode();
-
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-
-                Glide.with(context).load(uriFile).error(errorImage).into(imageView);
-
-            } else {
-
-                Uri uri = new MyAsset().getUri(nameFile);
-                Glide.with(context).load(uri).error(errorImage).into(imageView);
-            }
-
-        } catch (IOException e) {
-
-            Uri uri = new MyAsset().getUri(nameFile);
-            Glide.with(context).load(uri).error(errorImage).into(imageView);
-        }
+        putImageFromAssetsOrWeb(imageView, file, urlFile);
     }
 
-    public void putImageFromWebOrAssets(@NonNull ImageView imageView, String uriFile, String nameFile, @MyFile.Type String type) {
-
-        Context context = imageView.getContext();
-
-        try {
-
-            URL url = new URL(uriFile);
-            HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-            int responseCode = huc.getResponseCode();
-
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-
-                Glide.with(context).load(uriFile).error(errorImage).into(imageView);
-
-            } else {
-
-                Uri uri = new MyAsset().getUri(nameFile, type);
-                Glide.with(context).load(uri).error(errorImage).into(imageView);
-            }
-
-        } catch (IOException e) {
-
-            Uri uri = new MyAsset().getUri(nameFile, type);
-            Glide.with(context).load(uri).error(errorImage).into(imageView);
-        }
-    }
-
-    public void putImageFromWebOrAssets2(@NonNull ImageView imageView, String uriFile, String nameFile) {
+    public void putImageFromWebOrAssets(@NonNull ImageView imageView, String urlFile, String nameFile) {
 
         Context context = imageView.getContext();
         Drawable drawable = new MyDrawable().extractFromAssets(context, nameFile);
 
-        Glide.with(context).load(uriFile).error(drawable).into(imageView);
+        Glide.with(context).load(urlFile).error(drawable).into(imageView);
     }
 
-    public void putImageFromWebOrAssets2(@NonNull ImageView imageView, String uriFile, String nameFile, @MyFile.Type String type) {
+    public void putImageFromWebOrAssets(@NonNull ImageView imageView, String urlFile, String nameFile, @MyFile.Type String type) {
 
-        Context context = imageView.getContext();
-        Drawable drawable = new MyDrawable().extractFromAssets(context, nameFile, type);
+        String file = nameFile + type;
 
-        Glide.with(context).load(uriFile).error(drawable).into(imageView);
+        putImageFromWebOrAssets(imageView, urlFile, file);
+    }
+
+    public void putImageFromWebOrAssets2(@NonNull ImageView imageView, String urlFile, String nameFile) {
+
+        boolean exist = new MyWeb().exist(urlFile);
+
+        if (exist) {
+
+            putImageFromWeb(imageView, urlFile);
+
+        } else {
+
+            putImageFromAssets(imageView, nameFile);
+        }
+    }
+
+    public void putImageFromWebOrAssets2(@NonNull ImageView imageView, String urlFile, String nameFile, @MyFile.Type String type) {
+
+        String file = nameFile + type;
+
+        putImageFromWebOrAssets2(imageView, urlFile, file);
     }
 }
