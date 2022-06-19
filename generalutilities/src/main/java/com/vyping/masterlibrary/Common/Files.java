@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringDef;
 
 import com.vyping.masterlibrary.Comunication.ShareData;
 
@@ -16,31 +17,48 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Files {
 
-    public String translateToFileName(String Text) {
+    public static final String TYPE_JPG = ".jpg";
+    public static final String TYPE_PNG = ".png";
+    public static final String TYPE_BMP = ".bmp";
+    public static final String TYPE_ICO = ".ico";
+    public static final String TYPE_GIF = ".gif";
+    public static final String TYPE_PDF = ".pdf";
 
-        if (Text != null) {
 
-            return Text.trim().toLowerCase()
-                    .replace(".", "")
-                    .replace("-", "_")
-                    .replace(" ", "_")
-                    .replace("Ñ", "N")
-                    .replace("Á", "A")
-                    .replace("É", "E")
-                    .replace("Í", "I")
-                    .replace("Ó", "O")
-                    .replace("Ú", "U")
-                    .replace("ñ", "n")
-                    .replace("á", "a")
-                    .replace("é", "e")
-                    .replace("í", "i")
-                    .replace("ó", "o")
-                    .replace("ú", "u");
+    // ----- SetUp ----- //
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({TYPE_JPG, TYPE_PNG, TYPE_BMP, TYPE_ICO, TYPE_PDF, TYPE_GIF, TYPE_PDF})
+    public @interface Type {}
+
+
+    public String setName(String name, @Type String type) {
+
+        if (name != null) {
+
+            String trimed = name.trim();
+            String whithOutSpace = new MyStrings().replaceSpaceByUnderScore(trimed);
+
+            return new MyStrings().removeAccentMark(whithOutSpace);
+
+        } else {
+
+            return "" + type;
+        }
+    }
+
+    public String setNameLower(String name, @Type String type) {
+
+        if (name != null) {
+
+            return setName(name, type).toLowerCase();
 
         } else {
 

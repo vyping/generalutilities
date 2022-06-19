@@ -10,25 +10,20 @@ import androidx.annotation.StringDef;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
+import com.vyping.masterlibrary.Common.Files;
 import com.vyping.masterlibrary.Common.MyStrings;
 import com.vyping.masterlibrary.R;
+import com.vyping.masterlibrary.resources.MyAssets;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public class MyDrawable {
 
-    public static final String TYPE_PNG = ".png";
-    public static final String TYPE_JPG = ".jpg";
-    public static final String TYPE_BMP = ".bmp";
-    public static final String TYPE_ICO = ".ico";
-    public static final String TYPE_GIF = ".gif";
-
-    @Retention(RetentionPolicy.SOURCE)
-    @StringDef({TYPE_PNG, TYPE_JPG, TYPE_BMP, TYPE_ICO, TYPE_GIF})
-    public @interface Type {}
-
+    private int errorImage = R.drawable.icon_image;
+    
     /**
      * ------  Extract Operatios - Section
      */
@@ -43,7 +38,7 @@ public class MyDrawable {
 
         } else {
 
-            return extractFromResources(context, R.drawable.icon_image);
+            return extractFromResources(context, errorImage);
         }
     }
 
@@ -59,7 +54,7 @@ public class MyDrawable {
 
         } else {
 
-            return extractFromResources(context, R.drawable.icon_image);
+            return extractFromResources(context, errorImage);
         }
     }
 
@@ -71,7 +66,7 @@ public class MyDrawable {
 
         } else {
 
-            return ContextCompat.getDrawable(context, R.drawable.icon_image);
+            return ContextCompat.getDrawable(context, errorImage);
         }
     }
 
@@ -85,7 +80,7 @@ public class MyDrawable {
 
         } else {
 
-            return ContextCompat.getDrawable(context, R.drawable.icon_image);
+            return ContextCompat.getDrawable(context, errorImage);
         }
     }
 
@@ -97,11 +92,11 @@ public class MyDrawable {
 
         } catch (IOException ignored) {
 
-            return extractFromResources(context, R.drawable.icon_image);
+            return extractFromResources(context, errorImage);
         }
     }
 
-    public Drawable extractFromAssets(@NonNull Context context, @NonNull String stringDrawable, @Type String type) {
+    public Drawable extractFromAssets(@NonNull Context context, @NonNull String stringDrawable, @Files.Type String type) {
 
         try {
 
@@ -109,7 +104,7 @@ public class MyDrawable {
 
         } catch (IOException ignored) {
 
-            return extractFromResources(context, R.drawable.icon_image);
+            return extractFromResources(context, errorImage);
         }
     }
 
@@ -123,21 +118,23 @@ public class MyDrawable {
 
         } catch (IOException ignored) {
 
-            return extractFromResources(context, R.drawable.icon_image);
+            return extractFromResources(context, errorImage);
         }
     }
 
-    public Drawable extractFromAssets(@NonNull View view, @NonNull String stringDrawable, @Type String type) {
+    public Drawable extractFromAssets(@NonNull View view, @NonNull String asset, @Files.Type String type) {
 
         Context context = view.getContext();
 
-        try {
+        InputStream inputStream = new MyAssets().open(context, asset, type);
+        
+        if (inputStream != null) {
 
-            return Drawable.createFromStream(context.getAssets().open(stringDrawable + type), null);
+            return Drawable.createFromStream(inputStream, null);
 
-        } catch (IOException ignored) {
+        } else {
 
-            return extractFromResources(context, R.drawable.icon_image);
+            return extractFromResources(context, errorImage);
         }
     }
 
@@ -191,7 +188,7 @@ public class MyDrawable {
      * ------  Uri - Section
      */
 
-    public Uri getUriFromAsset(String nameImage, @Type String type) {
+    public Uri getUriFromAsset(String nameImage, @Files.Type String type) {
 
         return Uri.parse("file:///android_asset/" + nameImage + type);
     }
