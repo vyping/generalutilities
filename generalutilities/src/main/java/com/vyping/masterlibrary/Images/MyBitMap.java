@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.vyping.masterlibrary.Common.Files;
 
 public class MyBitMap {
 

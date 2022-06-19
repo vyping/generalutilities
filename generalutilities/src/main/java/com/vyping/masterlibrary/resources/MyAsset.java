@@ -9,12 +9,12 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Common.Files;
+import com.vyping.masterlibrary.Common.MyFile;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MyAssets {
+public class MyAsset {
 
 
     // ----- Main Methods ----- //
@@ -24,7 +24,7 @@ public class MyAssets {
         return context.getResources().getAssets();
     }
 
-    public boolean exists(@NonNull Context context, String asset, @Files.Type String type) {
+    public boolean exists(@NonNull Context context, String asset, @MyFile.Type String type) {
 
         boolean exist = FALSE;
 
@@ -39,7 +39,7 @@ public class MyAssets {
         return exist;
     }
 
-    public InputStream open(@NonNull Context context, String asset, @Files.Type String type) {
+    public InputStream open(@NonNull Context context, String asset, @MyFile.Type String type) {
 
         AssetManager assetManager = getAssetManager(context);
         InputStream inputStream = null;
@@ -54,10 +54,15 @@ public class MyAssets {
         return inputStream;
     }
 
-    public Uri getUri(String asset, @Files.Type String type) {
+    public Uri getUri(String asset) {
+
+        return Uri.parse("file:///android_asset/" + asset);
+    }
+
+    public Uri getUri(String asset, @MyFile.Type String type) {
 
         String assetName = asset + type;
 
-        return Uri.parse("file:///android_asset/" + assetName);
+        return getUri(assetName);
     }
 }

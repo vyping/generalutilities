@@ -22,7 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Files {
+public class MyFile {
 
     public static final String TYPE_JPG = ".jpg";
     public static final String TYPE_PNG = ".png";
@@ -44,9 +44,9 @@ public class Files {
         if (name != null) {
 
             String trimed = name.trim();
-            String whithOutSpace = new MyStrings().replaceSpaceByUnderScore(trimed);
+            String whithOutSpace = new MyString().replaceSpaceByUnderScore(trimed);
 
-            return new MyStrings().removeAccentMark(whithOutSpace);
+            return new MyString().removeAccentMark(whithOutSpace);
 
         } else {
 

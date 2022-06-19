@@ -8,7 +8,7 @@ import androidx.annotation.StringDef;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
 
 import java.io.Serializable;
@@ -69,27 +69,27 @@ public class Session extends MyRealtimeReader implements Serializable {
 
         if (mapSession.containsKey(TAG_DOCUMENT)) {
 
-            Document = new MyStrings().objectToString(mapSession.get(TAG_DOCUMENT));
+            Document = new MyString().objectToString(mapSession.get(TAG_DOCUMENT));
         }
 
         if (mapSession.containsKey(TAG_EMAIL)) {
 
-            Email = new MyStrings().objectToString(mapSession.get(TAG_EMAIL));
+            Email = new MyString().objectToString(mapSession.get(TAG_EMAIL));
         }
 
         if (mapSession.containsKey(TAG_NAME)) {
 
-            Name = new MyStrings().objectToString(mapSession.get(TAG_NAME));
+            Name = new MyString().objectToString(mapSession.get(TAG_NAME));
         }
 
         if (mapSession.containsKey(TAG_PASSWORD)) {
 
-            Password = new MyStrings().objectToString(mapSession.get(TAG_PASSWORD));
+            Password = new MyString().objectToString(mapSession.get(TAG_PASSWORD));
         }
 
         if (mapSession.containsKey(TAG_TYPE)) {
 
-            Type = new MyStrings().objectToString(mapSession.get(TAG_TYPE));
+            Type = new MyString().objectToString(mapSession.get(TAG_TYPE));
         }
 
         Registered = isRegistered();

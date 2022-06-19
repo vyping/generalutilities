@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.vyping.masterlibrary.Common.MyApp;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 import com.vyping.masterlibrary.Images.MyDrawable;
 import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.views.SetImageButton;
@@ -170,7 +170,7 @@ public abstract class MyActionBar {
 
     public void setSubtitle(int subtitle) {
 
-        String Subtitle = new MyStrings().getStringResources(context, subtitle);
+        String Subtitle = new MyString().getStringResources(context, subtitle);
 
         setSubtitle(Subtitle);
     }

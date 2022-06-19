@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
 import com.vyping.masterlibrary.Images.MyColor;
 import com.vyping.masterlibrary.Images.MyDrawable;
@@ -26,7 +26,7 @@ public class MenuParams {
         this.Background = new MyDrawable().extractFromResources(context, R.drawable.background_window);
         this.BackgroundColor = BackgroundColor;
         this.Icon = new MyDrawable().extractFromResources(context, Icon);
-        this.Title = new MyStrings().getStringResources(context, Title);
+        this.Title = new MyString().getStringResources(context, Title);
         this.SubTitle = TitleColor;
         this.SubTitleColor = SubTitleColor;
         this.Description = Description;
@@ -38,7 +38,7 @@ public class MenuParams {
         this.BackgroundColor = BackgroundColor;
         this.Icon = new MyDrawable().extractFromResources(context, Icon);
         this.IconColor = TraductionColor;
-        this.Title = new MyStrings().getStringResources(context, Name);
+        this.Title = new MyString().getStringResources(context, Name);
         this.SubTitle = Traduction;
         this.Description = Description;
     }

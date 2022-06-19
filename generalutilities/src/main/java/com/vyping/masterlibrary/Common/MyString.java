@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-public class MyStrings {
+public class MyString {
 
     public String getStringResources(@NonNull Context context, int resString) {
 

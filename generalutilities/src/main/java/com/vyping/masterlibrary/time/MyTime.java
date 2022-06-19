@@ -1,23 +1,11 @@
 package com.vyping.masterlibrary.time;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-
-import android.content.Context;
-import android.os.Build;
 import android.text.format.DateFormat;
 
-import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
-import androidx.annotation.StringDef;
 
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyNumbers;
-import com.vyping.masterlibrary.Common.MyStrings;
-import com.vyping.masterlibrary.Images.MyDrawable;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

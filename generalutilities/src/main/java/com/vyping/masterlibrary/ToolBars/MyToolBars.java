@@ -26,8 +26,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 import com.vyping.masterlibrary.time.MyTime;
 import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
@@ -35,7 +34,6 @@ import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.dialogs.DialogPickerDate;
 
 import java.util.Calendar;
-import java.util.Locale;
 import java.util.Objects;
 
 public abstract class MyToolBars {
@@ -79,7 +77,7 @@ public abstract class MyToolBars {
         dateInterface = DateInterface;
         calendar = new MyTime().getCalendar();
         String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
-        label = new MyStrings().firstLetterUpperCase(label);
+        label = new MyString().firstLetterUpperCase(label);
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
         Btn_SetDate = inflated.findViewById(R.id.Btn_DyS_calDate);
@@ -285,7 +283,7 @@ public abstract class MyToolBars {
         long milis = new MyTime().getMillis(calendar);
 
         String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
-        label = new MyStrings().firstLetterUpperCase(label);
+        label = new MyString().firstLetterUpperCase(label);
 
         Btn_SetDate.setText(label);
 
@@ -331,7 +329,7 @@ public abstract class MyToolBars {
                 calendar = Calendar;
 
                 String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
-                label = new MyStrings().firstLetterUpperCase(label);
+                label = new MyString().firstLetterUpperCase(label);
 
                 Btn_SetDate.setText(label);
                 dateInterface.SelectedDate(Calendar, milis, day, month, year);

@@ -6,19 +6,15 @@ import android.net.Uri;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.StringDef;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.vyping.masterlibrary.Common.Files;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyFile;
 import com.vyping.masterlibrary.R;
-import com.vyping.masterlibrary.resources.MyAssets;
+import com.vyping.masterlibrary.resources.MyAsset;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 public class MyDrawable {
 
@@ -96,7 +92,7 @@ public class MyDrawable {
         }
     }
 
-    public Drawable extractFromAssets(@NonNull Context context, @NonNull String stringDrawable, @Files.Type String type) {
+    public Drawable extractFromAssets(@NonNull Context context, @NonNull String stringDrawable, @MyFile.Type String type) {
 
         try {
 
@@ -122,11 +118,11 @@ public class MyDrawable {
         }
     }
 
-    public Drawable extractFromAssets(@NonNull View view, @NonNull String asset, @Files.Type String type) {
+    public Drawable extractFromAssets(@NonNull View view, @NonNull String asset, @MyFile.Type String type) {
 
         Context context = view.getContext();
 
-        InputStream inputStream = new MyAssets().open(context, asset, type);
+        InputStream inputStream = new MyAsset().open(context, asset, type);
         
         if (inputStream != null) {
 
@@ -188,7 +184,7 @@ public class MyDrawable {
      * ------  Uri - Section
      */
 
-    public Uri getUriFromAsset(String nameImage, @Files.Type String type) {
+    public Uri getUriFromAsset(String nameImage, @MyFile.Type String type) {
 
         return Uri.parse("file:///android_asset/" + nameImage + type);
     }

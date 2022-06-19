@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.airbnb.paris.Paris;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 
 public class MyTextView {
 
@@ -39,7 +39,7 @@ public class MyTextView {
     @NonNull
     public TextView createByAttributes(@NonNull Context context, int attr, int style, int text) {
 
-        String Text = new MyStrings().getStringResources(context, text);
+        String Text = new MyString().getStringResources(context, text);
 
         return createByAttributes(context, attr, style, Text);
     }
@@ -104,7 +104,7 @@ public class MyTextView {
     public TextView setTextView(@NonNull Dialog dialog, int view, int text) {
 
         Context context = dialog.getContext();
-        String Text = new MyStrings().getStringResources(context, text);
+        String Text = new MyString().getStringResources(context, text);
 
         TextView textView = dialog.findViewById(view);
         textView.setText(Text);

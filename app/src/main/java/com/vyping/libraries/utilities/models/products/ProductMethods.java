@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.vyping.libraries.utilities.definitions.Buckets;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,12 +104,12 @@ public class ProductMethods extends BaseObservable {
 
     public String getPrevValue() {
 
-        return new MyStrings().formatToMoney(product.PrevPrice);
+        return new MyString().formatToMoney(product.PrevPrice);
     }
 
     public String getValue() {
 
-        return new MyStrings().formatToMoney(product.Price);
+        return new MyString().formatToMoney(product.Price);
     }
 
     public String getDiscount() {

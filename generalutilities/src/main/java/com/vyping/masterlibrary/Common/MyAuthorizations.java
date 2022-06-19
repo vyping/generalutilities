@@ -18,7 +18,7 @@ public class MyAuthorizations {
 
     public void setAdminPermissions(Context context, String position, ArrayList<Integer> modules, int defaults, PermissionsInterfase interfase) {
 
-        String Position = new MyStrings().changeToFileName(position);
+        String Position = new MyString().changeToFileName(position);
 
         new RemoteConfig().BasicRerquest(context, defaults, new RemoteConfig.SuccessListener() {
 
@@ -34,7 +34,7 @@ public class MyAuthorizations {
                     @Override
                     public void intPosition(int module) {
 
-                        String Module = new MyStrings().getStringResources(context, module);
+                        String Module = new MyString().getStringResources(context, module);
                         boolean contains = mapPermissions.containsKey(Module);
                         int valueAccess = ACCESS_DENIED;
 

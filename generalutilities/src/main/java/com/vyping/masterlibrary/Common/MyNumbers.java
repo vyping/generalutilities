@@ -74,7 +74,7 @@ public class MyNumbers {
 
     public long stringChangeToNumber(String text) {
 
-        String Text = new MyStrings().translateToTag(text);
+        String Text = new MyString().translateToTag(text);
         long result = 0;
 
         for (int i = 0; i < Text.length(); i++) {

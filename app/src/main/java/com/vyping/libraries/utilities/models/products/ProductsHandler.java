@@ -9,7 +9,7 @@ import androidx.databinding.Bindable;
 import androidx.databinding.ObservableArrayList;
 
 import com.google.firebase.database.DataSnapshot;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 
 public class ProductsHandler extends BaseObservable {
 
@@ -203,7 +203,7 @@ public class ProductsHandler extends BaseObservable {
 
     public void setSearch(@NonNull String search) {
 
-        this.search = new MyStrings().toLowerCaseAndRemoveAccentMark(search);
+        this.search = new MyString().toLowerCaseAndRemoveAccentMark(search);
 
         for (final ProductMethods productMethods : base) {
 
@@ -212,7 +212,7 @@ public class ProductsHandler extends BaseObservable {
             for (Object object : productMethods.getSearchParameters()) {
 
                 String Parameter = String.valueOf(object);
-                String parameter = new MyStrings().toLowerCaseAndRemoveAccentMark(Parameter);
+                String parameter = new MyString().toLowerCaseAndRemoveAccentMark(Parameter);
 
                 if (parameter.contains(this.search)) {
 

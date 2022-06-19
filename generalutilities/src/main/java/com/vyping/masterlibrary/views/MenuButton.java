@@ -22,7 +22,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.vyping.masterlibrary.Animations.MyAnimation;
 import com.vyping.masterlibrary.Common.MyNumbers;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 import com.vyping.masterlibrary.Images.MyBitMap;
 import com.vyping.masterlibrary.Images.MyDrawable;
 import com.vyping.masterlibrary.R;
@@ -434,7 +434,7 @@ public class MenuButton extends androidx.appcompat.widget.AppCompatButton {
 
     public void setTitle(int titleText, int titleColor) {
 
-        this.titleText = new MyStrings().getStringResources(context, titleText);
+        this.titleText = new MyString().getStringResources(context, titleText);
         this.titleColor = titleColor;
 
         invalidate();
@@ -450,7 +450,7 @@ public class MenuButton extends androidx.appcompat.widget.AppCompatButton {
 
     public void setTitleText(int titleText) {
 
-        this.titleText = new MyStrings().getStringResources(context, titleText);
+        this.titleText = new MyString().getStringResources(context, titleText);
 
         invalidate();
     }

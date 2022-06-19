@@ -9,18 +9,13 @@ import android.text.format.DateFormat;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyNumbers;
-import com.vyping.masterlibrary.Common.MyStrings;
+import com.vyping.masterlibrary.Common.MyString;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
 
 public class MyTimeTools {
 
@@ -304,7 +299,7 @@ public class MyTimeTools {
         calendar.setTimeInMillis(time);
         int prevMonth = calendar.get(Calendar.MONTH);
 
-        return new MyStrings().formatDigits(prevMonth, 2);
+        return new MyString().formatDigits(prevMonth, 2);
     }
 
     public boolean comparateWhitToday(Calendar otherCalendar, long otherTime) {
@@ -573,7 +568,7 @@ public class MyTimeTools {
         calendar.setTimeInMillis(Long.parseLong(Instant));
         String instante = DateFormat.format("MMM dd - HH:mm", calendar).toString();
 
-        return new MyStrings().firstLetterUpperCase(instante);
+        return new MyString().firstLetterUpperCase(instante);
     }
 
     public String intsToStringDate(int day, int month, int year) {
