@@ -71,23 +71,6 @@ public class MyBitMap {
     }
 
 
-    public int requestIcon(@NonNull Context context, String folder, String name, int nullIcon) {
-
-        String Name = new Files().translateToFileName(name);
-        String Package = context.getPackageName();
-
-        int imageId = context.getResources().getIdentifier(Name, folder, Package);
-
-        if (imageId != 0) {
-
-            return imageId;
-
-        } else {
-
-            return nullIcon;
-        }
-    }
-
     public BitmapDescriptor iconToBitmap(Context context, @DrawableRes int vectorIcon) {
 
         Drawable background = ContextCompat.getDrawable(context, vectorIcon);

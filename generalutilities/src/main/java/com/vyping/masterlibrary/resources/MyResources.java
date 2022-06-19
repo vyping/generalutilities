@@ -8,6 +8,9 @@ import android.content.res.Resources;
 
 import androidx.annotation.NonNull;
 
+import com.vyping.masterlibrary.Common.Files;
+import com.vyping.masterlibrary.R;
+
 public class MyResources {
 
     public boolean exist(@NonNull Context context, int resource) {
@@ -31,5 +34,22 @@ public class MyResources {
     public String getName(@NonNull Context context, int resource) {
 
         return context.getResources().getResourceName(resource);
+    }
+
+    public int getIdentifier(@NonNull Context context, String folder, String name, @Files.Type String type) {
+
+        String Name = new Files().setNameLower(name, type);
+        String Package = context.getPackageName();
+
+        int imageId = context.getResources().getIdentifier(Name, folder, Package);
+
+        if (imageId != 0) {
+
+            return imageId;
+
+        } else {
+
+            return R.drawable.icon_image;
+        }
     }
 }
