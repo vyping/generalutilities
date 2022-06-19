@@ -20,23 +20,23 @@ import java.net.URL;
 
 public class MyImage {
 
-    private int errorImage = R.drawable.icon_image;
+    public int errorImage = R.drawable.icon_image;
 
-    private void putImageFromWeb(@NonNull ImageView imageView, String url) {
+    public void putImageFromWeb(@NonNull ImageView imageView, String url) {
 
         Context context = imageView.getContext();
 
         Glide.with(context).load(url).error(errorImage).into(imageView);
     }
 
-    private void putImageFromResources(@NonNull ImageView imageView, int resource) {
+    public void putImageFromResources(@NonNull ImageView imageView, int resource) {
 
         Context context = imageView.getContext();
 
         Glide.with(context).load(resource).error(errorImage).into(imageView);
     }
 
-    private void putImageFromAssets(@NonNull ImageView imageView, String nameFile, @Files.Type String type) {
+    public void putImageFromAssets(@NonNull ImageView imageView, String nameFile, @Files.Type String type) {
 
         Context context = imageView.getContext();
         Uri uri = new MyAssets().getUri(nameFile, type);
@@ -44,7 +44,7 @@ public class MyImage {
         Glide.with(context).load(uri).error(errorImage).into(imageView);
     }
 
-    private void putImageFromResourcesOrWeb(@NonNull ImageView imageView, int resource, Uri uriFile) {
+    public void putImageFromResourcesOrWeb(@NonNull ImageView imageView, int resource, Uri uriFile) {
 
         Context context = imageView.getContext();
         boolean exist =new MyResources().exist(context, resource);
@@ -59,7 +59,7 @@ public class MyImage {
         }
     }
 
-    private void putImageFromAssetsOrWeb(@NonNull ImageView imageView, String nameFile, @Files.Type String type, String uriFile) {
+    public void putImageFromAssetsOrWeb(@NonNull ImageView imageView, String nameFile, @Files.Type String type, String uriFile) {
 
         Context context = imageView.getContext();
         boolean exist =new MyAssets().exists(context, nameFile, type);
@@ -75,7 +75,7 @@ public class MyImage {
         }
     }
 
-    private void putImageFromWebOrAssets(@NonNull ImageView imageView, String uriFile, String nameFile, @Files.Type String type) {
+    public void putImageFromWebOrAssets(@NonNull ImageView imageView, String uriFile, String nameFile, @Files.Type String type) {
 
         Context context = imageView.getContext();
 
@@ -102,7 +102,7 @@ public class MyImage {
         }
     }
 
-    private void putImageFromWebOrAssets2(@NonNull ImageView imageView, String uriFile, String nameFile, @Files.Type String type) {
+    public void putImageFromWebOrAssets2(@NonNull ImageView imageView, String uriFile, String nameFile, @Files.Type String type) {
 
         Context context = imageView.getContext();
         Drawable drawable = new MyDrawable().extractFromAssets(context, nameFile, type);
