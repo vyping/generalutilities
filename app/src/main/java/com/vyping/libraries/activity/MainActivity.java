@@ -8,21 +8,20 @@ import static com.vyping.masterlibrary.Common.MyFile.TYPE_PNG;
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 
 import com.vyping.libraries.utilities.definitions.Buckets;
 import com.vyping.masterlibrary.Common.MyFile;
-import com.vyping.masterlibrary.aplication.BaseActivity;
+import com.vyping.masterlibrary.GestureListeners.MyGesturesListener;
+import com.vyping.masterlibrary.activities.BasicActivity;
 import com.vyping.libraries.R;
 import com.vyping.libraries.databinding.MainActivityBinding;
 import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.time.MyTime;
-import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.views.MyImageView;
 
-import java.util.Calendar;
-
-public class MainActivity extends BaseActivity implements BaseActivity.StartCallBack {
+public class MainActivity extends BasicActivity implements BasicActivity.StartCallBack {
 
     public MainActivityBinding binding;
 
@@ -55,8 +54,9 @@ public class MainActivity extends BaseActivity implements BaseActivity.StartCall
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
+    @SuppressLint("ClickableViewAccessibility")
     private void methodTest() {
 
         String rutine = "03 - Biceps";
@@ -64,5 +64,16 @@ public class MainActivity extends BaseActivity implements BaseActivity.StartCall
         String url = new Buckets().getMediaResource(BUCKET_RUTINES, nameImage, "");
 
         new MyImageView().putImageFromAssetsOrWeb(binding.imageView, nameImage, url);
+
+        MyGesturesListener myGesturesListener = new MyGesturesListener(binding.imageView, new MyGesturesListener.Interfase() {
+
+            @Override
+            public void OnClick(@NonNull View view) {
+
+               new LogCat("CLickkkkk");
+            }
+        });
+
+        binding.imageView.setOnTouchListener(myGesturesListener);
     }
 }

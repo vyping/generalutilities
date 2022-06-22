@@ -30,7 +30,7 @@ public class SendSMS extends MyPermissions {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     private void sendSMS() {
 

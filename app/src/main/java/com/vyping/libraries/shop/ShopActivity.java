@@ -8,15 +8,16 @@ import static com.vyping.libraries.utilities.definitions.Instances.INSTANCE_SHOP
 import static com.vyping.libraries.utilities.definitions.Modules.MODULE_ICON_SHOP;
 import static com.vyping.libraries.utilities.definitions.Modules.MODULE_NAME_SHOP;
 
+import static java.lang.Boolean.TRUE;
+
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
 import com.vyping.libraries.R;
 import com.vyping.libraries.activity.MainActivity;
 import com.vyping.libraries.databinding.ShopActivityBinding;
@@ -25,19 +26,13 @@ import com.vyping.libraries.utilities.models.products.ProductMethods;
 import com.vyping.libraries.utilities.models.products.ProductsHandler;
 import com.vyping.masterlibrary.BR;
 import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.Firebase.MyRealtime;
-import com.vyping.masterlibrary.aplication.BaseActivity;
+import com.vyping.masterlibrary.activities.RecyclerActivity;
 import com.vyping.masterlibrary.popups.PopUpConfig;
 import com.vyping.masterlibrary.views.recyclerview.adapter.BindingRecyclerViewAdapter;
-import com.vyping.masterlibrary.views.recyclerview.adapter.ClickHandler;
-import com.vyping.masterlibrary.views.recyclerview.adapter.LongClickHandler;
-import com.vyping.masterlibrary.views.recyclerview.adapter.binder.CompositeItemBinder;
-import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
 
-public class ShopActivity extends BaseActivity implements BaseActivity.StartCallBack {
+public class ShopActivity extends RecyclerActivity<ProductMethods> implements RecyclerActivity.StartCallBack, BindingRecyclerViewAdapter.Interfase<ProductMethods> {
 
     private ShopActivityBinding binding;
-    private ProductsHandler productsHandler;
 
 
     // ----- SetUp ----- //
@@ -51,24 +46,22 @@ public class ShopActivity extends BaseActivity implements BaseActivity.StartCall
         setSearchBar(binding.ClMainContainer.getId(), new ToolBarsInterfase() {
 
             @Override
-            public void setSearch(String search) {
-
-                productsHandler.setSearch(search);
-            }
+            public void setSearch(String search) {}
 
             private void DummyVoid() {}
         });
-        setFirebaseService(INSTANCE_SHOP, MyRealtimeListener);
+        setFirebaseService(INSTANCE_SHOP);
     }
 
     @Override
     public void SetStartBindingProcess(ViewDataBinding binding) {
 
-        this.productsHandler = new ProductsHandler();
+        setAdapterMethodHandler(new ProductsHandler(), TRUE);
 
         this.binding = (ShopActivityBinding) binding;
-        this.binding.setProductsHandler(productsHandler);
         this.binding.setShopActivity(ShopActivity.this);
+        this.binding.setMethodHandler(methodHandler);
+        this.binding.setProductBinder(new ProductBinder(BR.product, R.layout.shop_holder));
     }
 
     @Override
@@ -122,65 +115,36 @@ public class ShopActivity extends BaseActivity implements BaseActivity.StartCall
     }
 
 
-    // ----- Methods ----- //
+    // ----- Listeners ModelMethods ----- //
 
-    public ItemBinder<ProductMethods> itemViewBinder() {
-
-        return new CompositeItemBinder<>(new ProductBinder(BR.product, R.layout.shop_holder));
-    }
-
-    public ClickHandler<ProductMethods> clickHandler() {
-
-        return new ClickHandler<ProductMethods>() {
-
-            @Override
-            public void onClick(BindingRecyclerViewAdapter.ViewHolder holder, View view, ProductMethods viewModel) {
-
-                Toast.makeText(ShopActivity.this, "CLICK: ", Toast.LENGTH_SHORT).show();
-            }
-        };
-    }
-
-    public LongClickHandler<ProductMethods> longClickHandler() {
-
-        return new LongClickHandler<ProductMethods>() {
-
-            @Override
-            public void onLongClick(BindingRecyclerViewAdapter.ViewHolder holder, View view, ProductMethods viewModel) {
-
-                Toast.makeText(ShopActivity.this, "LONG CLICK: ", Toast.LENGTH_SHORT).show();
-            }
-        };
-    }
-
-
-    // ----- Listeners Methods ----- //
-
-    private final MyRealtime.ValueListener MyRealtimeListener = new MyRealtime.ValueListener() {
+    public final BindingRecyclerViewAdapter.Interfase<ProductMethods> adapterInterfase = new BindingRecyclerViewAdapter.Interfase<>()  {
 
         @Override
-        public void ChildAdded(@NonNull DataSnapshot snapChild) {
+        public void OnClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, ProductMethods item, int position) {
 
-            productsHandler.addProduct(snapChild);
+            new LogCat("Interfase: Click");
         }
 
         @Override
-        public void ChildChanged(@NonNull DataSnapshot snapChild) {
+        public void OnLongClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, ProductMethods item, int position) {
 
-            productsHandler.modifyProduct(snapChild);
+            new LogCat("Interfase: LongClick");
         }
 
         @Override
-        public void ChildRemoved(@NonNull DataSnapshot snapChild) {
+        public void OnDoubleClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, ProductMethods item, int position) {
 
-            productsHandler.removeProduct(snapChild);
+            new LogCat("Interfase: DoubleClick");
         }
 
         @Override
-        public void finishAdded() {}
+        public void OnTouch(RecyclerView.ViewHolder viewHolder, @NonNull View view, ProductMethods item, int position) {
+
+            new LogCat("Interfase: Touch");
+        }
     };
 
-    private final View.OnDragListener onDragListener = new View.OnDragListener() {
+    private final View.OnDragListener onDragListener = new View.OnDragListener()  {
 
         @Override
         public boolean onDrag(View sourceView, @NonNull DragEvent dragEvent) {

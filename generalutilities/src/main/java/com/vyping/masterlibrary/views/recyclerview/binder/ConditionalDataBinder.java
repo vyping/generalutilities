@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.views.recyclerview.adapter.binder;
+package com.vyping.masterlibrary.views.recyclerview.binder;
 
 public abstract class ConditionalDataBinder<T> extends ItemBinderBase<T> {
 

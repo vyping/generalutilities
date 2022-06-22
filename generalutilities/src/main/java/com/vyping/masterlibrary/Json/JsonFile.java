@@ -62,7 +62,7 @@ public class JsonFile extends MyJsonReader {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     private void readStream(@NonNull InputStream inputStream, @NonNull Interface interfase) {
 

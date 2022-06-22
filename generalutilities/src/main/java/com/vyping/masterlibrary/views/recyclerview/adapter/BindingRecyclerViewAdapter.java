@@ -1,15 +1,9 @@
 package com.vyping.masterlibrary.views.recyclerview.adapter;
 
-import static java.lang.Boolean.TRUE;
-
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,47 +13,36 @@ import androidx.databinding.ObservableList;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.vyping.masterlibrary.Animations.MyAnimation;
+import com.vyping.masterlibrary.Common.LogCat;
+import com.vyping.masterlibrary.GestureListeners.MyGesturesListener;
 import com.vyping.masterlibrary.GestureListeners.MyItemTouchListener;
-import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ItemBinder;
+import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Collection;
 
-public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener, MyItemTouchListener.SelectInterface{
+public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements MyGesturesListener.Interfase, MyItemTouchListener.Interfase {
 
     private LayoutInflater inflater;
     private ViewDataBinding binding;
 
+    private final ItemBinder<T> itemBinder;
     private final WeakReferenceOnListChangedCallback<T>  onListChangedCallback;
-    private ItemBinder<T> itemBinder;
+    private final Interfase<T> interfase;
 
-    private ClickHandler<T> clickHandler;
-    private LongClickHandler<T> longClickHandler;
-    private TouchHandler<T> touchHandler;
+    private RecyclerView recyclerView;
 
     private ObservableList<T> items;
     private static final int ITEM_MODEL = -124;
-    private boolean touchable;
 
 
     // ----- SetUp ----- //
 
-    public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items) {
+    public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items, Interfase<T> interfase) {
 
         this.itemBinder = itemBinder;
-        this.touchable = TRUE;
         this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
-
-        setItems(items);
-    }
-
-    public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items, boolean touchable) {
-
-        this.itemBinder = itemBinder;
-        this.touchable = touchable;
-        this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
+        this.interfase = interfase;
 
         setItems(items);
     }
@@ -69,19 +52,12 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         super.onAttachedToRecyclerView(recyclerView);
 
-        if (touchable) {
-
-            recyclerView.addOnItemTouchListener(new MyItemTouchListener(recyclerView.getContext(), this));
-        }
+        this.recyclerView = recyclerView;
+        //this.recyclerView.addOnItemTouchListener(new MyItemTouchListener(this.recyclerView.getContext(), this));
     }
 
     @Override @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-
-        //if (inflater == null) {
-
-            //inflater = LayoutInflater.from(viewGroup.getContext());
-        //}
 
         inflater = LayoutInflater.from(viewGroup.getContext());
         binding = DataBindingUtil.inflate(inflater, viewType, viewGroup, false);
@@ -108,8 +84,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         viewHolder.binding.setVariable(itemBinder.getBindingVariable(item), item);
         viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
-        viewHolder.binding.getRoot().setOnClickListener(this);
-        viewHolder.binding.getRoot().setOnLongClickListener(this);
+        viewHolder.binding.getRoot().setOnTouchListener(new MyGesturesListener(viewHolder.binding.getRoot(), this));
         viewHolder.binding.executePendingBindings();
     }
 
@@ -135,11 +110,10 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
 
     public void setLayouts(@Nullable Collection<T> items) { }
-
 
     public ObservableList<T> getItems() {
 
@@ -177,53 +151,44 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         }
     }
 
-    public void setClickHandler(ClickHandler<T> clickHandler) {
-
-        this.clickHandler = clickHandler;
-    }
-
-    public void setLongClickHandler(LongClickHandler<T> clickHandler) {
-
-        this.longClickHandler = clickHandler;
-    }
-
-    public void setTouchHandler(TouchHandler<T> touchHandler) {
-
-        this.touchHandler = touchHandler;
-    }
-
 
     // ----- Listeners ----- //
 
-    @Override
-    public void onClick(View view) {
+    @Override @SuppressWarnings("unchecked")
+    public void OnClick(@NonNull View view) {
 
-        if (clickHandler != null) {
+        int position = recyclerView.getChildAdapterPosition(view);
+        ViewHolder viewHolder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
 
-            ViewHolder viewHolder = new ViewHolder(binding);
-            T item = (T) view.getTag(ITEM_MODEL);
-            clickHandler.onClick(viewHolder, view, item);
-        }
+        T item = (T) view.getTag(ITEM_MODEL);
+        interfase.OnClick(viewHolder, view, item, position);
     }
 
-    @Override
-    public boolean onLongClick(View view) {
+    @Override @SuppressWarnings("unchecked")
+    public void OnLongClick(@NonNull View view) {
 
-        if (longClickHandler != null) {
+        int position = recyclerView.getChildAdapterPosition(view);
+        ViewHolder viewHolder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
 
-            ViewHolder viewHolder = new ViewHolder(binding);
-            T item = (T) view.getTag(ITEM_MODEL);
-            longClickHandler.onLongClick(viewHolder, view, item);
-            return true;
-        }
-        return false;
+        T item = (T) view.getTag(ITEM_MODEL);
+        interfase.OnLongClick(viewHolder, view, item, position);
     }
 
-    @Override
-    public void SelectedItem(View selectedView, int position, RecyclerView.ViewHolder viewHolder) {
+    @Override @SuppressWarnings("unchecked")
+    public void OnDoubleClick(@NonNull View view) {
+
+        int position = recyclerView.getChildAdapterPosition(view);
+        ViewHolder viewHolder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
+
+        T item = (T) view.getTag(ITEM_MODEL);
+        interfase.OnDoubleClick(viewHolder, view, item, position);
+    }
+
+    @Override @SuppressWarnings("unchecked")
+    public void SelectedItem(@NonNull View selectedView, int position, RecyclerView.ViewHolder viewHolder) {
 
         T item = (T) selectedView.getTag(ITEM_MODEL);
-        touchHandler.onTouch((ViewHolder) viewHolder, selectedView, item, position);
+        interfase.OnTouch(viewHolder, selectedView, item, position);
     }
 
 
@@ -292,5 +257,16 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
                 adapter.notifyItemRangeRemoved(positionStart, itemCount);
             }
         }
+    }
+
+
+    //----- Interface -----//
+
+    public interface Interfase<T> {
+
+        default void OnClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnLongClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnDoubleClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnTouch(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
     }
 }

@@ -21,7 +21,7 @@ public class Buckets {
     public @interface RealtimeBucket {}
 
 
-    /*----- Methods -----*/
+    /*----- ModelMethods -----*/
 
     public String getMediaResource(@RealtimeBucket String bucket, String media, String token) {
 

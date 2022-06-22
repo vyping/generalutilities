@@ -110,7 +110,7 @@ public class Session extends MyRealtimeReader implements Serializable {
     }
 
 
-    /*----- Methods -----*/
+    /*----- ModelMethods -----*/
 
     @Exclude
     private boolean isRegistered() {

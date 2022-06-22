@@ -111,7 +111,7 @@ public class MyPermissions {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     private boolean checkPermissionsGranted() {
 

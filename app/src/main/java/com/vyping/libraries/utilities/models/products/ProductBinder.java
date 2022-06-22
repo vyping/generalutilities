@@ -1,6 +1,6 @@
 package com.vyping.libraries.utilities.models.products;
 
-import com.vyping.masterlibrary.views.recyclerview.adapter.binder.ConditionalDataBinder;
+import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
 
 public class ProductBinder extends ConditionalDataBinder<ProductMethods> {
 
@@ -13,7 +13,7 @@ public class ProductBinder extends ConditionalDataBinder<ProductMethods> {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     @Override
     public boolean canHandle(ProductMethods model) {

@@ -315,7 +315,7 @@ public abstract class DialogPickerDate extends CreateDialog {
     }
 
 
-    /*----- Methods -----*/
+    /*----- ModelMethods -----*/
 
     private void setPickerDate() {
 

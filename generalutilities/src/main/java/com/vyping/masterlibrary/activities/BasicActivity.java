@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.aplication;
+package com.vyping.masterlibrary.activities;
 
 import static java.lang.Boolean.TRUE;
 
@@ -16,10 +16,14 @@ import com.vyping.masterlibrary.ActionBar.MyActionBar;
 import com.vyping.masterlibrary.Common.MyActivity;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
+import com.vyping.masterlibrary.aplication.MyApplication;
+import com.vyping.masterlibrary.views.recyclerview.binder.CompositeItemBinder;
+import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
+import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
 
 import java.util.Calendar;
 
-public class BaseActivity extends AppCompatActivity {
+public class BasicActivity extends AppCompatActivity {
 
     public MyApplication application;
     public Context context;
@@ -33,7 +37,7 @@ public class BaseActivity extends AppCompatActivity {
     private Class backActivity;
 
 
-    /*----- SetUp -----*/
+    // ----- SetUp ----- //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    /*----- Methods -----*/
+    // ----- ModelMethods ----- //
 
     public void CreateActivity(Activity activity, int layout, int icon, int module) {
 
@@ -147,7 +151,7 @@ public class BaseActivity extends AppCompatActivity {
         callback.SetActionBar();
     }
 
-    public void setSearchBar(int container, ToolBarsInterfase interfase) {
+    public void setSearchBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
 
         myToolBars = new MyToolBars(context, container) {};
         myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
@@ -162,7 +166,7 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void setDateBar(int container, ToolBarsInterfase interfase) {
+    public void setDateBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
 
         myToolBars = new MyToolBars(context, container) {};
         myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
@@ -177,7 +181,7 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void setMonthBar(int container, ToolBarsInterfase interfase) {
+    public void setMonthBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
 
         myToolBars = new MyToolBars(context, container) {};
         myToolBars.setMonthToolBar(new MyToolBars.MonthInterface() {
@@ -192,7 +196,7 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void setSearchAndDateBar(int container, ToolBarsInterfase interfase) {
+    public void setSearchAndDateBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
 
         myToolBars = new MyToolBars(context, container) {};
         myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
@@ -228,7 +232,7 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    public void setSearchAndMonthBar(int container, ToolBarsInterfase interfase) {
+    public void setSearchAndMonthBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
 
         myToolBars = new MyToolBars(context, container) {};
         myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
@@ -274,8 +278,13 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void setAdapter() {
 
-    /*----- Firebase -----*/
+
+    }
+
+
+    // ----- Firebase ----- //
 
     public void setFirebaseService(String instance, MyRealtime.SingleListener listener) {
 
@@ -302,7 +311,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    /*----- Interfase -----*/
+    // ----- Interfase ----- //
 
     public interface StartCallBack {
 
@@ -320,16 +329,12 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    /*----- Inherents -----*/
+    // ----- Inherents ----- //
 
     @Override
     public void onBackPressed() {
 
-        if (backActivity == null) {
-
-            //new MyActivity().Start(context, MenuActivity.class, TRUE);
-
-        } else {
+        if (backActivity != null) {
 
             new MyActivity().Start(context, backActivity, TRUE);
         }

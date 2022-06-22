@@ -27,7 +27,7 @@ public class PhoneCall extends MyPermissions {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     private void makePhoneCall() {
 

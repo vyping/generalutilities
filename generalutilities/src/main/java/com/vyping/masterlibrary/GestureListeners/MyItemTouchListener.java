@@ -9,36 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vyping.masterlibrary.Animations.MyAnimation;
+import com.vyping.masterlibrary.views.MyView;
 import com.vyping.masterlibrary.views.RecyclerViews;
 
 public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
 
     private final GestureDetector gestureDetector;
-    private SelectInterface selectInterface;
-    private TouchInterface touchInterface;
+    private final Interfase interfase;
+
+    private MotionEvent prevEvent;
 
 
     /*----- SetUp -----*/
 
-    public MyItemTouchListener(Context context, SelectInterface selectInterface) {
+    public MyItemTouchListener(Context context, Interfase interfase) {
 
-        this.selectInterface = selectInterface;
-
-        gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-
-                return true;
-            }
-
-            public void DummyVoid() {}
-        });
-    }
-
-    public MyItemTouchListener(Context context, TouchInterface touchInterface) {
-
-        this.touchInterface = touchInterface;
+        this.interfase = interfase;
 
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
 
@@ -53,30 +39,27 @@ public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
     }
 
 
-    /*----- Methods -----*/
+    /*----- ModelMethods -----*/
 
     @Override
     public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
 
-        if (touchInterface != null) {
+        if (interfase != null) {
 
-            touchInterface.InterceptTouchEvent(motionEvent);
-        }
-
-        if (selectInterface != null) {
+            interfase.InterceptTouchEvent(motionEvent);
 
             try {
 
                 View selectedView = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+                prevEvent = new MyView().setTouchAnimation(selectedView, motionEvent, prevEvent);
 
                 if (selectedView != null && gestureDetector.onTouchEvent(motionEvent)) {
 
                     int indexSelected = recyclerView.getChildAdapterPosition(selectedView);
                     RecyclerView.ViewHolder viewHolder = recyclerView.findViewHolderForAdapterPosition(indexSelected);
 
-                    setAnimation(selectedView, motionEvent);
-
-                    selectInterface.SelectedItem(selectedView, indexSelected, viewHolder);
+                    interfase.SelectedItem(selectedView, indexSelected, viewHolder);
                 }
 
             } catch (Exception ignored) {}
@@ -88,9 +71,11 @@ public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
     @Override
     public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
 
-        if (touchInterface != null) {
+        if (interfase != null) {
 
-            touchInterface.TouchEvent(motionEvent);
+            interfase.InterceptTouchEvent(motionEvent);
+
+            interfase.TouchEvent(motionEvent);
         }
     }
 
@@ -98,42 +83,12 @@ public class MyItemTouchListener implements RecyclerView.OnItemTouchListener {
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
 
 
-    //----- Tools - Section-----//
-
-    private void setAnimation(View selectedView, @NonNull MotionEvent motionEvent) {
-
-        int action = motionEvent.getActionMasked();
-
-        if (action == MotionEvent.ACTION_DOWN) {
-
-            new MyAnimation().ScaleAmpliate(selectedView, 100, 0.95f, 1.05f, 0.95f, 1.05f);
-
-        } else if (action == MotionEvent.ACTION_OUTSIDE) {
-
-            new MyAnimation().ScaleAmpliate(selectedView, 100, 1.05f, 1.0f, 1.05f, 1.0f);
-
-        } else if (action == MotionEvent.ACTION_CANCEL) {
-
-            new MyAnimation().ScaleAmpliate(selectedView, 100, 1.05f, 1.0f, 1.05f, 1.0f);
-
-        } else if (action == MotionEvent.ACTION_UP) {
-
-            new MyAnimation().ScaleAmpliate(selectedView, 100, 1.05f, 1.0f, 1.05f, 1.0f);
-        }
-    }
-
-
     //----- Interface - Section-----//
 
-    public interface SelectInterface {
+    public interface Interfase {
 
-        void SelectedItem(View selectedView, int position, RecyclerView.ViewHolder viewHolder);
-    }
-
-    public interface TouchInterface {
-
-        void InterceptTouchEvent(@NonNull MotionEvent motionEvent);
-
-        void TouchEvent(@NonNull MotionEvent motionEvent);
+        default void InterceptTouchEvent(@NonNull MotionEvent motionEvent) {};
+        default void TouchEvent(@NonNull MotionEvent motionEvent) {};
+        default void SelectedItem(View selectedView, int position, RecyclerView.ViewHolder viewHolder) {};
     }
 }

@@ -42,7 +42,7 @@ public class MyCounter {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     public void startCounter() {
 

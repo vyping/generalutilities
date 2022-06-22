@@ -8,32 +8,35 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.vyping.libraries.utilities.definitions.Buckets;
+import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyString;
+import com.vyping.masterlibrary.views.recyclerview.methods.ModelMethods;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ProductMethods extends BaseObservable {
+public class ProductMethods extends ModelMethods<Product> {
 
     private final Product product;
 
 
     // ----- SetUp ----- //
 
-    public ProductMethods(Product model)
-    {
-        this.product = model;
+    public ProductMethods(Product product) {
+
+        super(product);
+
+        this.product = product;
     }
 
 
-    // ----- Basic Methods ----- //
+    // ----- Basic ModelMethods ----- //
 
     public Product getProduct()
     {
@@ -90,9 +93,12 @@ public class ProductMethods extends BaseObservable {
         return product.StockMax;
     }
 
-    // ----- Compounds Methods ----- //
+
+    // ----- Compounds ModelMethods ----- //
 
     public String getUrlImage() {
+
+        new LogCat("url", new Buckets().getMediaResource(BUCKET_SHOP, product.BarCode, product.Image));
 
         return new Buckets().getMediaResource(BUCKET_SHOP, product.BarCode, product.Image);
     }
@@ -127,15 +133,7 @@ public class ProductMethods extends BaseObservable {
     }
 
 
-    // ----- Binding Methods ----- //
-
-    @BindingAdapter("productImage")
-    public static void loadImage(@NonNull ImageView view, String url) {
-
-        RequestOptions requestOptions = new RequestOptions().fitCenter().transform(new RoundedCorners(16));
-
-        Glide.with(view.getContext()).load(url).apply(requestOptions).into(view);
-    }
+    // ----- Binding ModelMethods ----- //
 
     @BindingAdapter("discountVisible")
     public static void getPrevValueVisibility(@NonNull View view, @NonNull String discount) {
@@ -151,7 +149,7 @@ public class ProductMethods extends BaseObservable {
     }
 
 
-    // ----- Search Methods ----- //
+    // ----- Search ModelMethods ----- //
 
     @NonNull
     public ArrayList<Object> getSearchParameters() {

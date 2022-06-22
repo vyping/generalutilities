@@ -27,7 +27,7 @@ public class MyTime extends MyTimeTools {
     public static final String FORMAT_TIME_07 = "dd 'de' MMM 'a las' HH:mm", FORMAT_TIME_08 = "dd 'de' MMMM 'a las' HH:mm", FORMAT_TIME_09 = "dd 'de' MMM 'del' yyyy 'a las' HH:mm", FORMAT_TIME_10 = "dd 'de' MMMM 'del' yyyy 'a las' HH:mm";
     public static final String FORMAT_TIME_11 = "MMM dd 'del' yyyy 'a las' HH:mm", FORMAT_TIME_12 = "MMMM dd 'del' yyyy 'a las' HH:mm";
 
-    /*----- Calendar - Methods -----*/
+    /*----- Calendar - ModelMethods -----*/
 
     public Calendar getCalendar() {
 
@@ -98,7 +98,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Time - Methods -----*/
+    /*----- Time - ModelMethods -----*/
     public String getTime(@NonNull String Format) {
 
         Calendar calendar = getCalendar();
@@ -134,7 +134,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Millis - Methods -----*/
+    /*----- Millis - ModelMethods -----*/
 
     public long getMillis() {
 
@@ -205,7 +205,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Max Days of Month - Methods -----*/
+    /*----- Max Days of Month - ModelMethods -----*/
 
     public int getMaxDaysOfMonth() {
 
@@ -304,7 +304,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Day Name - Methods -----*/
+    /*----- Day Name - ModelMethods -----*/
 
     public String getDayName() {
 
@@ -354,7 +354,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Day of Week - Methods -----*/
+    /*----- Day of Week - ModelMethods -----*/
 
     public int getDayOfWeek() {
 
@@ -453,7 +453,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Day of Month - Methods -----*/
+    /*----- Day of Month - ModelMethods -----*/
 
     public int getDayOfMonth() {
 
@@ -552,7 +552,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Month Name - Methods -----*/
+    /*----- Month Name - ModelMethods -----*/
 
     public String getMonthName() {
 
@@ -602,7 +602,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*----- Month - Methods -----*/
+    /*----- Month - ModelMethods -----*/
 
     public int getMonth() {
 
@@ -701,7 +701,7 @@ public class MyTime extends MyTimeTools {
     }
 
 
-    /*-----  Year - Methods -----*/
+    /*-----  Year - ModelMethods -----*/
 
     public int getYear() {
 

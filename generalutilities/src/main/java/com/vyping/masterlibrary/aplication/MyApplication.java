@@ -46,7 +46,7 @@ public class MyApplication extends MultiDexApplication {
     }
 
 
-    // ----- Methods -----//
+    // ----- ModelMethods -----//
 
     public static Context getContext() {
 
@@ -54,7 +54,7 @@ public class MyApplication extends MultiDexApplication {
     }
 
 
-    // ----- Methods -----//
+    // ----- ModelMethods -----//
 
     public void addActivity(Activity activity) {
 

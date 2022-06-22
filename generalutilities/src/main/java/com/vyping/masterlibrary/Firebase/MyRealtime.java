@@ -396,7 +396,7 @@ public class MyRealtime extends MyRealtimeReader {
     }
 
 
-    // ---------- Methods  ---------- //
+    // ---------- ModelMethods  ---------- //
 
     public DatabaseReference getReference() {
 

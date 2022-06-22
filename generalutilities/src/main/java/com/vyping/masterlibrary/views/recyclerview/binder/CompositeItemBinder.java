@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.views.recyclerview.adapter.binder;
+package com.vyping.masterlibrary.views.recyclerview.binder;
 
 public class CompositeItemBinder<T> implements ItemBinder<T> {
 

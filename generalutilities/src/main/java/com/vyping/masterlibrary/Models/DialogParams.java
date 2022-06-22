@@ -111,7 +111,7 @@ public class DialogParams {
     }
 
 
-    /*----- Methods -----*/
+    /*----- ModelMethods -----*/
 
     public String ExtractValue(String[] listParams, int index, String ifVoid) {
 

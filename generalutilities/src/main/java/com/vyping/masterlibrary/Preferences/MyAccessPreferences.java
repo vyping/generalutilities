@@ -13,7 +13,7 @@ public class MyAccessPreferences {
     private SharedPreferences.Editor editor;
 
 
-    /*----- Common Methods -----*/
+    /*----- Common ModelMethods -----*/
 
     private SharedPreferences GetPreferences(@NonNull Context context) {
 
@@ -40,7 +40,7 @@ public class MyAccessPreferences {
     }
 
 
-    /*----- Set Methods -----*/
+    /*----- Set ModelMethods -----*/
 
     @SuppressLint("ApplySharedPref")
     public void SetAccessPermission(@NonNull Context context, String module, int access) {
@@ -50,7 +50,7 @@ public class MyAccessPreferences {
     }
 
 
-    /*----- Get Methods -----*/
+    /*----- Get ModelMethods -----*/
 
     public int GetAccessPermission(@NonNull Context context, String module) {
 

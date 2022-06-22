@@ -143,7 +143,7 @@ public class RecyclerViews {
     }
 
 
-    //----- Methods -----//
+    //----- ModelMethods -----//
 
     public RecyclerView getRecyclerView() {
 

@@ -1,18 +1,27 @@
 package com.vyping.masterlibrary.views;
 
+import static java.lang.Math.abs;
+
 import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.vyping.masterlibrary.Bucles.MyBucleFor;
+import com.vyping.masterlibrary.Animations.MyAnimation;
+import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyDisplay;
 import com.vyping.masterlibrary.views.recyclerview.adapter.BindingRecyclerViewAdapter;
 
 public class MyView {
+
+    private static final int ANIMATION_DURATION = 100;
+    private static final float ANIMATION_SIZE_ORIGINAL = 1.0f;
+    private static final float ANIMATION_SIZE_ANIMATED = 1.05f;
+
 
     public void setDimentionsFromPx(@NonNull View view, int pxWidth, int pxHeight) {
 
@@ -55,5 +64,62 @@ public class MyView {
         }
 
         return viewHolder.findViewById(resource);
+    }
+
+    public int getPosition(@NonNull RecyclerView recyclerView, View view) {
+
+        return recyclerView.getChildAdapterPosition(view);
+    }
+
+    public RecyclerView.ViewHolder getHolder(@NonNull RecyclerView recyclerView, View view) {
+
+        int position = getPosition(recyclerView, view);
+
+        return getHolder(recyclerView, position);
+    }
+
+    public RecyclerView.ViewHolder getHolder(@NonNull RecyclerView recyclerView, int position) {
+
+        return recyclerView.findViewHolderForAdapterPosition(position);
+    }
+
+    public MotionEvent setTouchAnimation(View selectedView, @NonNull MotionEvent event, @NonNull MotionEvent prevEvent) {
+
+        int action = event.getActionMasked();
+
+        if (action == MotionEvent.ACTION_DOWN) {
+
+            new MyAnimation().ScaleAmpliate(selectedView, ANIMATION_DURATION, ANIMATION_SIZE_ORIGINAL, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL, ANIMATION_SIZE_ANIMATED);
+
+        } else if (action == MotionEvent.ACTION_OUTSIDE) {
+
+            new MyAnimation().ScaleAmpliate(selectedView, ANIMATION_DURATION, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL);
+
+        } else if (action == MotionEvent.ACTION_MOVE) {
+
+            float prevPosX = prevEvent.getRawX();
+            float prevPosY = prevEvent.getRawY();
+
+            if (prevEvent.getActionMasked() != MotionEvent.ACTION_MOVE) {
+
+                prevPosX = event.getRawX();
+                prevPosY = event.getRawY();
+            }
+
+            if ((abs(prevPosX - event.getRawX()) > 200) && (abs(prevPosY - event.getRawY()) > 200))  {
+
+                new MyAnimation().ScaleAmpliate(selectedView, ANIMATION_DURATION, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL);
+            }
+
+        } else if (action == MotionEvent.ACTION_CANCEL) {
+
+            new MyAnimation().ScaleAmpliate(selectedView, ANIMATION_DURATION, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL);
+
+        } else if (action == MotionEvent.ACTION_UP) {
+
+            new MyAnimation().ScaleAmpliate(selectedView, ANIMATION_DURATION, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL, ANIMATION_SIZE_ANIMATED, ANIMATION_SIZE_ORIGINAL);
+        }
+
+        return event;
     }
 }

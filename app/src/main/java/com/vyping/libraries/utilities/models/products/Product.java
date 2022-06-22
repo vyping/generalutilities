@@ -7,15 +7,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
 import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
 import com.vyping.masterlibrary.Json.MyJsonReader;
+import com.vyping.masterlibrary.views.recyclerview.methods.Model;
 
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
-public class Product implements Serializable {
+public class Product extends Model {
 
     @Exclude
     public static final String TAG_BARCODE = "BarCode", TAG_IMAGE = "Image", TAG_NAME = "Name", TAG_MARK = "Mark", TAG_DESCRIPTION = "Description", TAG_UNITS = "Units", TAG_SIZE = "Size", TAG_PREVPRICE = "PrevPrice", TAG_PRICE = "Price", TAG_STOCKMIN = "StockMin", TAG_STOCK = "Stock", TAG_STOCKMAX = "StockMax", TAG_LABELS = "Labels";
@@ -33,9 +33,14 @@ public class Product implements Serializable {
 
     /*----- Main Model -----*/
 
-    public Product() {}
+    public Product() {
+
+        super();
+    }
 
     public Product(@NonNull DataSnapshot dataSnapshot) {
+
+        super(dataSnapshot);
 
         this.BarCode = new MyRealtimeReader().getKeyString(dataSnapshot);
         this.Image = new MyRealtimeReader().getString(dataSnapshot.child(TAG_IMAGE));
@@ -53,6 +58,8 @@ public class Product implements Serializable {
     }
 
     public Product(String BarCode, @NonNull JSONObject jsonObject) {
+
+        super(BarCode, jsonObject);
 
         this.BarCode = BarCode;
         this.Image = new MyJsonReader().getJsonString(jsonObject, TAG_IMAGE);

@@ -17,7 +17,7 @@ import java.io.InputStream;
 public class MyAsset {
 
 
-    // ----- Main Methods ----- //
+    // ----- Main ModelMethods ----- //
 
     public AssetManager getAssetManager(@NonNull Context context) {
 

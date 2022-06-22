@@ -3,13 +3,13 @@
 <layout
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable name="shopActivity" type="com.vyping.libraries.shop.ShopActivity" />
-        <variable name="productsHandler" type="com.vyping.libraries.utilities.models.products.ProductsHandler"/>
+        <variable name="methodHandler" type="com.vyping.masterlibrary.views.recyclerview.methods.MethodsHandler"/>
+        <variable name="productBinder" type="com.vyping.libraries.utilities.models.products.ProductBinder"/>
 
     </data>
 
@@ -29,17 +29,13 @@
             android:paddingBottom="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
-            tools:listitem="@layout/shop_holder"
-            app:items="@{productsHandler.products}"
-            app:longClickHandler="@{shopActivity.longClickHandler()}"
-            app:clickHandler="@{shopActivity.clickHandler()}"
-            app:itemViewBinder="@{shopActivity.itemViewBinder}"
-            app:touchable="@{false}"/>
+            app:itemViewBinder="@{productBinder}"
+            app:interfase="@{shopActivity.adapterInterfase}"
+            app:items="@{methodHandler.methodsDisplayed}"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/Fl_MarketCar"

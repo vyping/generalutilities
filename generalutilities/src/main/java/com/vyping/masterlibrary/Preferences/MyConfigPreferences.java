@@ -25,7 +25,7 @@ public class MyConfigPreferences {
     }
 
 
-    /*----- Common Methods -----*/
+    /*----- Common ModelMethods -----*/
 
     private SharedPreferences GetPreferences(@NonNull Context context) {
 
@@ -52,7 +52,7 @@ public class MyConfigPreferences {
     }
 
 
-    /*----- Set Methods -----*/
+    /*----- Set ModelMethods -----*/
 
     public void setAppTheme(@NonNull Context context, int theme) {
 
@@ -67,7 +67,7 @@ public class MyConfigPreferences {
     }
 
 
-    /*----- Get Methods -----*/
+    /*----- Get ModelMethods -----*/
 
     public int getAppTheme(@NonNull Context context) {
 

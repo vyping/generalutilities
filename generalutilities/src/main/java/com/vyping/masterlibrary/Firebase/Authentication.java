@@ -37,7 +37,7 @@ public class Authentication {
     }
 
 
-    //----- Methods -----//
+    //----- ModelMethods -----//
 
     public void logUp(String Email, String Password, Interface Interface) {
 

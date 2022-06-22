@@ -130,7 +130,7 @@ public class MenuButton extends androidx.appcompat.widget.AppCompatButton {
     }
 
 
-    // ----- Methods ----- //
+    // ----- ModelMethods ----- //
 
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
@@ -277,7 +277,7 @@ public class MenuButton extends androidx.appcompat.widget.AppCompatButton {
     }
 
 
-    // ----- Get Methods ----- //
+    // ----- Get ModelMethods ----- //
 
     public Drawable getBackgroundDrawable() {
 
@@ -345,7 +345,7 @@ public class MenuButton extends androidx.appcompat.widget.AppCompatButton {
     }
 
 
-    // ----- Set Methods ----- //
+    // ----- Set ModelMethods ----- //
 
     public void setBackgroundDrawables(int backgroundDrawable) {
 

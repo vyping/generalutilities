@@ -177,7 +177,7 @@ public class CreateDialog extends DialogParams {
     }
 
 
-    /*----- SetUp Methods -----*/
+    /*----- SetUp ModelMethods -----*/
 
     public void ReloadDialog() {
 
@@ -562,7 +562,7 @@ public class CreateDialog extends DialogParams {
     }
 
 
-    /*----- Other Methods -----*/
+    /*----- Other ModelMethods -----*/
 
     public Dialog GetDialog() {
 

@@ -22,7 +22,7 @@ public class MyAuthPreferences {
     private SharedPreferences.Editor editor;
 
 
-    /*----- Common Methods -----*/
+    /*----- Common ModelMethods -----*/
 
     private SharedPreferences GetPreferences(@NonNull Context context) {
 
@@ -49,7 +49,7 @@ public class MyAuthPreferences {
     }
 
 
-    /*----- Main Methods -----*/
+    /*----- Main ModelMethods -----*/
 
     @SuppressLint("ApplySharedPref")
     public void SaveAuthData(Context context, @NonNull Session session) {
@@ -110,7 +110,7 @@ public class MyAuthPreferences {
     }
 
 
-    /*----- Set Methods -----*/
+    /*----- Set ModelMethods -----*/
 
     @SuppressLint("ApplySharedPref")
     public void SetEmail(@NonNull Context context, @NonNull Session session) {
@@ -141,7 +141,7 @@ public class MyAuthPreferences {
     }
 
 
-    /*----- Get Methods -----*/
+    /*----- Get ModelMethods -----*/
 
     public String GetEmail(@NonNull Context context) {
 
