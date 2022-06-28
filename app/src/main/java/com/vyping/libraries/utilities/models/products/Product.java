@@ -5,9 +5,8 @@ import androidx.annotation.StringDef;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
-import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
+import com.vyping.masterlibrary.Firebase.RealData;
 import com.vyping.masterlibrary.Json.MyJsonReader;
-import com.vyping.masterlibrary.views.recyclerview.methods.Model;
 
 import org.json.JSONObject;
 
@@ -15,7 +14,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
-public class Product extends Model {
+public class Product extends RealData {
 
     @Exclude
     public static final String TAG_BARCODE = "BarCode", TAG_IMAGE = "Image", TAG_NAME = "Name", TAG_MARK = "Mark", TAG_DESCRIPTION = "Description", TAG_UNITS = "Units", TAG_SIZE = "Size", TAG_PREVPRICE = "PrevPrice", TAG_PRICE = "Price", TAG_STOCKMIN = "StockMin", TAG_STOCK = "Stock", TAG_STOCKMAX = "StockMax", TAG_LABELS = "Labels";
@@ -32,48 +31,23 @@ public class Product extends Model {
 
 
     /*----- Main Model -----*/
-
-    public Product() {
-
-        super();
-    }
-
+    
     public Product(@NonNull DataSnapshot dataSnapshot) {
 
         super(dataSnapshot);
 
-        this.BarCode = new MyRealtimeReader().getKeyString(dataSnapshot);
-        this.Image = new MyRealtimeReader().getString(dataSnapshot.child(TAG_IMAGE));
-        this.Name = new MyRealtimeReader().getString(dataSnapshot.child(TAG_NAME));
-        this.Mark = new MyRealtimeReader().getString(dataSnapshot.child(TAG_MARK));
-        this.Description = new MyRealtimeReader().getString(dataSnapshot.child(TAG_DESCRIPTION));
-        this.Units = new MyRealtimeReader().getString(dataSnapshot.child(TAG_UNITS));
-        this.Size = new MyRealtimeReader().getInteger(dataSnapshot.child(TAG_SIZE));
-        this.PrevPrice = new MyRealtimeReader().getInteger(dataSnapshot.child(TAG_PREVPRICE));
-        this.Price = new MyRealtimeReader().getInteger(dataSnapshot.child(TAG_PRICE));
-        this.StockMin = new MyRealtimeReader().getInteger(dataSnapshot.child(TAG_STOCKMIN));
-        this.Stock = new MyRealtimeReader().getInteger(dataSnapshot.child(TAG_STOCK));
-        this.StockMax = new MyRealtimeReader().getInteger(dataSnapshot.child(TAG_STOCKMAX));
-        this.Labels = new MyRealtimeReader().getArrayString(dataSnapshot.child(TAG_LABELS));
-    }
-
-    public Product(String BarCode, @NonNull JSONObject jsonObject) {
-
-        super(BarCode, jsonObject);
-
-        this.BarCode = BarCode;
-        this.Image = new MyJsonReader().getJsonString(jsonObject, TAG_IMAGE);
-        this.Name = new MyJsonReader().getJsonString(jsonObject, TAG_IMAGE);
-        this.Mark = new MyJsonReader().getJsonString(jsonObject, TAG_NAME);
-        this.Units = new MyJsonReader().getJsonString(jsonObject, TAG_MARK);
-        this.Description = new MyJsonReader().getJsonString(jsonObject, TAG_DESCRIPTION);
-        this.Units = new MyJsonReader().getJsonString(jsonObject, TAG_UNITS);
-        this.Size = new MyJsonReader().getJsonInt(jsonObject, TAG_SIZE);
-        this.PrevPrice = new MyJsonReader().getJsonInt(jsonObject, TAG_PREVPRICE);
-        this.Price = new MyJsonReader().getJsonInt(jsonObject, TAG_PRICE);
-        this.StockMin = new MyJsonReader().getJsonInt(jsonObject, TAG_STOCKMIN);
-        this.Stock = new MyJsonReader().getJsonInt(jsonObject, TAG_STOCK);
-        this.StockMax = new MyJsonReader().getJsonInt(jsonObject, TAG_STOCKMAX);
-        this.Labels = new MyJsonReader().getArrayList(jsonObject, TAG_LABELS);
+        this.BarCode = getKeyString();
+        this.Image = getString(TAG_IMAGE);
+        this.Name = getString(TAG_NAME);
+        this.Mark = getString(TAG_MARK);
+        this.Description = getString(TAG_DESCRIPTION);
+        this.Units = getString(TAG_UNITS);
+        this.Size = getInteger(TAG_SIZE);
+        this.PrevPrice = getInteger(TAG_PREVPRICE);
+        this.Price = getInteger(TAG_PRICE);
+        this.StockMin = getInteger(TAG_STOCKMIN);
+        this.Stock = getInteger(TAG_STOCK);
+        this.StockMax = getInteger(TAG_STOCKMAX);
+        this.Labels = getArrayString(TAG_LABELS);
     }
 }

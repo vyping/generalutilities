@@ -3,12 +3,12 @@ package com.vyping.libraries.utilities.models.products;
 import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
 
-public class ProductBinder extends ConditionalDataBinder<ProductMethods> {
+public class TitleBinder extends ConditionalDataBinder<ProductMethods> {
 
 
     // ----- SetUp ----- //
 
-    public ProductBinder(int bindingVariable, int layoutId) {
+    public TitleBinder(int bindingVariable, int layoutId) {
 
         super(bindingVariable, layoutId);
     }
@@ -19,6 +19,6 @@ public class ProductBinder extends ConditionalDataBinder<ProductMethods> {
     @Override
     public boolean canHandle(ProductMethods model) {
 
-        return true;
+        return model instanceof TItleMethods;
     }
 }

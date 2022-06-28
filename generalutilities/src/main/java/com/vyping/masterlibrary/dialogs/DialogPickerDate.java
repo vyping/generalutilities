@@ -10,12 +10,10 @@ import androidx.annotation.NonNull;
 
 import com.airbnb.paris.Paris;
 import com.vyping.masterlibrary.time.MyTime;
-import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.Common.Definitions;
 import com.vyping.masterlibrary.R;
 
 import java.util.Calendar;
-import java.util.Locale;
 
 public abstract class DialogPickerDate extends CreateDialog {
 
@@ -30,34 +28,16 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         super(context, arrayParameters);
 
-        setParameters("");
+        setParameters();
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, int arrayParameters, @Definitions.TypeCalendar int type, String date) {
+    public DialogPickerDate(@NonNull Context context, int arrayParameters, @Definitions.TypeCalendar int type, MyTime myTime) {
 
         super(context, arrayParameters);
 
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, int arrayParameters, @Definitions.TypeCalendar int type, long date) {
-
-        super(context, arrayParameters);
-
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, int arrayParameters, @Definitions.TypeCalendar int type, Calendar date) {
-
-        super(context, arrayParameters);
-
-        setParameters(date);
+        setParameters(myTime);
         setDialogViews(type);
         setModeDialogButtons();
     }
@@ -66,34 +46,16 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         super(context, dialogMode, arrayParameters);
 
-        setParameters("");
+        setParameters();
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int arrayParameters, @Definitions.TypeCalendar int type, String date) {
+    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int arrayParameters, @Definitions.TypeCalendar int type, MyTime myTime) {
 
         super(context, dialogMode, arrayParameters);
 
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int arrayParameters, @Definitions.TypeCalendar int type, long date) {
-
-        super(context, dialogMode, arrayParameters);
-
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int arrayParameters, @Definitions.TypeCalendar int type, Calendar date) {
-
-        super(context, dialogMode, arrayParameters);
-
-        setParameters(date);
+        setParameters(myTime);
         setDialogViews(type);
         setModeDialogButtons();
     }
@@ -102,34 +64,16 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         super(context, icon, title, description, help, error, success);
 
-        setParameters("");
+        setParameters();
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, String date) {
+    public DialogPickerDate(@NonNull Context context, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, MyTime myTime) {
 
         super(context, icon, title, description, help, error, success);
 
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, long date) {
-
-        super(context, icon, title, description, help, error, success);
-
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, Calendar date) {
-
-        super(context, icon, title, description, help, error, success);
-
-        setParameters(date);
+        setParameters(myTime);
         setDialogViews(type);
         setModeDialogButtons();
     }
@@ -138,34 +82,16 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         super(context, dialogMode, icon, title, description, help, error, success);
 
-        setParameters("");
+        setParameters();
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, String date) {
+    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, MyTime myTime) {
 
         super(context, dialogMode, icon, title, description, help, error, success);
 
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, long date) {
-
-        super(context, dialogMode, icon, title, description, help, error, success);
-
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, Drawable icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, Calendar date) {
-
-        super(context, dialogMode, icon, title, description, help, error, success);
-
-        setParameters(date);
+        setParameters(myTime);
         setDialogViews(type);
         setModeDialogButtons();
     }
@@ -174,34 +100,16 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         super(context, icon, title, description, help, error, success);
 
-        setParameters("");
+        setParameters();
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, String date) {
+    public DialogPickerDate(@NonNull Context context, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, MyTime myTime) {
 
         super(context, icon, title, description, help, error, success);
 
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, long date) {
-
-        super(context, icon, title, description, help, error, success);
-
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    public DialogPickerDate(@NonNull Context context, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, Calendar date) {
-
-        super(context, icon, title, description, help, error, success);
-
-        setParameters(date);
+        setParameters(myTime);
         setDialogViews(type);
         setModeDialogButtons();
     }
@@ -210,78 +118,34 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         super(context, dialogMode, icon, title, description, help, error, success);
 
-        setParameters("");
+        setParameters();
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, String date) {
+    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, MyTime myTime) {
 
         super(context, dialogMode, icon, title, description, help, error, success);
 
-        setParameters(date);
+        setParameters(myTime);
         setDialogViews(type);
         setModeDialogButtons();
     }
 
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, long date) {
+    private void setParameters() {
 
-        super(context, dialogMode, icon, title, description, help, error, success);
+        MyTime myTime = new MyTime();
 
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
+        prevDay = day = myTime.getDay();
+        prevMonth = month = myTime.getMonth();
+        prevYear = year = myTime.getYear();
     }
 
-    public DialogPickerDate(@NonNull Context context, @DialogMode int dialogMode, int icon, String title, String description, String help, String error, String success, @Definitions.TypeCalendar int type, Calendar date) {
+    private void setParameters(@NonNull MyTime myTime) {
 
-        super(context, dialogMode, icon, title, description, help, error, success);
-
-        setParameters(date);
-        setDialogViews(type);
-        setModeDialogButtons();
-    }
-
-    private void setParameters(@NonNull String date) {
-
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-
-        if (!date.equals("")) {
-
-            calendar = new MyTime().getCalendar(date);
-        }
-
-        prevDay = day = calendar.get(Calendar.DAY_OF_MONTH);
-        prevMonth = month = calendar.get(Calendar.MONTH) + 1;
-        prevYear = year = calendar.get(Calendar.YEAR);
-    }
-
-    private void setParameters(long date) {
-
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-
-        if (date != 0) {
-
-            calendar.setTimeInMillis(date);
-        }
-
-        prevDay = day = calendar.get(Calendar.DAY_OF_MONTH);
-        prevMonth = month = calendar.get(Calendar.MONTH) + 1;
-        prevYear = year = calendar.get(Calendar.YEAR);
-    }
-
-    private void setParameters(Calendar date) {
-
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-
-        if (date != null) {
-
-            calendar = date;
-        }
-
-        prevDay = day = calendar.get(Calendar.DAY_OF_MONTH);
-        prevMonth = month = calendar.get(Calendar.MONTH) + 1;
-        prevYear = year = calendar.get(Calendar.YEAR);
+        prevDay = day = myTime.getDay();
+        prevMonth = month = myTime.getMonth();
+        prevYear = year = myTime.getYear();
     }
 
     private void setDialogViews(@Definitions.TypeCalendar int Type) {
@@ -323,12 +187,10 @@ public abstract class DialogPickerDate extends CreateDialog {
         String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
         String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
 
-        Calendar calendar = new MyTime().getCalendar(day, month, year);
-        long milis = calendar.getTimeInMillis();
+        MyTime myTime = new MyTime(day, month, year);
 
-        SetDate(calendar, milis, day, month, year);
+        SetDate(myTime);
     }
-
 
 
     /*----- Listeners -----*/
@@ -347,6 +209,23 @@ public abstract class DialogPickerDate extends CreateDialog {
 
         private void DummyVoid() {
         }
+    };
+
+    private final Interfase interfase = new Interfase() {
+
+        @Override
+        public boolean ClickButton() {
+
+            String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
+            String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
+            String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
+
+            MyTime myTime = new MyTime(day, month, year);
+
+            return SetDate(myTime);
+        }
+
+        private void DummyVoid() {}
     };
 
 
@@ -400,24 +279,7 @@ public abstract class DialogPickerDate extends CreateDialog {
                     private void DummyVoid() {
                     }
                 });
-                SetButtonConfirm(BUTTON_RIGHT, new Interfase() {
-
-                    @Override
-                    public boolean ClickButton() {
-
-                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
-
-                        Calendar calendar = new MyTime().getCalendar(day, month, year);
-                        long milis = calendar.getTimeInMillis();
-
-                        return SetDate(calendar, milis, day, month, year);
-                    }
-
-                    private void DummyVoid() {
-                    }
-                });
+                SetButtonConfirm(BUTTON_RIGHT, interfase);
 
             } else if (MODE == DIALOG_STEP_INITIAL) {
 
@@ -432,24 +294,7 @@ public abstract class DialogPickerDate extends CreateDialog {
                     private void DummyVoid() {
                     }
                 });
-                SetButtonNext(BUTTON_RIGHT, new Interfase() {
-
-                    @Override
-                    public boolean ClickButton() {
-
-                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
-
-                        Calendar calendar = new MyTime().getCalendar(day, month, year);
-                        long milis = calendar.getTimeInMillis();
-
-                        return SetDate(calendar, milis, day, month, year);
-                    }
-
-                    private void DummyVoid() {
-                    }
-                });
+                SetButtonNext(BUTTON_RIGHT, interfase);
 
             } else if (MODE == DIALOG_STEP_INTERMEDIATE) {
 
@@ -464,24 +309,7 @@ public abstract class DialogPickerDate extends CreateDialog {
                     private void DummyVoid() {
                     }
                 });
-                SetButtonNext(BUTTON_RIGHT, new Interfase() {
-
-                    @Override
-                    public boolean ClickButton() {
-
-                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
-
-                        Calendar calendar = new MyTime().getCalendar(day, month, year);
-                        long milis = calendar.getTimeInMillis();
-
-                        return SetDate(calendar, milis, day, month, year);
-                    }
-
-                    private void DummyVoid() {
-                    }
-                });
+                SetButtonNext(BUTTON_RIGHT, interfase);
 
             } else if (MODE == DIALOG_STEP_FINAL) {
 
@@ -496,24 +324,7 @@ public abstract class DialogPickerDate extends CreateDialog {
                     private void DummyVoid() {
                     }
                 });
-                SetButtonConfirm(BUTTON_RIGHT, new Interfase() {
-
-                    @Override
-                    public boolean ClickButton() {
-
-                        String day = new MyTime().completeDigitsDate(Dp_Picker.getDayOfMonth());
-                        String month = new MyTime().completeDigitsDate(Dp_Picker.getMonth() + 1);
-                        String year = new MyTime().convertTwoDigitsYear(Dp_Picker.getYear());
-
-                        Calendar calendar = new MyTime().getCalendar(day, month, year);
-                        long milis = calendar.getTimeInMillis();
-
-                        return SetDate(calendar, milis, day, month, year);
-                    }
-
-                    private void DummyVoid() {
-                    }
-                });
+                SetButtonConfirm(BUTTON_RIGHT, interfase);
             }
         }
     }
@@ -521,5 +332,5 @@ public abstract class DialogPickerDate extends CreateDialog {
 
     /*----------- Return - Section ----------*/
 
-    protected abstract boolean SetDate(Calendar calendar, long milis, String day, String month, String year);
+    protected abstract boolean SetDate(MyTime myTime);
 }

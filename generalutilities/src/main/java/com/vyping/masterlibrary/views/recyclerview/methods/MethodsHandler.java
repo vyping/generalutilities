@@ -10,10 +10,11 @@ import androidx.databinding.ObservableArrayList;
 
 import com.google.firebase.database.DataSnapshot;
 import com.vyping.masterlibrary.Common.MyString;
+import com.vyping.masterlibrary.Firebase.RealData;
 
 public class MethodsHandler<T> extends BaseObservable {
 
-    private final MethodBinder<T> methodBinder;
+    private final MethodInterfase<T> methodInterfase;
 
     @Bindable
     public ObservableArrayList<T> methodsDisplayed;
@@ -24,9 +25,9 @@ public class MethodsHandler<T> extends BaseObservable {
 
     // ----- SetUp ----- //
 
-    public MethodsHandler(MethodBinder<T> modelBinder, boolean searched) {
+    public MethodsHandler(MethodInterfase<T> modelBinder, boolean searched) {
 
-        this.methodBinder = modelBinder;
+        this.methodInterfase = modelBinder;
         this.searched = searched;
 
         if (searched) {
@@ -40,9 +41,9 @@ public class MethodsHandler<T> extends BaseObservable {
 
     // ----- ModelMethods ----- //
 
-    public void loadMethod(@NonNull DataSnapshot snapChild) {
+    public void loadMethod(@NonNull DataSnapshot dataSnapshot) {
 
-        T methods = methodBinder.getMethod(snapChild);
+        T methods = methodInterfase.getMethod(dataSnapshot);
 
         if (searched) {
 
@@ -52,10 +53,10 @@ public class MethodsHandler<T> extends BaseObservable {
         this.methodsDisplayed.add(methodsDisplayed.size(), methods);
     }
 
-    public void addMethod(@NonNull DataSnapshot snapChild) {
+    public void addMethod(@NonNull DataSnapshot dataSnapshot) {
         
-        String index = methodBinder.getIndex(snapChild);
-        T method = methodBinder.getMethod(snapChild);
+        String index = methodInterfase.getIndex(dataSnapshot);
+        T method = methodInterfase.getMethod(dataSnapshot);
 
         if (searched) {
 
@@ -73,10 +74,10 @@ public class MethodsHandler<T> extends BaseObservable {
         }
     }
 
-    public void modifyMethod(@NonNull DataSnapshot snapChild) {
+    public void modifyMethod(@NonNull DataSnapshot dataSnapshot) {
 
-        String index = methodBinder.getIndex(snapChild);
-        T method = methodBinder.getMethod(snapChild);
+        String index = methodInterfase.getIndex(dataSnapshot);
+        T method = methodInterfase.getMethod(dataSnapshot);
 
         if (searched) {
 
@@ -94,9 +95,9 @@ public class MethodsHandler<T> extends BaseObservable {
         }
     }
 
-    public void removeMethod(@NonNull DataSnapshot snapChild) {
+    public void removeMethod(@NonNull DataSnapshot dataSnapshot) {
 
-        String index = methodBinder.getIndex(snapChild);
+        String index = methodInterfase.getIndex(dataSnapshot);
 
         if (searched) {
 
@@ -127,7 +128,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
                 position = position + 1;
 
-                String indexCompare = methodBinder.getIndex(compareMethod);
+                String indexCompare = methodInterfase.getIndex(compareMethod);
 
                 if (index.equals(indexCompare)) {
 
@@ -149,7 +150,7 @@ public class MethodsHandler<T> extends BaseObservable {
             for (final T compareMethod : methodsDisplayed) {
 
                 position = position + 1;
-                String indexCompare = methodBinder.getIndex(compareMethod);
+                String indexCompare = methodInterfase.getIndex(compareMethod);
 
                 if (index.equals(indexCompare)) {
 
@@ -171,7 +172,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
             for (int position = 0; position < arraySize; position ++) {
 
-                String indexCompare = methodBinder.getIndex(methodsHidden.get(position));
+                String indexCompare = methodInterfase.getIndex(methodsHidden.get(position));
                 int compareMarge = index.compareTo(indexCompare);
 
                 if (compareMarge < 0) {
@@ -191,7 +192,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
                     } else {
 
-                        String indexNext = methodBinder.getIndex(methodsHidden.get(position));
+                        String indexNext = methodInterfase.getIndex(methodsHidden.get(position));
                         int nextMarge = index.compareTo(indexNext);
 
                         if (nextMarge < 0) {
@@ -216,7 +217,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
             for (int position = 0; position < arraySize; position ++) {
 
-                String indexCompare = methodBinder.getIndex(methodsDisplayed.get(position));
+                String indexCompare = methodInterfase.getIndex(methodsDisplayed.get(position));
                 int compareMarge = index.compareTo(indexCompare);
 
                 if (compareMarge < 0) {
@@ -236,7 +237,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
                     } else {
 
-                        String indexNext = methodBinder.getIndex(methodsDisplayed.get(position));
+                        String indexNext = methodInterfase.getIndex(methodsDisplayed.get(position));
                         int nextMarge = index.compareTo(indexNext);
 
                         if (nextMarge < 0) {
@@ -265,7 +266,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
                 boolean contains = FALSE;
 
-                for (Object object : methodBinder.getSearchParameters(modelMethods)) {
+                for (Object object : methodInterfase.getSearchParameters(modelMethods)) {
 
                     String Parameter = String.valueOf(object);
                     String parameter = new MyString().toLowerCaseAndRemoveAccentMark(Parameter);
@@ -281,7 +282,7 @@ public class MethodsHandler<T> extends BaseObservable {
 
                     if (!this.methodsDisplayed.contains(modelMethods)) {
 
-                        String index = methodBinder.getIndex(modelMethods);
+                        String index = methodInterfase.getIndex(modelMethods);
                         int position = setPositionDisplayed(index);
                         this.methodsDisplayed.add(position, modelMethods);
                     }

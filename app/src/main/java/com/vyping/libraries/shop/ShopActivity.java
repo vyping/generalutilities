@@ -16,6 +16,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vyping.libraries.R;
@@ -24,13 +25,16 @@ import com.vyping.libraries.databinding.ShopActivityBinding;
 import com.vyping.libraries.utilities.models.products.ProductBinder;
 import com.vyping.libraries.utilities.models.products.ProductMethods;
 import com.vyping.libraries.utilities.models.products.ProductsHandler;
+import com.vyping.libraries.utilities.models.products.TitleBinder;
 import com.vyping.masterlibrary.BR;
 import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.activities.RecyclerActivity;
 import com.vyping.masterlibrary.popups.PopUpConfig;
 import com.vyping.masterlibrary.views.recyclerview.adapter.BindingRecyclerViewAdapter;
+import com.vyping.masterlibrary.views.recyclerview.binder.CompositeItemBinder;
+import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
 
-public class ShopActivity extends RecyclerActivity<ProductMethods> implements RecyclerActivity.StartCallBack, BindingRecyclerViewAdapter.Interfase<ProductMethods> {
+public class ShopActivity extends RecyclerActivity<ProductMethods> {
 
     private ShopActivityBinding binding;
 
@@ -38,11 +42,9 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> implements Re
     // ----- SetUp ----- //
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void CreateActivity() {
 
-        super.onCreate(savedInstanceState);
-
-        CreateBindingActivity(ShopActivity.this, R.layout.shop_activity, MODULE_ICON_SHOP, MODULE_NAME_SHOP, MainActivity.class);
+        createActivity(ShopActivity.this, R.layout.shop_activity, MODULE_ICON_SHOP, MODULE_NAME_SHOP, MainActivity.class);
         setSearchBar(binding.ClMainContainer.getId(), new ToolBarsInterfase() {
 
             @Override
@@ -54,18 +56,42 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> implements Re
     }
 
     @Override
-    public void SetStartBindingProcess(ViewDataBinding binding) {
+    protected void StartProcess(ViewDataBinding binding) {
 
         setAdapterMethodHandler(new ProductsHandler(), TRUE);
+
+        GridLayoutManager mLayoutManager = new GridLayoutManager(context, 2);
+        mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup()  {
+
+            @Override
+            public int getSpanSize(int position) {
+
+                if (methodHandler.methodsDisplayed.get(position).getDescription().equals("") == TRUE) {
+
+                    return 2;
+
+                } else {
+
+                    return 1;
+                }
+            }
+
+            private void DummyVoid() {}
+        });
 
         this.binding = (ShopActivityBinding) binding;
         this.binding.setShopActivity(ShopActivity.this);
         this.binding.setMethodHandler(methodHandler);
-        this.binding.setProductBinder(new ProductBinder(BR.product, R.layout.shop_holder));
+        this.binding.RvNotRecyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    public ItemBinder<ProductMethods> itemViewBinder(){
+
+        return new CompositeItemBinder<ProductMethods>(new TitleBinder(BR.productMethod, R.layout.title_holder), new ProductBinder(BR.productMethod, R.layout.shop_holder));
     }
 
     @Override
-    public void SetActionBar() {
+    protected void ActionBar() {
 
         actionBar.setButtonOption(R.drawable.icon_configuration, new View.OnClickListener() {
 
@@ -107,11 +133,9 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> implements Re
     }
 
     @Override
-    public boolean SetActivityViews() {
+    public void setActivityViews() {
 
         binding.FlMarketCar.setOnDragListener(onDragListener);
-
-        return true;
     }
 
 

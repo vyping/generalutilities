@@ -8,27 +8,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.vyping.masterlibrary.ActionBar.MyActionBar;
 import com.vyping.masterlibrary.Common.MyActivity;
+import com.vyping.masterlibrary.Common.MyPermissions;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
 import com.vyping.masterlibrary.aplication.MyApplication;
-import com.vyping.masterlibrary.views.recyclerview.binder.CompositeItemBinder;
-import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
-import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
+import com.vyping.masterlibrary.time.MyTime;
 
-import java.util.Calendar;
-
-public class BasicActivity extends AppCompatActivity {
+public abstract class BasicActivity extends AppCompatActivity {
 
     public MyApplication application;
     public Context context;
     public ViewDataBinding binding;
-    public StartCallBack callback;
+    private MyPermissions myPermissions;
 
     public MyActionBar actionBar;
     public MyToolBars myToolBars;
@@ -48,6 +46,8 @@ public class BasicActivity extends AppCompatActivity {
 
             application = (MyApplication) getApplication();
         }
+
+        CreateActivity();
     }
 
     @Override
@@ -69,267 +69,287 @@ public class BasicActivity extends AppCompatActivity {
     }
 
 
-    // ----- ModelMethods ----- //
+    // ----- Start ----- //
 
-    public void CreateActivity(Activity activity, int layout, int icon, int module) {
+    public void createActivity(Activity activity, int layout, int icon, int module) {
 
         setStartProcess(activity, layout);
         setActionBar(icon, module);
         setActivityViews();
+
+        LaunchProcess();
     }
 
-    public void CreateActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
+    public void createActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
 
         setStartProcess(activity, layout, backActivity);
         setActionBar(icon, module);
         setActivityViews();
-    }
 
-    public void CreateBindingActivity(Activity activity, int layout, int icon, int module) {
-
-        setStartBindingProcess(activity, layout);
-        setActionBar(icon, module);
-        setActivityViews();
-    }
-
-    public void CreateBindingActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
-
-        setStartBindingProcess(activity, layout, backActivity);
-        setActionBar(icon, module);
-        setActivityViews();
+        LaunchProcess();
     }
 
     public void setStartProcess(Activity activity, int layout) {
 
-        context = new MyActivity().setTheme(activity);
-        callback = (StartCallBack) activity;
-        callback.SetStartProcess();
+        this.context = new MyActivity().setTheme(activity);
+        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
-        setContentView(layout);
+        View view = binding.getRoot();
+        setContentView(view);
+
+        StartProcess(binding);
     }
 
     public void setStartProcess(Activity activity, int layout, Class<Activity> backActivity) {
 
-        context = activity;
-        callback = (StartCallBack) activity;
-        callback.SetStartProcess();
-
+        this.context = activity;
         this.backActivity = backActivity;
+        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
-        setContentView(layout);
-    }
-
-    public void setStartBindingProcess(Activity activity, int layout) {
-
-        context = new MyActivity().setTheme(activity);
-        callback = (StartCallBack) activity;
-
-        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
         View view = binding.getRoot();
         setContentView(view);
 
-        callback.SetStartBindingProcess(binding);
-    }
-
-    public void setStartBindingProcess(Activity activity, int layout, Class<Activity> backActivity) {
-
-        context = activity;
-        callback = (StartCallBack) activity;
-        this.backActivity = backActivity;
-
-        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
-        View view = binding.getRoot();
-        setContentView(view);
-
-        callback.SetStartBindingProcess(binding);
+        StartProcess(binding);
     }
 
     public void setActionBar(int icon, int module) {
 
-        actionBar = new MyActionBar(context, icon, module) {};
+        this.actionBar = new MyActionBar(context, icon, module) {};
 
-        callback.SetActionBar();
-    }
-
-    public void setSearchBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
-
-            @Override
-            public void SelectedSearch(String search) {
-
-                interfase.setSearch(search);
-            }
-
-            private void DummyVoid(){}
-        });
-    }
-
-    public void setDateBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
-
-            @Override
-            public void SelectedDate(Calendar Calendar, long milis, String day, String month, String year) {
-
-                interfase.setDate(Calendar, milis, day, month, year);
-            }
-
-            private void DummyVoid(){}
-        });
-    }
-
-    public void setMonthBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setMonthToolBar(new MyToolBars.MonthInterface() {
-
-            @Override
-            public void SelectedMonth(Calendar Calendar, long milis, String month, String year) {
-
-                interfase.setMonth(Calendar, milis, month, year);
-            }
-
-            private void DummyVoid(){}
-        });
-    }
-
-    public void setSearchAndDateBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
-
-            @Override
-            public void SelectedSearch(String search) {
-
-                interfase.setSearch(search);
-            }
-
-            private void DummyVoid(){}
-        });
-        myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
-
-            @Override
-            public void SelectedDate(Calendar Calendar, long milis, String day, String month, String year) {
-
-                interfase.setDate(Calendar, milis,day, month, year);
-            }
-
-            private void DummyVoid(){}
-        });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
-
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
-        });
-    }
-
-    public void setSearchAndMonthBar(int container, RecyclerActivity.ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
-
-            @Override
-            public void SelectedSearch(String search) {
-
-                interfase.setSearch(search);
-            }
-
-            private void DummyVoid(){}
-        });
-        myToolBars.setMonthToolBar(new MyToolBars.MonthInterface() {
-
-            @Override
-            public void SelectedMonth(Calendar Calendar, long milis, String month, String year) {
-
-                interfase.setMonth(Calendar, milis, month, year);
-            }
-
-            private void DummyVoid(){}
-        });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
-
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
-        });
+        ActionBar();
     }
 
     public void setActivityViews() {
 
-        boolean executePendings = callback.SetActivityViews();
+        ActivityViews();
 
-        if (executePendings) {
-
-            binding.executePendingBindings();
-        }
-    }
-
-    public void setAdapter() {
-
-
+        binding.executePendingBindings();
     }
 
 
     // ----- Firebase ----- //
 
-    public void setFirebaseService(String instance, MyRealtime.SingleListener listener) {
+
+    public void setFirebaseService(String instance, Object listener) {
 
         myRealtime = new MyRealtime(instance);
-        myRealtime.getSingleValue(listener);
+
+        if (listener instanceof MyRealtime.SingleListener) {
+
+            MyRealtime.SingleListener singleListener = (MyRealtime.SingleListener) listener;
+            myRealtime.getSingleValue(singleListener);
+
+        } else if (listener instanceof  MyRealtime.ValueListener) {
+
+            MyRealtime.ValueListener valueListener = (MyRealtime.ValueListener) listener;
+            myRealtime.getValueChanges(valueListener);
+        }
     }
 
-    public void setFirebaseService(String instance, String child, MyRealtime.SingleListener listener) {
+    public void setFirebaseService(String instance, String child, Object listener) {
 
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getSingleValue(listener);
+        myRealtime = new MyRealtime(instance).child(child);
+
+        if (listener instanceof MyRealtime.SingleListener) {
+
+            MyRealtime.SingleListener singleListener = (MyRealtime.SingleListener) listener;
+            myRealtime.getSingleValue(singleListener);
+
+        } else if (listener instanceof  MyRealtime.ValueListener) {
+
+            MyRealtime.ValueListener valueListener = (MyRealtime.ValueListener) listener;
+            myRealtime.getValueChanges(valueListener);
+        }
     }
 
-    public void setFirebaseService(String instance, MyRealtime.ValueListener valueListener) {
 
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getValueChanges(valueListener);
+    // ----- Methods ----- //
+
+    public void setSearchBar(int container, ToolBarsInterfase interfase) {
+
+        myToolBars = new MyToolBars(context, container) {};
+        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
+
+            @Override
+            public void SelectedSearch(String search) {
+
+                interfase.setSearch(search);
+            }
+
+            private void DummyVoid(){}
+        });
     }
 
-    public void setFirebaseService(String instance, String child, MyRealtime.ValueListener valueListener) {
+    public void setDateBar(int container, ToolBarsInterfase interfase) {
 
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getValueChanges(valueListener);
+        myToolBars = new MyToolBars(context, container) {};
+        myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
+
+            @Override
+            public void SelectedDate(MyTime myTime) {
+
+                interfase.setDate(myTime);
+            }
+
+            private void DummyVoid(){}
+        });
+    }
+
+    public void setMonthBar(int container, ToolBarsInterfase interfase) {
+
+        myToolBars = new MyToolBars(context, container) {};
+        myToolBars.setMonthToolBar(new MyToolBars.DateInterface() {
+
+            @Override
+            public void SelectedDate(MyTime myTime) {
+
+                interfase.setDate(myTime);
+            }
+
+            private void DummyVoid(){}
+        });
+    }
+
+    public void setSearchAndDateBar(int container, ToolBarsInterfase interfase) {
+
+        myToolBars = new MyToolBars(context, container) {};
+        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
+
+            @Override
+            public void SelectedSearch(String search) {
+
+                interfase.setSearch(search);
+            }
+
+            private void DummyVoid(){}
+        });
+        myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
+
+            @Override
+            public void SelectedDate(MyTime myTime) {
+
+                interfase.setDate(myTime);
+            }
+
+            private void DummyVoid(){}
+        });
+        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
+
+            @Override
+            public void OnFling() {
+
+                myToolBars.selectBar();
+            }
+
+            @Override
+            public void DummyVoid() {}
+        });
+    }
+
+    public void setSearchAndMonthBar(int container, ToolBarsInterfase interfase) {
+
+        myToolBars = new MyToolBars(context, container) {};
+        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
+
+            @Override
+            public void SelectedSearch(String search) {
+
+                interfase.setSearch(search);
+            }
+
+            private void DummyVoid(){}
+        });
+        myToolBars.setMonthToolBar(new MyToolBars.DateInterface() {
+
+            @Override
+            public void SelectedDate(MyTime myTime) {
+
+                interfase.setDate(myTime);
+            }
+
+            private void DummyVoid(){}
+        });
+        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
+
+            @Override
+            public void OnFling() {
+
+                myToolBars.selectBar();
+            }
+
+            @Override
+            public void DummyVoid() {}
+        });
+    }
+
+    public void requestPermissions(String[] permissions, int arrayParameters, int code, PermissionsInterfase interfase) {
+
+       myPermissions = new MyPermissions(context, arrayParameters, permissions, code);
+       myPermissions.RequestPermissions(new MyPermissions.Interfase() {
+
+           public void PermissionsResult(int result) {
+
+               interfase.Granted(result);
+           }
+
+           private void DummyVoid() {
+           }
+       });
+    }
+
+    public void requestPermissions(String[] permissions, int arrayParameters, int code, int minVersion, PermissionsInterfase interfase) {
+
+        if (android.os.Build.VERSION.SDK_INT >= minVersion) {
+
+            myPermissions = new MyPermissions(context, arrayParameters, permissions, code);
+            myPermissions.RequestPermissions(new MyPermissions.Interfase() {
+
+                public void PermissionsResult(int result) {
+
+                    interfase.Granted(result);
+                }
+
+                private void DummyVoid() {
+                }
+            });
+
+        } else {
+
+            interfase.Granted(code);
+        }
     }
 
 
     // ----- Interfase ----- //
 
-    public interface StartCallBack {
+    protected abstract void CreateActivity();
+    protected abstract void StartProcess(ViewDataBinding binding);
+    protected void ActionBar() {};
+    protected void ActivityViews() {};
+    protected void LaunchProcess() {};
+    protected void StopProcess() {};
 
-        default void SetStartProcess() {};
-        default void SetStartBindingProcess(ViewDataBinding binding) {};
-        default void SetActionBar() {};
-        boolean SetActivityViews();
+    public interface PermissionsInterfase {
+
+        default void Granted(int result) {};
     }
 
     public interface ToolBarsInterfase {
 
         default void setSearch(String search) {};
-        default void setDate(Calendar Calendar, long milis, String day, String month, String year) {};
-        default void setMonth(Calendar Calendar, long milis, String month, String year) {};
+        default void setDate(MyTime myTime) {};
     }
 
 
     // ----- Inherents ----- //
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        myPermissions.PermissionsResult(requestCode, permissions, grantResults);
+    }
 
     @Override
     public void onBackPressed() {
@@ -364,5 +384,7 @@ public class BasicActivity extends AppCompatActivity {
         super.onDestroy();
 
         myRealtime.removeValueListener();
+
+        StopProcess();
     }
 }

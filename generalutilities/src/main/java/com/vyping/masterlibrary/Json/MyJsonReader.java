@@ -1,13 +1,14 @@
 package com.vyping.masterlibrary.Json;
 
+import static com.vyping.masterlibrary.time.Definitions.FORMAT_DATE_01;
+import static com.vyping.masterlibrary.time.Definitions.FORMAT_HOUR_01;
+
 import android.content.Context;
-import android.text.format.DateFormat;
 import android.util.JsonReader;
 
 import androidx.annotation.NonNull;
 
 import com.vyping.masterlibrary.time.MyTime;
-import com.vyping.masterlibrary.time.MyTimeTools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,8 +20,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
 
 public class MyJsonReader {
 
@@ -197,11 +196,11 @@ public class MyJsonReader {
 
     public String getJsonDate(@NonNull JSONArray array, int index) {
 
-        long longDate = getJsonLong(array, 0);
+        long longDate = getJsonLong(array, index);
 
         if (longDate != 0L) {
 
-            return new MyTime().getTime("dd/MM/yy", longDate);
+            return new MyTime(longDate).getTime(FORMAT_DATE_01);
 
         } else {
 
@@ -214,10 +213,8 @@ public class MyJsonReader {
         try {
 
             long hour = array.getLong(index);
-            Calendar calendar = Calendar.getInstance(Locale.getDefault());
-            calendar.setTimeInMillis(hour);
 
-            return DateFormat.format("HH:mm", calendar).toString();
+            return new MyTime(hour).getTime(FORMAT_HOUR_01);
 
         } catch (JSONException e) {
 

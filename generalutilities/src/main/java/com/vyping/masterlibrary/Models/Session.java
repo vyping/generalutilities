@@ -9,14 +9,14 @@ import androidx.annotation.StringDef;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
 import com.vyping.masterlibrary.Common.MyString;
-import com.vyping.masterlibrary.Firebase.MyRealtimeReader;
+import com.vyping.masterlibrary.Firebase.RealData;
 
 import java.io.Serializable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 
-public class Session extends MyRealtimeReader implements Serializable {
+public class Session implements Serializable {
 
     public String Document, Email, Name, Password, Type;
     @Exclude
@@ -54,11 +54,13 @@ public class Session extends MyRealtimeReader implements Serializable {
 
     public Session(@NonNull DataSnapshot dataSession) {
 
-        Document = getKeyString(dataSession);
-        Email = getString(dataSession.child(TAG_EMAIL));
-        Name = getString(dataSession.child(TAG_NAME));
-        Password = getString(dataSession.child(TAG_PASSWORD));
-        Type = getString(dataSession.child(TAG_TYPE));
+        RealData realData = new RealData(dataSession);
+
+        Document = realData.getKeyString();
+        Email = realData.getString(TAG_EMAIL);
+        Name = realData.getString(TAG_NAME);
+        Password = realData.getString(TAG_PASSWORD);
+        Type = realData.getString(TAG_TYPE);
 
         Registered = isRegistered();
     }

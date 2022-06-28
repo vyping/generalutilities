@@ -3,7 +3,7 @@ package com.vyping.masterlibrary.Firebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ServerValue;
 
-public class Timestamp extends MyRealtimeReader {
+public class Timestamp {
 
     private final MyRealtime databaseRealtime;
     private final Interfase interfase;
@@ -15,9 +15,8 @@ public class Timestamp extends MyRealtimeReader {
 
         this.interfase = interfase;
 
-        databaseRealtime = new MyRealtime(instance, "Timestamp") {
-        };
-        databaseRealtime.setValue(ServerValue.TIMESTAMP, new MyRealtime.SuccessListener() {
+        databaseRealtime = new MyRealtime(instance).child("Timestamp");
+        databaseRealtime.setValue(ServerValue.TIMESTAMP, new MyRealtime.CompleteListener() {
 
             @Override
             public void Success() {
@@ -37,7 +36,7 @@ public class Timestamp extends MyRealtimeReader {
             @Override
             public void ValueListen(DataSnapshot dataSnapshot) {
 
-                long timestamp = getLong(dataSnapshot);
+                long timestamp = new RealData(dataSnapshot).getLong();
 
                 interfase.Timestamp(timestamp);
             }

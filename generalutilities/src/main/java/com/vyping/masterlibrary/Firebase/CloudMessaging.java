@@ -38,21 +38,16 @@ public class CloudMessaging {
 
                 String token = task.getResult();
 
-                realtime.setValue(tag, token);
+                realtime.child(tag).setValue(token);
             }
 
-            private void DummyVoid() {
-            }
-
-            ;
+            private void DummyVoid() {};
         });
     }
 
     public void resetCloudMessageToken(String instance, String path) {
 
-        MyRealtime realtime = new MyRealtime(instance) {
-        };
-        realtime.setValue(path, "");
+        new MyRealtime(instance).child(path).setValue("");
     }
 
 

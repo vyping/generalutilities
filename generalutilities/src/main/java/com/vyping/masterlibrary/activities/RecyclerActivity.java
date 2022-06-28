@@ -16,23 +16,23 @@ import androidx.databinding.ViewDataBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.vyping.masterlibrary.ActionBar.MyActionBar;
 import com.vyping.masterlibrary.Common.MyActivity;
+import com.vyping.masterlibrary.Common.MyPermissions;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
-import com.vyping.masterlibrary.views.recyclerview.methods.MethodBinder;
+import com.vyping.masterlibrary.time.MyTime;
+import com.vyping.masterlibrary.views.recyclerview.methods.MethodInterfase;
 import com.vyping.masterlibrary.views.recyclerview.methods.MethodsHandler;
 import com.vyping.masterlibrary.aplication.MyApplication;
 import com.vyping.masterlibrary.views.recyclerview.binder.CompositeItemBinder;
 import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
 import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
 
-import java.util.Calendar;
-
-public class RecyclerActivity<T> extends AppCompatActivity {
+public abstract class RecyclerActivity<T> extends AppCompatActivity {
 
     public MyApplication application;
     public Context context;
     public ViewDataBinding binding;
-    public StartCallBack callback;
+    private MyPermissions myPermissions;
 
     public MyActionBar actionBar;
     public MyToolBars myToolBars;
@@ -54,6 +54,8 @@ public class RecyclerActivity<T> extends AppCompatActivity {
 
             application = (MyApplication) getApplication();
         }
+
+        CreateActivity();
     }
 
     @Override
@@ -75,87 +77,104 @@ public class RecyclerActivity<T> extends AppCompatActivity {
     }
 
 
-    // ----- ModelMethods ----- //
+    // ----- Start ----- //
 
-    public void CreateActivity(Activity activity, int layout, int icon, int module) {
+    public void createActivity(Activity activity, int layout, int icon, int module) {
 
         setStartProcess(activity, layout);
         setActionBar(icon, module);
         setActivityViews();
+
+        LaunchProcess();
     }
 
-    public void CreateActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
+    public void createActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
 
         setStartProcess(activity, layout, backActivity);
         setActionBar(icon, module);
         setActivityViews();
-    }
 
-    public void CreateBindingActivity(Activity activity, int layout, int icon, int module) {
-
-        setStartBindingProcess(activity, layout);
-        setActionBar(icon, module);
-        setActivityViews();
-    }
-
-    public void CreateBindingActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
-
-        setStartBindingProcess(activity, layout, backActivity);
-        setActionBar(icon, module);
-        setActivityViews();
+        LaunchProcess();
     }
 
     public void setStartProcess(Activity activity, int layout) {
 
-        context = new MyActivity().setTheme(activity);
-        callback = (StartCallBack) activity;
-        callback.SetStartProcess();
+        this.context = new MyActivity().setTheme(activity);
+        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
-        setContentView(layout);
+        View view = binding.getRoot();
+        setContentView(view);
+
+        StartProcess(binding);
     }
 
     public void setStartProcess(Activity activity, int layout, Class<Activity> backActivity) {
 
-        context = activity;
-        callback = (StartCallBack) activity;
-        callback.SetStartProcess();
-
+        this.context = activity;
         this.backActivity = backActivity;
+        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
-        setContentView(layout);
-    }
-
-    public void setStartBindingProcess(Activity activity, int layout) {
-
-        context = new MyActivity().setTheme(activity);
-        callback = (StartCallBack) activity;
-
-        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
         View view = binding.getRoot();
         setContentView(view);
 
-        callback.SetStartBindingProcess(binding);
-    }
-
-    public void setStartBindingProcess(Activity activity, int layout, Class<Activity> backActivity) {
-
-        context = activity;
-        callback = (StartCallBack) activity;
-        this.backActivity = backActivity;
-
-        binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
-        View view = binding.getRoot();
-        setContentView(view);
-
-        callback.SetStartBindingProcess(binding);
+        StartProcess(binding);
     }
 
     public void setActionBar(int icon, int module) {
 
-        actionBar = new MyActionBar(context, icon, module) {};
+        this.actionBar = new MyActionBar(context, icon, module) {};
 
-        callback.SetActionBar();
+        ActionBar();
     }
+
+    public void setActivityViews() {
+
+        ActivityViews();
+
+        binding.executePendingBindings();
+    }
+
+
+    // ----- Firebase ----- //
+
+    public void setFirebaseService(String instance, MyRealtime.SingleListener listener) {
+
+        myRealtime = new MyRealtime(instance);
+        myRealtime.getSingleValue(listener);
+    }
+
+    public void setFirebaseService(String instance, String child, MyRealtime.SingleListener listener) {
+
+        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime.getSingleValue(listener);
+    }
+
+    public void setFirebaseService(String instance) {
+
+        myRealtime = new MyRealtime(instance);
+        myRealtime.getValueChanges(MyRealtimeListener);
+    }
+
+    public void setFirebaseService(String instance, MyRealtime.ValueListener valueListener) {
+
+        myRealtime = new MyRealtime(instance);
+        myRealtime.getValueChanges(valueListener);
+    }
+
+    public void setFirebaseService(String instance, String child) {
+
+        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime.getValueChanges(MyRealtimeListener);
+    }
+
+    public void setFirebaseService(String instance, String child, MyRealtime.ValueListener valueListener) {
+
+        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime.getValueChanges(valueListener);
+    }
+
+
+    // ----- Methods ----- //
 
     public void setSearchBar(int container, ToolBarsInterfase interfase) {
 
@@ -180,9 +199,9 @@ public class RecyclerActivity<T> extends AppCompatActivity {
         myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
 
             @Override
-            public void SelectedDate(Calendar Calendar, long milis, String day, String month, String year) {
+            public void SelectedDate(MyTime myTime) {
 
-                interfase.setDate(Calendar, milis, day, month, year);
+                interfase.setDate(myTime);
             }
 
             private void DummyVoid(){}
@@ -192,12 +211,12 @@ public class RecyclerActivity<T> extends AppCompatActivity {
     public void setMonthBar(int container, ToolBarsInterfase interfase) {
 
         myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setMonthToolBar(new MyToolBars.MonthInterface() {
+        myToolBars.setMonthToolBar(new MyToolBars.DateInterface() {
 
             @Override
-            public void SelectedMonth(Calendar Calendar, long milis, String month, String year) {
+            public void SelectedDate(MyTime myTime) {
 
-                interfase.setMonth(Calendar, milis, month, year);
+                interfase.setDate(myTime);
             }
 
             private void DummyVoid(){}
@@ -220,9 +239,9 @@ public class RecyclerActivity<T> extends AppCompatActivity {
         myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
 
             @Override
-            public void SelectedDate(Calendar Calendar, long milis, String day, String month, String year) {
+            public void SelectedDate(MyTime myTime) {
 
-                interfase.setDate(Calendar, milis,day, month, year);
+                interfase.setDate(myTime);
             }
 
             private void DummyVoid(){}
@@ -253,12 +272,12 @@ public class RecyclerActivity<T> extends AppCompatActivity {
 
             private void DummyVoid(){}
         });
-        myToolBars.setMonthToolBar(new MyToolBars.MonthInterface() {
+        myToolBars.setMonthToolBar(new MyToolBars.DateInterface() {
 
             @Override
-            public void SelectedMonth(Calendar Calendar, long milis, String month, String year) {
+            public void SelectedDate(MyTime myTime) {
 
-                interfase.setMonth(Calendar, milis, month, year);
+                interfase.setDate(myTime);
             }
 
             private void DummyVoid(){}
@@ -276,59 +295,48 @@ public class RecyclerActivity<T> extends AppCompatActivity {
         });
     }
 
-    public void setActivityViews() {
 
-        boolean executePendings = callback.SetActivityViews();
+    public void requestPermissions(String[] permissions, int arrayParameters, int code, BasicActivity.PermissionsInterfase interfase) {
 
-        if (executePendings) {
+        myPermissions = new MyPermissions(context, arrayParameters, permissions, code);
+        myPermissions.RequestPermissions(new MyPermissions.Interfase() {
 
-            binding.executePendingBindings();
+            public void PermissionsResult(int result) {
+
+                interfase.Granted(result);
+            }
+
+            private void DummyVoid() {
+            }
+        });
+    }
+
+    public void requestPermissions(String[] permissions, int arrayParameters, int code, int minVersion, BasicActivity.PermissionsInterfase interfase) {
+
+        if (android.os.Build.VERSION.SDK_INT >= minVersion) {
+
+            myPermissions = new MyPermissions(context, arrayParameters, permissions, code);
+            myPermissions.RequestPermissions(new MyPermissions.Interfase() {
+
+                public void PermissionsResult(int result) {
+
+                    interfase.Granted(result);
+                }
+
+                private void DummyVoid() {
+                }
+            });
+
+        } else {
+
+            interfase.Granted(code);
         }
-    }
-
-
-    // ----- Firebase ----- //
-
-    public void setFirebaseService(String instance, MyRealtime.SingleListener listener) {
-
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getSingleValue(listener);
-    }
-
-    public void setFirebaseService(String instance, String child, MyRealtime.SingleListener listener) {
-
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getSingleValue(listener);
-    }
-
-    public void setFirebaseService(String instance) {
-
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getValueChanges(MyRealtimeListener);
-    }
-
-    public void setFirebaseService(String instance, String child) {
-
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getValueChanges(MyRealtimeListener);
-    }
-
-    public void setFirebaseService(String instance, MyRealtime.ValueListener valueListener) {
-
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getValueChanges(valueListener);
-    }
-
-    public void setFirebaseService(String instance, String child, MyRealtime.ValueListener valueListener) {
-
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getValueChanges(valueListener);
     }
 
 
     // ----- RecyclerViewAdapter ----- //
 
-    public void setAdapterMethodHandler(MethodBinder<T> modelbinder, boolean searched) {
+    public void setAdapterMethodHandler(MethodInterfase<T> modelbinder, boolean searched) {
 
         methodHandler = new MethodsHandler<>(modelbinder, searched);
     }
@@ -339,21 +347,21 @@ public class RecyclerActivity<T> extends AppCompatActivity {
     private final MyRealtime.ValueListener MyRealtimeListener = new MyRealtime.ValueListener() {
 
         @Override
-        public void ChildAdded(@NonNull DataSnapshot snapChild) {
+        public void ChildAdded(@NonNull DataSnapshot dataSnapshot) {
 
-            methodHandler.addMethod(snapChild);
+            methodHandler.addMethod(dataSnapshot);
         }
 
         @Override
-        public void ChildChanged(@NonNull DataSnapshot snapChild) {
+        public void ChildChanged(@NonNull DataSnapshot dataSnapshot) {
 
-            methodHandler.modifyMethod(snapChild);
+            methodHandler.modifyMethod(dataSnapshot);
         }
 
         @Override
-        public void ChildRemoved(@NonNull DataSnapshot snapChild) {
+        public void ChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-            methodHandler.removeMethod(snapChild);
+            methodHandler.removeMethod(dataSnapshot);
         }
 
         @Override
@@ -371,6 +379,13 @@ public class RecyclerActivity<T> extends AppCompatActivity {
 
     // ----- Interfase ----- //
 
+    protected abstract void CreateActivity();
+    protected abstract void StartProcess(ViewDataBinding binding);
+    protected void ActionBar() {};
+    protected void ActivityViews() {};
+    protected void LaunchProcess() {};
+    protected void StopProcess() {};
+
     public interface StartCallBack {
 
         default void SetStartProcess() {};
@@ -382,12 +397,19 @@ public class RecyclerActivity<T> extends AppCompatActivity {
     public interface ToolBarsInterfase {
 
         default void setSearch(String search) {};
-        default void setDate(Calendar Calendar, long milis, String day, String month, String year) {};
-        default void setMonth(Calendar Calendar, long milis, String month, String year) {};
+        default void setDate(MyTime myTime) {};
     }
 
 
     /*----- Inherents -----*/
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        myPermissions.PermissionsResult(requestCode, permissions, grantResults);
+    }
 
     @Override
     public void onBackPressed() {

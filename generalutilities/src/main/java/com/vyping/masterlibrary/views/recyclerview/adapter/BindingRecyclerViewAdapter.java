@@ -83,8 +83,8 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         final T item = items.get(position);
 
         viewHolder.binding.setVariable(itemBinder.getBindingVariable(item), item);
-        viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
-        viewHolder.binding.getRoot().setOnTouchListener(new MyGesturesListener(viewHolder.binding.getRoot(), this));
+        //viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
+       // viewHolder.binding.getRoot().setOnTouchListener(new MyGesturesListener(viewHolder.binding.getRoot(), this));
         viewHolder.binding.executePendingBindings();
     }
 
@@ -97,7 +97,14 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     @Override
     public int getItemCount() {
 
-        return items == null ? 0 : items.size();
+        if (items == null) {
+
+            return 0;
+
+        } else {
+
+            return items.size();
+        }
     }
 
     @Override

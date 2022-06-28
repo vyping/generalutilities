@@ -13,73 +13,84 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class MyTime extends MyTimeTools {
+public class MyTime extends Definitions {
 
-    public static final String FORMAT_HOUR_01 = "HH:mm", FORMAT_HOUR_02 = "HH:mm:ss", FORMAT_HOUR_03 = "HH:mm a", FORMAT_HOUR_04 = "HH:mm:ss a";
+    public Calendar calendar;
 
-    public static final String FORMAT_DATE_01 = "dd-MM-yy", FORMAT_DATE_02 = "dd-MM-yyyy", FORMAT_DATE_03 = "dd-MMM-yy", FORMAT_DATE_04 = "dd-MMM-yyyy", FORMAT_DATE_05 = "dd-MMMM-yy", FORMAT_DATE_06 = "dd-MMMM-yyyy";
-    public static final String FORMAT_DATE_07 = "dd/MM/yy", FORMAT_DATE_08 = "dd/MM/yyyy", FORMAT_DATE_09 = "dd/MMM/yy", FORMAT_DATE_10 = "dd/MMM/yyyy", FORMAT_DATE_11 = "dd/MMMM/yy", FORMAT_DATE_12 = "dd/MMMM/yyyy";
-    public static final String FORMAT_DATE_13 = "EEE dd 'de' MMM", FORMAT_DATE_14 = "EEE dd 'de' MMMM", FORMAT_DATE_15 = "EEEE dd 'de' MMM", FORMAT_DATE_16 = "EEEE dd 'de' MMMM";
-    public static final String FORMAT_DATE_17 = "MMM dd 'del' yy", FORMAT_DATE_18 = "MMMM dd 'del' yy", FORMAT_DATE_19 = "MMM dd 'del' yyyy", FORMAT_DATE_20 = "MMMM dd 'del' yyyy";
-    public static final String FORMAT_DATE_21 = "dd 'de' MMM 'del' yy", FORMAT_DATE_22 = "dd 'de' MMMM 'del' yy", FORMAT_DATE_23 = "dd 'de' MMM 'del' yyyy", FORMAT_DATE_24 = "dd 'de' MMMM 'del' yyyy";
 
-    public static final String FORMAT_TIME_01 = "dd-MM-yy HH:mm", FORMAT_TIME_02 = "dd-MM-yyyy HH:mm", FORMAT_TIME_03 = "dd-MMM-yy HH:mm", FORMAT_TIME_04 = "dd-MMM-yyyy HH:mm", FORMAT_TIME_05 = "dd-MMMM-yy HH:mm", FORMAT_TIME_06 = "dd-MMMM-yyyy HH:mm";
-    public static final String FORMAT_TIME_07 = "dd 'de' MMM 'a las' HH:mm", FORMAT_TIME_08 = "dd 'de' MMMM 'a las' HH:mm", FORMAT_TIME_09 = "dd 'de' MMM 'del' yyyy 'a las' HH:mm", FORMAT_TIME_10 = "dd 'de' MMMM 'del' yyyy 'a las' HH:mm";
-    public static final String FORMAT_TIME_11 = "MMM dd 'del' yyyy 'a las' HH:mm", FORMAT_TIME_12 = "MMMM dd 'del' yyyy 'a las' HH:mm";
+    // ----- Setup ----- //
 
-    /*----- Calendar - ModelMethods -----*/
+    public MyTime() {
 
-    public Calendar getCalendar() {
-
-        return Calendar.getInstance(Locale.getDefault());
+        calendar = Calendar.getInstance(Locale.getDefault());
     }
 
-    public Calendar getCalendar(long timeMillis) {
+    public MyTime(Calendar calendar) {
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        calendar.setTimeInMillis(timeMillis);
-
-        return calendar;
+        this.calendar = calendar;
     }
 
-    public Calendar getCalendar(String timeMillis) {
+    public MyTime(Object object) {
 
-        boolean isNumber = new MyNumbers().isNumber(timeMillis);
+        long timestamp = new MyNumbers().objectToLong(object);
+        calendar = Calendar.getInstance(Locale.getDefault());
 
-        if (isNumber) {
+        if (timestamp != 0L) {
 
-            long TimeMillis = new MyNumbers().objectToLong(timeMillis);
-
-            return getCalendar(TimeMillis);
-
-        } else {
-
-            return getCalendar();
+            calendar.setTimeInMillis(timestamp);
         }
     }
 
-    public Calendar getCalendar(int day, int month, int year) {
+    public MyTime(long timestamp) {
 
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        calendar = Calendar.getInstance(Locale.getDefault());
+
+        if (timestamp != 0L) {
+
+            calendar.setTimeInMillis(timestamp);
+        }
+    }
+
+    public MyTime(String timestamp) {
+
+        calendar = Calendar.getInstance(Locale.getDefault());
+
+        boolean isNumber = new MyNumbers().isNumber(timestamp);
+
+        if (isNumber) {
+
+            long Timestamp = new MyNumbers().objectToLong(timestamp);
+
+            if (Timestamp != 0L) {
+
+                calendar.setTimeInMillis(Timestamp);
+            }
+        }
+    }
+
+    public MyTime(int day, int month, int year) {
+
+        calendar = Calendar.getInstance(Locale.getDefault());
         calendar.set(Calendar.DAY_OF_MONTH, day);
         calendar.set(Calendar.MONTH, month - 1);
         calendar.set(Calendar.YEAR, year);
-
-        return calendar;
     }
 
-    public Calendar getCalendar(String day, String month, String year) {
+    public MyTime(String day, String month, String year) {
 
         int Day = Integer.parseInt(day);
         int Month = Integer.parseInt(month);
         int Year = Integer.parseInt(year);
 
-        return getCalendar(Day, Month, Year);
+        calendar = Calendar.getInstance(Locale.getDefault());
+        calendar.set(Calendar.DAY_OF_MONTH, Day);
+        calendar.set(Calendar.MONTH, Month - 1);
+        calendar.set(Calendar.YEAR, Year);
     }
 
-    public Calendar getCalendar(String date, String format) {
+    public MyTime(String date, String format) {
 
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance(Locale.getDefault());
 
         try {
 
@@ -87,764 +98,228 @@ public class MyTime extends MyTimeTools {
             Date Date = Objects.requireNonNull(dateFormat.parse(date));
             calendar.setTime(Date);
 
-            return dateFormat.getCalendar();
-
-        } catch (ParseException e) {
-
-            e.printStackTrace();
-
-            return calendar;
-        }
-    }
-
-
-    /*----- Time - ModelMethods -----*/
-    public String getTime(@NonNull String Format) {
-
-        Calendar calendar = getCalendar();
-        long timeMillis = calendar.getTimeInMillis();
-
-        return getTime(Format, timeMillis);
-    }
-
-    public String getTime(String Format, Calendar calendar) {
-
-        return DateFormat.format(Format, calendar).toString();
-    }
-
-    public String getTime(String Format, long timeMillis) {
-
-        Calendar calendar = getCalendar(timeMillis);
-
-        return DateFormat.format(Format, calendar).toString();
-    }
-
-    public String getTime(String Format, String timeMillis) {
-
-        long TimeMillis = Long.parseLong(timeMillis);
-
-        return getTime(Format, TimeMillis);
-    }
-
-    public String getTime(String Format, Object Time) {
-
-        long timeMillis = new MyNumbers().objectToLong(Time);
-
-        return getTime(Format, timeMillis);
-    }
-
-
-    /*----- Millis - ModelMethods -----*/
-
-    public long getMillis() {
-
-        Calendar calendar = getCalendar();
-
-        return getMillis(calendar);
-    }
-
-    public long getMillis(@NonNull Calendar calendar) {
-
-        return calendar.getTimeInMillis();
-    }
-
-    public long getMillis(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMillis(calendar);
-    }
-
-    public long getMillis(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMillis(calendar);
-    }
-
-    public long getMillis(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getMillis(calendar);
-    }
-
-    public String getMillisOnString() {
-
-        Calendar calendar = getCalendar();
-
-        return getMillisOnString(calendar);
-    }
-
-    public String getMillisOnString(@NonNull Calendar calendar) {
-
-        long millis = calendar.getTimeInMillis();
-
-        return String.valueOf(millis);
-    }
-
-    public String getMillisOnString(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMillisOnString(calendar);
-    }
-
-    public String getMillisOnString(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMillisOnString(calendar);
-    }
-
-    public String getMillisOnString(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getMillisOnString(calendar);
-    }
-
-
-    /*----- Max Days of Month - ModelMethods -----*/
-
-    public int getMaxDaysOfMonth() {
-
-        Calendar calendar = getCalendar();
-
-        return getMaxDaysOfMonth(calendar);
-    }
-
-    public int getMaxDaysOfMonth(@NonNull Calendar calendar) {
-
-        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-    }
-
-    public int getMaxDaysOfMonth(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMaxDaysOfMonth(calendar);
-    }
-
-    public int getMaxDaysOfMonth(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMaxDaysOfMonth(calendar);
-    }
-
-    public int getMaxDaysOfMonth(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMaxDaysOfMonth(calendar);
-    }
-
-    public int getMaxDaysOfMonth(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMaxDaysOfMonth(calendar);
-    }
-
-    public int getMaxDaysOfMonth(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getMaxDaysOfMonth(calendar);
-    }
-
-    public String getMaxDaysOfMonthOnString() {
-
-        Calendar calendar = getCalendar();
-
-        return getMaxDaysOfMonthOnString(calendar);
-    }
-
-    public String getMaxDaysOfMonthOnString(@NonNull Calendar calendar) {
-
-        int maxDayOfMOnth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        return String.valueOf(maxDayOfMOnth);
-    }
-
-    public String getMaxDaysOfMonthOnString(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMaxDaysOfMonthOnString(calendar);
-    }
-
-    public String getMaxDaysOfMonthOnString(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMaxDaysOfMonthOnString(calendar);
-    }
-
-    public String getMaxDaysOfMonthOnString(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMaxDaysOfMonthOnString(calendar);
-    }
-
-    public String getMaxDaysOfMonthOnString(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMaxDaysOfMonthOnString(calendar);
-    }
-
-    public String getMaxDaysOfMonthOnString(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getMaxDaysOfMonthOnString(calendar);
-    }
-
-
-    /*----- Day Name - ModelMethods -----*/
-
-    public String getDayName() {
-
-        Calendar calendar = getCalendar();
-
-        return getDayName(calendar);
-    }
-
-    public String getDayName(@NonNull Calendar calendar) {
-
-        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-    }
-
-    public String getDayName(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayName(calendar);
-    }
-
-    public String getDayName(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayName(calendar);
-    }
-
-    public String getDayName(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayName(calendar);
-    }
-
-    public String getDayName(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayName(calendar);
-    }
-
-    public String getDayName(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getDayName(calendar);
-    }
-
-
-    /*----- Day of Week - ModelMethods -----*/
-
-    public int getDayOfWeek() {
-
-        Calendar calendar = getCalendar();
-
-        return getDayOfWeek(calendar);
+        } catch (ParseException ignored) {}
     }
 
-    public int getDayOfWeek(@NonNull Calendar calendar) {
 
-        return calendar.get(Calendar.DAY_OF_WEEK);
-    }
-
-    public int getDayOfWeek(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayOfWeek(calendar);
-    }
-
-    public int getDayOfWeek(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayOfWeek(calendar);
-    }
-
-    public int getDayOfWeek(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayOfWeek(calendar);
-    }
-
-    public int getDayOfWeek(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayOfWeek(calendar);
-    }
-
-    public int getDayOfWeek(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getDayOfWeek(calendar);
-    }
-
-    public String getDayOfWeekOnString() {
-
-        Calendar calendar = getCalendar();
-
-        return getDayOfWeekOnString(calendar);
-    }
-
-    public String getDayOfWeekOnString(@NonNull Calendar calendar) {
-
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-
-        return completeDigitsDate(dayOfWeek);
-    }
-
-    public String getDayOfWeekOnString(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayOfWeekOnString(calendar);
-    }
-
-    public String getDayOfWeekOnString(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayOfWeekOnString(calendar);
-    }
-
-    public String getDayOfWeekOnString(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayOfWeekOnString(calendar);
-    }
-
-    public String getDayOfWeekOnString(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayOfWeekOnString(calendar);
-    }
-
-    public String getDayOfWeekOnString(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getDayOfWeekOnString(calendar);
-    }
-
-
-    /*----- Day of Month - ModelMethods -----*/
-
-    public int getDayOfMonth() {
-
-        Calendar calendar = getCalendar();
-
-        return getDayOfMonth(calendar);
-    }
-
-    public int getDayOfMonth(@NonNull Calendar calendar) {
-
-        return calendar.get(Calendar.DAY_OF_MONTH);
-    }
-
-    public int getDayOfMonth(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayOfMonth(calendar);
-    }
-
-    public int getDayOfMonth(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getDayOfMonth(calendar);
-    }
-
-    public int getDayOfMonth(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayOfMonth(calendar);
-    }
-
-    public int getDayOfMonth(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getDayOfMonth(calendar);
-    }
-
-    public int getDayOfMonth(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getDayOfMonth(calendar);
-    }
+    // ----- Add - Methods ----- //
 
-    public String getDayOfMonthOnString() {
+    public MyTime addValueToField(int field, int value) {
 
-        Calendar calendar = getCalendar();
+        calendar.add(field, value);
 
-        return getDayOfMonthOnString(calendar);
+        return this;
     }
 
-    public String getDayOfMonthOnString(@NonNull Calendar calendar) {
+    public MyTime addYears(int years) {
 
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        calendar.add(Calendar.YEAR, years);
 
-        return completeDigitsDate(dayOfMonth);
+        return this;
     }
 
-    public String getDayOfMonthOnString(long instant) {
+    public MyTime addMonths(int months) {
 
-        Calendar calendar = getCalendar(instant);
+        calendar.add(Calendar.MONTH, months);
 
-        return getDayOfMonthOnString(calendar);
+        return this;
     }
 
-    public String getDayOfMonthOnString(String instant) {
+    public MyTime addDays(int days) {
 
-        Calendar calendar = getCalendar(instant);
+        calendar.add(Calendar.DAY_OF_YEAR, days);
 
-        return getDayOfMonthOnString(calendar);
+        return this;
     }
 
-    public String getDayOfMonthOnString(int day, int month, int year) {
+    public MyTime addHours(int hour) {
 
-        Calendar calendar = getCalendar(day, month, year);
+        calendar.add(Calendar.HOUR, hour);
 
-        return getDayOfMonthOnString(calendar);
+        return this;
     }
 
-    public String getDayOfMonthOnString(String day, String month, String year) {
+    public MyTime addMinutes(int minute) {
 
-        Calendar calendar = getCalendar(day, month, year);
+        calendar.add(Calendar.MINUTE, minute);
 
-        return getDayOfMonthOnString(calendar);
+        return this;
     }
 
-    public String getDayOfMonthOnString(String date, String format) {
+    public MyTime addSeconds(int seconds) {
 
-        Calendar calendar = getCalendar(date, format);
+        calendar.add(Calendar.SECOND, seconds);
 
-        return getDayOfMonthOnString(calendar);
+        return this;
     }
 
+    public MyTime addMillis(long millis) {
 
-    /*----- Month Name - ModelMethods -----*/
+        int timestamp = new MyNumbers().longToInteger(millis);
 
-    public String getMonthName() {
+        calendar.add(Calendar.MILLISECOND, timestamp);
 
-        Calendar calendar = getCalendar();
-
-        return getMonthName(calendar);
-    }
-
-    public String getMonthName(@NonNull Calendar calendar) {
-
-        return calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-    }
-
-    public String getMonthName(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMonthName(calendar);
-    }
-
-    public String getMonthName(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMonthName(calendar);
-    }
-
-    public String getMonthName(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMonthName(calendar);
-    }
-
-    public String getMonthName(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMonthName(calendar);
-    }
-
-    public String getMonthName(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getMonthName(calendar);
-    }
-
-
-    /*----- Month - ModelMethods -----*/
-
-    public int getMonth() {
-
-        Calendar calendar = getCalendar();
-
-        return getMonth(calendar);
-    }
-
-    public int getMonth(@NonNull Calendar calendar) {
-
-        return calendar.get(Calendar.MONTH) + 1;
-    }
-
-    public int getMonth(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMonth(calendar);
-    }
-
-    public int getMonth(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMonth(calendar);
-    }
-
-    public int getMonth(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMonth(calendar);
-    }
-
-    public int getMonth(String day, String month, String year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMonth(calendar);
-    }
-
-    public int getMonth(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getMonth(calendar);
-    }
-
-    public String getMonthOnString() {
-
-        Calendar calendar = getCalendar();
-
-        return getMonthOnString(calendar);
-    }
-
-    public String getMonthOnString(@NonNull final Calendar calendar2) {
-
-        int month = getMonth(calendar2);
-
-        return completeDigitsDate(month);
-    }
-
-    public String getMonthOnString(long instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMonthOnString(calendar);
-    }
-
-    public String getMonthOnString(String instant) {
-
-        Calendar calendar = getCalendar(instant);
-
-        return getMonthOnString(calendar);
-    }
-
-    public String getMonthOnString(int day, int month, int year) {
-
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getMonthOnString(calendar);
+        return this;
     }
 
-    public String getMonthOnString(String day, String month, String year) {
 
-        Calendar calendar = getCalendar(day, month, year);
+    // ----- Get Basics - Methods ----- //
 
-        return getMonthOnString(calendar);
-    }
-
-    public String getMonthOnString(String date, String format) {
+    public Calendar getCalendar() {
 
-        Calendar calendar = getCalendar(date, format);
-
-        return getMonthOnString(calendar);
+        return calendar;
     }
-
-
-    /*-----  Year - ModelMethods -----*/
 
     public int getYear() {
-
-        Calendar calendar = getCalendar();
-
-        return getYear(calendar);
-    }
-
-    public int getYear(@NonNull Calendar calendar) {
 
         return calendar.get(Calendar.YEAR);
     }
 
-    public int getYear(long instant) {
+    public int getMonth() {
 
-        Calendar calendar = getCalendar(instant);
-
-        return getYear(calendar);
+        return calendar.get(Calendar.MONTH) + 1;
     }
 
-    public int getYear(String instant) {
+    public int getDay() {
 
-        Calendar calendar = getCalendar(instant);
-
-        return getYear(calendar);
+        return calendar.get(Calendar.DAY_OF_YEAR);
     }
 
-    public int getYear(int day, int month, int year) {
+    public int getHour() {
 
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getYear(calendar);
+        return calendar.get(Calendar.HOUR);
     }
 
-    public int getYear(String day, String month, String year) {
+    public int getMinute() {
 
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getYear(calendar);
+        return calendar.get(Calendar.MINUTE);
     }
 
-    public int getYear(String date, String format) {
+    public int getSecond() {
 
-        Calendar calendar = getCalendar(date, format);
-
-        return getYear(calendar);
+        return calendar.get(Calendar.SECOND);
     }
 
-    public String getYearOnString() {
+    public long getTimestamp() {
 
-        Calendar calendar = getCalendar();
-
-        return getYearOnString(calendar);
+        return calendar.getTimeInMillis();
     }
 
-    public String getYearOnString(@NonNull Calendar calendar) {
+    public String getTime(String format) {
 
-        int year = calendar.get(Calendar.YEAR);
-
-        return String.valueOf(year);
+        return DateFormat.format(format, calendar).toString();
     }
 
-    public String getYearOnString(long instant) {
 
-        Calendar calendar = getCalendar(instant);
+    // ----- Get Counter - Methods ----- //
 
-        return getYearOnString(calendar);
+    public int getMaxDaysOfMonth() {
+
+        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
 
-    public String getYearOnString(String instant) {
+    public int getDayOfMonth() {
 
-        Calendar calendar = getCalendar(instant);
-
-        return getYearOnString(calendar);
+        return calendar.get(Calendar.DAY_OF_MONTH);
     }
 
-    public String getYearOnString(int day, int month, int year) {
+    public int getDayOfWeek() {
 
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getYearOnString(calendar);
+        return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
-    public String getYearOnString(String day, String month, String year) {
 
-        Calendar calendar = getCalendar(day, month, year);
+    // ----- Get Names - Methods ----- //
 
-        return getYearOnString(calendar);
-    }
-
-    public String getYearOnString(String date, String format) {
-
-        Calendar calendar = getCalendar(date, format);
-
-        return getYearOnString(calendar);
-    }
-
-    public String getYearShortOnString() {
-
-        Calendar calendar = getCalendar();
-
-        return getYearShortOnString(calendar);
-    }
-
-    public String getYearShortOnString(@NonNull Calendar calendar) {
+    public String getYearShort() {
 
         int year = calendar.get(Calendar.YEAR);
 
         return convertTwoDigitsYear(year);
     }
 
-    public String getYearShortOnString(long instant) {
+    public String getMonthName() {
 
-        Calendar calendar = getCalendar(instant);
-
-        return getYearShortOnString(calendar);
+        return calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
     }
 
-    public String getYearShortOnString(String instant) {
+    public String getDayName() {
 
-        Calendar calendar = getCalendar(instant);
-
-        return getYearShortOnString(calendar);
+        return calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
     }
 
-    public String getYearShortOnString(int day, int month, int year) {
 
-        Calendar calendar = getCalendar(day, month, year);
+    // ----- Functions ----- //
 
-        return getYearShortOnString(calendar);
+    public MyTime midNight() {
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        return this;
     }
 
-    public String getYearShortOnString(String day, String month, String year) {
+    public Comparator compare(@NonNull Calendar otherCalendar) {
 
-        Calendar calendar = getCalendar(day, month, year);
-
-        return getYearShortOnString(calendar);
+        return new Comparator(this, otherCalendar);
     }
 
-    public String getYearShortOnString(String date, String format) {
+    public Comparator compare(long otherTimestamp) {
 
-        Calendar calendar = getCalendar(date, format);
+        return new Comparator(this, otherTimestamp);
+    }
 
-        return getYearShortOnString(calendar);
+
+    // ----- Tools ----- //
+
+    public String convertTwoDigitsYear(int Year) {
+
+        String year = String.valueOf(Year);
+
+        if (year.length() == 4) {
+
+            return year.substring(2, 4);
+
+        } else {
+
+            return year;
+        }
+    }
+
+    public String completeDigitsDate(int date) {
+
+        if (date < 10) {
+
+            return "0" + date;
+
+        } else {
+
+            return String.valueOf(date);
+        }
+    }
+
+    public String setHoursUnits(int hours) {
+
+        if (hours == 0) {
+
+            return hours + " h";
+
+        } else {
+
+            return hours + " hrs";
+        }
+    }
+
+    public String setMinutesUnits(int minutes) {
+
+        if (minutes == 0) {
+
+            return minutes + " min";
+
+        } else {
+
+            return minutes + " mins";
+        }
     }
 }

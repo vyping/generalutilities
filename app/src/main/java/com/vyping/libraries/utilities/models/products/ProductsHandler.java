@@ -3,11 +3,12 @@ package com.vyping.libraries.utilities.models.products;
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
-import com.vyping.masterlibrary.views.recyclerview.methods.MethodBinder;
+import com.vyping.masterlibrary.Firebase.RealData;
+import com.vyping.masterlibrary.views.recyclerview.methods.MethodInterfase;
 
 import java.util.ArrayList;
 
-public class ProductsHandler implements MethodBinder<ProductMethods> {
+public class ProductsHandler implements MethodInterfase<ProductMethods> {
 
 
     // ----- SetUp ----- //
@@ -24,17 +25,24 @@ public class ProductsHandler implements MethodBinder<ProductMethods> {
     }
 
     @Override
-    public String getIndex(DataSnapshot snapshot) {
+    public String getIndex(DataSnapshot dataSnapshot) {
 
-        ProductMethods productMethods = new ProductMethods(new Product(snapshot));
-
-        return productMethods.getName();
+        return new Product(dataSnapshot).Name;
     }
 
     @Override
-    public ProductMethods getMethod(DataSnapshot snapshot) {
+    public ProductMethods getMethod(DataSnapshot dataSnapshot) {
 
-        return new ProductMethods(new Product(snapshot));
+        Product product = new Product(dataSnapshot);
+
+        if (dataSnapshot.getChildrenCount() == 1) {
+
+            return new TItleMethods(product);
+
+        } else {
+
+            return new ProductMethods(product);
+        }
     }
 
     @Override

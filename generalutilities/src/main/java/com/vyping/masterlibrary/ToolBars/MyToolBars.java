@@ -28,20 +28,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.vyping.masterlibrary.Common.MyString;
 import com.vyping.masterlibrary.time.MyTime;
-import com.vyping.masterlibrary.time.MyTimeTools;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.dialogs.DialogPickerDate;
 
-import java.util.Calendar;
 import java.util.Objects;
 
 public abstract class MyToolBars {
 
     private final Context context;
-    private Calendar calendar;
+    private MyTime myTime;
     private DateInterface dateInterface;
-    private MonthInterface monthInterface;
     private SearchInterface searchInterface;
 
     private final View inflated;
@@ -75,8 +72,8 @@ public abstract class MyToolBars {
     public void setDateToolBar(DateInterface DateInterface) {
 
         dateInterface = DateInterface;
-        calendar = new MyTime().getCalendar();
-        String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
+        myTime = new MyTime();
+        String label = new MyTime().getTime(FORMAT_DATE_16);
         label = new MyString().firstLetterUpperCase(label);
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
@@ -88,7 +85,8 @@ public abstract class MyToolBars {
 
         Btn_BckDate.setOnClickListener(v -> {
 
-            setDate(-1);
+            myTime.addDays(-1);
+            setDate();
         });
         Btn_SetDate.setOnClickListener(new View.OnClickListener() {
 
@@ -103,15 +101,16 @@ public abstract class MyToolBars {
         });
         Btn_FwdDate.setOnClickListener(v -> {
 
-            setDate(1);
+            myTime.addDays(1);
+            setDate();
         });
     }
 
-    public void setMonthToolBar(MonthInterface MonthInterface) {
+    public void setMonthToolBar(DateInterface dateInterface) {
 
-        monthInterface = MonthInterface;
-        calendar = new MyTime().getCalendar();
-        String label = new MyTime().getMonthName(calendar);
+        this.dateInterface = dateInterface;
+        myTime = new MyTime();
+        String label = new MyTime().getMonthName();
 
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
@@ -123,8 +122,7 @@ public abstract class MyToolBars {
 
         Btn_BckDate.setOnClickListener(v -> {
 
-            calendar.add(Calendar.MONTH, -1);
-
+            myTime.addMonths(-1);
             setMonth();
         });
         Btn_SetDate.setOnClickListener(new View.OnClickListener() {
@@ -140,8 +138,7 @@ public abstract class MyToolBars {
         });
         Btn_FwdDate.setOnClickListener(v -> {
 
-            calendar.add(Calendar.MONTH, 1);
-
+            myTime.addMonths(1);
             setMonth();
         });
     }
@@ -250,61 +247,27 @@ public abstract class MyToolBars {
         }
     }
 
-    public void setDate(int day) {
+    public void setDate() {
 
-        new MyTime().addDays(calendar, day, new MyTimeTools.AddDayInterface() {
-
-            @Override
-            public void AddDay(Calendar Calendar2, long millis, String day, String month, String year) {
-
-                calendar = Calendar2;
-                String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
-
-                Btn_SetDate.setText(label);
-
-                if (dateInterface != null) {
-
-                    dateInterface.SelectedDate(calendar, millis, day, month, year);
-                }
-            }
-
-            @Override
-            public void Error(String error) {}
-        });
-    }
-
-    public void setDate(String day, String month, String year) {
-
-        int Day = Integer.parseInt(day);
-        int Month = Integer.parseInt(month) - 1;
-        int Year = Integer.parseInt(year);
-
-        calendar = new MyTime().getCalendar(Day, Month, Year);
-        long milis = new MyTime().getMillis(calendar);
-
-        String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
-        label = new MyString().firstLetterUpperCase(label);
+        String label = myTime.getTime(FORMAT_DATE_16);
 
         Btn_SetDate.setText(label);
 
         if (dateInterface != null) {
 
-            dateInterface.SelectedDate(calendar, milis, day, month, year);
+            dateInterface.SelectedDate(myTime);
         }
     }
 
     public void setMonth() {
 
-        long milis = calendar.getTimeInMillis();
-        String label = new MyTime().getMonthName(calendar);
-        String month = new MyTime().completeDigitsDate(calendar.get(Calendar.MONTH) + 1);
-        String year = new MyTime().convertTwoDigitsYear(calendar.get(Calendar.YEAR));
+        String label = myTime.getMonthName();
 
         Btn_SetDate.setText(label);
 
-        if (monthInterface != null) {
+        if (dateInterface != null) {
 
-            monthInterface.SelectedMonth(calendar, milis, month, year);
+            dateInterface.SelectedDate(myTime);
         }
     }
 
@@ -321,18 +284,18 @@ public abstract class MyToolBars {
     @SuppressLint("SetTextI18n")
     public void dialogDatePicker(int parameters) {
 
-        new DialogPickerDate(context, parameters, DIALOG_NORMAL, DATEPICKER_CALENDAR, calendar) {
+        new DialogPickerDate(context, parameters, DIALOG_NORMAL, DATEPICKER_CALENDAR, myTime) {
 
             @Override
-            protected boolean SetDate(Calendar Calendar, long milis, String day, String month, String year) {
+            protected boolean SetDate(MyTime MyTime) {
 
-                calendar = Calendar;
+                myTime = MyTime;
 
-                String label = new MyTime().getTime(FORMAT_DATE_16, calendar);
+                String label =  myTime.getTime(FORMAT_DATE_16);
                 label = new MyString().firstLetterUpperCase(label);
 
                 Btn_SetDate.setText(label);
-                dateInterface.SelectedDate(Calendar, milis, day, month, year);
+                dateInterface.SelectedDate(myTime);
 
                 return true;
             }
@@ -344,12 +307,7 @@ public abstract class MyToolBars {
 
     public interface DateInterface {
 
-        void SelectedDate(Calendar Calendar, long milis, String day, String month, String year);
-    }
-
-    public interface MonthInterface {
-
-        void SelectedMonth(Calendar Calendar, long milis, String month, String year);
+        void SelectedDate(MyTime myTime);
     }
 
     public interface SearchInterface {

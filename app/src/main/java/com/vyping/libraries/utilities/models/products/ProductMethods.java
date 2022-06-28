@@ -98,8 +98,6 @@ public class ProductMethods extends ModelMethods<Product> {
 
     public String getUrlImage() {
 
-        new LogCat("url", new Buckets().getMediaResource(BUCKET_SHOP, product.BarCode, product.Image));
-
         return new Buckets().getMediaResource(BUCKET_SHOP, product.BarCode, product.Image);
     }
 

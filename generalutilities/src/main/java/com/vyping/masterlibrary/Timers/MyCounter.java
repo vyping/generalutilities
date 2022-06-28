@@ -75,8 +75,7 @@ public class MyCounter {
 
     public interface Interfase {
 
-        void onTick(long remain);
-
-        void onFinish();
+        default void onTick(long remain) {};
+        default void onFinish() {};
     }
 }

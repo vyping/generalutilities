@@ -21,6 +21,8 @@ public class MyApplication extends MultiDexApplication {
 
     private static List<Activity> activitys;
 
+    private static String LOG;
+
 
    // ----- Setup -----//
 
@@ -83,9 +85,32 @@ public class MyApplication extends MultiDexApplication {
         activitys.clear();
     }
 
-    public static void setLog(String string) {
+    public void startLog(String string) {
 
-        Log.i("Desarrollo", string);
+        LOG = string;
+
+        Log.i("Desarrollo",  LOG);
+    }
+
+    public void startLog(String tag, String value) {
+
+        LOG = tag + ": " + value;
+
+        Log.i("Desarrollo",  LOG);
+    }
+
+    public void addLog(String string) {
+
+        LOG = LOG + ", " + string;
+
+        Log.i("Desarrollo",  LOG);
+    }
+
+    public void addLog(String tag, String value) {
+
+        LOG = LOG + ", " + tag + ": " + value;
+
+        Log.i("Desarrollo",  LOG);
     }
 
     private void initActivityLifeCallback() {

@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="product" type="com.vyping.libraries.utilities.models.products.ProductMethods" />
+        <variable name="productMethod" type="com.vyping.libraries.utilities.models.products.ProductMethods" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="Title"
-                android:text="@{product.Name}"
+                android:text="@{productMethod.Name}"
                 android:textAlignment="gravity"
                 android:textColor="@color/colorNegro"
                 android:textSize="16sp"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="Subtitle"
-                android:text="@{product.Mark}"
+                android:text="@{productMethod.Mark}"
                 android:textAlignment="gravity"
                 android:textColor="@color/GreyDark05"
                 android:textSize="10sp"
@@ -80,8 +80,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageFromAssets="@{product.UrlImage}"
-                    app:imageFromWeb="@{product.UrlImage}"
+                    app:imageFromAssets="@{productMethod.UrlImage}"
+                    app:imageFromWeb="@{productMethod.UrlImage}"
                     tools:srcCompat="@drawable/icon_image" />
 
                 <LinearLayout
@@ -106,7 +106,7 @@
                     android:elevation="8dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:discountVisible="@{product.discount}"
+                    app:discountVisible="@{productMethod.discount}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:hint="0%"
-                        android:text="@{product.Discount}"
+                        android:text="@{productMethod.Discount}"
                         android:textAlignment="gravity"
                         android:textColor="@color/colorBlanco"
                         android:textSize="14dp" />
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="Size"
-                android:text="@{product.Quantity}"
+                android:text="@{productMethod.Quantity}"
                 android:textAlignment="gravity"
                 android:textColor="@color/GreyDark15"
                 android:textSize="12sp"
@@ -146,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@{product.Description}"
+                    android:text="@{productMethod.Description}"
                     app:animDuration="100"
                     app:maxCollapsedLines="1">
 
@@ -189,12 +189,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="Previous Value"
-                    android:text="@{product.PrevValue}"
+                    android:text="@{productMethod.PrevValue}"
                     android:textAlignment="gravity"
                     android:textColor="@color/RedDark10"
                     android:textSize="10sp"
                     android:textStyle="bold"
-                    app:discountVisible="@{product.discount}" />
+                    app:discountVisible="@{productMethod.discount}" />
 
                 <TextView
                     android:id="@+id/Tv_Men_Value"
@@ -202,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="Value"
-                    android:text="@{product.Value}"
+                    android:text="@{productMethod.Value}"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorNegro"
                     android:textSize="16sp"
