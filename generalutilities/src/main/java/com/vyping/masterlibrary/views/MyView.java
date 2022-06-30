@@ -1,5 +1,7 @@
 package com.vyping.masterlibrary.views;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static java.lang.Math.abs;
 
 import android.content.Context;
@@ -82,6 +84,69 @@ public class MyView {
 
         return recyclerView.findViewHolderForAdapterPosition(position);
     }
+
+    public static RecyclerView getRecyclerView(@NonNull View view) {
+
+        RecyclerView recyclerView = null;
+        boolean hasPerent = TRUE;
+
+        while (recyclerView == null && hasPerent == TRUE) {
+
+            if (view instanceof RecyclerView) {
+
+                recyclerView = (RecyclerView) view;
+
+            } else {
+
+                if(view.getParent() != null) {
+
+                    view = (View) view.getParent();
+
+                } else {
+
+                    hasPerent = FALSE;
+                }
+            }
+        }
+
+        return recyclerView;
+    }
+
+    public BindingRecyclerViewAdapter getAdapter(@NonNull RecyclerView recyclerView) {
+
+        return (BindingRecyclerViewAdapter) recyclerView.getAdapter();
+    }
+
+    public BindingRecyclerViewAdapter.ViewHolder getHolderFromViewChild(@NonNull RecyclerView recyclerView, View view) {
+
+        BindingRecyclerViewAdapter.ViewHolder viewHolder = null;
+        boolean hasPerent = TRUE;
+
+        while (viewHolder == null && hasPerent == TRUE) {
+
+            try  {
+
+                viewHolder = (BindingRecyclerViewAdapter.ViewHolder) recyclerView.getChildViewHolder(view);
+
+            } catch (Exception e) {
+
+                if(view.getParent() != null) {
+
+                    view = (View) view.getParent();
+
+                } else {
+
+                    hasPerent = FALSE;
+                }
+            }
+        }
+
+        return viewHolder;
+    }
+
+
+
+
 
     public MotionEvent setTouchAnimation(View selectedView, @NonNull MotionEvent event, @NonNull MotionEvent prevEvent) {
 

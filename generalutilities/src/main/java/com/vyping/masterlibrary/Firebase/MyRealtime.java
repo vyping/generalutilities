@@ -55,6 +55,14 @@ public class MyRealtime {
         databaseReference.keepSynced(true);
     }
 
+    public MyRealtime(String instance, String child) {
+
+        String Instance = "https://" + instance + ".firebaseio.com/";
+
+        databaseReference = FirebaseDatabase.getInstance(Instance).getReference().child(child);
+        databaseReference.keepSynced(true);
+    }
+
 
     // ----- Readers ----- //
 
@@ -130,6 +138,16 @@ public class MyRealtime {
     public DatabaseReference getReference() {
 
         return databaseReference;
+    }
+
+    public MyRealtime reference(String child) {
+
+        if (databaseReference != null) {
+
+            databaseReference = databaseReference.child(child);
+        }
+
+        return this;
     }
 
     public MyRealtime child(String child1) {
