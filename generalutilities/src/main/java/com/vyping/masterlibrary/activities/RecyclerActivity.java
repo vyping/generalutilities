@@ -145,7 +145,7 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
 
     public void setFirebaseService(String instance, String child, MyRealtime.SingleListener listener) {
 
-        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime = new MyRealtime(instance, child);
         myRealtime.getSingleValue(listener);
     }
 
@@ -163,13 +163,13 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
 
     public void setFirebaseService(String instance, String child) {
 
-        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime = new MyRealtime(instance, child);
         myRealtime.getValueChanges(MyRealtimeListener);
     }
 
     public void setFirebaseService(String instance, String child, MyRealtime.ValueListener valueListener) {
 
-        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime = new MyRealtime(instance, child);
         myRealtime.getValueChanges(valueListener);
     }
 

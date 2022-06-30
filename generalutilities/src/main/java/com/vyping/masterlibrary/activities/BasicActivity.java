@@ -148,7 +148,7 @@ public abstract class BasicActivity extends AppCompatActivity {
 
     public void setFirebaseService(String instance, String child, Object listener) {
 
-        myRealtime = new MyRealtime(instance).child(child);
+        myRealtime = new MyRealtime(instance, child);
 
         if (listener instanceof MyRealtime.SingleListener) {
 
