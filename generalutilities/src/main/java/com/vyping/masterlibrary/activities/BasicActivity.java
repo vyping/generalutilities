@@ -129,7 +129,6 @@ public abstract class BasicActivity extends AppCompatActivity {
 
     // ----- Firebase ----- //
 
-
     public void setFirebaseService(String instance, Object listener) {
 
         myRealtime = new MyRealtime(instance);
@@ -282,19 +281,22 @@ public abstract class BasicActivity extends AppCompatActivity {
         });
     }
 
+
+    // ----- Permissions ----- //
+
     public void requestPermissions(String[] permissions, int arrayParameters, int code, PermissionsInterfase interfase) {
 
-       myPermissions = new MyPermissions(context, arrayParameters, permissions, code);
-       myPermissions.RequestPermissions(new MyPermissions.Interfase() {
+        myPermissions = new MyPermissions(context, arrayParameters, permissions, code);
+        myPermissions.RequestPermissions(new MyPermissions.Interfase() {
 
-           public void PermissionsResult(int result) {
+            public void PermissionsResult(int result) {
 
-               interfase.Granted(result);
-           }
+                interfase.Granted(result);
+            }
 
-           private void DummyVoid() {
-           }
-       });
+            private void DummyVoid() {
+            }
+        });
     }
 
     public void requestPermissions(String[] permissions, int arrayParameters, int code, int minVersion, PermissionsInterfase interfase) {

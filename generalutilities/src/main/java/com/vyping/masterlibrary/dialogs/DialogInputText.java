@@ -1,8 +1,6 @@
 package com.vyping.masterlibrary.dialogs;
 
 import static com.vyping.masterlibrary.Common.Definitions.TEXT_INPUT_NORMAL;
-import static com.vyping.masterlibrary.Models.DialogParams.MODE;
-import static com.vyping.masterlibrary.Models.DialogParams.PARAMS;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

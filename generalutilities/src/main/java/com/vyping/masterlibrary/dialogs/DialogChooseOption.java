@@ -1,8 +1,5 @@
 package com.vyping.masterlibrary.dialogs;
 
-import static com.vyping.masterlibrary.Models.DialogParams.MODE;
-import static com.vyping.masterlibrary.Models.DialogParams.PARAMS;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.ContextThemeWrapper;

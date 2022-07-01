@@ -1,7 +1,5 @@
 package com.vyping.masterlibrary.activities;
 
-import static java.lang.Boolean.TRUE;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -14,31 +12,31 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.google.firebase.database.DataSnapshot;
+import com.smarteist.autoimageslider.SliderView;
 import com.vyping.masterlibrary.ActionBar.MyActionBar;
 import com.vyping.masterlibrary.Common.MyActivity;
 import com.vyping.masterlibrary.Common.MyPermissions;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
-import com.vyping.masterlibrary.time.MyTime;
-import com.vyping.masterlibrary.views.recyclerview.methods.MethodInterfase;
-import com.vyping.masterlibrary.views.recyclerview.methods.MethodsHandler;
 import com.vyping.masterlibrary.aplication.MyApplication;
+import com.vyping.masterlibrary.models.notices.Notice;
 import com.vyping.masterlibrary.views.recyclerview.binder.CompositeItemBinder;
 import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
 import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
+import com.vyping.masterlibrary.views.recyclerview.methods.MethodInterfase;
+import com.vyping.masterlibrary.views.recyclerview.methods.MethodsHandler;
 
-public abstract class RecyclerActivity<T> extends AppCompatActivity {
+public abstract class MainMenuActivity<T> extends AppCompatActivity {
 
     public MyApplication application;
     public Context context;
     public ViewDataBinding binding;
-    private MyPermissions myPermissions;
+    public AdapterNotices adapterNotices;
 
     public MyActionBar actionBar;
     public MyToolBars myToolBars;
-    public MyRealtime myRealtime;
-
-    private Class backActivity;
+    public MyRealtime realtimeNotices, realtimeMenu;
+    private MyPermissions myPermissions;
 
     public MethodsHandler<T> methodHandler;
 
@@ -88,30 +86,9 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
         LaunchProcess();
     }
 
-    public void createActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
-
-        setStartProcess(activity, layout, backActivity);
-        setActionBar(icon, module);
-        setActivityViews();
-
-        LaunchProcess();
-    }
-
     public void setStartProcess(Activity activity, int layout) {
 
         this.context = new MyActivity().setTheme(activity);
-        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
-
-        View view = binding.getRoot();
-        setContentView(view);
-
-        StartProcess(binding);
-    }
-
-    public void setStartProcess(Activity activity, int layout, Class<Activity> backActivity) {
-
-        this.context = activity;
-        this.backActivity = backActivity;
         this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
         View view = binding.getRoot();
@@ -129,7 +106,16 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
 
     public void setActivityViews() {
 
-        ActivityViews();
+        adapterNotices = new AdapterNotices(context, selectedInterfase);
+
+        SliderView sliderView = ActivityViews();
+        sliderView.setSliderAdapter(adapterNotices);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setAutoCycle(true);
+        sliderView.setIndicatorMargin(0);
+        sliderView.setIndicatorRadius(4);
+        sliderView.setScrollTimeInSec(6);
+        sliderView.startAutoCycle();
 
         binding.executePendingBindings();
     }
@@ -137,40 +123,13 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
 
     // ----- Firebase ----- //
 
-    public void setFirebaseService(String instance, MyRealtime.SingleListener listener) {
+    public void setFirebaseService(String instanceNotices, String instanceMenu) {
 
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getSingleValue(listener);
-    }
+        realtimeNotices = new MyRealtime(instanceNotices);
+        realtimeNotices.getValueChanges(noticesRealtimeListener);
 
-    public void setFirebaseService(String instance, String child, MyRealtime.SingleListener listener) {
-
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getSingleValue(listener);
-    }
-
-    public void setFirebaseService(String instance) {
-
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getValueChanges(MyRealtimeListener);
-    }
-
-    public void setFirebaseService(String instance, MyRealtime.ValueListener valueListener) {
-
-        myRealtime = new MyRealtime(instance);
-        myRealtime.getValueChanges(valueListener);
-    }
-
-    public void setFirebaseService(String instance, String child) {
-
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getValueChanges(MyRealtimeListener);
-    }
-
-    public void setFirebaseService(String instance, String child, MyRealtime.ValueListener valueListener) {
-
-        myRealtime = new MyRealtime(instance, child);
-        myRealtime.getValueChanges(valueListener);
+        realtimeMenu = new MyRealtime(instanceMenu);
+        realtimeMenu.getValueChanges(MyRealtimeListener);
     }
 
 
@@ -190,108 +149,6 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
             }
 
             private void DummyVoid(){}
-        });
-    }
-
-    public void setDateBar(int container, ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
-
-            @Override
-            public void SelectedDate(MyTime myTime) {
-
-                interfase.setDate(myTime);
-            }
-
-            private void DummyVoid(){}
-        });
-    }
-
-    public void setMonthBar(int container, ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setMonthToolBar(new MyToolBars.DateInterface() {
-
-            @Override
-            public void SelectedDate(MyTime myTime) {
-
-                interfase.setDate(myTime);
-            }
-
-            private void DummyVoid(){}
-        });
-    }
-
-    public void setSearchAndDateBar(int container, ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
-
-            @Override
-            public void SelectedSearch(String search) {
-
-                interfase.setSearch(search);
-            }
-
-            private void DummyVoid(){}
-        });
-        myToolBars.setDateToolBar(new MyToolBars.DateInterface() {
-
-            @Override
-            public void SelectedDate(MyTime myTime) {
-
-                interfase.setDate(myTime);
-            }
-
-            private void DummyVoid(){}
-        });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
-
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
-        });
-    }
-
-    public void setSearchAndMonthBar(int container, ToolBarsInterfase interfase) {
-
-        myToolBars = new MyToolBars(context, container) {};
-        myToolBars.setSearchToolBar(new MyToolBars.SearchInterface() {
-
-            @Override
-            public void SelectedSearch(String search) {
-
-                interfase.setSearch(search);
-            }
-
-            private void DummyVoid(){}
-        });
-        myToolBars.setMonthToolBar(new MyToolBars.DateInterface() {
-
-            @Override
-            public void SelectedDate(MyTime myTime) {
-
-                interfase.setDate(myTime);
-            }
-
-            private void DummyVoid(){}
-        });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
-
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
         });
     }
 
@@ -344,7 +201,43 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
     }
 
 
-    // ----- Listeners ModelMethods ----- //
+    private final MyRealtime.ValueListener noticesRealtimeListener = new MyRealtime.ValueListener() {
+
+        @Override
+        public void ChildAdded(@NonNull DataSnapshot snapChild) {
+
+            Notice notice = new Notice(snapChild);
+            adapterNotices.insertByChange(notice);
+        }
+
+        @Override
+        public void ChildChanged(@NonNull DataSnapshot snapChild) {
+
+            Notice notice = new Notice(snapChild);
+            adapterNotices.modifyNotice(notice);
+        }
+
+        @Override
+        public void ChildRemoved(@NonNull DataSnapshot snapChild) {
+
+            Notice notice = new Notice(snapChild);
+            adapterNotices.removeNotice(notice.Id);
+        }
+
+        @Override
+        public void finishAdded() {}
+    };
+
+    private final AdapterNotices.Interfase selectedInterfase = new AdapterNotices.Interfase() {
+
+        @Override
+        public void Selected(int position, @NonNull Notice notice) {
+
+            SelectNotice(notice);
+        }
+
+        private void DummyVoid() {}
+    };
 
     private final MyRealtime.ValueListener MyRealtimeListener = new MyRealtime.ValueListener() {
 
@@ -384,8 +277,9 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
     protected abstract void CreateActivity();
     protected abstract void StartProcess(ViewDataBinding binding);
     protected void ActionBar() {};
-    protected void ActivityViews() {};
+    protected abstract SliderView ActivityViews();
     protected void LaunchProcess() {};
+    protected abstract void SelectNotice(Notice notice);
     protected void StopProcess() {};
 
     public interface PermissionsInterfase {
@@ -396,7 +290,6 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
     public interface ToolBarsInterfase {
 
         default void setSearch(String search) {};
-        default void setDate(MyTime myTime) {};
     }
 
 
@@ -413,10 +306,7 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (backActivity != null) {
-
-            new MyActivity().Start(context, backActivity, TRUE);
-        }
+        super.onBackPressed();
     }
 
     @Override
@@ -442,6 +332,7 @@ public abstract class RecyclerActivity<T> extends AppCompatActivity {
 
         super.onDestroy();
 
-        myRealtime.removeValueListener();
+        realtimeNotices.removeValueListener();
+        realtimeMenu.removeValueListener();
     }
 }

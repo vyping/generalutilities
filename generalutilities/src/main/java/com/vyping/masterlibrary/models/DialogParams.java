@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.Models;
+package com.vyping.masterlibrary.models;
 
 import static com.vyping.masterlibrary.dialogs.CreateDialog.DIALOG_NORMAL;
 

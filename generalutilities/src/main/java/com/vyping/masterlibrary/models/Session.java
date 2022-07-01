@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.Models;
+package com.vyping.masterlibrary.models;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;

@@ -1,11 +1,11 @@
 package com.vyping.masterlibrary.Preferences;
 
 import static com.vyping.masterlibrary.Common.Definitions.PREFERENCES_AUTH;
-import static com.vyping.masterlibrary.Models.Session.TAG_DOCUMENT;
-import static com.vyping.masterlibrary.Models.Session.TAG_EMAIL;
-import static com.vyping.masterlibrary.Models.Session.TAG_NAME;
-import static com.vyping.masterlibrary.Models.Session.TAG_PASSWORD;
-import static com.vyping.masterlibrary.Models.Session.TAG_TYPE;
+import static com.vyping.masterlibrary.models.Session.TAG_DOCUMENT;
+import static com.vyping.masterlibrary.models.Session.TAG_EMAIL;
+import static com.vyping.masterlibrary.models.Session.TAG_NAME;
+import static com.vyping.masterlibrary.models.Session.TAG_PASSWORD;
+import static com.vyping.masterlibrary.models.Session.TAG_TYPE;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -15,7 +15,7 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Models.Session;
+import com.vyping.masterlibrary.models.Session;
 
 public class MyAuthPreferences {
 

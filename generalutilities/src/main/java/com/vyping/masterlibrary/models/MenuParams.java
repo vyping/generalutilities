@@ -1,4 +1,4 @@
-package com.vyping.masterlibrary.Models;
+package com.vyping.masterlibrary.models;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
