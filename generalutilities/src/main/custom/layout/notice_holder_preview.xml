@@ -26,25 +26,32 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="0"
                 android:gravity="center"
+                android:hint="Title"
                 android:text="@{notice.Title}"
                 android:textAlignment="gravity"
-                android:textColor="?colorMenuTitle"
+                android:textColor="@color/colorNegro"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                tools:visibility="gone" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/Tv_Men_Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:layout_weight="0"
+                android:breakStrategy="balanced"
                 android:gravity="center"
+                android:hint="Description"
+                android:lines="1"
+                android:maxLines="1"
+                android:minLines="1"
                 android:text="@{notice.SubTitle}"
                 android:textAlignment="gravity"
-                android:textColor="?colorMenuSubTitle"
-                android:textSize="10sp"
+                android:textColor="@color/GreyDark15"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                tools:visibility="gone" />
+                app:autoSizeTextType="uniform"
+                tools:targetApi="m" />
 
             <LinearLayout
                 android:layout_width="match_parent"
