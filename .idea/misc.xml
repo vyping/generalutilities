@@ -91,8 +91,10 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/app/src/main/res/layout/vehicles_globe_outside.xml" value="0.75" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/actbar_button_tools.xml" value="0.343" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/background_window.xml" value="0.377" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/background_window_out.xml" value="0.1825" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/button_text.xml" value="0.343" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/dialog_background_window.xml" value="0.377" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/icon_comment_regular.xml" value="0.182" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/icon_history.xml" value="0.377" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/icon_info.xml" value="0.242" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/drawable/icon_register.xml" value="0.377" />
@@ -108,11 +110,13 @@
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/dialog_pickerprefix.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/dialog_progress.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/listview_item.xml" value="0.3765625" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/notice_holder.xml" value="0.2640625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/notice_holder_preview.xml" value="0.2640625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/pdf_view.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/popup_bubbles.xml" value="0.3625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/popup_config.xml" value="0.3625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/popup_custom.xml" value="0.3625" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/preview_holder.xml" value="0.1921875" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/shop_activity.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/toolbars_datesearch.xml" value="0.3765625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/Librerias/Libraries/generalutilities/src/main/custom/layout/view_dialog.xml" value="0.3765625" />

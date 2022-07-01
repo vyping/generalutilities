@@ -590,7 +590,7 @@ public class RealData {
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                 String key = snapshot.getKey();
-                Object value = snapshot.getValue();
+                String value = String.valueOf(snapshot.getValue());
 
                 hashMap.put(key, value);
             }
@@ -608,7 +608,7 @@ public class RealData {
             for (DataSnapshot snapshot : dataSnapshot.child(child).getChildren()) {
 
                 String key = snapshot.getKey();
-                Object value = snapshot.getValue();
+                String value = String.valueOf(snapshot.getValue());
 
                 hashMap.put(key, value);
             }
@@ -626,7 +626,7 @@ public class RealData {
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                 String key = snapshot.getKey();
-                String value = snapshot.toString();
+                String value = String.valueOf(snapshot.getValue());
 
                 hashMap.put(key, value);
             }
@@ -644,7 +644,7 @@ public class RealData {
             for (DataSnapshot snapshot : dataSnapshot.child(child).getChildren()) {
 
                 String key = snapshot.getKey();
-                String value = snapshot.toString();
+                String value = String.valueOf(snapshot.getValue());
 
                 hashMap.put(key, value);
             }
