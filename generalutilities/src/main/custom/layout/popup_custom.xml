@@ -26,7 +26,7 @@
         android:id="@+id/Ll_Pop_Container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_window"
+        android:background="@drawable/background_in_empty"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="16dp"

@@ -1,9 +1,5 @@
 package com.vyping.masterlibrary.Comunication;
 
-import static com.vyping.masterlibrary.Common.MyPermissions.PERMISSIONS_GRANTED;
-import static com.vyping.masterlibrary.Common.MyPermissions.PERMISSION_CODE_SMS;
-import static com.vyping.masterlibrary.Common.MyPermissions.PERMISSION_SMS;
-
 import android.content.Context;
 import android.telephony.SmsManager;
 import android.widget.Toast;
@@ -23,7 +19,7 @@ public class SendSMS extends MyPermissions {
 
     public SendSMS(Context context, int parameters, String phone, String message) {
 
-        super(context, parameters, new String[]{PERMISSION_SMS}, PERMISSION_CODE_SMS);
+        super(context, parameters, new String[]{PERMISSION_SMS_SEND}, PERMISSION_CODE_SMS_SEND);
 
         SetParameters(context, phone, message);
         RequestPermissions(permissionsInterfase);
@@ -34,7 +30,7 @@ public class SendSMS extends MyPermissions {
 
     private void sendSMS() {
 
-        if (ContextCompat.checkSelfPermission(context, PERMISSION_SMS) == PERMISSIONS_GRANTED) {
+        if (ContextCompat.checkSelfPermission(context, PERMISSION_SMS_SEND) == PERMISSIONS_GRANTED) {
 
             if (!PHONE.equals("") && !MESSAGE.equals("")) {
 

@@ -1,9 +1,8 @@
 package com.vyping.libraries.utilities.models.products;
 
-import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.views.recyclerview.binder.ConditionalDataBinder;
+import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerConditionalBinder;
 
-public class TitleBinder extends ConditionalDataBinder<ProductMethods> {
+public class TitleBinder extends RecyclerConditionalBinder<ProductMethods> {
 
 
     // ----- SetUp ----- //

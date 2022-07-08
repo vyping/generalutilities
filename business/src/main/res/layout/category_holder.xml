@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="categoryMethod" type="com.vyping.business.utilities.models.categories.CategoryMethods" />
+        <variable name="subCategoryHandler" type="com.vyping.business.utilities.models.subcategories.SubCategoryHandler" />
+        <variable name="subCategoryBinder" type="com.vyping.business.utilities.models.subcategories.SubCategoryBinder" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Cl_MainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <LinearLayout
+            android:id="@+id/Ll_SecondaryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/Ll_Button5"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="2"
+                android:background="@drawable/background_in_gradient"
+                android:backgroundTint="@color/colorBlanco"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/Iv_Men_Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    app:imageFromAssets="@{categoryMethod.ImageName}"
+                    tools:srcCompat="@drawable/icon_image" />
+
+                <LinearLayout
+                    android:id="@+id/Ll_Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Tv_Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:hint="Title"
+                        android:text="@{categoryMethod.Name}"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/colorNegro"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/Tv_Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-4dp"
+                        android:gravity="start|center_vertical"
+                        android:hint="Description"
+                        android:text="@{categoryMethod.Description}"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/GreyDark05"
+                        android:textSize="12sp"
+                        android:textStyle="italic"
+                        android:lines="1"
+                        android:breakStrategy="balanced"
+                        app:autoSizeTextType="uniform"
+                        tools:ignore="UnusedAttribute" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Rv_Rutine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:recyclerBinder="@{categoryMethod.getSubCategoriesBinder}"
+                app:interfase="@{categoryMethod.getSubactegoriesInterfase}"
+                app:items="@{categoryMethod.getSubCategoriesHandler}"
+                tools:listitem="@layout/subcategory_holder"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

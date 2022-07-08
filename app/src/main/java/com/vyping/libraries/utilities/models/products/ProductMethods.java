@@ -10,18 +10,14 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.vyping.libraries.utilities.definitions.Buckets;
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyString;
-import com.vyping.masterlibrary.views.recyclerview.methods.ModelMethods;
+import com.vyping.masterlibrary.views.MyImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ProductMethods extends ModelMethods<Product> {
+public class ProductMethods {
 
     private final Product product;
 
@@ -29,8 +25,6 @@ public class ProductMethods extends ModelMethods<Product> {
     // ----- SetUp ----- //
 
     public ProductMethods(Product product) {
-
-        super(product);
 
         this.product = product;
     }
@@ -146,6 +140,11 @@ public class ProductMethods extends ModelMethods<Product> {
         }
     }
 
+    @BindingAdapter(value={"imageFromAssets", "imageFromWeb"}, requireAll=true)
+    public static void loadImage(@NonNull ImageView view, String asset, String url) {
+
+        new MyImageView().putImageFromAssetsOrWeb(view, asset, url);
+    }
 
     // ----- Search ModelMethods ----- //
 

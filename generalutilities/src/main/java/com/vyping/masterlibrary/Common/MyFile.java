@@ -29,13 +29,14 @@ public class MyFile {
     public static final String TYPE_BMP = ".bmp";
     public static final String TYPE_ICO = ".ico";
     public static final String TYPE_GIF = ".gif";
+    public static final String TYPE_SVG = ".svg";
     public static final String TYPE_PDF = ".pdf";
 
 
     // ----- SetUp ----- //
 
     @Retention(RetentionPolicy.SOURCE)
-    @StringDef({TYPE_JPG, TYPE_PNG, TYPE_BMP, TYPE_ICO, TYPE_PDF, TYPE_GIF, TYPE_PDF})
+    @StringDef({TYPE_JPG, TYPE_PNG, TYPE_BMP, TYPE_ICO, TYPE_PDF, TYPE_GIF, TYPE_SVG, TYPE_PDF})
     public @interface Type {}
 
     public String setName(String name) {

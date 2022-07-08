@@ -546,6 +546,30 @@ public class RealData {
 
     // ----- Array Readers ----- //
 
+    public ArrayList<DataSnapshot> getArrayDataSnapshot() {
+
+        ArrayList<DataSnapshot> arrayDataSnapshot = new ArrayList<>();
+
+        for (DataSnapshot dataChild : dataSnapshot.getChildren()) {
+
+            arrayDataSnapshot.add(dataChild);
+        }
+
+        return arrayDataSnapshot;
+    }
+
+    public ArrayList<DataSnapshot> getArrayDataSnapshot(String child) {
+
+        ArrayList<DataSnapshot> arrayDataSnapshot = new ArrayList<>();
+
+        for (DataSnapshot dataChild : dataSnapshot.child(child).getChildren()) {
+
+            arrayDataSnapshot.add(dataChild);
+        }
+
+        return arrayDataSnapshot;
+    }
+
     public ArrayList<String> getArrayString() {
 
         ArrayList<String> arrayList = new ArrayList<>();

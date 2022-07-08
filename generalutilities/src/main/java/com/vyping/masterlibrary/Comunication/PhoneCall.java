@@ -20,7 +20,7 @@ public class PhoneCall extends MyPermissions {
 
     public PhoneCall(Context context, int parameters, String phone) {
 
-        super(context, parameters, new String[]{PERMISSION_PHONE}, PERMISSION_CODE_PHONE);
+        super(context, parameters, new String[]{PERMISSION_PHONE_CALL}, PERMISSION_CODE_PHONE_CALL);
 
         SetParameters(context, phone);
         RequestPermissions(permissionsInterfase);
@@ -31,7 +31,7 @@ public class PhoneCall extends MyPermissions {
 
     private void makePhoneCall() {
 
-        if (ContextCompat.checkSelfPermission(context, PERMISSION_PHONE) == PERMISSIONS_GRANTED) {
+        if (ContextCompat.checkSelfPermission(context, PERMISSION_PHONE_CALL) == PERMISSIONS_GRANTED) {
 
             if (!PHONE.equals("")) {
 

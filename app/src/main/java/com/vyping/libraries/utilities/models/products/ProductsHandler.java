@@ -3,12 +3,11 @@ package com.vyping.libraries.utilities.models.products;
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
-import com.vyping.masterlibrary.Firebase.RealData;
-import com.vyping.masterlibrary.views.recyclerview.methods.MethodInterfase;
+import com.vyping.masterlibrary.adapters.recyclerview.handler.RecyclerHandlerInterfase;
 
 import java.util.ArrayList;
 
-public class ProductsHandler implements MethodInterfase<ProductMethods> {
+public class ProductsHandler implements RecyclerHandlerInterfase<ProductMethods> {
 
 
     // ----- SetUp ----- //

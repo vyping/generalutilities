@@ -7,16 +7,14 @@ import static java.lang.Math.abs;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vyping.masterlibrary.Animations.MyAnimation;
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyDisplay;
-import com.vyping.masterlibrary.views.recyclerview.adapter.BindingRecyclerViewAdapter;
+import com.vyping.masterlibrary.adapters.recyclerview.adapter.MyRecyclerAdapter;
 
 public class MyView {
 
@@ -46,7 +44,7 @@ public class MyView {
         return context.getResources().getResourceEntryName(view.getId());
     }
 
-    public View getViewFromHolder(@NonNull BindingRecyclerViewAdapter.ViewHolder holder, int resource) {
+    public View getViewFromHolder(@NonNull MyRecyclerAdapter.ViewHolder holder, int resource) {
 
         return holder.itemView.findViewById(resource);
     }
@@ -112,21 +110,21 @@ public class MyView {
         return recyclerView;
     }
 
-    public BindingRecyclerViewAdapter getAdapter(@NonNull RecyclerView recyclerView) {
+    public MyRecyclerAdapter getAdapter(@NonNull RecyclerView recyclerView) {
 
-        return (BindingRecyclerViewAdapter) recyclerView.getAdapter();
+        return (MyRecyclerAdapter) recyclerView.getAdapter();
     }
 
-    public BindingRecyclerViewAdapter.ViewHolder getHolderFromViewChild(@NonNull RecyclerView recyclerView, View view) {
+    public MyRecyclerAdapter.ViewHolder getHolderFromViewChild(@NonNull RecyclerView recyclerView, View view) {
 
-        BindingRecyclerViewAdapter.ViewHolder viewHolder = null;
+        MyRecyclerAdapter.ViewHolder viewHolder = null;
         boolean hasPerent = TRUE;
 
         while (viewHolder == null && hasPerent == TRUE) {
 
             try  {
 
-                viewHolder = (BindingRecyclerViewAdapter.ViewHolder) recyclerView.getChildViewHolder(view);
+                viewHolder = (MyRecyclerAdapter.ViewHolder) recyclerView.getChildViewHolder(view);
 
             } catch (Exception e) {
 

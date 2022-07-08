@@ -148,7 +148,7 @@ public class MyDrawable {
      * @param resourceDrawable integer resourceDrawable
      * @return name from resource
      */
-    @Deprecated(since = "v1.0.11", forRemoval = true)
+    //@Deprecated(since = "v1.0.11", forRemoval = true)
     public String extractNameFromResources(@NonNull Context context, int resourceDrawable) {
 
         return context.getResources().getResourceEntryName(resourceDrawable);
@@ -168,7 +168,7 @@ public class MyDrawable {
      * @param stringDrawable String stringDrawable
      * @return id from resource
      */
-    @Deprecated(since = "v1.0.11", forRemoval = true)
+    //@Deprecated(since = "v1.0.11", forRemoval = true)
     public int extractIdFromString(@NonNull Context context, String stringDrawable) {
 
         return context.getResources().getIdentifier(stringDrawable, "drawable", context.getPackageName());

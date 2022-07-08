@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="MenuSlider">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:rotation">-5</item>
+    </style>
+
+    <style name="MenuTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:hint">Title</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?colorMenuTitle</item>
+    </style>
+
+    <style name="MenuSubTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:hint">Subtitle</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">?colorMenuSubTitle</item>
+    </style>
+
+    <style name="MenuButton">
+        <item name="buttonWidth">140dp</item>
+        <item name="buttonHeight">100dp</item>
+        <item name="buttonRotation">-5</item>
+        <item name="backgroundDrawable">@drawable/background_out_framed</item>
+        <item name="backgroundColor">@color/GreyMid100</item>
+        <item name="iconDrawable">@drawable/icon_image</item>
+        <item name="iconColor">@color/colorBlanco</item>
+        <item name="numberColor">@color/PrimaryLight10</item>
+        <item name="titleText">"Title"</item>
+        <item name="titleColor">@color/colorBlanco</item>
+        <item name="titleFont">?boldFont</item>
+        <item name="subtitleText">"Subtitle"</item>
+        <item name="subtitleColor">@color/PrimaryDark10</item>
+        <item name="subtitleFont">?boldFont</item>
+    </style>
+
+    <style name="MenuButtonHorizontal">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:rotation">-5</item>
+    </style>
+
+</resources>

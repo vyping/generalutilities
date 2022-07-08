@@ -55,18 +55,25 @@ public class MyRealtime {
         databaseReference.keepSynced(true);
     }
 
-    public MyRealtime(String instance, String child) {
+    @SafeVarargs
+    public MyRealtime(String instance, @NonNull String... childs) {
 
         String Instance = "https://" + instance + ".firebaseio.com/";
 
-        databaseReference = FirebaseDatabase.getInstance(Instance).getReference().child(child);
+        databaseReference = FirebaseDatabase.getInstance(Instance).getReference();
+
+        for (String child : childs) {
+
+            reference(child);
+        }
+
         databaseReference.keepSynced(true);
     }
 
 
     // ----- Readers ----- //
 
-    public void getSingleValue(SingleListener listener) {
+    public MyRealtime getSingleValue(SingleListener listener) {
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -87,9 +94,11 @@ public class MyRealtime {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        return this;
     }
 
-    public void getListValues(ListListener listener) {
+    public MyRealtime getListValues(ListListener listener) {
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -115,21 +124,27 @@ public class MyRealtime {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        return this;
     }
 
-    public void getListChanges(ListListener listener) {
+    public MyRealtime getListChanges(ListListener listener) {
 
         this.listListener = listener;
 
         databaseReference.addValueEventListener(valueListListener);
+
+        return this;
     }
 
-    public void getValueChanges(ValueListener listener) {
+    public MyRealtime getValueChanges(ValueListener listener) {
 
         this.valueListener = listener;
         this.myCounter = new MyCounter(500, 100, FALSE, counterInterfase);
 
         databaseReference.addChildEventListener(childValuesListener);
+
+        return this;
     }
 
 
@@ -442,7 +457,6 @@ public class MyRealtime {
 
 
     // ----- Interface ----- //
-
 
     public interface SingleListener {
 

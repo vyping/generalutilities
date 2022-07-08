@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="subCategoryMethod" type="com.vyping.business.utilities.models.subcategories.SubCategoryMethods" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Cl_MainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:widthView="@{subCategoryMethod}">
+
+        <LinearLayout
+            android:id="@+id/Ll_Main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/background_in_gradient"
+            android:backgroundTint="@color/colorBlanco"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/Iv_Men_Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                app:imageFromAssets="@{subCategoryMethod.UrlImage}"
+                tools:srcCompat="@drawable/icon_image" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/background_window_out"
+                android:dropDownWidth="match_parent"
+                android:popupBackground="@drawable/background_window_out"
+                app:items="@{subCategoryMethod.getStoresHandler}"
+                app:layout="@{@layout/store_holder}"
+                app:spinnerBinder="@{subCategoryMethod.getStoresBinder}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/Tv_Men_Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:breakStrategy="balanced"
+                android:gravity="center"
+                android:hint="Title"
+                android:lines="1"
+                android:maxLines="1"
+                android:minLines="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@{subCategoryMethod.Id}"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorNegro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform"
+                tools:ignore="UnusedAttribute"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

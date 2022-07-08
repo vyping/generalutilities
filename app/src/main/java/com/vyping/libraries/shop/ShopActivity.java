@@ -10,7 +10,6 @@ import static com.vyping.libraries.utilities.definitions.Modules.MODULE_NAME_SHO
 
 import static java.lang.Boolean.TRUE;
 
-import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
 
@@ -28,13 +27,11 @@ import com.vyping.libraries.utilities.models.products.ProductsHandler;
 import com.vyping.libraries.utilities.models.products.TitleBinder;
 import com.vyping.masterlibrary.BR;
 import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.activities.RecyclerActivity;
+import com.vyping.masterlibrary.activities.MyRecyclerActivity;
+import com.vyping.masterlibrary.adapters.recyclerview.adapter.MyRecyclerAdapter;
 import com.vyping.masterlibrary.popups.PopUpConfig;
-import com.vyping.masterlibrary.views.recyclerview.adapter.BindingRecyclerViewAdapter;
-import com.vyping.masterlibrary.views.recyclerview.binder.CompositeItemBinder;
-import com.vyping.masterlibrary.views.recyclerview.binder.ItemBinder;
 
-public class ShopActivity extends RecyclerActivity<ProductMethods> {
+public class ShopActivity extends MyRecyclerActivity<ProductMethods> {
 
     private ShopActivityBinding binding;
 
@@ -58,7 +55,7 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> {
     @Override
     protected void StartProcess(ViewDataBinding binding) {
 
-        setAdapterMethodHandler(new ProductsHandler(), TRUE);
+        setRecyclerHandler(new ProductsHandler(), TRUE, new TitleBinder(BR.productMethod, R.layout.title_holder), new ProductBinder(BR.productMethod, R.layout.shop_holder));
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(context, 2);
         mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup()  {
@@ -66,7 +63,7 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> {
             @Override
             public int getSpanSize(int position) {
 
-                if (methodHandler.methodsDisplayed.get(position).getDescription().equals("") == TRUE) {
+                if (recyclerHandler.methodsDisplayed.get(position).getDescription().equals("") == TRUE) {
 
                     return 2;
 
@@ -81,13 +78,8 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> {
 
         this.binding = (ShopActivityBinding) binding;
         this.binding.setShopActivity(ShopActivity.this);
-        this.binding.setMethodHandler(methodHandler);
+
         this.binding.RvNotRecyclerView.setLayoutManager(mLayoutManager);
-    }
-
-    public ItemBinder<ProductMethods> itemViewBinder(){
-
-        return new CompositeItemBinder<ProductMethods>(new TitleBinder(BR.productMethod, R.layout.title_holder), new ProductBinder(BR.productMethod, R.layout.shop_holder));
     }
 
     @Override
@@ -122,7 +114,7 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> {
                     @Override
                     public void closeSession() {
 
-                        // new MyActivity().Start(context, LoginActivity.class, TRUE);
+                        // new MyActivity().Start(context, MyLoginActivity.class, TRUE);
                     }
                 });
             }
@@ -141,7 +133,7 @@ public class ShopActivity extends RecyclerActivity<ProductMethods> {
 
     // ----- Listeners ModelMethods ----- //
 
-    public final BindingRecyclerViewAdapter.Interfase<ProductMethods> adapterInterfase = new BindingRecyclerViewAdapter.Interfase<>()  {
+    public final MyRecyclerAdapter.Interfase<ProductMethods> adapterInterfase = new MyRecyclerAdapter.Interfase<>()  {
 
         @Override
         public void OnClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, ProductMethods item, int position) {

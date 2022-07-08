@@ -239,7 +239,8 @@ public class MyString {
 
         if (text != null) {
 
-            String trimedText = trimText(text);
+            String lowerText = text.toLowerCase();
+            String trimedText = trimText(lowerText);
             String replacedText = replaceSpaceByUnderScore(trimedText);
 
             Return = removeAccentMark(replacedText);

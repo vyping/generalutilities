@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+
+    // Dialogs - Notice
+
+    <declare-styleable name="CustomDialogView">
+
+
+        // General - Notice
+
+        <attr name="dialogWindowContainer" format="reference"/>
+        <attr name="dialogBodyContainerWrap" format="reference"/>
+        <attr name="dialogBodyContainerMatch" format="reference"/>
+        <attr name="dialogTitleHeader" format="reference"/>
+        <attr name="dialogTitleContainer" format="reference"/>
+        <attr name="dialogTitleIcon" format="reference"/>
+        <attr name="dialogTitleText" format="reference"/>
+        <attr name="dialogInfoButton" format="reference"/>
+
+
+        // Header - Notice
+
+        <attr name="dialogBackground" format="reference"/>
+        <attr name="dialogDescription" format="reference"/>
+        <attr name="dialogInstructions" format="reference"/>
+        <attr name="dialogMainContainerMatch" format="reference"/>
+        <attr name="dialogMainContainerWrap" format="reference"/>
+
+
+        // Body - Notice
+
+        <attr name="dialogChooseOption" format="reference"/>
+        <attr name="dialogShowImage" format="reference"/>
+        <attr name="dialogShowButtons" format="reference"/>
+        <attr name="dialogShowText" format="reference"/>
+        <attr name="dialogInputText" format="reference"/>
+        <attr name="dialogDatePicker" format="reference"/>
+        <attr name="dialogInsetButton" format="reference"/>
+        <attr name="dialogSearchView" format="reference"/>
+        <attr name="dialogListView" format="reference"/>
+        <attr name="dialogCheckBox" format="reference"/>
+        <attr name="dialogNumberPicker" format="reference"/>
+        <attr name="dialogPattern" format="reference"/>
+        <attr name="dialogPickerDateSpinner" format="reference"/>
+        <attr name="dialogPickerDateCalendar" format="reference"/>
+        <attr name="dialogPickerTimeSpinner" format="reference"/>
+        <attr name="dialogPickerTimeClock" format="reference"/>
+        <attr name="dialogQrScan" format="reference"/>
+        <attr name="dialogSigning" format="reference"/>
+        <attr name="dialogSlide" format="reference"/>
+        <attr name="dialogVideoPlayer" format="reference"/>
+        <attr name="dialogShowInfo" format="reference"/>
+        <attr name="dialogInputTextSerie" format="reference"/>
+
+
+        // Footer - Notice
+
+        <attr name="dialogOptionsFooter" format="reference"/>
+        <attr name="dialogButtonExit" format="reference"/>
+        <attr name="dialogButtonCancel" format="reference"/>
+        <attr name="dialogButtonBack" format="reference"/>
+        <attr name="dialogButtonNeutral" format="reference"/>
+        <attr name="dialogButtonNext" format="reference"/>
+        <attr name="dialogButtonConfirm" format="reference"/>
+
+
+        // Dialogs Others - Notice
+
+        <attr name="dialogSpace" format="color"/>
+
+
+        // Dialogs Icons - Notice
+
+        <attr name="dialogIconExit" format="reference"/>
+        <attr name="dialogIconCancel" format="reference"/>
+        <attr name="dialogIconBack" format="reference"/>
+        <attr name="dialogIconNeutral" format="reference"/>
+        <attr name="dialogIconNext" format="reference"/>
+        <attr name="dialogIconConfirm" format="reference"/>
+
+
+        // Colors - Notice
+
+        <attr name="colorDialogTitle" format="color"/>
+        <attr name="colorDialogTitleText" format="color"/>
+        <attr name="colorDialogWindow" format="color"/>
+        <attr name="colorDialogBackground" format="color"/>
+        <attr name="colorDialogMainButton" format="color"/>
+        <attr name="colorDialogSecundaryButton" format="color"/>
+        <attr name="colorDialogButtonText" format="color"/>
+        <attr name="colorDialogDescriptionText" format="color"/>
+        <attr name="colorDialogInstructionsText" format="color"/>
+        <attr name="colorDialogInputTextBackground" format="color"/>
+        <attr name="colorDialogMainContainer" format="color"/>
+        <attr name="colorDialogInputTextColor" format="color"/>
+        <attr name="colorDialogPickerText" format="color"/>
+        <attr name="colorDialogError" format="color"/>
+
+        <attr name="colorButtonNegativePressedMain" format="color"/>
+        <attr name="colorButtonNegativePressedSecundary" format="color"/>
+        <attr name="colorButtonNegativeMain" format="color"/>
+        <attr name="colorButtonNegativeSecundary" format="color"/>
+        <attr name="colorButtonNegativeIcon" format="color"/>
+        <attr name="colorButtonNeutralPressedMain" format="color"/>
+        <attr name="colorButtonNeutralPressedSecundary" format="color"/>
+        <attr name="colorButtonNeutralMain" format="color"/>
+        <attr name="colorButtonNeutralSecundary" format="color"/>
+        <attr name="colorButtonNeutralIcon" format="color"/>
+        <attr name="colorButtonPositivePressedMain" format="color"/>
+        <attr name="colorButtonPositivePressedSecundary" format="color"/>
+        <attr name="colorButtonPositiveMain" format="color"/>
+        <attr name="colorButtonPositiveSecundary" format="color"/>
+        <attr name="colorButtonPositiveIcon" format="color"/>
+
+    </declare-styleable>
+
+</resources>

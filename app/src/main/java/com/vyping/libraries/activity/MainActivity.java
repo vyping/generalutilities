@@ -1,66 +1,124 @@
 package com.vyping.libraries.activity;
 
-import static com.vyping.libraries.utilities.definitions.Buckets.BUCKET_RUTINES;
 import static com.vyping.libraries.utilities.definitions.Modules.MODULE_ICON_MAIN;
 import static com.vyping.libraries.utilities.definitions.Modules.MODULE_NAME_MAIN;
-import static com.vyping.masterlibrary.Common.MyFile.TYPE_PNG;
-import static com.vyping.masterlibrary.time.Definitions.FORMAT_DATE_01;
 
-import androidx.annotation.NonNull;
+import static java.lang.Boolean.FALSE;
+
+import android.view.View;
+import android.widget.AdapterView;
+
 import androidx.databinding.ViewDataBinding;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.View;
-
-import com.airbnb.paris.R2;
-import com.vyping.libraries.utilities.definitions.Buckets;
-import com.vyping.masterlibrary.Common.MyFile;
-import com.vyping.masterlibrary.GestureListeners.MyGesturesListener;
-import com.vyping.masterlibrary.activities.BasicActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.smarteist.autoimageslider.SliderView;
 import com.vyping.libraries.R;
 import com.vyping.libraries.databinding.MainActivityBinding;
+import com.vyping.libraries.utilities.models.sizes.SizeBinder;
+import com.vyping.libraries.utilities.models.sizes.SizeHandler;
+import com.vyping.libraries.utilities.models.sizes.SizeMethods;
+import com.vyping.masterlibrary.BR;
 import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.time.MyTime;
-import com.vyping.masterlibrary.views.MyImageView;
+import com.vyping.masterlibrary.Firebase.MyRealtime;
+import com.vyping.masterlibrary.activities.MyMenuActivity;
+import com.vyping.masterlibrary.adapters.spinner.binder.SpinnerCompositeBinder;
+import com.vyping.masterlibrary.adapters.spinner.binder.SpinnerItemBinderInterfase;
+import com.vyping.masterlibrary.adapters.spinner.handler.SpinnerHandler;
+import com.vyping.masterlibrary.models.notices.NoticeBinder;
+import com.vyping.masterlibrary.models.notices.NoticeHandler;
+import com.vyping.masterlibrary.models.notices.NoticeMethods;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
-public class MainActivity extends BasicActivity {
+public class MainActivity extends MyMenuActivity<NoticeMethods, NoticeMethods> {
 
     public MainActivityBinding binding;
 
+    private GoogleSignInClient googleSignInClient;
+    private GoogleSignInAccount googleSignInAccount;
 
     // ----- SetUp ----- //
 
     @Override
     protected void CreateActivity() {
 
-        createActivity(MainActivity.this, R.layout.activity_main, MODULE_ICON_MAIN, MODULE_NAME_MAIN, null);
+        createActivity(MainActivity.this, R.layout.activity_main, MODULE_ICON_MAIN, MODULE_NAME_MAIN, menuInterfase);
+        setFirebaseService("vyp-restaurant-notices", "vyp-restaurant-notices");
     }
 
     @Override
     protected void StartProcess(ViewDataBinding binding) {
 
+        setPreviewHandler(new NoticeHandler(), FALSE, new NoticeBinder(BR.noticeMethod, R.layout.notice_holder));
+
         this.binding = (MainActivityBinding) binding;
+        this.binding.setMainActivity(MainActivity.this);
+
+        setSpinner();
+
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(context, googleSignInOptions);
+        googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
     }
 
     @Override
     protected void ActionBar() {}
 
     @Override
-    protected void LaunchProcess() {
+    protected SliderView ActivityViews() {
 
-        String rutine = "03 - Biceps";
-        String nameImage = new MyFile().setName(rutine, TYPE_PNG);
-        String url = new Buckets().getMediaResource(BUCKET_RUTINES, nameImage, "");
-
-        new MyImageView().putImageFromAssetsOrWeb(binding.imageView, nameImage, url);
-
-        long diference = new MyTime(1656307757000L).compare(1592198957000L).getDeltaYears();
-
-        new LogCat("Diference", diference);
+        return binding.SvMenNotices;
     }
+
+    @Override
+    protected void LaunchProcess() {}
+
+    public SpinnerHandler<SizeMethods> spinnerHandler;
+
+    public void setSpinner() {
+
+        spinnerHandler = new SpinnerHandler<>(new SizeHandler(), FALSE);
+        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                new LogCat("onItemSelected");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+        new MyRealtime("vyp-gym-shop").getValueChanges(new MyRealtime.ValueListener() {
+
+            @Override
+            public void ChildAdded(DataSnapshot dataSnapshot) {
+
+                spinnerHandler.addMethod(dataSnapshot);
+            }
+
+            @Override
+            public void ChildChanged(DataSnapshot dataSnapshot) {}
+
+            @Override
+            public void ChildRemoved(DataSnapshot dataSnapshot) {}
+        });
+    }
+
+   public SpinnerItemBinderInterfase<SizeMethods> getSpinnerBinder() {
+
+       return new SpinnerCompositeBinder<>(new SizeBinder(BR.sizeMethod, R.layout.size_holder));
+   }
+
+   private final MyMenuActivity.compositeInterfase<NoticeMethods, NoticeMethods> menuInterfase = new compositeInterfase<>() {
+
+       @Override
+       public void SelectNotice(NoticeMethods item) {}
+
+       @Override
+       public void SelectMenu(NoticeMethods item) {}
+   };
 }

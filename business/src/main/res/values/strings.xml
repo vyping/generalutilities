@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Casablanca</string>
+    <string name="module_start">Domicilios</string>
+    <string name="module_login">Inicio de Sesión</string>
+    <string name="module_logup">Registro de Usuario</string>
+    <string name="module_menu">Ménu Principal</string>
+    <string name="module_offers">Ofertas</string>
+</resources>

@@ -23,7 +23,7 @@ public class MenuParams {
 
     public MenuParams(Context context, int BackgroundColor, int Icon, int Title, String TitleColor, int SubTitleColor, String Description) {
 
-        this.Background = new MyDrawable().extractFromResources(context, R.drawable.background_window);
+        this.Background = new MyDrawable().extractFromResources(context, R.drawable.background_in_empty);
         this.BackgroundColor = BackgroundColor;
         this.Icon = new MyDrawable().extractFromResources(context, Icon);
         this.Title = new MyString().getStringResources(context, Title);
