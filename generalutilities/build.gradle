@@ -1,6 +1,7 @@
 plugins {
 
     id 'com.android.library'
+    id 'com.google.gms.google-services'
     id 'maven-publish'
 }
 
@@ -146,7 +147,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.vyping'
                 artifactId = 'generalutilities'
-                version = 'v1.1.15'
+                version = 'v1.1.16'
             }
         }
     }
