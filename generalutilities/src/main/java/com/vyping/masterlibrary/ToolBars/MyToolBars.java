@@ -76,11 +76,14 @@ public abstract class MyToolBars {
         String label = new MyTime().getTime(FORMAT_DATE_16);
         label = new MyString().firstLetterUpperCase(label);
         Ll_Date = inflated.findViewById(R.id.Llh_DyS_setDate);
+        Ll_Search = inflated.findViewById(R.id.Ll_DyS_Search);
         Btn_BckDate = inflated.findViewById(R.id.Btn_DyS_bckDate);
         Btn_SetDate = inflated.findViewById(R.id.Btn_DyS_calDate);
         Btn_FwdDate = inflated.findViewById(R.id.Btn_DyS_fwdDate);
 
         Ll_Date.setVisibility(VISIBLE);
+        Ll_Search.setVisibility(View.INVISIBLE);
+        Ll_Search.setVisibility(GONE);
         Btn_SetDate.setText(label);
 
         Btn_BckDate.setOnClickListener(v -> {
@@ -118,6 +121,7 @@ public abstract class MyToolBars {
         Btn_FwdDate = inflated.findViewById(R.id.Btn_DyS_fwdDate);
 
         Ll_Date.setVisibility(VISIBLE);
+        Ll_Search.setVisibility(GONE);
         Btn_SetDate.setText(label);
 
         Btn_BckDate.setOnClickListener(v -> {

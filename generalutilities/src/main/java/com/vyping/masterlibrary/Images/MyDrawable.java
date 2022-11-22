@@ -1,6 +1,10 @@
 package com.vyping.masterlibrary.Images;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.View;
@@ -15,22 +19,48 @@ import com.vyping.masterlibrary.resources.MyAsset;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MyDrawable {
 
-    private int errorImage = R.drawable.icon_image;
-    
+    public int errorImage = R.drawable.icon_image;
+
+
     /**
      * ------  Extract Operatios - Section
      */
+
+    public Drawable getErrorImage(Context context) {
+
+        return extractFromResources(context, errorImage);
+    }
 
     public Drawable extractFromString(Context context, @NonNull String stringDrawable) {
 
         if (!stringDrawable.equals("")) {
 
-            int resDrawable = context.getResources().getIdentifier(stringDrawable, "drawable", context.getPackageName());
+            int resDrawable = 0;
 
-            return ContextCompat.getDrawable(context, resDrawable);
+            try {
+
+                resDrawable = context.getResources().getIdentifier(stringDrawable, "drawable", context.getPackageName());
+
+                return ContextCompat.getDrawable(context, resDrawable);
+
+            } catch (Exception ignored) {
+
+                try {
+
+                    resDrawable = context.getResources().getIdentifier(stringDrawable, "drawable", "com.vyping.masterlibrary");
+
+                    return ContextCompat.getDrawable(context, resDrawable);
+
+                } catch (Exception ignored2) {
+
+                    return getErrorImage(context);
+                }
+            }
 
         } else {
 
@@ -42,16 +72,7 @@ public class MyDrawable {
 
         Context context = view.getContext();
 
-        if (!stringDrawable.equals("")) {
-
-            int resDrawable = context.getResources().getIdentifier(stringDrawable, "drawable", context.getPackageName());
-
-            return ContextCompat.getDrawable(context, resDrawable);
-
-        } else {
-
-            return extractFromResources(context, errorImage);
-        }
+        return extractFromString(context, stringDrawable);
     }
 
     public Drawable extractFromResources(Context context, int resourceDrawable) {
@@ -134,21 +155,36 @@ public class MyDrawable {
         }
     }
 
+    public Drawable extractFromUrl(@NonNull Context context, String url) {
+
+        try {
+
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.connect();
+
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+
+            return new BitmapDrawable(Resources.getSystem(), bitmap);
+
+        } catch (IOException e) {
+
+            return extractFromResources(context, errorImage);
+        }
+    }
+
+    public Drawable extractFromUrl(@NonNull View view, String url) {
+
+        Context context = view.getContext();
+
+        return extractFromUrl(context, url);
+    }
+
 
     /**
      * ------  Return Operatios - Section
      */
 
-    /**
-     * @deprecated
-     * This method will be remplaced
-     * <p> Use {@link MyDrawable#returnNameFromResources(Context, int)} instead.
-     *
-     * @param context context
-     * @param resourceDrawable integer resourceDrawable
-     * @return name from resource
-     */
-    //@Deprecated(since = "v1.0.11", forRemoval = true)
     public String extractNameFromResources(@NonNull Context context, int resourceDrawable) {
 
         return context.getResources().getResourceEntryName(resourceDrawable);
@@ -159,16 +195,6 @@ public class MyDrawable {
         return context.getResources().getResourceEntryName(resourceDrawable);
     }
 
-    /**
-     * @deprecated
-     * This method will be remplaced
-     * <p> Use {@link MyDrawable#returnIdFromString(Context, String)} instead.
-     *
-     * @param context context
-     * @param stringDrawable String stringDrawable
-     * @return id from resource
-     */
-    //@Deprecated(since = "v1.0.11", forRemoval = true)
     public int extractIdFromString(@NonNull Context context, String stringDrawable) {
 
         return context.getResources().getIdentifier(stringDrawable, "drawable", context.getPackageName());
@@ -224,5 +250,44 @@ public class MyDrawable {
         drawable.setBounds(0, 0, weight, height);
 
         return drawable;
+    }
+
+
+    /**
+     * ------  View  - Section
+     */
+
+    public Drawable toInsertOnButton(Context context, int resourceDrawable) {
+
+        Drawable drawable = extractFromResources(context, resourceDrawable);
+        drawable.setBounds(0, 0, 60, 60);
+
+        return drawable;
+    }
+
+    public Drawable toInsertOnButton(Context context, int resourceDrawable, int resourceColor) {
+
+        int color = ContextCompat.getColor(context, resourceColor);
+
+        Drawable drawable = extractFromResources(context, resourceDrawable);
+        Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(wrappedDrawable, color);
+
+        wrappedDrawable.setBounds(0, 0, 60, 60);
+
+        return wrappedDrawable;
+    }
+
+    public Drawable toInsertOnButton(Context context, int resourceDrawable, int resourceColor, int size) {
+
+        int color = ContextCompat.getColor(context, resourceColor);
+
+        Drawable drawable = extractFromResources(context, resourceDrawable);
+        Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(wrappedDrawable, color);
+
+        wrappedDrawable.setBounds(0, 0, size, size);
+
+        return wrappedDrawable;
     }
 }

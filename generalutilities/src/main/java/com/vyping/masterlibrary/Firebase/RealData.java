@@ -4,12 +4,10 @@ import static com.vyping.masterlibrary.time.Definitions.FORMAT_DATE_01;
 import static com.vyping.masterlibrary.time.Definitions.FORMAT_HOUR_01;
 import static java.lang.Boolean.FALSE;
 
-import android.location.Location;
-
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
+import com.vyping.masterlibrary.models.images.Image;
 import com.vyping.masterlibrary.time.MyTime;
 import com.vyping.masterlibrary.Common.MyNumbers;
 
@@ -103,12 +101,11 @@ public class RealData {
 
         if (dataSnapshot.exists()) {
 
-            Boolean Bool = (Boolean) dataSnapshot.getValue();
+            try {
 
-            if (Bool != null) {
+                boolDefault = (Boolean) Boolean.TRUE.equals(dataSnapshot.getValue(Boolean.class));
 
-                boolDefault = Bool;
-            }
+            }catch(Exception ignored){}
         }
 
         return boolDefault;
@@ -118,12 +115,11 @@ public class RealData {
 
         if (dataSnapshot.child(child).exists()) {
 
-            Boolean Bool = (Boolean) dataSnapshot.child(child).getValue();
+            try {
 
-            if (Bool != null) {
+                boolDefault = (Boolean) Boolean.TRUE.equals(dataSnapshot.child(child).getValue(Boolean.class));
 
-                boolDefault = Bool;
-            }
+            }catch(Exception ignored){}
         }
 
         return boolDefault;
@@ -494,7 +490,37 @@ public class RealData {
     // ----- Location Readers ----- //
 
 
+    // ----- Image Readers ----- //
 
+    public Image getImage() {
+
+        return getImageOrDefault(new Image());
+    }
+
+    public Image getImage(String child) {
+
+        return getImageOrDefault(child, new Image());
+    }
+
+    public Image getImageOrDefault(Image imageDefault) {
+
+        if (dataSnapshot.exists()) {
+
+            imageDefault = new Image(dataSnapshot);
+        }
+
+        return imageDefault;
+    }
+
+    public Image getImageOrDefault(String child, Image imageDefault) {
+
+        if (dataSnapshot.child(child).exists()) {
+
+            imageDefault = new Image(dataSnapshot.child(child));
+        }
+
+        return imageDefault;
+    }
 
 
     // ----- List Readers ----- //

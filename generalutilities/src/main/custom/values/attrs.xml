@@ -8,7 +8,21 @@
         <attr name="italicFont" format="reference|string" />
         <attr name="boldFont" format="reference|string" />
 
+        <attr name="colorPrimaryLight" format="color" />
+        <attr name="colorPrimary" format="color" />
+        <attr name="colorPrimaryDark" format="color" />
+
+        <attr name="colorSecondaryLight" format="color" />
+        <attr name="colorSecondary" format="color" />
+        <attr name="colorSecondaryDark" format="color" />
+
+        <attr name="colorAccentLight" format="color" />
+        <attr name="colorAccent" format="color" />
+        <attr name="colorAccentDark" format="color" />
+
+        <attr name="colorAlternLight" format="color" />
         <attr name="colorAltern" format="color" />
+        <attr name="colorAlternDark" format="color" />
 
         <attr name="iconsWidth" format="dimension" />
         <attr name="iconsHeight" format="dimension" />

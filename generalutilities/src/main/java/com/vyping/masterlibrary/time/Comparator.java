@@ -7,15 +7,11 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import android.os.Build;
-import android.text.format.DateFormat;
-import android.text.format.DateUtils;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyString;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +25,13 @@ public class Comparator {
     /**
      * -------- Comparators Section
      */
+
+    public Comparator(@NonNull MyTime myTime) {
+
+        this.myTime = myTime;
+        this.otherCalendar = Calendar.getInstance(Locale.getDefault());
+        this.otherCalendar.setTimeInMillis(myTime.getTimestamp());
+    }
 
     public Comparator(@NonNull MyTime myTime, long otherMillis) {
 
@@ -241,6 +244,26 @@ public class Comparator {
 
             return FALSE;
         }
+    }
+
+    public boolean isPreviousDay(long otherTime) {
+
+        boolean isPrevious = FALSE;
+        Calendar refCalendar = Calendar.getInstance(Locale.getDefault());
+        refCalendar.setTimeInMillis(otherTime);
+
+        if (otherCalendar.get(Calendar.YEAR) >= refCalendar.get(Calendar.YEAR)) {
+
+            if (otherCalendar.get(Calendar.MONTH) >= refCalendar.get(Calendar.MONTH)) {
+
+                if (otherCalendar.get(Calendar.DAY_OF_MONTH) > refCalendar.get(Calendar.DAY_OF_MONTH)) {
+
+                    isPrevious = TRUE;
+                }
+            }
+        }
+
+        return isPrevious;
     }
 
     public int comparateWithToday(long otherTime) {

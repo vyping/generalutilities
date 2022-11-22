@@ -2,23 +2,31 @@
 
     xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppLightTheme" parent="Theme.AppCompat.DayNight">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+
+        <item name="colorPrimaryLight">@color/colorPrimaryLight</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondaryLight">@color/colorSecondaryLight</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryDark">@color/colorSecondaryDark</item>
+        <item name="colorAccentLight">@color/colorAccentLight</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccentDark">@color/colorAccentDark</item>
+        <item name="colorAlternLight">@color/colorAlternLight</item>
+        <item name="colorAltern">@color/colorAltern</item>
+        <item name="colorAlternDark">@color/colorAlternDark</item>
 
         <item name="android:statusBarColor" tools:targetApi="l">?colorSecondary</item>
-        <item name="colorPrimary">@color/Primary</item>
-        <item name="colorPrimaryDark">@color/PrimaryDark07</item>
-        <item name="colorSecondary">@color/Secundary</item>
-        <item name="colorAccent">@color/PrimaryLight04</item>
-        <item name="colorAltern">@color/colorBlanco</item>
         <item name="android:windowBackground">@color/PrimaryDark10</item>
         <item name="android:navigationBarColor">?colorPrimary</item>
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
 
-        <item name="android:fontFamily">android:@font/sans-serif</item>
-        <item name="basicFont">android:@font/sans-serif</item>
-        <item name="italicFont">android:@font/sans-light</item>
-        <item name="boldFont">android:@font/sans-serif-black</item>
+        <item name="android:fontFamily">@font/comic</item>
+        <item name="basicFont" >@font/comic</item>
+        <item name="italicFont" >@font/comic_ldf</item>
+        <item name="boldFont" >@font/comic_ldf_bold</item>
 
         <item name="iconsWidth">200dp</item>
         <item name="iconsHeight">200dp</item>
@@ -67,9 +75,9 @@
         <item name="colorMenuButtonNonPressedLight">@color/Primary</item>
         <item name="colorMenuButtonText">@color/colorBlanco</item>
 
-        <item name="colorPopUpsContainers">@color/PrimaryDark02</item>
-        <item name="colorPopUpsButtons">@color/SecundaryDark02</item>
-        <item name="colorPopUpsIcons">@color/PrimaryLight10</item>
+        <item name="colorPopUpsContainers">@color/colorAltern</item>
+        <item name="colorPopUpsButtons">@color/colorSecondary</item>
+        <item name="colorPopUpsIcons">@color/White</item>
 
         <item name="android:editTextColor">@color/PrimaryLight08</item>
 
@@ -253,259 +261,6 @@
         <item name="colorNoticeImageBackground">#7FCEFF</item>
         <item name="colorNoticeSocialButtons">#7FCEFF</item>
 
-    </style>
-
-    <style name="AppDarkTheme" parent="Theme.AppCompat.DayNight">
-
-        <item name="android:statusBarColor" tools:targetApi="l">?colorSecondary</item>
-        <item name="colorPrimary">@color/Primary</item>
-        <item name="colorPrimaryDark">@color/PrimaryDark07</item>
-        <item name="colorSecondary">@color/Secundary</item>
-        <item name="colorAccent">@color/PrimaryLight04</item>
-        <item name="colorAltern">@color/colorBlanco</item>
-        <item name="android:windowBackground">@color/PrimaryDark10</item>
-        <item name="android:navigationBarColor">?colorPrimary</item>
-        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">true</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
-
-        <item name="android:fontFamily">android:@font/sans-serif</item>
-        <item name="basicFont">android:@font/sans-serif</item>
-        <item name="italicFont">android:@font/sans-light</item>
-        <item name="boldFont">android:@font/sans-serif-black</item>
-
-        <item name="iconsWidth">200dp</item>
-        <item name="iconsHeight">200dp</item>
-        <item name="iconsColor">@color/Secundary</item>
-
-        <item name="paddingLayoutTopLeft">44dp</item>
-        <item name="paddingLayoutTopRight">44dp</item>
-        <item name="paddingLayoutBottomRight">44dp</item>
-        <item name="paddingLayoutBottomLeft">44dp</item>
-
-        // ActionButtons
-
-        <item name="colorButtonOutsidePressedMain">@color/GreyLight100</item>
-        <item name="colorButtonOutsidePressedSecundary">@color/GreyUltraLight100</item>
-        <item name="colorButtonOutsideMain">@color/GreyLight100</item>
-        <item name="colorButtonOutsideSecundary">@color/GreyMid100</item>
-        <item name="colorButtonInsidePressedMain">@color/GreyLight100</item>
-        <item name="colorButtonInsidePressedSecundary">@color/GreyUltraLight100</item>
-        <item name="colorButtonInsideMain">@color/GreyLight100</item>
-        <item name="colorButtonInsideSecundary">@color/GreyMid100</item>
-
-        <item name="colorActionBarBackground">@color/SecundaryDark10</item>
-        <item name="colorActionBarTitleBar">?colorPrimary</item>
-        <item name="colorActionBarToolBar">?colorPrimary</item>
-        <item name="colorActionBarTitle">@color/SecundaryDark02</item>
-        <item name="colorActionBarSubTitle">@color/PrimaryDark10</item>
-        <item name="colorActionBarVersion">@color/PrimaryDark18</item>
-        <item name="paddingActionBarBarMainButtons">10dp</item>
-        <item name="colorActionBarMainButtonsPressed">@color/SecundaryLight06</item>
-        <item name="colorActionBarMainButtons">@color/SecundaryDark06</item>
-        <item name="colorActionBarMainIcons">@color/PrimaryLight20</item>
-        <item name="paddingActionBarBarSecundaryButtons">8dp</item>
-        <item name="colorActionBarSecundaryButtonsPressed">@color/PrimaryLight14</item>
-        <item name="colorActionBarSecundaryButtons">@color/PrimaryDark14</item>
-        <item name="colorActionBarSecundaryIcons">@color/PrimaryDark02</item>
-
-        <item name="colorToolBarBackground">@color/PrimaryDark02</item>
-        <item name="colorToolBarIcons">@color/Secundary</item>
-        <item name="colorToolBarSearchBar">@color/SecundaryLight02</item>
-        <item name="colorToolBarSearchText">?colorAltern</item>
-        <item name="colorToolBarSearchHint">@color/PrimaryDark06</item>
-
-        <item name="colorMenuButtonPressedDark">@color/PrimaryLight03</item>
-        <item name="colorMenuButtonPressedLight">@color/PrimaryLight06</item>
-        <item name="colorMenuButtonNonPressedDark">@color/PrimaryDark03</item>
-        <item name="colorMenuButtonNonPressedLight">@color/Primary</item>
-        <item name="colorMenuButtonText">@color/colorBlanco</item>
-
-        <item name="colorPopUpsContainers">@color/PrimaryDark02</item>
-        <item name="colorPopUpsButtons">@color/SecundaryDark02</item>
-        <item name="colorPopUpsIcons">@color/PrimaryLight10</item>
-
-        <item name="android:editTextColor">@color/PrimaryLight08</item>
-
-        <item name="recyclerView">@style/RecyclerView</item>
-        <item name="recyclerViewHorizontal">@style/RecyclerView_Horizontal</item>
-        <item name="layoutContainerDialogs">@style/LayoutContainerDialogs</item>
-        <item name="constraintLayoutCustom">@style/ConstraintLayoutCustom</item>
-        <item name="iconIdCard">@style/IconIdCard</item>
-
-
-        // Menu - Notice
-
-        <item name="menuSlider">@style/MenuSlider</item>
-        <item name="menuTitle">@style/MenuTitle</item>
-        <item name="menuSubTitle">@style/MenuSubTitle</item>
-        <item name="menuButton">@style/MenuButton</item>
-        <item name="menuButtonHorizontal">@style/MenuButtonHorizontal</item>
-
-        <item name="colorMenuSlider">@color/GreyDark040</item>
-        <item name="colorMenuTitle">@color/GreyDark04</item>
-        <item name="colorMenuSubTitle">@color/GreyDark10</item>
-
-        <item name="colorMenuBlueBackground">@color/colorOptionBlue</item>
-        <item name="colorMenuBlueNumber">@color/colorOptionBlueLight</item>
-        <item name="colorMenuBlueIcon">@color/colorOptionBlueDark</item>
-        <item name="colorMenuBlueTitle">@color/colorOptionBlueDark</item>
-        <item name="colorMenuBlueSubtitle">@color/colorOptionBlueLight</item>
-
-        <item name="colorMenuFucshiasBackground">@color/colorOptionFucshias</item>
-        <item name="colorMenuFucshiasNumber">@color/colorOptionFucshiasLight</item>
-        <item name="colorMenuFucshiasIcon">@color/colorOptionFucshiasDark</item>
-        <item name="colorMenuFucshiasTitle">@color/colorOptionFucshiasDark</item>
-        <item name="colorMenuFucshiasSubtitle">@color/colorOptionFucshiasLight</item>
-
-        <item name="colorMenuEsmeraldBackground">@color/colorOptionEsmerald</item>
-        <item name="colorMenuEsmeraldNumber">@color/colorOptionEsmeraldLight</item>
-        <item name="colorMenuEsmeraldIcon">@color/colorOptionFucshiasDark</item>
-        <item name="colorMenuEsmeraldTitle">@color/colorOptionEsmeraldDark</item>
-        <item name="colorMenuEsmeraldSubtitle">@color/colorOptionEsmeraldLight</item>
-
-        <item name="colorMenuViolettBackground">@color/colorOptionViolett</item>
-        <item name="colorMenuViolettNumber">@color/colorOptionViolettLight</item>
-        <item name="colorMenuViolettIcon">@color/colorOptionViolettDark</item>
-        <item name="colorMenuViolettTitle">@color/colorOptionViolettDark</item>
-        <item name="colorMenuViolettSubtitle">@color/colorOptionViolettLight</item>
-
-        <item name="colorMenuOrangeBackground">@color/colorOptionOrange</item>
-        <item name="colorMenuOrangeNumber">@color/colorOptionOrangeLight</item>
-        <item name="colorMenuOrangeIcon">@color/colorOptionOrangeDark</item>
-        <item name="colorMenuOrangeTitle">@color/colorOptionOrangeDark</item>
-        <item name="colorMenuOrangeSubtitle">@color/colorOptionOrangeLight</item>
-
-        <item name="colorMenuCelesteBackground">@color/colorOptionCeleste</item>
-        <item name="colorMenuCelesteNumber">@color/colorOptionCelesteLight</item>
-        <item name="colorMenuCelesteIcon">@color/colorOptionCelesteDark</item>
-        <item name="colorMenuCelesteTitle">@color/colorOptionCelesteDark</item>
-        <item name="colorMenuCelesteSubtitle">@color/colorOptionCelesteLight</item>
-
-        <item name="colorMenuOliveBackground">@color/colorOptionOlive</item>
-        <item name="colorMenuOliveNumber">@color/colorOptionOliveLight</item>
-        <item name="colorMenuOliveIcon">@color/colorOptionOliveDark</item>
-        <item name="colorMenuOliveTitle">@color/colorOptionOliveDark</item>
-        <item name="colorMenuOliveSubtitle">@color/colorOptionOliveLight</item>
-
-        <item name="colorMenuPurpleBackground">@color/colorOptionPurple</item>
-        <item name="colorMenuPurpleNumber">@color/colorOptionPurpleLight</item>
-        <item name="colorMenuPurpleIcon">@color/colorOptionPurpleDark</item>
-        <item name="colorMenuPurpleTitle">@color/colorOptionPurpleDark</item>
-        <item name="colorMenuPurpleSubtitle">@color/colorOptionPurpleLight</item>
-
-        <item name="colorMenuYellowBackground">@color/colorOptionYellow</item>
-        <item name="colorMenuYellowNumber">@color/colorOptionYellowLight</item>
-        <item name="colorMenuYellowIcon">@color/colorOptionYellowDark</item>
-        <item name="colorMenuYellowTitle">@color/colorOptionYellowDark</item>
-        <item name="colorMenuYellowSubtitle">@color/colorOptionYellowLight</item>
-
-        <item name="colorMenuTurquoiseBackground">@color/colorOptionTurquoise</item>
-        <item name="colorMenuTurquoiseNumber">@color/colorOptionTurquoiseLight</item>
-        <item name="colorMenuTurquoiseIcon">@color/colorOptionTurquoiseDark</item>
-        <item name="colorMenuTurquoiseTitle">@color/colorOptionTurquoiseDark</item>
-        <item name="colorMenuTurquoiseSubtitle">@color/colorOptionTurquoiseLight</item>
-
-        <item name="colorMenuRedBackground">@color/colorOptionRed</item>
-        <item name="colorMenuRedNumber">@color/colorOptionRedLight</item>
-        <item name="colorMenuRedIcon">@color/colorOptionRedDark</item>
-        <item name="colorMenuRedTitle">@color/colorOptionRedDark</item>
-        <item name="colorMenuRedSubtitle">@color/colorOptionRedLight</item>
-
-
-        // Dialogs - Notice
-
-        <item name="dialogWindowContainer">@style/DialogWindowContainer</item>
-        <item name="dialogBodyContainerWrap">@style/DialogBodyContainerWrap</item>
-        <item name="dialogBodyContainerMatch">@style/DialogBodyContainerWrap</item>
-        <item name="dialogTitleHeader">@style/DialogTitleHeader</item>
-        <item name="dialogTitleContainer">@style/DialogTitleContainer</item>
-        <item name="dialogTitleIcon">@style/DialogTitleIcon</item>
-        <item name="dialogTitleText">@style/DialogTitleText</item>
-        <item name="dialogInfoButton">@style/DialogInfoButton</item>
-
-        <item name="dialogBackground">@style/DialogBackground</item>
-        <item name="dialogDescription">@style/DialogDescription</item>
-        <item name="dialogInstructions">@style/DialogInstructions</item>
-        <item name="dialogMainContainerWrap">@style/DialogMainContainerWrap</item>
-        <item name="dialogMainContainerMatch">@style/DialogMainContainerMatch</item>
-
-        <item name="dialogChooseOption">@style/DialogChooseOption</item>
-        <item name="dialogShowImage">@style/DialogShowImage</item>
-        <item name="dialogShowButtons">@style/DialogShowButtons</item>
-        <item name="dialogShowText">@style/DialogShowText</item>
-        <item name="dialogInputText">@style/DialogInputText</item>
-        <item name="dialogDatePicker">@style/DialogDatePicker</item>
-        <item name="dialogInsetButton">@style/DialogInsetButton</item>
-        <item name="dialogSearchView">@style/DialogSearchView</item>
-        <item name="dialogListView">@style/DialogListView</item>
-        <item name="dialogCheckBox">@style/DialogCheckBox</item>
-        <item name="dialogNumberPicker">@style/DialogNumberPicker</item>
-        <item name="dialogPattern">@style/DialogPattern</item>
-        <item name="dialogPickerDateSpinner">@style/DialogPickerDateSpinner</item>
-        <item name="dialogPickerDateCalendar">@style/DialogPickerDateCalendar</item>
-        <item name="dialogPickerTimeSpinner">@style/DialogPickerTimeSpinner</item>
-        <item name="dialogPickerTimeClock">@style/DialogPickerTimeClock</item>
-        <item name="dialogQrScan">@style/DialogQrScan</item>
-        <item name="dialogSigning">@style/DialogSigning</item>
-        <item name="dialogSlide">@style/DialogSlide</item>
-        <item name="dialogVideoPlayer">@style/DialogVideoPlayer</item>
-        <item name="dialogShowInfo">@style/DialogShowInfo</item>
-        <item name="dialogInputTextSerie">@style/DialogInputTextSerie</item>
-
-        <item name="dialogOptionsFooter">@style/DialogOptionsFooter</item>
-        <item name="dialogButtonExit">@style/DialogButtonExit</item>
-        <item name="dialogButtonCancel">@style/DialogButtonCancel</item>
-        <item name="dialogButtonBack">@style/DialogButtonBack</item>
-        <item name="dialogButtonNeutral">@style/DialogButtonNeutral</item>
-        <item name="dialogButtonNext">@style/DialogButtonNext</item>
-        <item name="dialogButtonConfirm">@style/DialogButtonConfirm</item>
-
-        <item name="dialogSpace">@style/DialogSpace</item>
-
-        <item name="dialogIconExit">@drawable/icon_logout</item>
-        <item name="dialogIconCancel">@drawable/icon_times</item>
-        <item name="dialogIconBack">@drawable/icon_back</item>
-        <item name="dialogIconNeutral">@drawable/icon_undo</item>
-        <item name="dialogIconNext">@drawable/icon_share</item>
-        <item name="dialogIconConfirm">@drawable/icon_check</item>
-
-        <item name="colorDialogTitle">@color/PrimaryLight02</item>
-        <item name="colorDialogTitleText">@color/PrimaryUltraDark100</item>
-        <item name="colorDialogWindow">#9C00042C</item>
-        <item name="colorDialogBackground">#1292E0</item>
-        <item name="colorDialogMainButton">?colorAltern</item>
-        <item name="colorDialogSecundaryButton">@color/PrimaryLight03</item>
-        <item name="colorDialogButtonText">?colorSecondary</item>
-        <item name="colorDialogDescriptionText">@color/colorBlanco</item>
-        <item name="colorDialogInstructionsText">@color/PrimaryLight10</item>
-        <item name="colorDialogInputTextBackground">#97C7FDC6</item>
-        <item name="colorDialogMainContainer">@color/colorBlanco</item>
-        <item name="colorDialogInputTextColor">@color/colorNegro</item>
-        <item name="colorDialogPickerText">@color/PrimaryLight08</item>
-        <item name="colorDialogError">@color/RedDark100</item>
-
-        <item name="colorButtonNegativePressedMain">@color/RedUltraLight100</item>
-        <item name="colorButtonNegativePressedSecundary">@color/RedLight100</item>
-        <item name="colorButtonNegativeMain">@color/RedLight100</item>
-        <item name="colorButtonNegativeSecundary">@color/RedDark100</item>
-        <item name="colorButtonNegativeIcon">#470004</item>
-        <item name="colorButtonNeutralPressedMain">@color/YellowUltraLight100</item>
-        <item name="colorButtonNeutralPressedSecundary">@color/YellowLight100</item>
-        <item name="colorButtonNeutralMain">@color/YellowLight100</item>
-        <item name="colorButtonNeutralSecundary">@color/YellowDark100</item>
-        <item name="colorButtonNeutralIcon">#433D00</item>
-        <item name="colorButtonPositivePressedMain">@color/GreenUltraLight100</item>
-        <item name="colorButtonPositivePressedSecundary">@color/GreenLight100</item>
-        <item name="colorButtonPositiveMain">@color/GreenLight100</item>
-        <item name="colorButtonPositiveSecundary">@color/GreenDark100</item>
-        <item name="colorButtonPositiveIcon">#CC102E00</item>
-
-
-        // Notices
-
-        <item name="colorNoticeBackground">#15354E</item>
-        <item name="colorNoticeImageBackground">#002237</item>
-        <item name="colorNoticeSocialButtons">#002237</item>
     </style>
 
 </resources>

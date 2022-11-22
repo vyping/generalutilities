@@ -44,6 +44,11 @@ public class MyTouchListener implements View.OnTouchListener {
     @Override @SuppressLint("ClickableViewAccessibility")
     public boolean onTouch(View selectedView, @NonNull MotionEvent motionEvent) {
 
+        if (prevEvent == null) {
+
+            prevEvent = motionEvent;
+        }
+
         prevEvent = new MyView().setTouchAnimation(selectedView, motionEvent, prevEvent);
 
         if (gestureDetector.onTouchEvent(motionEvent)) {

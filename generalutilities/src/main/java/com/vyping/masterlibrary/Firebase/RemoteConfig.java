@@ -45,6 +45,29 @@ public class RemoteConfig {
 
     // ----- Setup ----- //
 
+    public void BasicRerquest(Context context, SuccessListener listener) {
+
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(0).build();
+
+        FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        firebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+
+        firebaseRemoteConfig.fetchAndActivate().addOnCompleteListener((Activity) context, new OnCompleteListener<>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Boolean> task) {
+
+                if (task.isSuccessful()) {
+
+                    listener.Success(firebaseRemoteConfig);
+                }
+            }
+
+            private void DummyVoid() {
+            }
+        });
+    }
+
     public void BasicRerquest(Context context, int defaultValues, SuccessListener listener) {
 
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(0).build();

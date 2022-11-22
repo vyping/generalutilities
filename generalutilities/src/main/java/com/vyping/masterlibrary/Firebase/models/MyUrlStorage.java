@@ -17,6 +17,13 @@ public class MyUrlStorage {
 
     /*----- Methods -----*/
 
+    public File file(String fileName) {
+
+        String modifiedFileName = new MyString().changeToFileName(fileName);
+
+        return new File(url + "/o/" + modifiedFileName);
+    }
+
     public File file(String fileName, @MyFile.Type String type) {
 
         String modifiedFileName = new MyString().changeToFileName(fileName);

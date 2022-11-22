@@ -1,6 +1,11 @@
 package com.vyping.masterlibrary.Animations;
 
+import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 import static android.view.animation.Animation.INFINITE;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -129,5 +134,179 @@ public class MyAnimation {
         alpha.setFillAfter(true);
 
         view.startAnimation(alpha);
+    }
+
+    public void exchange(View layoutMain, @NonNull View layoutSecondary) {
+
+        if (layoutSecondary.getVisibility() == INVISIBLE || layoutSecondary.getVisibility() == GONE) {
+
+            ScaleAnimation scale = new ScaleAnimation(1f, 0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            scale.setDuration(200);
+            scale.setFillAfter(false);
+            scale.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationStart(Animation animation) {}
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    layoutMain.setVisibility(INVISIBLE);
+                    layoutMain.setElevation(-4f);
+                    layoutMain.setEnabled(false);
+
+                    layoutSecondary.setVisibility(View.VISIBLE);
+                    layoutSecondary.setElevation(4f);
+                    layoutSecondary.setEnabled(true);
+
+                    ScaleAnimation scale1 = new ScaleAnimation(0f, 1f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    scale1.setDuration(200);
+                    scale1.setFillAfter(true);
+                    layoutSecondary.startAnimation(scale1);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {}
+            });
+            layoutMain.startAnimation(scale);
+
+        } else {
+
+            ScaleAnimation scale = new ScaleAnimation(1f, 0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            scale.setDuration(200);
+            scale.setFillAfter(false);
+            scale.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationStart(Animation animation) {}
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    layoutSecondary.setVisibility(INVISIBLE);
+                    layoutSecondary.setElevation(-4f);
+                    layoutSecondary.setEnabled(false);
+
+                    layoutMain.setVisibility(View.VISIBLE);
+                    layoutMain.setElevation(4f);
+                    layoutMain.setEnabled(true);
+
+                    ScaleAnimation scale1 = new ScaleAnimation(0f, 1f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    scale1.setDuration(200);
+                    scale1.setFillAfter(true);
+                    layoutMain.startAnimation(scale1);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {}
+            });
+            layoutSecondary.startAnimation(scale);
+        }
+    }
+
+    public void exchange(View layoutMain, @NonNull View layoutSecondary, ExchangeInterfase interfase) {
+
+        if (layoutSecondary.getVisibility() == INVISIBLE || layoutSecondary.getVisibility() == GONE) {
+
+            ScaleAnimation scale = new ScaleAnimation(1f, 0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            scale.setDuration(200);
+            scale.setFillAfter(false);
+            scale.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationStart(Animation animation) {}
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    layoutMain.setVisibility(INVISIBLE);
+                    layoutMain.setElevation(-4f);
+                    layoutMain.setEnabled(false);
+
+                    layoutSecondary.setVisibility(View.VISIBLE);
+                    layoutSecondary.setElevation(4f);
+                    layoutSecondary.setEnabled(true);
+
+                    ScaleAnimation scale1 = new ScaleAnimation(0f, 1f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    scale1.setDuration(200);
+                    scale1.setFillAfter(true);
+                    layoutSecondary.startAnimation(scale1);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {}
+            });
+            layoutMain.startAnimation(scale);
+
+            interfase.Exchanged(TRUE);
+
+        } else {
+
+            ScaleAnimation scale = new ScaleAnimation(1f, 0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            scale.setDuration(200);
+            scale.setFillAfter(false);
+            scale.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationStart(Animation animation) {}
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    layoutSecondary.setVisibility(INVISIBLE);
+                    layoutSecondary.setElevation(-4f);
+                    layoutSecondary.setEnabled(false);
+
+                    layoutMain.setVisibility(View.VISIBLE);
+                    layoutMain.setElevation(4f);
+                    layoutMain.setEnabled(true);
+
+                    ScaleAnimation scale1 = new ScaleAnimation(0f, 1f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    scale1.setDuration(200);
+                    scale1.setFillAfter(true);
+                    layoutMain.startAnimation(scale1);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {}
+            });
+            layoutSecondary.startAnimation(scale);
+
+            interfase.Exchanged(FALSE);
+        }
+    }
+
+    public void pulse(@NonNull View view) {
+
+        ScaleAnimation scale = new ScaleAnimation(1f, 1.2f, 1f, 1.2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        scale.setDuration(100);
+        scale.setFillAfter(true);
+        scale.setAnimationListener(new Animation.AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                ScaleAnimation scale = new ScaleAnimation(1.2f, 1.0f, 1.2f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                scale.setDuration(100);
+                scale.setFillAfter(true);
+                view.startAnimation(scale);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+
+        view.startAnimation(scale);
+    }
+
+
+    // ----- Interfase ----- //
+
+    public interface ExchangeInterfase {
+
+        public void Exchanged(boolean front);
     }
 }

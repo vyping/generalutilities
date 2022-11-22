@@ -34,10 +34,7 @@ public class JsonFile extends MyJsonReader {
 
             readStream(inputStream, interfase);
 
-        } catch (IOException ignored) {
-
-            interfase.StartListen(FALSE, 0);
-        }
+        } catch (IOException ignored) {}
     }
 
     public JsonFile(@NonNull Context context, String fileName, @NonNull Interface interfase) {
@@ -48,10 +45,7 @@ public class JsonFile extends MyJsonReader {
 
             readStream(inputStream, interfase);
 
-        } catch (IOException ignored) {
-
-            interfase.StartListen(FALSE, 0);
-        }
+        } catch (IOException ignored) {}
     }
 
     public JsonFile(@NonNull Context context, int fileName, @NonNull Interface interfase) {
@@ -77,33 +71,20 @@ public class JsonFile extends MyJsonReader {
 
             try {
 
-                int count = 0;
                 JSONObject obj = new JSONObject(json);
                 Iterator<String> keys = obj.keys();
-                long countKeys = obj.length();
-
-                interfase.StartListen(TRUE, countKeys);
 
                 while (keys.hasNext()) {
 
-                    count = count + 1;
                     String key = keys.next();
-                    JSONArray value = obj.getJSONArray(key);
+                    JSONObject value = obj.getJSONObject(key);
 
-                    interfase.ValueListen(key, value, count);
+                    interfase.GetJsonObject(key, value);
                 }
 
-                interfase.FinishListen();
+            } catch (JSONException ignored) {}
 
-            } catch (JSONException ignored) {
-
-                interfase.StartListen(FALSE, 0);
-            }
-
-        } catch (IOException ignored) {
-
-            interfase.StartListen(FALSE, 0);
-        }
+        } catch (IOException ignored) {}
     }
 
 
@@ -111,11 +92,7 @@ public class JsonFile extends MyJsonReader {
 
     public interface Interface {
 
-        void StartListen(boolean exist, long childCount);
-
-        void ValueListen(String key, JSONArray valueArray, int count);
-
-        void FinishListen();
+        void GetJsonObject(String key, JSONObject jsonObject);
     }
 }
 

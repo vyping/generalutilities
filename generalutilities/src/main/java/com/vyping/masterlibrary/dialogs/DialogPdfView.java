@@ -1,23 +1,14 @@
 package com.vyping.masterlibrary.dialogs;
 
-import static com.vyping.masterlibrary.Common.Definitions.TEXT_INPUT_NORMAL;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.airbnb.paris.Paris;
 import com.github.barteksc.pdfviewer.PDFView;
-import com.google.firebase.database.DatabaseError;
-import com.vyping.masterlibrary.Common.Definitions;
 import com.vyping.masterlibrary.R;
 
 import java.io.BufferedInputStream;

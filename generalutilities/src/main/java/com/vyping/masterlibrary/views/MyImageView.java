@@ -21,13 +21,9 @@ import com.vyping.masterlibrary.resources.MyAsset;
 import com.vyping.masterlibrary.resources.MyResource;
 import com.vyping.masterlibrary.web.MyWeb;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class MyImageView {
 
-    public int errorImage = R.drawable.icon_image;
+    public static int errorImage = R.drawable.icon_image;
 
 
     /**
@@ -211,6 +207,35 @@ public class MyImageView {
         if (exist) {
 
             putImageFromResources(imageView, resource);
+
+        } else {
+
+            putImageFromWeb(imageView, urlFile);
+        }
+    }
+
+    public void putImageFromWebOrResources(@NonNull ImageView imageView, String urlFile, String nameFile) {
+
+        Context context = imageView.getContext();
+        Drawable drawable = new MyDrawable().extractFromString(context, nameFile);
+
+        Glide.with(context).load(urlFile).error(drawable).into(imageView);
+    }
+
+    public void putImageFromWebOrResources(@NonNull ImageView imageView, String urlFile, String nameFile, @MyFile.Type String type) {
+
+        String file = nameFile + type;
+
+        putImageFromWebOrResources(imageView, urlFile, file);
+    }
+
+    public void putImageFromResourcesOrWeb(@NonNull ImageView imageView, String resource, String urlFile) {
+
+        int intResource = new MyDrawable().returnIdFromString(imageView.getContext(), resource);
+
+        if (intResource != 0) {
+
+            putImageFromResources(imageView, intResource);
 
         } else {
 

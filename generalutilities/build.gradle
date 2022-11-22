@@ -6,14 +6,12 @@ plugins {
 
 android {
 
-    compileSdk 30
+    compileSdk 33
 
     defaultConfig {
 
         minSdk 21
-        targetSdk 30
-        versionCode 1
-        versionName 'Beta 1.0'
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -56,47 +54,58 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 
+    publishing {
+
+        singleVariant('release') {
+
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
     namespace 'com.vyping.masterlibrary'
 }
 
 dependencies {
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     testImplementation 'junit:junit:4.13.2'
 
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation "androidx.biometric:biometric:1.2.0-alpha04"
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation 'androidx.biometric:biometric:1.2.0-alpha05'
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.databinding:databinding-common:7.2.1'
-    implementation 'androidx.databinding:databinding-runtime:7.2.1'
-    implementation 'androidx.databinding:databinding-adapters:7.2.1'
+    implementation 'androidx.databinding:databinding-common:7.3.1'
+    implementation 'androidx.databinding:databinding-runtime:7.3.1'
+    implementation 'androidx.databinding:databinding-adapters:7.3.1'
 
     implementation 'com.android.support:support-annotations:28.0.0'
 
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'com.google.android.gms:play-services-base:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'  // GoogleSignIn
     implementation 'com.google.android.gms:play-services-identity:18.0.1'
     implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
     implementation 'com.google.android.gms:play-services-vision:20.1.3'  //BarCode
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'   //Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'   //Maps
 
-    implementation 'com.google.maps.android:android-maps-utils:2.3.0'   //Maps
-    implementation 'com.google.code.gson:gson:2.9.0' //Gson
+    implementation 'com.google.maps.android:android-maps-utils:2.4.0'   //Maps
+    implementation 'com.google.code.gson:gson:2.10' //Gson
 
-    implementation platform ('com.google.firebase:firebase-bom:30.2.0')
-    implementation 'com.google.firebase:firebase-core:21.0.0'
-    implementation 'com.google.firebase:firebase-auth:21.0.6'
-    implementation 'com.google.firebase:firebase-config:21.1.0'
-    implementation 'com.google.firebase:firebase-database:20.0.5'
-    implementation 'com.google.firebase:firebase-storage:20.0.1'
-    implementation 'com.google.firebase:firebase-perf:20.1.0'
-    implementation 'com.google.firebase:firebase-messaging:23.0.6'
-    implementation 'com.google.firebase:firebase-messaging-directboot:23.0.6'
-    implementation 'com.google.firebase:firebase-analytics:21.0.0'
+    implementation platform ('com.google.firebase:firebase-bom:31.0.2')
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation ('com.google.firebase:firebase-auth:21.1.0') {exclude module: "play-services-safetynet"}
+    implementation 'com.google.firebase:firebase-config:21.2.0'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'com.google.firebase:firebase-perf:20.3.0'
+    implementation 'com.google.firebase:firebase-messaging:23.1.0'
+    implementation 'com.google.firebase:firebase-messaging-directboot:23.1.0'
+    implementation 'com.google.firebase:firebase-analytics:21.2.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0' //weConection
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
@@ -105,7 +114,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    implementation 'com.github.bumptech.glide:glide:4.13.2' //PopulateImageView From Url
+    implementation 'com.github.bumptech.glide:glide:4.14.2' //PopulateImageView From Url
     implementation 'com.github.smarteist:autoimageslider:1.3.9' // ImageSlider
     implementation 'com.github.barteksc:AndroidPdfViewer:master-SNAPSHOT' // PdfViewer
 
@@ -117,9 +126,12 @@ dependencies {
     implementation 'com.airbnb.android:paris:2.0.1' // ApplyStyles
     implementation 'io.github.pilgr:paperdb:2.7.2' //PaperDB - Save Paternlock
     implementation 'me.relex:circleindicator:2.1.6'  // ViewPagerCircleIndicator
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0' // PieChart
+    implementation 'com.github.kenglxn.QRGen:android:2.5.0' // QR Code
 
     //implementation 'ru.egslava:MaskedEditText:1.0.5' // Masked EditTex
-
     //implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }
 

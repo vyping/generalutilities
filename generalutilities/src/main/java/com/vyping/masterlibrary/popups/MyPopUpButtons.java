@@ -2,14 +2,10 @@ package com.vyping.masterlibrary.popups;
 
 import android.annotation.SuppressLint;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
 import com.vyping.masterlibrary.Common.MyArrayList;
-import com.vyping.masterlibrary.R;
-import com.vyping.masterlibrary.views.MyButton;
 
 import java.util.ArrayList;
 
@@ -54,25 +50,25 @@ public class MyPopUpButtons extends MyPopUp {
 
     private void SetPopUpViews() {
 
-        setContainerOrientation(LinearLayout.HORIZONTAL);
+     //   setContainerOrientation(LinearLayout.HORIZONTAL);
 
-        for (String text : arrayItems) {
+      //  for (String text : arrayItems) {
 
-            Button button = new MyButton().createByAttributes(anchorView.getContext(), R.attr.popupListButtons, R.style.PopUpListButtons, text, new View.OnClickListener() {
+         //   Button button = new MyButton().createByAttributes(anchorView.getContext(), R.attr.popupListButtons, R.style.PopUpListButtons, text, new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
+           //     @Override
+           //     public void onClick(View v) {
 
-                    interfase.ClickButton(text);
+             //       interfase.ClickButton(text);
 
-                    popUpDismiss();
-                }
+             //       popUpDismiss();
+              //  }
 
-                private void DummyVoid() {
-                }
-            });
-            AddCustomView(button);
-        }
+              //  private void DummyVoid() {
+             //   }
+           // });
+         //   AddCustomView(button);
+     //   }
     }
 
 

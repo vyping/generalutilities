@@ -27,6 +27,18 @@ public class Timestamp {
             private void DummyVoid() {
             }
         });
+
+        databaseRealtime.setValue(ServerValue.TIMESTAMP, new MyRealtime.CompleteListener() {
+
+            @Override
+            public void Success() {
+
+                getTimestamp();
+            }
+
+            private void DummyVoid() {
+            }
+        });
     }
 
     private void getTimestamp() {
@@ -42,7 +54,7 @@ public class Timestamp {
             }
 
             @Override
-            public void ValueNonExist() {
+            public void ValueNonExist(String error) {
             }
         });
     }

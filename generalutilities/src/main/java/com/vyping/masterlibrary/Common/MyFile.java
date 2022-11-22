@@ -11,7 +11,7 @@ import android.os.Environment;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringDef;
 
-import com.vyping.masterlibrary.Comunication.ShareData;
+import com.vyping.masterlibrary.Animations.Comunication.ShareData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -155,6 +155,8 @@ public class MyFile {
                 // Tell the media scanner about the new file so that it is
                 // immediately available to the user.
                 MediaScannerConnection.scanFile((Context) objects[0], new String[]{imageFile.getAbsolutePath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+
+
                     public void onScanCompleted(String path, Uri uri) {
 
                         new ShareData().ImageAndData((Context) objects[0], uri, (String) objects[3], (String) objects[4]);

@@ -1,11 +1,13 @@
 package com.vyping.masterlibrary.Preferences;
 
 import static com.vyping.masterlibrary.Common.Definitions.PREFERENCES_AUTH;
-import static com.vyping.masterlibrary.models.Session.TAG_DOCUMENT;
-import static com.vyping.masterlibrary.models.Session.TAG_EMAIL;
-import static com.vyping.masterlibrary.models.Session.TAG_NAME;
-import static com.vyping.masterlibrary.models.Session.TAG_PASSWORD;
-import static com.vyping.masterlibrary.models.Session.TAG_TYPE;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_ADDRESS;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_DOCUMENT;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_EMAIL;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_NAME;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_PHONE;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_TYPE;
+import static com.vyping.masterlibrary.models.accounts.Account.TAG_UID;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -15,7 +17,7 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.models.Session;
+import com.vyping.masterlibrary.models.accounts.Account;
 
 public class MyAuthPreferences {
 
@@ -52,14 +54,13 @@ public class MyAuthPreferences {
     /*----- Main ModelMethods -----*/
 
     @SuppressLint("ApplySharedPref")
-    public void SaveAuthData(Context context, @NonNull Session session) {
+    public void SaveAuthData(Context context, @NonNull Account session) {
 
         EditPreferences(context);
 
         editor.putString(TAG_DOCUMENT, session.Document);
         editor.putString(TAG_EMAIL, session.Email);
         editor.putString(TAG_NAME, session.Name);
-        editor.putString(TAG_PASSWORD, session.Password);
         editor.putString(TAG_TYPE, session.Type);
 
         ApplyChanges();
@@ -72,7 +73,6 @@ public class MyAuthPreferences {
         editor.remove(TAG_DOCUMENT);
         editor.remove(TAG_EMAIL);
         editor.remove(TAG_NAME);
-        editor.remove(TAG_PASSWORD);
         editor.remove(TAG_TYPE);
 
         ClearEditor();
@@ -92,12 +92,15 @@ public class MyAuthPreferences {
         }
     }
 
-    public Session ObtainSession(Context context) {
+    public Account ObtainSession(Context context) {
 
+        //Uri Document = GetPreferences(context).getString(TAG_DOCUMENT, "");
         String Document = GetPreferences(context).getString(TAG_DOCUMENT, "");
+        String Uid = GetPreferences(context).getString(TAG_UID, "");
         String Email = GetPreferences(context).getString(TAG_EMAIL, "");
+        String Phone = GetPreferences(context).getString(TAG_PHONE, "");
+        String Address = GetPreferences(context).getString(TAG_ADDRESS, "");
         String Name = GetPreferences(context).getString(TAG_NAME, "");
-        String Password = GetPreferences(context).getString(TAG_PASSWORD, "");
         String Type = GetPreferences(context).getString(TAG_TYPE, "");
         boolean registered = FALSE;
 
@@ -106,35 +109,28 @@ public class MyAuthPreferences {
             registered = TRUE;
         }
 
-        return new Session(Document, Email, Name, Password, Type, registered);
+        return new Account();
     }
 
 
     /*----- Set ModelMethods -----*/
 
     @SuppressLint("ApplySharedPref")
-    public void SetEmail(@NonNull Context context, @NonNull Session session) {
+    public void SetEmail(@NonNull Context context, @NonNull Account session) {
 
         EditPreferences(context).putString(TAG_EMAIL, session.Email);
         ApplyChanges();
     }
 
     @SuppressLint("ApplySharedPref")
-    public void SetPassword(@NonNull Context context, @NonNull Session session) {
-
-        EditPreferences(context).putString(TAG_PASSWORD, session.Password);
-        ApplyChanges();
-    }
-
-    @SuppressLint("ApplySharedPref")
-    public void SetName(@NonNull Context context, @NonNull Session session) {
+    public void SetName(@NonNull Context context, @NonNull Account session) {
 
         EditPreferences(context).putString(TAG_NAME, session.Name);
         ApplyChanges();
     }
 
     @SuppressLint("ApplySharedPref")
-    public void SetDocument(@NonNull Context context, @NonNull Session session) {
+    public void SetDocument(@NonNull Context context, @NonNull Account session) {
 
         EditPreferences(context).putString(TAG_DOCUMENT, session.Document);
         ApplyChanges();
@@ -146,11 +142,6 @@ public class MyAuthPreferences {
     public String GetEmail(@NonNull Context context) {
 
         return GetPreferences(context).getString(TAG_EMAIL, "");
-    }
-
-    public String GetPassword(@NonNull Context context) {
-
-        return GetPreferences(context).getString(TAG_PASSWORD, "");
     }
 
     public String GetName(@NonNull Context context) {

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    // White Color - Solid Scale
+
+    <color name="BlackDark20">#000000</color>
+    <color name="BlackDark19">#000000</color>
+    <color name="BlackDark18">#000000</color>
+    <color name="BlackDark17">#000000</color>
+    <color name="BlackDark16">#000000</color>
+    <color name="BlackDark15">#000000</color>
+    <color name="BlackDark14">#000000</color>UltraDark
+    <color name="BlackDark13">#000000</color>
+    <color name="BlackDark12">#000000</color>
+    <color name="BlackDark11">#000000</color>
+    <color name="BlackDark10">#000000</color>
+    <color name="BlackDark09">#000000</color>
+    <color name="BlackDark08">#000000</color>
+    <color name="BlackDark07">#000000</color>Dark
+    <color name="BlackDark06">#000000</color>
+    <color name="BlackDark05">#000000</color>
+    <color name="BlackDark04">#000000</color>
+    <color name="BlackDark03">#000000</color>
+    <color name="BlackDark02">#000000</color>
+    <color name="BlackDark01">#000000</color>
+    <color name="Black">#000000</color>Mid
+    <color name="BlackLight01">#0C0C0C</color>
+    <color name="BlackLight02">#171717</color>
+    <color name="BlackLight03">#222222</color>
+    <color name="BlackLight04">#2E2E2E</color>
+    <color name="BlackLight05">#393939</color>
+    <color name="BlackLight06">#454545</color>
+    <color name="BlackLight07">#505050</color>Light
+    <color name="BlackLight08">#5C5C5C</color>
+    <color name="BlackLight09">#676767</color>
+    <color name="BlackLight10">#737373</color>
+    <color name="BlackLight11">#7E7E7E</color>
+    <color name="BlackLight12">#8A8A8A</color>
+    <color name="BlackLight13">#959595</color>
+    <color name="BlackLight14">#A1A1A1</color>UltraLight
+    <color name="BlackLight15">#ACACAC</color>
+    <color name="BlackLight16">#B8B8B8</color>
+    <color name="BlackLight17">#C3C3C3</color>
+    <color name="BlackLight18">#CFCFCF</color>
+    <color name="BlackLight19">#DADADA</color>
+    <color name="BlackLight20">#E6E6E6</color>
+
+    
+    // Black Color - Traslucid Scale
+
+    <color name="BlackUltraDark000">#00000000</color>
+    <color name="BlackUltraDark010">#1A000000</color>
+    <color name="BlackUltraDark020">#33000000</color>
+    <color name="BlackUltraDark030">#4D000000</color>
+    <color name="BlackUltraDark040">#66000000</color>
+    <color name="BlackUltraDark050">#80000000</color>
+    <color name="BlackUltraDark060">#99000000</color>
+    <color name="BlackUltraDark070">#B3000000</color>
+    <color name="BlackUltraDark080">#CC000000</color>
+    <color name="BlackUltraDark090">#E6000000</color>
+    <color name="BlackUltraDark100">#FF000000</color>
+
+    <color name="BlackDark000">#00000000</color>
+    <color name="BlackDark010">#1A000000</color>
+    <color name="BlackDark020">#33000000</color>
+    <color name="BlackDark030">#4D000000</color>
+    <color name="BlackDark040">#66000000</color>
+    <color name="BlackDark050">#80000000</color>
+    <color name="BlackDark060">#99000000</color>
+    <color name="BlackDark070">#B3000000</color>
+    <color name="BlackDark080">#CC000000</color>
+    <color name="BlackDark090">#E6000000</color>
+    <color name="BlackDark100">#FF000000</color>
+
+    <color name="BlackMid000">#00000000</color>
+    <color name="BlackMid010">#1A000000</color>
+    <color name="BlackMid020">#33000000</color>
+    <color name="BlackMid030">#4D000000</color>
+    <color name="BlackMid040">#66000000</color>
+    <color name="BlackMid050">#80000000</color>
+    <color name="BlackMid060">#99000000</color>
+    <color name="BlackMid070">#B3000000</color>
+    <color name="BlackMid080">#CC000000</color>
+    <color name="BlackMid090">#E6000000</color>
+    <color name="BlackMid100">#FF000000</color>
+
+    <color name="BlackLight000">#00505050</color>
+    <color name="BlackLight010">#1A505050</color>
+    <color name="BlackLight020">#33505050</color>
+    <color name="BlackLight030">#4D505050</color>
+    <color name="BlackLight040">#66505050</color>
+    <color name="BlackLight050">#80505050</color>
+    <color name="BlackLight060">#99505050</color>
+    <color name="BlackLight070">#B3505050</color>
+    <color name="BlackLight080">#CC505050</color>
+    <color name="BlackLight090">#E6505050</color>
+    <color name="BlackLight100">#FF505050</color>
+
+    <color name="BlackUltraLight000">#00A1A1A1</color>
+    <color name="BlackUltraLight010">#1AA1A1A1</color>
+    <color name="BlackUltraLight020">#33A1A1A1</color>
+    <color name="BlackUltraLight030">#4DA1A1A1</color>
+    <color name="BlackUltraLight040">#66A1A1A1</color>
+    <color name="BlackUltraLight050">#80A1A1A1</color>
+    <color name="BlackUltraLight060">#99A1A1A1</color>
+    <color name="BlackUltraLight070">#B3A1A1A1</color>
+    <color name="BlackUltraLight080">#CCA1A1A1</color>
+    <color name="BlackUltraLight090">#E6A1A1A1</color>
+    <color name="BlackUltraLight100">#FFA1A1A1</color>
+    
+</resources>

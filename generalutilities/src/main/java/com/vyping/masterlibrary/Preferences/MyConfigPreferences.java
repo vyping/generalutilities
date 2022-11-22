@@ -71,7 +71,7 @@ public class MyConfigPreferences {
 
     public int getAppTheme(@NonNull Context context) {
 
-        return GetPreferences(context).getInt(TAG_THEME, R.style.AppLightTheme);
+        return GetPreferences(context).getInt(TAG_THEME, R.style.AppTheme);
     }
 
     public boolean getAnimations(@NonNull Context context) {

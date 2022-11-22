@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.vyping.masterlibrary.Common.LogCat;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +36,7 @@ public class MyAuthPhone {
     public MyAuthPhone(Context context) {
 
         this.activity = (Activity) context;
-        this.firebaseAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
+        this.firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public MyAuthPhone(Context context, FirebaseAuth firebaseAuth) {

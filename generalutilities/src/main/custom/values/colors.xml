@@ -4,6 +4,22 @@
 
     // Indicator State - Scale
 
+    <color name="colorPrimaryLight">#393939</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+
+    <color name="colorSecondaryLight">#503830</color>
+    <color name="colorSecondary">#2e1b14</color>
+    <color name="colorSecondaryDark">#0B0503</color>
+
+    <color name="colorAccentLight">#F8DF45</color>
+    <color name="colorAccent">#dec211</color>
+    <color name="colorAccentDark">#8E7B02</color>
+
+    <color name="colorAlternLight">#E68D54</color>
+    <color name="colorAltern">#a55522</color>
+    <color name="colorAlternDark">#753208</color>
+
     <color name="IndicatorRedLight">#CCFF8080</color>
     <color name="IndicatorRedMid">#CCFF0000</color>
     <color name="IndicatorRedDark">#CC8F0000</color>

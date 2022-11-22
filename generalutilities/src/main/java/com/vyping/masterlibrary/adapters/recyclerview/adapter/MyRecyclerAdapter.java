@@ -16,11 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.vyping.masterlibrary.GestureListeners.MyGesturesListener;
 import com.vyping.masterlibrary.GestureListeners.MyItemTouchListener;
 import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerItemBinderInterfase;
+import com.vyping.masterlibrary.adapters.recyclerview.interfase.RecyclerInterfase;
 
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 
 public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter.ViewHolder> implements MyGesturesListener.Interfase, MyItemTouchListener.Interfase {
+
+    private LayoutInflater inflater;
+    public ViewDataBinding binding;
 
     private final RecyclerItemBinderInterfase<T> itemBinder;
     private final WeakReferenceOnListChangedCallback<T>  onListChangedCallback;
@@ -29,18 +33,27 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
     private RecyclerView recyclerView;
 
     private ObservableList<T> items;
-    private static final int ITEM_MODEL = -124;
+    private final int tagModel;
 
 
     // ----- SetUp ----- //
 
-    public MyRecyclerAdapter(RecyclerItemBinderInterfase<T> itemBinder, @Nullable Collection<T> items, Interfase<T> interfase) {
+    public MyRecyclerAdapter(RecyclerItemBinderInterfase<T> itemBinder, @Nullable Collection<T> items, Interfase<T> interfase, int tagModel) {
 
         this.itemBinder = itemBinder;
         this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
         this.interfase = interfase;
+        this.tagModel = tagModel;
 
         setItems(items);
+    }
+
+
+    public void restartAdapter() {
+
+        items.clear();
+        //recyclerView.notify();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -55,8 +68,8 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
     @Override @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        ViewDataBinding binding = DataBindingUtil.inflate(inflater, viewType, viewGroup, false);
+        inflater = LayoutInflater.from(viewGroup.getContext());
+        binding = DataBindingUtil.inflate(inflater, viewType, viewGroup, false);
 
         return new ViewHolder(binding);
     }
@@ -77,9 +90,17 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
         final T item = items.get(position);
+        final RecyclerInterfase interfase = itemBinder.getInterfase(item);
 
+        viewHolder.binding.setVariable(itemBinder.getViewDataBinding(item), binding);
         viewHolder.binding.setVariable(itemBinder.getBindingVariable(item), item);
-        viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
+
+        if (interfase != null) {
+
+            viewHolder.binding.setVariable(itemBinder.getNameCallBack(item), interfase);
+        }
+
+        viewHolder.binding.getRoot().setTag(tagModel, item);
         viewHolder.binding.getRoot().setOnTouchListener(new MyGesturesListener(viewHolder.binding.getRoot(), this));
         viewHolder.binding.executePendingBindings();
     }
@@ -88,6 +109,11 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
     public int getItemViewType(int position) {
 
         return itemBinder.getLayoutRes(items.get(position));
+    }
+
+    public T getItem(int position) {
+
+        return items.get(position);
     }
 
     @Override
@@ -153,6 +179,11 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
         }
     }
 
+    public void insertItem(T item, int position) {
+
+        this.items.add(item);
+        notifyItemInserted(position);
+    }
 
     // ----- Listeners ----- //
 
@@ -162,8 +193,12 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
         int position = recyclerView.getChildAdapterPosition(view);
         ViewHolder viewHolder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
 
-        T item = (T) view.getTag(ITEM_MODEL);
-        interfase.OnClick(viewHolder, view, item, position);
+        T item = (T) view.getTag(tagModel);
+
+        if (interfase != null && viewHolder != null) {
+
+            interfase.OnClick(viewHolder.binding, viewHolder, view, item, position);
+        }
     }
 
     @Override @SuppressWarnings("unchecked")
@@ -172,8 +207,12 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
         int position = recyclerView.getChildAdapterPosition(view);
         ViewHolder viewHolder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
 
-        T item = (T) view.getTag(ITEM_MODEL);
-        interfase.OnLongClick(viewHolder, view, item, position);
+        T item = (T) view.getTag(tagModel);
+
+        if (interfase != null && viewHolder != null) {
+
+            interfase.OnLongClick(viewHolder.binding, viewHolder, view, item, position);
+        }
     }
 
     @Override @SuppressWarnings("unchecked")
@@ -182,15 +221,25 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
         int position = recyclerView.getChildAdapterPosition(view);
         ViewHolder viewHolder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
 
-        T item = (T) view.getTag(ITEM_MODEL);
-        interfase.OnDoubleClick(viewHolder, view, item, position);
+        T item = (T) view.getTag(tagModel);
+
+        if (interfase != null && viewHolder != null) {
+
+            interfase.OnDoubleClick(viewHolder.binding, viewHolder, view, item, position);
+        }
     }
 
     @Override @SuppressWarnings("unchecked")
-    public void SelectedItem(@NonNull View selectedView, int position, RecyclerView.ViewHolder viewHolder) {
+    public void SelectedItem(@NonNull View selectedView, int position, RecyclerView.ViewHolder recyclerViewHolder) {
 
-        T item = (T) selectedView.getTag(ITEM_MODEL);
-        interfase.OnTouch(viewHolder, selectedView, item, position);
+        ViewHolder viewHolder = (ViewHolder) recyclerViewHolder;
+
+        T item = (T) selectedView.getTag(tagModel);
+
+        if (interfase != null && viewHolder != null) {
+
+            interfase.OnTouch(viewHolder.binding, viewHolder, selectedView, item, position);
+        }
     }
 
 
@@ -266,9 +315,9 @@ public class MyRecyclerAdapter<T> extends RecyclerView.Adapter<MyRecyclerAdapter
 
     public interface Interfase<T> {
 
-        default void OnClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
-        default void OnLongClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
-        default void OnDoubleClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
-        default void OnTouch(RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnClick(ViewDataBinding binding, RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnLongClick(ViewDataBinding binding, RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnDoubleClick(ViewDataBinding binding, RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
+        default void OnTouch(ViewDataBinding binding, RecyclerView.ViewHolder viewHolder, @NonNull View view, T item, int position) {};
     }
 }

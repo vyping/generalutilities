@@ -27,7 +27,6 @@ import com.vyping.masterlibrary.Common.MyDisplay;
 import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.Images.MyColor;
 import com.vyping.masterlibrary.Images.MyDrawable;
-import com.vyping.masterlibrary.models.DialogParams;
 import com.vyping.masterlibrary.R;
 import com.vyping.masterlibrary.databinding.DialogBinding;
 import com.vyping.masterlibrary.views.MyButton;

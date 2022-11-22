@@ -63,7 +63,7 @@ public class SendSMS extends MyPermissions {
 
     // ----- Listeners ----- //
 
-    private final MyPermissions.Interfase permissionsInterfase = new MyPermissions.Interfase() {
+    private final Interfase permissionsInterfase = new Interfase() {
 
         @Override
         public void PermissionsResult(int result) {

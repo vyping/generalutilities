@@ -27,7 +27,7 @@ public class MyPopUpInfo extends MyPopUp {
 
     private void SetPopUpViews(String textInfo) {
 
-        TextView Tv_Info = new MyTextView().createByAttributes(anchorView.getContext(), R.attr.popupTextView, R.style.PopUpTextView, textInfo);
-        AddCustomView(Tv_Info);
+     //   TextView Tv_Info = new MyTextView().createByAttributes(anchorView.getContext(), R.attr.popupTextView, R.style.PopUpTextView, textInfo);
+       // AddCustomView(Tv_Info);
     }
 }

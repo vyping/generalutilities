@@ -11,12 +11,9 @@ import androidx.annotation.StringDef;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.vyping.masterlibrary.Common.LogCat;
 
 import java.lang.annotation.Retention;
@@ -49,7 +46,6 @@ public class MyAuthMail {
 
 
     /*----- Methods -----*/
-
 
     public void logUp(String email, String password, LogUpInterfase interfase) {
 
@@ -88,19 +84,26 @@ public class MyAuthMail {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                new LogCat("task", task);
                 if (task.isSuccessful()) {
+                    new LogCat("task", task.getResult().getCredential());
+                    FirebaseUser user = getCurrentUser();
+
+                    if (user != null && interfase != null) {
+
+                        interfase.LogInSuccess(user);
+                    }
 
                     boolean verified = checkIfEmailVerified();
 
-                    if (verified) {
+                    if (!verified) {
 
-                        FirebaseUser user = getCurrentUser();
+                       // FirebaseUser user = getCurrentUser();
 
-                        if (user != null && interfase != null) {
+                     //   if (user != null && interfase != null) {
 
-                           interfase.LogInSuccess(user);
-                        }
+                        //   interfase.LogInSuccess(user);
+                     //   }
 
                     } else {
 
@@ -113,7 +116,7 @@ public class MyAuthMail {
                     }
 
                 } else {
-
+                    new LogCat("login2");
                     if (interfase != null) {
 
                         String error = String.valueOf(task.getException());
@@ -123,6 +126,12 @@ public class MyAuthMail {
             };
 
             private void DummyVoid() {};
+        }).addOnFailureListener(new OnFailureListener() {
+
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                new LogCat("login");
+            }
         });
     }
 

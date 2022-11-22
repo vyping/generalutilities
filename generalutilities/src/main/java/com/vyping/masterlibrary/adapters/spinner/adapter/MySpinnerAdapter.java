@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +14,6 @@ import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 import androidx.databinding.ViewDataBinding;
 
-import com.vyping.masterlibrary.Common.LogCat;
-import com.vyping.masterlibrary.GestureListeners.MyGesturesListener;
-import com.vyping.masterlibrary.GestureListeners.MyItemTouchListener;
 import com.vyping.masterlibrary.adapters.spinner.binder.SpinnerItemBinderInterfase;
 
 import java.lang.ref.WeakReference;
@@ -27,7 +22,7 @@ import java.util.Collection;
 public class MySpinnerAdapter<T> extends ArrayAdapter<String>  {
 
     private final SpinnerItemBinderInterfase<T> itemBinder;
-    private final MySpinnerAdapter.WeakReferenceOnListChangedCallback<T> onListChangedCallback;
+    private final WeakReferenceOnListChangedCallback<T> onListChangedCallback;
 
     public ObservableList<T> items;
 
@@ -39,7 +34,7 @@ public class MySpinnerAdapter<T> extends ArrayAdapter<String>  {
         super(context, layout);
 
         this.itemBinder = itemBinder;
-        this.onListChangedCallback = new MySpinnerAdapter.WeakReferenceOnListChangedCallback<>(this);
+        this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
 
         setItems(items);
     }

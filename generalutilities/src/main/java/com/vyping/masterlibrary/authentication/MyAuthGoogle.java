@@ -1,5 +1,10 @@
 package com.vyping.masterlibrary.authentication;
 
+import static com.google.android.gms.common.ConnectionResult.INVALID_ACCOUNT;
+import static com.google.android.gms.common.ConnectionResult.NETWORK_ERROR;
+import static com.google.android.gms.common.ConnectionResult.SIGN_IN_REQUIRED;
+import static com.google.android.gms.common.ConnectionResult.SUCCESS;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,155 +20,108 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.vyping.masterlibrary.Common.MyString;
+import com.vyping.masterlibrary.Common.MyToast;
+import com.vyping.masterlibrary.time.MyDelay;
 
 public class MyAuthGoogle extends MyAuthFirebase {
 
-    private GoogleSignInOptions.Builder googleBuilder;
+    private final GoogleSignInOptions.Builder googleBuilder;
     private GoogleSignInClient googleClient;
-    private GoogleSignInAccount googleAccount;
-    private Interfase interfase;
 
-    private String idToken;
-    private static final int RC_SIGN_IN = 1;
+    public static final int REQUEST_CODE_GOOGLE_AUTH = 10000;
 
 
     /*----- Setup -----*/
 
-    public MyAuthGoogle(Context context) {
+    public MyAuthGoogle() {
 
-        super(context);
-
-        googleBuilder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
-    }
-
-    public MyAuthGoogle(Context context, FirebaseAuth firebaseAuth) {
-
-        super(context, firebaseAuth);
+        super();
 
         googleBuilder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
     }
 
+    public MyAuthGoogle(FirebaseAuth firebaseAuth) {
 
-    // ----- Methods ----- //
+        super(firebaseAuth);
 
-    public MyAuthGoogle idToken(String idToken) {
+        googleBuilder = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN);
+    }
 
-        this.idToken = idToken;
 
-        GoogleSignInOptions googleSignInOptions = googleBuilder.requestIdToken(idToken).requestEmail().build();
+    // ----- Sign Methods ----- //
+
+    public MyAuthGoogle idToken(@NonNull Context context) {
+
+        int intGoogleToken = context.getResources().getIdentifier("credentials_google_auth_id", "string", context.getPackageName());
+        String idToken = new MyString().getStringResources(context, intGoogleToken);
+
+        GoogleSignInOptions googleSignInOptions = googleBuilder.requestIdToken(idToken).build();
+      //  GoogleSignInOptions googleSignInOptions = googleBuilder.requestIdToken(idToken).requestEmail().build();
         googleClient = GoogleSignIn.getClient(context, googleSignInOptions);
 
         return this;
     }
 
-    public MyAuthGoogle lastSigned() {
+    public GoogleSignInAccount lastAuthSigned(Context context) {
 
-        googleAccount = GoogleSignIn.getLastSignedInAccount(context);
-
-        return this;
+        return GoogleSignIn.getLastSignedInAccount(context);
     }
 
-    public MyAuthGoogle listener(Interfase interfase) {
+    public void launchAuthDialog(Context context) {
 
-        this.interfase = interfase;
+        new MyDelay(1000).interfase(new MyDelay.Interfase() {
 
-        return this;
+            @Override
+            public void Execute() {
+
+                Intent intent = googleClient.getSignInIntent();
+                ((Activity) context).startActivityForResult(intent, REQUEST_CODE_GOOGLE_AUTH);
+            }
+
+            private void DummyVoid() {}
+        });
     }
 
-    public void launchAuthDialog() {
+    public void onActivityResult(Context context, int requestCode, Intent data) {
 
-        Intent intent = googleClient.getSignInIntent();
-        ((Activity) context).startActivityForResult(intent, RC_SIGN_IN);
-    }
-
-    public void onActivityResult(int requestCode, Intent data) {
-
-        if(requestCode == RC_SIGN_IN) {
+        if(requestCode == REQUEST_CODE_GOOGLE_AUTH) {
 
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
             if (result != null) {
 
-                handleSignInResult(result);
-            }
-        }
-    }
-
-    public MyAuthGoogle logOut() {
-
-        googleClient.signOut();
-
-        if (interfase != null) {
-
-            interfase.LogOut();
-        }
-
-        return this;
-    }
-
-
-    /*----- Tools -----*/
-
-    private void handleSignInResult(@NonNull GoogleSignInResult result) {
-
-        if (result.isSuccess()) {
-
-            googleAccount = result.getSignInAccount();
-
-            if (googleAccount != null) {
-
-                String token = googleAccount.getIdToken();
-
-                AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
-                logInWithCredential(credential);
+                handleSignInResult(context, result);
 
             } else {
 
-                if (interfase != null) {
-
-                    String error = result.getStatus().getStatusMessage();
-                    interfase.Failed(error );
-                }
-            }
-
-        } else {
-
-            if (interfase != null) {
-
-                String error = String.valueOf(result);
-                interfase.Failed(error);
+                interfase.Failed();
+                new MyToast(context, "¡No se detectó cuenta alguna!");
             }
         }
     }
 
-    private void logInWithCredential(AuthCredential credential) {
+    public void logInSilently(Context context) {
 
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener((Activity) context, new OnCompleteListener<>() {
+        googleClient.silentSignIn().addOnCompleteListener(((Activity) context), new OnCompleteListener<>() {
 
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
 
-                if (interfase != null) {
+                if (task.isSuccessful()) {
 
-                    if (task.isSuccessful()) {
+                    GoogleSignInAccount googleSignInAccount = task.getResult();
 
-                        FirebaseUser user = task.getResult().getUser();
+                    if (googleSignInAccount != null) {
 
-                        if (user != null && interfase != null) {
-
-                            interfase.LogIn(user);
-                        }
-
-                    } else {
-
-                        String error = String.valueOf(task.getException());
-                        interfase.Failed(error);
+                        logInWithGoogle(context, googleSignInAccount);
                     }
+
+                } else {
+
+                    interfase.LoggedSilent();
                 }
             }
 
@@ -171,51 +129,82 @@ public class MyAuthGoogle extends MyAuthFirebase {
         });
     }
 
-    public void linkWithCredential() {
+    public void logInWithGoogle(Context context, @NonNull GoogleSignInAccount googleAccount) {
 
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        String token = googleAccount.getIdToken();
+        AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
 
-        if (firebaseAuth.getCurrentUser() != null) {
+        logInWithCredential(context, credential);
+    }
 
-            firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+    public void logOutFromGoogle() {
 
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
+        googleClient.signOut().addOnCompleteListener(new OnCompleteListener<>() {
 
-                    if (task.isSuccessful()) {
+            public void onComplete(@NonNull Task<Void> task) {
 
-                        FirebaseUser user = task.getResult().getUser();
+                interfase.LogOutUser();
+            }
 
-                        if (user != null && interfase != null) {
-
-                            interfase.Linked(user);
-                        }
-
-                    } else {
-
-                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-
-                            if (interfase != null) {
-
-                                interfase.Failed(task.getException().getMessage());
-                            }
-                        }
-                    }
-                }
-
-                private void DummyVoid() {}
-            });
-        }
+            private void DummyVoid() {}
+        });
     }
 
 
-    // ----- Interface ----- //
+    /*----- Tools -----*/
 
-    public interface Interfase {
+    private void handleSignInResult(Context context, @NonNull GoogleSignInResult result) {
 
-        void LogIn(FirebaseUser firebaseUser);
-        default void LogOut() {};
-        default void Linked(FirebaseUser firebaseUser) {};
-        default void Failed(String error) {};
+        int status = result.getStatus().getStatusCode();
+
+        if (status == SUCCESS) {
+
+            if (result.isSuccess()) {
+
+                GoogleSignInAccount googleAccount = result.getSignInAccount();
+
+                if (googleAccount != null) {
+
+                    String token = googleAccount.getIdToken();
+                    AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
+                    logInWithCredential(context, credential);
+
+                } else {
+
+                    String error = result.getStatus().getStatusMessage();
+                    new MyToast(context, "Error: " + error);
+
+                    interfase.Failed();
+                }
+
+            } else {
+
+                String error = result.getStatus().getStatusMessage();
+                new MyToast(context, "Error: " + error);
+
+                interfase.Failed();
+            }
+
+        } else {
+
+            if (status == SIGN_IN_REQUIRED) {
+
+                new MyToast(context, "¡Sesión requerida!");
+
+            } else if (status == NETWORK_ERROR) {
+
+                new MyToast(context, "¡Error en la conexión!");
+
+            } else if (status == INVALID_ACCOUNT) {
+
+                new MyToast(context, "¡Cuenta invalida!");
+
+            } else {
+
+                new MyToast(context, "¡Error oódigo: " + status + "!");
+            }
+
+            interfase.Failed();
+        }
     }
 }

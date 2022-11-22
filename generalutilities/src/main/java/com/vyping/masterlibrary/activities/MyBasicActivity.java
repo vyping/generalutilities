@@ -1,5 +1,7 @@
 package com.vyping.masterlibrary.activities;
 
+import static com.vyping.masterlibrary.authentication.MyAuthGoogle.REQUEST_CODE_GOOGLE_AUTH;
+import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
@@ -49,6 +51,13 @@ public abstract class MyBasicActivity extends AppCompatActivity {
         }
 
         CreateActivity();
+        StartProcess();
+        InherentViews();
+        ActivityViews();
+
+        binding.executePendingBindings();
+
+        LaunchProcess();
     }
 
     @Override
@@ -70,61 +79,55 @@ public abstract class MyBasicActivity extends AppCompatActivity {
     }
 
 
-    // ----- Start ----- //
+    // ----- Chained ----- //
 
-    public void createActivity(Activity activity, int layout, int icon, int module) {
-
-        setStartProcess(activity, layout);
-        setActionBar(icon, module);
-        setActivityViews();
-
-        LaunchProcess();
-    }
-
-    public void createActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
-
-        setStartProcess(activity, layout, backActivity);
-        setActionBar(icon, module);
-        setActivityViews();
-
-        LaunchProcess();
-    }
-
-    public void setStartProcess(Activity activity, int layout) {
+    public MyBasicActivity activity(@NonNull Activity activity, int layout) {
 
         this.context = new MyActivity().setTheme(activity);
+        this.application.setContext(context);
+        this.application.setCurrentActivity((Activity) context);
         this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
         View view = binding.getRoot();
         setContentView(view);
 
-        StartProcess(binding);
+        return this;
     }
 
-    public void setStartProcess(Activity activity, int layout, Class<Activity> backActivity) {
+    public MyBasicActivity actionBar() {
 
-        this.context = activity;
+        application.setActionBar();
+
+        return this;
+    }
+
+    public MyBasicActivity setSideMenu() {
+
+        application.setSideMenu(FALSE);
+
+        return this;
+    }
+
+    public MyBasicActivity onBack(Class backActivity) {
+
         this.backActivity = backActivity;
-        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
-        View view = binding.getRoot();
-        setContentView(view);
-
-        StartProcess(binding);
+        return this;
     }
 
-    public void setActionBar(int icon, int module) {
+    public ViewDataBinding binding() {
 
-        this.actionBar = new MyActionBar(context, icon, module) {};
-
-        ActionBar();
+        return binding;
     }
 
-    public void setActivityViews() {
+    public MyToolBars toolbar(int container) {
 
-        ActivityViews();
+        if (myToolBars != null) {
 
-        binding.executePendingBindings();
+            myToolBars = new MyToolBars(context, container) {};
+        }
+
+        return myToolBars;
     }
 
 
@@ -233,17 +236,7 @@ public abstract class MyBasicActivity extends AppCompatActivity {
 
             private void DummyVoid(){}
         });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
 
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
-        });
     }
 
     public void setSearchAndMonthBar(int container, ToolBarsInterfase interfase) {
@@ -269,17 +262,7 @@ public abstract class MyBasicActivity extends AppCompatActivity {
 
             private void DummyVoid(){}
         });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
 
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
-        });
     }
 
 
@@ -326,12 +309,14 @@ public abstract class MyBasicActivity extends AppCompatActivity {
     // ----- Interfase ----- //
 
     protected abstract void CreateActivity();
-    protected abstract void StartProcess(ViewDataBinding binding);
-    protected void ActionBar() {};
+    protected abstract void StartProcess();
+    protected void InherentViews() {};
     protected void ActivityViews() {};
+    protected void ModifyViewsByAuth() {};
     protected void LaunchProcess() {};
-    protected void StopProcess() {};
     protected void ActivityResults(int requestCode, int resultCode, Intent data) {};
+    protected void StopProcess() {};
+    protected void BackPressed() {};
 
     public interface PermissionsInterfase {
 
@@ -359,11 +344,14 @@ public abstract class MyBasicActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
+        application.activityResults(requestCode, data);
         ActivityResults(requestCode, resultCode, data);
     }
 
     @Override
     public void onBackPressed() {
+
+        BackPressed();
 
         if (backActivity != null) {
 
@@ -394,7 +382,10 @@ public abstract class MyBasicActivity extends AppCompatActivity {
 
         super.onDestroy();
 
-        myRealtime.removeValueListener();
+        if (myRealtime != null) {
+
+            myRealtime.removeValueListener();
+        }
 
         StopProcess();
     }

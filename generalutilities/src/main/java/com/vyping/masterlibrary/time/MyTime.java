@@ -1,5 +1,8 @@
 package com.vyping.masterlibrary.time;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 import android.text.format.DateFormat;
 
 import androidx.annotation.NonNull;
@@ -51,11 +54,20 @@ public class MyTime extends Definitions {
         }
     }
 
-    public MyTime(String timestamp) {
+    public MyTime(@NonNull String timestamp) {
 
         calendar = Calendar.getInstance(Locale.getDefault());
+        boolean isNumber = FALSE;
 
-        boolean isNumber = new MyNumbers().isNumber(timestamp);
+        if (timestamp.equals("")) {
+
+            isNumber = TRUE;
+            timestamp = "0";
+
+        } else {
+
+            isNumber = new MyNumbers().isNumber(timestamp);
+        }
 
         if (isNumber) {
 
@@ -259,6 +271,12 @@ public class MyTime extends Definitions {
 
         return this;
     }
+
+    public Comparator compare() {
+
+        return new Comparator(this);
+    }
+
 
     public Comparator compare(@NonNull Calendar otherCalendar) {
 

@@ -17,8 +17,9 @@ public class Definitions {
 
     public static final String FORMAT_TIME_01 = "dd-MM-yy HH:mm", FORMAT_TIME_02 = "dd-MM-yyyy HH:mm", FORMAT_TIME_03 = "dd-MMM-yy HH:mm", FORMAT_TIME_04 = "dd-MMM-yyyy HH:mm", FORMAT_TIME_05 = "dd-MMMM-yy HH:mm", FORMAT_TIME_06 = "dd-MMMM-yyyy HH:mm";
     public static final String FORMAT_TIME_07 = "dd 'de' MMM 'a las' HH:mm", FORMAT_TIME_08 = "dd 'de' MMMM 'a las' HH:mm", FORMAT_TIME_09 = "dd 'de' MMM 'del' yyyy 'a las' HH:mm", FORMAT_TIME_10 = "dd 'de' MMMM 'del' yyyy 'a las' HH:mm";
-    public static final String FORMAT_TIME_11 = "MMM dd 'del' yyyy 'a las' HH:mm", FORMAT_TIME_12 = "MMMM dd 'del' yyyy 'a las' HH:mm";
+    public static final String FORMAT_TIME_11 = "MMM dd 'del' yyyy 'a las' HH:mm", FORMAT_TIME_12 = "MMMM dd 'del' yyyy 'a las' HH:mm", FORMAT_TIME_13 = "HH:mm 'del' dd 'de' MMMM";
 
+    public static final String FORMAT_PATH = "yyyy/MM/dd";
 
     public static final int TIME_BEFORE = 0, TIME_EQUALS = 1, TIME_AFTER = 2;
 

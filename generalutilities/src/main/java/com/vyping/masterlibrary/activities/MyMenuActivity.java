@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -20,13 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DataSnapshot;
 import com.smarteist.autoimageslider.SliderView;
 import com.vyping.masterlibrary.ActionBar.MyActionBar;
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.Common.MyActivity;
 import com.vyping.masterlibrary.Common.MyPermissions;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
-import com.vyping.masterlibrary.GestureListeners.MyGesturesListener;
-import com.vyping.masterlibrary.GestureListeners.MyItemTouchListener;
-import com.vyping.masterlibrary.GestureListeners.MyTouchListener;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
 import com.vyping.masterlibrary.adapters.recyclerview.adapter.MyRecyclerAdapter;
 import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerCompositeBinder;
@@ -38,8 +33,8 @@ import com.vyping.masterlibrary.adapters.sliderview.adapter.MySliderviewAdapter;
 import com.vyping.masterlibrary.adapters.sliderview.binder.SliderCompositeBinder;
 import com.vyping.masterlibrary.adapters.sliderview.binder.SliderConditionalBinder;
 import com.vyping.masterlibrary.adapters.sliderview.binder.SliderItemBinderInterfase;
-import com.vyping.masterlibrary.adapters.sliderview.handler.SliderHandlerInterfase;
 import com.vyping.masterlibrary.adapters.sliderview.handler.SliderHandler;
+import com.vyping.masterlibrary.adapters.sliderview.handler.SliderHandlerInterfase;
 import com.vyping.masterlibrary.aplication.MyApplication;
 
 public abstract class MyMenuActivity<Preview, Menu> extends AppCompatActivity {
@@ -100,10 +95,10 @@ public abstract class MyMenuActivity<Preview, Menu> extends AppCompatActivity {
 
     // ----- Start ----- //
 
-    public void createActivity(Activity activity, int layout, int icon, int module, MyMenuActivity.compositeInterfase<Preview, Menu> compositeInterfase, Class backActivity) {
+    public void createActivity(Activity activity, int layout, MyMenuActivity.compositeInterfase<Preview, Menu> compositeInterfase, Class backActivity) {
 
         setStartProcess(activity, layout, compositeInterfase, backActivity);
-        setActionBar(icon, module);
+        setActionBar();
         setActivityViews();
 
         LaunchProcess();
@@ -122,9 +117,9 @@ public abstract class MyMenuActivity<Preview, Menu> extends AppCompatActivity {
         StartProcess(binding);
     }
 
-    public void setActionBar(int icon, int module) {
+    public void setActionBar() {
 
-        this.actionBar = new MyActionBar(context, icon, module) {};
+        ///this.actionBar = new MyActionBar(context) {};
 
         ActionBar();
     }
@@ -297,7 +292,7 @@ public abstract class MyMenuActivity<Preview, Menu> extends AppCompatActivity {
     public final MyRecyclerAdapter.Interfase<Menu> menuInterfase = new MyRecyclerAdapter.Interfase<>() {
 
         @Override
-        public void OnClick(RecyclerView.ViewHolder viewHolder, @NonNull View view, Menu menu, int position) {
+        public void OnClick(ViewDataBinding binding, RecyclerView.ViewHolder viewHolder, @NonNull View view, Menu menu, int position) {
 
             compositeInterfase.SelectMenu(viewHolder, view, menu, position);
         };

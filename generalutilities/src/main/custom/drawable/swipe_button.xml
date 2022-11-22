@@ -12,17 +12,17 @@
 
             <gradient
                 android:angle="0"
-                android:startColor="@color/RedDark100"
-                android:centerColor="@color/RedMid100"
-                android:endColor="@color/RedDark100" />
+                android:startColor="#8A7910"
+                android:centerColor="#FFDC00"
+                android:endColor="#8A7910" />
             <corners
                 android:topLeftRadius="?paddingLayoutTopLeft"
                 android:topRightRadius="?paddingLayoutTopRight"
                 android:bottomLeftRadius="?paddingLayoutBottomLeft"
                 android:bottomRightRadius="?paddingLayoutBottomRight" />
 
-            <size android:width="80dp" />
-            <size android:height="40dp" />
+            <size android:width="100dp" />
+            <size android:height="60dp" />
         </shape>
     </item>
 

@@ -1,8 +1,8 @@
 package com.vyping.masterlibrary.Common;
 
-import androidx.annotation.NonNull;
+import android.widget.EditText;
 
-import com.vyping.masterlibrary.Bucles.MyBucleFor;
+import androidx.annotation.NonNull;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -60,6 +60,13 @@ public class MyNumbers {
     public int floatToInteger(float number) {
 
         return Math.round(number);
+    }
+
+    public int editTextToInteger(EditText editText) {
+
+        String number = new MyString().extractFromEditText(editText);
+
+        return stringToInteger(number);
     }
 
 
@@ -283,7 +290,6 @@ public class MyNumbers {
         return stringToDouble(stringNumber);
     }
 
-
     public long stringChangeToNumber(String text) {
 
         String Text = new MyString().translateToTag(text);
@@ -296,5 +302,14 @@ public class MyNumbers {
         }
 
         return result;
+    }
+
+
+    // ----- Views Interaction ----- //
+    public int extractFromEditText(@NonNull EditText editText) {
+
+        String number = String.valueOf(editText.getText()).replace("$", "").replace(",", "").replace(".", "");
+
+        return stringToInteger(number);
     }
 }

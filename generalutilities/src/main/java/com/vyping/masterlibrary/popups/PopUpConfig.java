@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.vyping.masterlibrary.Common.MyDisplay;
-import com.vyping.masterlibrary.Common.MyGeneralTools;
 import com.vyping.masterlibrary.Common.MyServices;
 import com.vyping.masterlibrary.Firebase.CloudMessaging;
 import com.vyping.masterlibrary.Images.MyDrawable;
@@ -60,15 +59,7 @@ public class PopUpConfig {
         actionBar = ActionBar;
 
         int theme = new MyConfigPreferences().getAppTheme(context);
-
-        if (theme == R.style.AppDarkTheme) {
-
-            darkMode = TRUE;
-
-        } else {
-
-            darkMode = FALSE;
-        }
+        darkMode = TRUE;
 
 
         animations = new MyConfigPreferences().getAnimations(context);
@@ -129,16 +120,8 @@ public class PopUpConfig {
 
                 darkMode = isChecked;
 
-                if (darkMode) {
-
-                    context.setTheme(R.style.AppDarkTheme);
-                    new MyConfigPreferences().setAppTheme(context, R.style.AppDarkTheme);
-
-                } else {
-
-                    context.setTheme(R.style.AppLightTheme);
-                    new MyConfigPreferences().setAppTheme(context, R.style.AppLightTheme);
-                }
+                context.setTheme(R.style.AppTheme);
+                new MyConfigPreferences().setAppTheme(context, R.style.AppTheme);
 
                 interfase.changeDarkMode(darkMode);
             }

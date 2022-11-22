@@ -15,8 +15,11 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.vyping.masterlibrary.dialogs.CreateDialog;
-import com.vyping.masterlibrary.dialogs.DialogShowInfo;
+import com.vyping.masterlibrary.BR;
+import com.vyping.masterlibrary.R;
+import com.vyping.masterlibrary.dialogs.DialogInformation;
+import com.vyping.masterlibrary.dialogs.MyBasicDialog;
+import com.vyping.masterlibrary.dialogs.DialogParams;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -39,24 +42,34 @@ public class MyPermissions {
     public static final String PERMISSION_CONTACTS_WRITE = Manifest.permission.WRITE_CONTACTS; //  <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     @RequiresApi(api = Build.VERSION_CODES.Q)
     public static final String PERMISSION_RECOGNITION = Manifest.permission.ACTIVITY_RECOGNITION; //  <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    public static final String PERMISSION_EXTERNALSTORAGE_READ = Manifest.permission.READ_EXTERNAL_STORAGE; //  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    public static final String PERMISSION_EXTERNALSTORAGE_WRITE = Manifest.permission.WRITE_EXTERNAL_STORAGE; //   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    public static final String PERMISSION_EXTERNALSTORAGE_MANAGE = Manifest.permission.MANAGE_EXTERNAL_STORAGE; //    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    public static final String PERMISSION_BLUETOOTH = Manifest.permission.BLUETOOTH; //   <uses-permission android:name="android.permission.BLUETOOTH" />
+    public static final String PERMISSION_BLUETOOTH_ADMIN = Manifest.permission.BLUETOOTH_ADMIN;   // <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    //  public static final String PERMISSION_BLUETOOTH_CONNECT = Manifest.permission.BLUETOOTH_CONNECT;   // <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
     public static final int PERMISSIONS_GRANTED = PackageManager.PERMISSION_GRANTED;  //
 
-    public static final int PERMISSION_CODE_PHONE_STATE = 10000;
-    public static final int PERMISSION_CODE_PHONE_NUMBERS = 20000;
-    public static final int PERMISSION_CODE_PHONE_CALL = 30000;
-    public static final int PERMISSION_CODE_SMS_READ = 40000;
-    public static final int PERMISSION_CODE_SMS_SEND = 50000;
-    public static final int PERMISSION_CODE_CAMERA = 60000;
-    public static final int PERMISSION_CODE_LOCATION = 70000;
-    public static final int PERMISSION_CODE_RECOGNITION = 80000;
-    public static final int PERMISSION_CODE_ACCOUNTS_GET = 90000;
-    public static final int PERMISSION_CODE_CONTACTS_READ = 100000;
-    public static final int PERMISSION_CODE_CONTACTS_WRITE = 110000;
+    public static final int PERMISSION_CODE_PHONE_STATE = 11000;
+    public static final int PERMISSION_CODE_PHONE_NUMBERS = 12000;
+    public static final int PERMISSION_CODE_PHONE_CALL = 13000;
+    public static final int PERMISSION_CODE_SMS_READ = 14000;
+    public static final int PERMISSION_CODE_SMS_SEND = 15000;
+    public static final int PERMISSION_CODE_CAMERA = 16000;
+    public static final int PERMISSION_CODE_LOCATION = 17000;
+    public static final int PERMISSION_CODE_RECOGNITION = 18000;
+    public static final int PERMISSION_CODE_ACCOUNTS_GET = 19000;
+    public static final int PERMISSION_CODE_CONTACTS_READ = 200000;
+    public static final int PERMISSION_CODE_CONTACTS_WRITE = 210000;
+    public static final int PERMISSION_CODE_EXTERNALSTORAGE_READ = 220000;
+    public static final int PERMISSION_CODE_EXTERNALSTORAGE_WRITE = 230000;
+    public static final int PERMISSION_CODE_EXTERNALSTORAGE_MANAGE = 240000;
+    public static final int PERMISSION_CODE_BLUETOOTH = 250000;
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({PERMISSION_CODE_PHONE_STATE, PERMISSION_CODE_PHONE_NUMBERS, PERMISSION_CODE_PHONE_CALL, PERMISSION_CODE_SMS_READ, PERMISSION_CODE_SMS_SEND, PERMISSION_CODE_CAMERA, PERMISSION_CODE_LOCATION, PERMISSION_CODE_RECOGNITION, PERMISSION_CODE_ACCOUNTS_GET, PERMISSION_CODE_CONTACTS_READ, PERMISSION_CODE_CONTACTS_WRITE })
-    public @interface RequestCode { }
+    @IntDef({PERMISSION_CODE_PHONE_STATE, PERMISSION_CODE_PHONE_NUMBERS, PERMISSION_CODE_PHONE_CALL, PERMISSION_CODE_SMS_READ, PERMISSION_CODE_SMS_SEND, PERMISSION_CODE_CAMERA, PERMISSION_CODE_LOCATION, PERMISSION_CODE_RECOGNITION, PERMISSION_CODE_ACCOUNTS_GET, PERMISSION_CODE_CONTACTS_READ, PERMISSION_CODE_CONTACTS_WRITE, PERMISSION_CODE_EXTERNALSTORAGE_READ, PERMISSION_CODE_EXTERNALSTORAGE_WRITE, PERMISSION_CODE_BLUETOOTH})
+    public @interface RequestCode {}
 
     private Context context;
     private Interfase interfase;
@@ -269,13 +282,13 @@ public class MyPermissions {
 
     private boolean checkPermissionsGranted() {
 
-        boolean granted = TRUE;
+        boolean granted = FALSE;
 
         for (String permission : permissions) {
 
-            if (ContextCompat.checkSelfPermission(context, permission) != PERMISSIONS_GRANTED) {
+            if (ContextCompat.checkSelfPermission(context, permission) == PERMISSIONS_GRANTED) {
 
-                granted = FALSE;
+                granted = TRUE;
                 break;
             }
         }
@@ -301,91 +314,9 @@ public class MyPermissions {
 
     public void PermissionsResult(@RequestCode int requestCode, String permissions[], int[] grantResults) {
 
-        switch (requestCode) {
+        if (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED) {
 
-            case PERMISSION_CODE_PHONE_STATE: {
-
-                if (permissions[0].equals(PERMISSION_PHONE_STATE) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_PHONE_STATE);
-                }
-
-            }
-            case PERMISSION_CODE_PHONE_NUMBERS: {
-
-                if (permissions[0].equals(PERMISSION_PHONE_NUMBERS) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_PHONE_NUMBERS);
-                }
-
-            }
-            case PERMISSION_CODE_PHONE_CALL: {
-
-                if (permissions[0].equals(PERMISSION_PHONE_CALL) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_PHONE_CALL);
-                }
-
-            }
-            case PERMISSION_CODE_SMS_READ: {
-
-                if (permissions[0].equals(PERMISSION_SMS_READ) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_SMS_READ);
-                }
-
-            }
-            case PERMISSION_CODE_SMS_SEND: {
-
-                if (permissions[0].equals(PERMISSION_SMS_SEND) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_SMS_SEND);
-                }
-
-            }
-            case PERMISSION_CODE_CAMERA: {
-
-                if (permissions[0].equals(PERMISSION_CAMERA) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_CAMERA);
-                }
-
-            }
-            case PERMISSION_CODE_LOCATION: {
-
-                if (permissions[0].equals(PERMISSION_LOCATION_FINE) && grantResults[0] == PERMISSIONS_GRANTED && permissions[1].equals(PERMISSION_LOCATION_COARSE) && grantResults[1] == PERMISSIONS_GRANTED) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_LOCATION);
-                }
-            }
-            case PERMISSION_CODE_RECOGNITION: {
-
-                if (permissions[0].equals(PERMISSION_RECOGNITION) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_RECOGNITION);
-                }
-            }
-            case PERMISSION_CODE_ACCOUNTS_GET: {
-
-                if (permissions[0].equals(PERMISSION_ACCOUNTS_GET) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_ACCOUNTS_GET);
-                }
-            }
-            case PERMISSION_CODE_CONTACTS_READ: {
-
-                if (permissions[0].equals(PERMISSION_CONTACTS_READ) && grantResults[0] == PERMISSIONS_GRANTED && permissions[1].equals(PERMISSION_CONTACTS_READ) && grantResults[1] == PERMISSIONS_GRANTED) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_CONTACTS_READ);
-                }
-            }
-            case PERMISSION_CODE_CONTACTS_WRITE: {
-
-                if (permissions[0].equals(PERMISSION_CONTACTS_WRITE) && (grantResults.length > 0 && grantResults[0] == PERMISSIONS_GRANTED)) {
-
-                    interfase.PermissionsResult(PERMISSION_CODE_CONTACTS_WRITE);
-                }
-            }
+            interfase.PermissionsResult(requestCode);
         }
     }
 
@@ -394,31 +325,20 @@ public class MyPermissions {
 
     private void ShowDialogPermissions() {
 
-        String[] listParams = context.getResources().getStringArray(parameters);
-        String explaniation = listParams[3];
+        MyBasicDialog<DialogParams> myHandlerDialog = new MyBasicDialog<>(context, R.layout.dialog_information);
 
-        DialogShowInfo dialogShowInfo = new DialogShowInfo(context, CreateDialog.DIALOG_CUSTOM, parameters, explaniation) {
-
-            @Override
-            protected boolean PositiveButton() {
-
-                ActivityCompat.requestPermissions(((Activity) context), permissions, requestCode);
-                return false;
-            }
-        };
-        dialogShowInfo.SetButtonNext(new CreateDialog.Interfase() {
+        DialogInformation dialogInformation = new DialogInformation(context, parameters, new DialogInformation.Interfase() {
 
             @Override
-            public boolean ClickButton() {
+            public void Confirm() {
 
                 ActivityCompat.requestPermissions(((Activity) context), permissions, requestCode);
-
-                return true;
             }
 
-            private void DummyVoid() {
-            }
+            private void DummyVoid() {}
         });
+
+        myHandlerDialog.binding(BR.informationBinding).variable(BR.informationParams, dialogInformation).show();
     }
 
 

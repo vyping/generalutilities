@@ -13,8 +13,6 @@ import com.vyping.masterlibrary.time.MyTime;
 import com.vyping.masterlibrary.Common.Definitions;
 import com.vyping.masterlibrary.R;
 
-import java.util.Calendar;
-
 public abstract class DialogPickerDate extends CreateDialog {
 
     private DatePicker Dp_Picker;

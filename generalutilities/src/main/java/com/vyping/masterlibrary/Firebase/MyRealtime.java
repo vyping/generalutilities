@@ -1,15 +1,11 @@
 package com.vyping.masterlibrary.Firebase;
 
-import static com.vyping.masterlibrary.time.Definitions.FORMAT_DATE_01;
-import static com.vyping.masterlibrary.time.Definitions.FORMAT_HOUR_01;
+import static com.vyping.masterlibrary.aplication.MyApplication.USED_INSTANCES;
 import static java.lang.Boolean.FALSE;
-
-import android.location.Location;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
@@ -18,17 +14,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.vyping.masterlibrary.Common.MyNumbers;
 import com.vyping.masterlibrary.Timers.MyCounter;
-import com.vyping.masterlibrary.time.MyTime;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MyRealtime {
 
-    private DatabaseReference databaseReference;
+    private DatabaseReference mainReference, secondaryReference;
     private MyCounter myCounter;
 
     private ListListener listListener;
@@ -39,11 +31,12 @@ public class MyRealtime {
 
     public MyRealtime() {
 
-        if (databaseReference == null) {
+        if (mainReference == null) {
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            // database.setPersistenceEnabled(true);
-            databaseReference = database.getReference();
+            database.setPersistenceEnabled(true);
+            mainReference = database.getReference();
+            mainReference.keepSynced(true);
         }
     }
 
@@ -51,8 +44,17 @@ public class MyRealtime {
 
         String Instance = "https://" + instance + ".firebaseio.com/";
 
-        databaseReference = FirebaseDatabase.getInstance(Instance).getReference();
-        databaseReference.keepSynced(true);
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Instance);
+
+        if (!USED_INSTANCES.contains(Instance)) {
+
+            database.setPersistenceEnabled(true);
+
+            USED_INSTANCES.add(Instance);
+        }
+
+        mainReference = database.getReference();
+        mainReference.keepSynced(true);
     }
 
     @SafeVarargs
@@ -60,14 +62,22 @@ public class MyRealtime {
 
         String Instance = "https://" + instance + ".firebaseio.com/";
 
-        databaseReference = FirebaseDatabase.getInstance(Instance).getReference();
+        FirebaseDatabase database = FirebaseDatabase.getInstance(Instance);
+
+        if (!USED_INSTANCES.contains(Instance)) {
+
+            database.setPersistenceEnabled(true);
+
+            USED_INSTANCES.add(Instance);
+        }
+
+        mainReference = database.getReference();
+        mainReference.keepSynced(true);
 
         for (String child : childs) {
 
             reference(child);
         }
-
-        databaseReference.keepSynced(true);
     }
 
 
@@ -75,7 +85,7 @@ public class MyRealtime {
 
     public MyRealtime getSingleValue(SingleListener listener) {
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        mainReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -86,12 +96,14 @@ public class MyRealtime {
 
                 } else {
 
-                    listener.ValueNonExist();
+                    listener.ValueNonExist("¡No existe la información requerida!");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+                listener.Failure(error.getMessage());
             }
         });
 
@@ -100,7 +112,7 @@ public class MyRealtime {
 
     public MyRealtime getListValues(ListListener listener) {
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        mainReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -132,7 +144,16 @@ public class MyRealtime {
 
         this.listListener = listener;
 
-        databaseReference.addValueEventListener(valueListListener);
+        mainReference.addValueEventListener(valueListListener);
+
+        return this;
+    }
+
+    public MyRealtime getListChanges(String child, ListListener listener) {
+
+        this.listListener = listener;
+
+        mainReference.child(child).addValueEventListener(valueListListener);
 
         return this;
     }
@@ -142,7 +163,7 @@ public class MyRealtime {
         this.valueListener = listener;
         this.myCounter = new MyCounter(500, 100, FALSE, counterInterfase);
 
-        databaseReference.addChildEventListener(childValuesListener);
+        mainReference.addChildEventListener(childValuesListener);
 
         return this;
     }
@@ -152,82 +173,61 @@ public class MyRealtime {
 
     public DatabaseReference getReference() {
 
-        return databaseReference;
+        return mainReference;
     }
 
     public MyRealtime reference(String child) {
 
-        if (databaseReference != null) {
-
-            databaseReference = databaseReference.child(child);
-        }
+        mainReference = mainReference.child(child);
 
         return this;
     }
 
     public MyRealtime child(String child1) {
 
-        if (databaseReference != null) {
+        if (mainReference != null) {
 
-            databaseReference.child(child1);
+            mainReference.child(child1);
         }
 
         return this;
     }
 
-    public void pushValue(Object object) {
+    public String pushValue(Object object) {
 
         if (object != null) {
 
-            databaseReference.push().setValue(object);
-        }
-    }
+            DatabaseReference databaseReference = mainReference.push();
+            databaseReference.setValue(object);
 
-    public void pushValue(Object object, CompleteListener listener) {
-
-        if (object != null) {
-
-            databaseReference.push().setValue(object).addOnSuccessListener(new OnSuccessListener<>() {
-
-                @Override
-                public void onSuccess(Void aVoid) {
-
-                    listener.Success();
-                }
-
-                private void DummyVoid() {
-                }
-
-            }).addOnFailureListener(new OnFailureListener() {
-
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                    listener.Failure();
-                }
-
-                private void DummyVoid() {
-                }
-            });
+            return databaseReference.getKey();
 
         } else {
 
-            listener.Failure();
+            return "";
         }
     }
 
-    public void setValue(Object object) {
+    public String pushValue(String child, Object object) {
 
         if (object != null) {
 
+            DatabaseReference databaseReference = mainReference.child(child).push();
             databaseReference.setValue(object);
+
+            return databaseReference.getKey();
+
+        } else {
+
+            return "";
         }
     }
 
-    public void setValue(Object object, CompleteListener listener) {
+    public String pushValue(Object object, CompleteListener listener) {
 
         if (object != null) {
 
+            DatabaseReference databaseReference = mainReference.push();
             databaseReference.setValue(object).addOnSuccessListener(new OnSuccessListener<>() {
 
                 @Override
@@ -244,7 +244,98 @@ public class MyRealtime {
                 @Override
                 public void onFailure(@NonNull Exception e) {
 
-                    listener.Failure();
+                    listener.Failure(e.getMessage());
+                }
+
+                private void DummyVoid() {
+                }
+            });
+
+            return databaseReference.getKey();
+
+        } else {
+
+            listener.Failure("Sin información para crear");
+
+            return "";
+        }
+    }
+
+    public String pushValue(String child, Object object, CompleteListener listener) {
+
+        if (object != null) {
+
+            DatabaseReference databaseReference = mainReference.child(child).push();
+            databaseReference.setValue(object).addOnSuccessListener(new OnSuccessListener<>() {
+
+                @Override
+                public void onSuccess(Void aVoid) {
+
+                    listener.Success();
+                }
+
+                private void DummyVoid() {
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                    listener.Failure(e.getMessage());
+                }
+
+                private void DummyVoid() {
+                }
+            });
+
+            return databaseReference.getKey();
+
+        } else {
+
+            listener.Failure("Sin información para crear");
+
+            return "";
+        }
+    }
+
+    public void setValue(Object object) {
+
+        if (object != null) {
+
+            mainReference.setValue(object);
+        }
+    }
+
+    public void setValue(String child, Object object) {
+
+        if (object != null) {
+
+            mainReference.child(child).setValue(object);
+        }
+    }
+
+    public void setValue(Object object, CompleteListener listener) {
+
+        if (object != null) {
+
+            mainReference.setValue(object).addOnSuccessListener(new OnSuccessListener<>() {
+
+                @Override
+                public void onSuccess(Void aVoid) {
+
+                    listener.Success();
+                }
+
+                private void DummyVoid() {
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                    listener.Failure(e.getMessage());
                 }
 
                 private void DummyVoid() {
@@ -253,7 +344,51 @@ public class MyRealtime {
 
         } else {
 
-            listener.Failure();
+            listener.Failure("Sin información para guardar");
+        }
+    }
+
+    public void setValue(String child, Object object, CompleteListener listener) {
+
+        if (object != null) {
+
+            mainReference.child(child).setValue(object).addOnSuccessListener(new OnSuccessListener<>() {
+
+                @Override
+                public void onSuccess(Void aVoid) {
+
+                    listener.Success();
+                }
+
+                private void DummyVoid() {
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                    listener.Failure(e.getMessage());
+                }
+
+                private void DummyVoid() {
+                }
+            });
+
+        } else {
+
+            listener.Failure("Sin información para guardar");
+        }
+    }
+
+    public void updateChild(String child, HashMap<String, Object> hashMap) {
+
+        if (hashMap != null) {
+
+            if (!hashMap.isEmpty()) {
+
+                mainReference.child(child).updateChildren(hashMap);
+            }
         }
     }
 
@@ -263,7 +398,7 @@ public class MyRealtime {
 
             if (!hashMap.isEmpty()) {
 
-                databaseReference.updateChildren(hashMap);
+                mainReference.updateChildren(hashMap);
             }
         }
     }
@@ -274,7 +409,7 @@ public class MyRealtime {
 
             if (!hashMap.isEmpty()) {
 
-                databaseReference.updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<>() {
+                mainReference.updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<>() {
 
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -290,7 +425,7 @@ public class MyRealtime {
                     @Override
                     public void onFailure(@NonNull Exception e) {
 
-                        listener.Failure();
+                        listener.Failure(e.getMessage());
                     }
 
                     private void DummyVoid() {
@@ -299,23 +434,90 @@ public class MyRealtime {
 
             } else {
 
-                listener.Failure();
+                listener.Failure("Sin información para actualizar");
             }
 
         } else {
 
-            listener.Failure();
+            listener.Failure("Sin información para actualizar");
+        }
+    }
+
+    public void updateChild(String child, HashMap<String, Object> hashMap, CompleteListener listener) {
+
+        if (hashMap != null) {
+
+            if (!hashMap.isEmpty()) {
+
+                mainReference.child(child).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<>() {
+
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        listener.Success();
+                    }
+
+                    private void DummyVoid() {}
+
+                }).addOnFailureListener(new OnFailureListener() {
+
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        listener.Failure(e.getMessage());
+                    }
+
+                    private void DummyVoid() {}
+                });
+
+            } else {
+
+                listener.Failure("Sin información para actualizar");
+            }
+
+        } else {
+
+            listener.Failure("Sin información para actualizar");
         }
     }
 
     public void removeChild(String child) {
 
-        databaseReference.child(child).removeValue();
+        mainReference.child(child).removeValue();
+    }
+
+    public void removeChild(String path, String child) {
+
+        mainReference.child(path).child(child).removeValue();
     }
 
     public void removeChild(String child, CompleteListener listener) {
 
-        databaseReference.child(child).removeValue().addOnSuccessListener(new OnSuccessListener<>() {
+        mainReference.child(child).removeValue().addOnSuccessListener(new OnSuccessListener<>() {
+
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                listener.Success();
+            }
+
+            private void DummyVoid() {}
+
+        }).addOnFailureListener(new OnFailureListener() {
+
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                listener.Failure(e.getMessage());
+            }
+
+            private void DummyVoid() {}
+        });
+    }
+
+    public void removeChild(String path, String child, CompleteListener listener) {
+
+        mainReference.child(path).child(child).removeValue().addOnSuccessListener(new OnSuccessListener<>() {
 
             @Override
             public void onSuccess(Void aVoid) {
@@ -331,19 +533,18 @@ public class MyRealtime {
             @Override
             public void onFailure(@NonNull Exception e) {
 
-                listener.Failure();
+                listener.Failure(e.getMessage());
             }
 
-            private void DummyVoid() {
-            }
+            private void DummyVoid() {}
         });
     }
 
     public MyRealtime orderByChild(String child1) {
 
-        if (databaseReference != null) {
+        if (mainReference != null) {
 
-            databaseReference.orderByChild(child1);
+            mainReference.orderByChild(child1);
         }
 
         return this;
@@ -368,6 +569,10 @@ public class MyRealtime {
                     count = count + 1;
                     listListener.ValueListen(childSnapshot);
                 }
+
+            } else {
+
+                listListener.Failure("!No existe la información Requerida¡");
             }
 
             listListener.FinishListen();
@@ -425,33 +630,33 @@ public class MyRealtime {
 
     public void removeListListener() {
 
-        if (databaseReference != null) {
+        if (mainReference != null) {
 
-            databaseReference.removeEventListener(valueListListener);
+            mainReference.removeEventListener(valueListListener);
         }
     }
 
     public void removeListListener(String child) {
 
-        if (databaseReference != null) {
+        if (mainReference != null) {
 
-            databaseReference.child(child).removeEventListener(valueListListener);
+            mainReference.child(child).removeEventListener(valueListListener);
         }
     }
 
     public void removeValueListener() {
 
-        if (databaseReference != null) {
+        if (mainReference != null) {
 
-            databaseReference.removeEventListener(childValuesListener);
+            mainReference.removeEventListener(childValuesListener);
         }
     }
 
     public void removeValueListener(String child) {
 
-        if (databaseReference != null) {
+        if (mainReference != null) {
 
-            databaseReference.child(child).removeEventListener(childValuesListener);
+            mainReference.child(child).removeEventListener(childValuesListener);
         }
     }
 
@@ -461,7 +666,8 @@ public class MyRealtime {
     public interface SingleListener {
 
         void ValueListen(DataSnapshot dataSnapshot);
-        default void ValueNonExist() {};
+        default void ValueNonExist(String error) {};
+        default void Failure(String error) {};
     }
 
     public interface ListListener {
@@ -469,19 +675,20 @@ public class MyRealtime {
         default void StartListen(boolean exist, long childCount) {};
         void ValueListen(DataSnapshot dataSnapshot);
         default void FinishListen(){};
+        default void Failure(String error) {};
     }
 
     public interface ValueListener {
 
-        void ChildAdded(DataSnapshot dataSnapshot);
-        void ChildChanged(DataSnapshot dataSnapshot);
-        void ChildRemoved(DataSnapshot dataSnapshot);
+        default void ChildAdded(DataSnapshot dataSnapshot) {};
+        default void ChildChanged(DataSnapshot dataSnapshot) {};
+        default void ChildRemoved(DataSnapshot dataSnapshot) {};
         default void finishAdded() {};
     }
 
     public interface CompleteListener {
 
         default void Success() {};
-        default void Failure() {};
+        default void Failure(String error) {};
     }
 }

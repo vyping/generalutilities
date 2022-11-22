@@ -10,8 +10,8 @@
 
     <stroke
         android:color="@color/colorNegro"
-        android:width="3dp" />
+        android:width="0dp" />
 
-    <corners android:radius="32dp" />
+    <corners android:radius="40dp" />
 
 </shape>

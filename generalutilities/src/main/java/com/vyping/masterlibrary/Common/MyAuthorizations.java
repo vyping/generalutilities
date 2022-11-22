@@ -1,7 +1,5 @@
 package com.vyping.masterlibrary.Common;
 
-import static com.vyping.masterlibrary.Common.Definitions.ACCESS_DENIED;
-
 import android.content.Context;
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -26,8 +24,7 @@ public class MyAuthorizations {
             public void Success(FirebaseRemoteConfig firebaseRemoteConfig) {
 
                 String permissions = firebaseRemoteConfig.getString(Position);
-                HashMap<String, Object> mapPermissions = new Gson().fromJson(permissions, new TypeToken<HashMap<String, Object>>() {
-                }.getType());
+                HashMap<String, Object> mapPermissions = new Gson().fromJson(permissions, new TypeToken<HashMap<String, Object>>() {}.getType());
 
                 new MyBucleFor().integersArray(modules, new MyBucleFor.IntInterface() {
 
@@ -36,7 +33,7 @@ public class MyAuthorizations {
 
                         String Module = new MyString().getStringResources(context, module);
                         boolean contains = mapPermissions.containsKey(Module);
-                        int valueAccess = ACCESS_DENIED;
+                        int valueAccess = Definitions.ACCESS_DENIED;
 
                         if (contains) {
 

@@ -24,13 +24,13 @@ public class MySliderviewAdapter<T> extends SliderViewAdapter<MySliderviewAdapte
     private final SliderItemBinderInterfase<T> itemBinder;
     private final WeakReferenceOnListChangedCallback<T> onListChangedCallback;
 
-    public MySliderviewAdapter.Interfase<T> interfase;
+    public Interfase<T> interfase;
     public ObservableList<T> items;
 
 
     // ----- SetUp ----- //
 
-    public MySliderviewAdapter(SliderItemBinderInterfase<T> itemBinder, Collection<T> items, MySliderviewAdapter.Interfase<T> interfase) {
+    public MySliderviewAdapter(SliderItemBinderInterfase<T> itemBinder, Collection<T> items, Interfase<T> interfase) {
 
         this.itemBinder = itemBinder;
         this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
@@ -40,14 +40,14 @@ public class MySliderviewAdapter<T> extends SliderViewAdapter<MySliderviewAdapte
     }
 
     @Override
-    public MySliderviewAdapter.SliderAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup) {
+    public SliderAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup) {
 
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
 
         int layout = itemBinder.getLayoutRes(items.get(0));
         ViewDataBinding binding = DataBindingUtil.inflate(inflater, layout, viewGroup, false);
 
-        return new MySliderviewAdapter.SliderAdapterViewHolder(binding);
+        return new SliderAdapterViewHolder(binding);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MySliderviewAdapter<T> extends SliderViewAdapter<MySliderviewAdapte
         }));
     }
 
-    public static class SliderAdapterViewHolder extends SliderViewAdapter.ViewHolder {
+    public static class SliderAdapterViewHolder extends ViewHolder {
 
         ViewDataBinding binding;
 

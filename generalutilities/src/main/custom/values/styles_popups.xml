@@ -67,6 +67,9 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">?colorPopUpsIcons</item>
         <item name="android:textSize">@dimen/fontPlus8</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:tint">@color/White</item>
     </style>
 
     <style name="PopupButtonLong">

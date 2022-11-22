@@ -65,6 +65,14 @@ public class Storage {
 
     // ----- ModelMethods ----- //
 
+
+    public void uploadFile(File file) {
+
+        Uri uriFile = Uri.fromFile(file);
+
+        storageReference.putFile(uriFile);
+    }
+
     /**
      * Info:
      * Carga en la actual referencia de Firebase Storage el archivo seleccionado con la ruta especificada.
@@ -72,11 +80,58 @@ public class Storage {
      * @param storagePath [String] Ruta al archivo en el Storage (Users/Pedro.png).
      * @param file        [File] Archivo a cargar desde el dispositivo (new File).
      */
+
     public void uploadFile(String storagePath, File file) {
 
         Uri uriFile = Uri.fromFile(file);
 
         storageReference.child(storagePath).putFile(uriFile);
+    }
+
+    public void uploadFile(File file, SuccessListener listener) {
+
+        Uri uriFile = Uri.fromFile(file);
+
+        storageReference.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<>() {
+
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                listener.Success();
+            }
+
+            private void DummyVoid() {
+            }
+
+        });
+    }
+
+    public void uploadFile(File file, CompleteListener listener) {
+
+        Uri uriFile = Uri.fromFile(file);
+
+        storageReference.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<>() {
+
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                listener.Success();
+            }
+
+            private void DummyVoid() {
+            }
+
+        }).addOnFailureListener(new OnFailureListener() {
+
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+
+                listener.Failure(exception.getMessage());
+            }
+
+            private void DummyVoid() {
+            }
+        });
     }
 
     public void uploadFile(String storagePath, File file, SuccessListener listener) {
@@ -117,7 +172,7 @@ public class Storage {
             @Override
             public void onFailure(@NonNull Exception exception) {
 
-                listener.Failure();
+                listener.Failure(exception.getMessage());
             }
 
             private void DummyVoid() {
@@ -170,7 +225,7 @@ public class Storage {
             @Override
             public void onFailure(@NonNull Exception exception) {
 
-                listener.Failure();
+                listener.Failure(exception.getMessage());
             }
 
             private void DummyVoid() {
@@ -190,6 +245,6 @@ public class Storage {
 
         void Success();
 
-        void Failure();
+        void Failure(String error);
     }
 }

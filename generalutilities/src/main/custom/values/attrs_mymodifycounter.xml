@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <declare-styleable name="ModifyCounter">
+        <attr format="reference" name="background_drawable"/>
+        <attr format="dimension" name="erase_size"/>
+        <attr format="dimension" name="erase_padding"/>
+        <attr format="reference" name="erase_drawable"/>
+        <attr format="color" name="erase_color"/>
+        <attr format="dimension" name="quit_size"/>
+        <attr format="dimension" name="quit_padding"/>
+        <attr format="reference" name="quit_drawable"/>
+        <attr format="color" name="quit_color"/>
+        <attr format="dimension|integer" name="quantity_width">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr format="dimension" name="quantity_margin"/>
+        <attr format="dimension" name="quantity_size"/>
+        <attr format="color" name="quantity_color"/>
+        <attr format="string" name="quantity_string"/>
+        <attr format="integer" name="quantity_integer"/>
+        <attr format="boolean" name="quantity_enabled"/>
+        <attr format="dimension" name="add_size"/>
+        <attr format="dimension" name="add_padding"/>
+        <attr format="reference" name="add_drawable"/>
+        <attr format="color" name="add_color"/>
+        <attr format="boolean" name="erase"/>
+        <attr format="boolean" name="disccount"/>
+    </declare-styleable>
+
+</resources>

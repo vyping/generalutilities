@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="subMenuBinding" type="androidx.databinding.ViewDataBinding" />
+        <variable name="subMenuMethod" type="com.vyping.masterlibrary.menu.side.holders.SideSubMenuHolder.Methods" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Cl_MainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:selectedHighlight="@{subMenuMethod.selected}">
+
+        <LinearLayout
+            android:id="@+id/Ll_SecondaryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/Iv_Icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="@color/GreyLight15"
+                app:setImage="@{subMenuMethod.Image}"
+                app:tint="@color/GreyLight05"
+                tools:ignore="UseAppTint"
+                tools:src="@drawable/icon_image"/>
+
+            <TextView
+                android:id="@+id/Tv_Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:hint="Item"
+                android:textColor="@color/GreyLight05"
+                android:textStyle="bold"
+                app:text="@{subMenuMethod.title}"
+                android:textSize="14sp"
+                app:autoSizeTextType="uniform"
+                tools:ignore="HardcodedText"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/GreyUltraDark050"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Ll_SecondaryContainer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,36 +1,108 @@
 package com.vyping.masterlibrary.Common;
 
-import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerConditionalBinder;
+import com.vyping.masterlibrary.Bucles.MyBucleFor;
 
 public class LogCat {
 
-    public LogCat(Object value1) {
+    private final String tag = "Desarrollo";
+    private String body = "";
 
-        Log.i("Desarrollo", String.valueOf(value1));
+
+    // ----- SetUp ----- //
+
+    public LogCat() {}
+
+    public LogCat(String key, Object body) {
+
+        Log.i(tag, key + ": " + body);
     }
 
-    public LogCat(Object key1, Object value1) {
+    @SafeVarargs
+    public LogCat(@NonNull Object... points) {
 
-        Log.i("Desarrollo", key1 + ": " + value1);
+        body = "";
+
+        new MyBucleFor().integersUntil(points.length, new MyBucleFor.IntInterface() {
+
+            @Override
+            public void intPosition(int item) {
+
+                if (item < points.length -1) {
+
+                    boolean pair = new MyNumbers().isNumberPair(item);
+
+                    if (pair) {
+
+                        if (body.equals("")) {
+
+                            body = String.valueOf(points[item]) + ": ";
+
+                        } else {
+
+                            body = body + String.valueOf(points[item]) + ": ";
+                        }
+
+                    } else {
+
+                        body = body + String.valueOf(points[item]) + ", ";
+                    }
+
+                } else {
+
+                    if (body.equals("")) {
+
+                        body = String.valueOf(points[item]);
+
+                    } else {
+
+                        body = body + String.valueOf(points[item]);
+                    }
+
+                    write();
+                }
+            }
+
+            private void DummyVoid() {}
+        });
     }
 
-    public LogCat(Object key1, Object value1, Object key2, Object value2) {
 
-        Log.i("Desarrollo", key1 + ": " + value1 + ", " + key2 + ": " + value2);
+    // ----- Methods ----- //
+
+    public LogCat point(String point) {
+
+        if (body.equals("")) {
+
+            body = point + "/";
+
+        } else {
+
+            body = body + point + "/";
+        }
+
+        return this;
     }
 
-    public LogCat(Object key1, Object value1, Object key2, Object value2, Object key3, Object value3) {
+    public LogCat test(String key, Object value) {
 
-        Log.i("Desarrollo", key1 + ": " + value1 + ", " + key2 + ": " + value2 + ", " + key3 + ": " + value3);
+        if (body.equals("")) {
+
+            body = key + value;
+
+        } else {
+
+            body = body + ", " + key + ": " + value;
+        }
+
+        return this;
     }
 
-    public LogCat(Object key1, Object value1, Object key2, Object value2, Object key3, Object value3, Object key4, Object value4) {
+    public void write() {
 
-        Log.i("Desarrollo", key1 + ": " + value1 + ", " + key2 + ": " + value2 + ", " + key3 + ": " + value3 + ", " + key4 + ": " + value4);
+        Log.i(tag, body);
     }
 }

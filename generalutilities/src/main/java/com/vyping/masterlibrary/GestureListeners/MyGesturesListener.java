@@ -11,12 +11,9 @@ import android.view.DragEvent;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 
 import androidx.annotation.NonNull;
 
-import com.vyping.masterlibrary.Animations.MyAnimation;
-import com.vyping.masterlibrary.Common.LogCat;
 import com.vyping.masterlibrary.views.MyView;
 
 public class MyGesturesListener implements View.OnTouchListener, View.OnDragListener {
@@ -93,8 +90,13 @@ public class MyGesturesListener implements View.OnTouchListener, View.OnDragList
             if (interfase != null) {
 
                interfase.OnDown(view);
+
+                return true;
+
+            } else {
+
+                return false;
             }
-            return true;
         }
 
         @Override
@@ -104,9 +106,13 @@ public class MyGesturesListener implements View.OnTouchListener, View.OnDragList
 
                 interfase.OnClick(view);
                 interfase.OnUp(view);
-            }
 
-            return true;
+                return true;
+
+            } else {
+
+                return false;
+            }
         }
 
         @Override
@@ -126,9 +132,13 @@ public class MyGesturesListener implements View.OnTouchListener, View.OnDragList
 
                 interfase.OnDoubleClick(view);
                 interfase.OnUp(view);
-            }
 
-            return true;
+                return true;
+
+            } else {
+
+                return false;
+            }
         }
 
         @Override
@@ -143,6 +153,12 @@ public class MyGesturesListener implements View.OnTouchListener, View.OnDragList
 
                     interfase.OnFlingHorizontal(view);
                     interfase.OnUp(view);
+
+                    return true;
+
+                } else {
+
+                    return false;
                 }
 
             } else if (yVel > minVel && xVel < offPath) {
@@ -151,10 +167,18 @@ public class MyGesturesListener implements View.OnTouchListener, View.OnDragList
 
                     interfase.OnFlingVertical(view);
                     interfase.OnUp(view);
-                }
-            }
 
-            return true;
+                    return true;
+
+                } else {
+
+                    return false;
+                }
+
+            } else {
+
+                return false;
+            }
         }
     }
 

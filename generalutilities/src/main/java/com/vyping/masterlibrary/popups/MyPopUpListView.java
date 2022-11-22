@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -51,14 +50,14 @@ public class MyPopUpListView extends MyPopUp {
 
     private void SetParameters(@NonNull final ArrayList<String> arrayItems) {
 
-        adapter = new Adapter(anchorView.getContext(), arrayItems);
+     //   adapter = new Adapter(anchorView.getContext(), arrayItems);
     }
 
     private void SetParameters(@NonNull final String[] listItems) {
 
         ArrayList arrayItems = new MyArrayList().listToArray(listItems);
 
-        adapter = new Adapter(anchorView.getContext(), arrayItems);
+     //   adapter = new Adapter(anchorView.getContext(), arrayItems);
     }
 
     private void SetPopUpViews() {
@@ -66,14 +65,14 @@ public class MyPopUpListView extends MyPopUp {
         int styleList = R.style.DialogListView;
         int attrList = R.attr.dialogListView;
 
-        setContainerOrientation(LinearLayout.VERTICAL);
+      //  setContainerOrientation(LinearLayout.VERTICAL);
 
-        Lv_ListView = new ListView(anchorView.getContext(), null, attrList, styleList);
+      //  Lv_ListView = new ListView(anchorView.getContext(), null, attrList, styleList);
         Lv_ListView.setAdapter(adapter);
         Lv_ListView.setOnItemClickListener(onItemClickListener);
         Paris.style(Lv_ListView).apply(styleList);
 
-        AddCustomView(Lv_ListView);
+     //   AddCustomView(Lv_ListView);
     }
 
 

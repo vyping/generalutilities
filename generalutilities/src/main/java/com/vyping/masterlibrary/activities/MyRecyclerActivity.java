@@ -1,5 +1,7 @@
 package com.vyping.masterlibrary.activities;
 
+import static com.vyping.masterlibrary.authentication.MyAuthGoogle.REQUEST_CODE_GOOGLE_AUTH;
+import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import android.app.Activity;
@@ -15,20 +17,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.google.firebase.database.DataSnapshot;
-import com.vyping.masterlibrary.ActionBar.MyActionBar;
 import com.vyping.masterlibrary.Common.MyActivity;
 import com.vyping.masterlibrary.Common.MyPermissions;
 import com.vyping.masterlibrary.Firebase.MyRealtime;
 import com.vyping.masterlibrary.ToolBars.MyToolBars;
 import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerCompositeBinder;
 import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerConditionalBinder;
-import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerItemBinder;
 import com.vyping.masterlibrary.adapters.recyclerview.binder.RecyclerItemBinderInterfase;
 import com.vyping.masterlibrary.adapters.recyclerview.handler.RecyclerHandler;
 import com.vyping.masterlibrary.adapters.recyclerview.handler.RecyclerHandlerInterfase;
-import com.vyping.masterlibrary.adapters.sliderview.binder.SliderConditionalBinder;
-import com.vyping.masterlibrary.time.MyTime;
 import com.vyping.masterlibrary.aplication.MyApplication;
+import com.vyping.masterlibrary.time.MyTime;
 
 public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
 
@@ -37,7 +36,6 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
     public ViewDataBinding binding;
     private MyPermissions myPermissions;
 
-    public MyActionBar actionBar;
     public MyToolBars myToolBars;
     public MyRealtime myRealtime;
 
@@ -59,7 +57,16 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
             application = (MyApplication) getApplication();
         }
 
+        //application.statusSession();
+
         CreateActivity();
+        StartProcess();
+        InherentViews();
+        ActivityViews();
+
+        binding.executePendingBindings();
+
+        LaunchProcess();
     }
 
     @Override
@@ -81,61 +88,55 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
     }
 
 
-    // ----- Start ----- //
+    // ----- Chained ----- //
 
-    public void createActivity(Activity activity, int layout, int icon, int module) {
-
-        setStartProcess(activity, layout);
-        setActionBar(icon, module);
-        setActivityViews();
-
-        LaunchProcess();
-    }
-
-    public void createActivity(Activity activity, int layout, int icon, int module, Class backActivity) {
-
-        setStartProcess(activity, layout, backActivity);
-        setActionBar(icon, module);
-        setActivityViews();
-
-        LaunchProcess();
-    }
-
-    public void setStartProcess(Activity activity, int layout) {
+    public MyRecyclerActivity<Item> activity(Activity activity, int layout) {
 
         this.context = new MyActivity().setTheme(activity);
+        this.application.setContext(context);
+        this.application.setCurrentActivity((Activity) context);
         this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
         View view = binding.getRoot();
         setContentView(view);
 
-        StartProcess(binding);
+        return this;
     }
 
-    public void setStartProcess(Activity activity, int layout, Class<Activity> backActivity) {
+    public MyRecyclerActivity<Item> actionBar() {
 
-        this.context = activity;
+        application.setActionBar();
+
+        return this;
+    }
+
+    public MyRecyclerActivity<Item> setSideMenu() {
+
+        application.setSideMenu(FALSE);
+
+        return this;
+    }
+
+    public MyRecyclerActivity<Item> onBack(Class backActivity) {
+
         this.backActivity = backActivity;
-        this.binding = DataBindingUtil.inflate(LayoutInflater.from(activity), layout, null, false);
 
-        View view = binding.getRoot();
-        setContentView(view);
-
-        StartProcess(binding);
+        return this;
     }
 
-    public void setActionBar(int icon, int module) {
+    public ViewDataBinding binding() {
 
-        this.actionBar = new MyActionBar(context, icon, module) {};
-
-        InherentsViews();
+        return binding;
     }
 
-    public void setActivityViews() {
+    public MyToolBars toolbar(int container) {
 
-        ActivityViews();
+        if (myToolBars != null) {
 
-        binding.executePendingBindings();
+            myToolBars = new MyToolBars(context, container) {};
+        }
+
+        return myToolBars;
     }
 
 
@@ -189,7 +190,6 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
             public void SelectedSearch(String search) {
 
                 recyclerHandler.setSearch(search);
-
                 interfase.setSearch(search);
             }
 
@@ -250,17 +250,6 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
 
             private void DummyVoid(){}
         });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
-
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
-        });
     }
 
     public void setSearchAndMonthBar(int container, ToolBarsInterfase interfase) {
@@ -285,17 +274,6 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
             }
 
             private void DummyVoid(){}
-        });
-        actionBar.setTouchListener(new MyActionBar.TouchInterface() {
-
-            @Override
-            public void OnFling() {
-
-                myToolBars.selectBar();
-            }
-
-            @Override
-            public void DummyVoid() {}
         });
     }
 
@@ -380,12 +358,15 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
     // ----- Interfase ----- //
 
     protected abstract void CreateActivity();
-    protected abstract void StartProcess(ViewDataBinding binding);
-    protected void InherentsViews() {};
+    protected abstract void StartProcess();
+    protected void InherentViews() {};
     protected void ActivityViews() {};
+    protected void ModifyViewsByAuth() {};
     protected void LaunchProcess() {};
-    protected void StopProcess() {};
     protected void ActivityResults(int requestCode, int resultCode, Intent data) {};
+    protected void StopProcess() {};
+    protected void BackPressed() {};
+    protected void loginError(String error) {};
 
     public interface PermissionsInterfase {
 
@@ -413,11 +394,14 @@ public abstract class MyRecyclerActivity<Item> extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
+        application.activityResults(requestCode, data);
         ActivityResults(requestCode, resultCode, data);
     }
 
     @Override
     public void onBackPressed() {
+
+        BackPressed();
 
         if (backActivity != null) {
 

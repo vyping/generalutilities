@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,20 @@ public abstract class SetImageButton {
         ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(Context, Style);
 
         imageButton = new ImageButton(contextThemeWrapper, null, attr, Style);
+        imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        Paris.style(imageButton).apply(Style);
+
+        container.addView(imageButton);
+
+        getButtonView(setAttributes(drawable));
+    }
+
+    public SetImageButton(Context Context, @NonNull LinearLayout container, int drawable, int Style) {
+
+        context = Context;
+        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(Context, Style);
+
+        imageButton = new ImageButton(contextThemeWrapper, null, Style);
 
         Paris.style(imageButton).apply(Style);
 

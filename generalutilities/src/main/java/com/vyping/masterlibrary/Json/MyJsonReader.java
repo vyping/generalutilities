@@ -3,6 +3,8 @@ package com.vyping.masterlibrary.Json;
 import static com.vyping.masterlibrary.time.Definitions.FORMAT_DATE_01;
 import static com.vyping.masterlibrary.time.Definitions.FORMAT_HOUR_01;
 
+import static java.lang.Boolean.FALSE;
+
 import android.content.Context;
 import android.util.JsonReader;
 
@@ -142,6 +144,37 @@ public class MyJsonReader {
             e.printStackTrace();
 
             return 0;
+        }
+    }
+
+
+    // ----- Integer Boolean ----- //
+
+    public boolean getJsonBoolean(@NonNull JSONArray array, int index) {
+
+        try {
+
+            return array.getBoolean(index);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return FALSE;
+        }
+    }
+
+    public boolean getJsonBoolean(@NonNull JSONObject jsonObject, String key) {
+
+        try {
+
+            return jsonObject.getBoolean(key);
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+
+            return FALSE;
         }
     }
 
@@ -290,8 +323,6 @@ public class MyJsonReader {
             return "";
         }
     }
-
-
 
     public String selectPlaceOrAddress(@NonNull JSONArray place) {
 

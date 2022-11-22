@@ -13,6 +13,8 @@ public class MyBucleFor {
 
             Interface.intPosition(i);
         }
+
+        Interface.Finish();
     }
 
     public void integerList(@NonNull int[] numberList, IntInterface Interface) {
@@ -21,6 +23,8 @@ public class MyBucleFor {
 
             Interface.intPosition(n);
         }
+
+        Interface.Finish();
     }
 
     public void charsList(@NonNull char[] charList, CharsInterface Interface) {
@@ -29,6 +33,8 @@ public class MyBucleFor {
 
             Interface.itemFromArray(c);
         }
+
+        Interface.Finish();
     }
 
     public void stringsArray(@NonNull ArrayList<String> arrayList, StringInterface Interface) {
@@ -37,6 +43,8 @@ public class MyBucleFor {
 
             Interface.itemFromArray(arrayList.get(i));
         }
+
+        Interface.Finish();
     }
 
     public void integersArray(@NonNull ArrayList<Integer> arrayList, IntInterface Interface) {
@@ -45,20 +53,25 @@ public class MyBucleFor {
 
             Interface.intPosition(arrayList.get(i));
         }
+
+        Interface.Finish();
     }
 
     public interface IntInterface {
 
-        void intPosition(int item);
+        public void intPosition(int item);
+        default public void Finish() {};
     }
 
     public interface CharsInterface {
 
-        void itemFromArray(char item);
+        public void itemFromArray(char item);
+        default public void Finish() {};
     }
 
     public interface StringInterface {
 
-        void itemFromArray(String item);
+        public void itemFromArray(String item);
+        default public void Finish() {};
     }
 }

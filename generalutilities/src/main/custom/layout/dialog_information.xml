@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="informationDialog" type="android.app.Dialog" />
+        <variable name="informationBinding" type="androidx.databinding.ViewDataBinding" />
+        <variable name="informationParams" type="com.vyping.masterlibrary.dialogs.DialogInformation" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Cl_MainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dialogInformationBinding="@{informationBinding}">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/Ll_Main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="28dp"
+                android:paddingBottom="28dp"
+                android:rotation="0"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/Et_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/colorTransparente"
+                    android:gravity="center"
+                    android:hint="Title"
+                    android:text="@{informationParams.TITLE}"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/GreyLight15"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/Et_Information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/colorTransparente"
+                    android:gravity="center"
+                    android:hint="Information"
+                    android:singleLine="false"
+                    android:text="@{informationParams.DESCRIPTION}"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/GreyLight05"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <cheekiat.slideview.SlideView
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    app:confirm="@{informationParams}"
+                    app:slideBackground="@drawable/swipe_background"
+                    app:slideSrc="@drawable/swipe_button"
+                    app:slideText="Entendido"
+                    app:slideTextColor="@color/GreyLight10" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -58,7 +58,7 @@ public class MyDisplay {
         return dps * context.getResources().getDisplayMetrics().density;
     }
 
-    public static float pxsToDps(final @NonNull Context context, final float pxs) {
+    public float pxsToDps(final @NonNull Context context, final float pxs) {
 
         return pxs / context.getResources().getDisplayMetrics().density;
     }

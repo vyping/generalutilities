@@ -110,6 +110,23 @@ public class MyGeneralTools {
         }
     }
 
+    public void startVibration(@NonNull Context context, int delay, int effect) {
+
+        Vibrator vibrator = (Vibrator) context.getSystemService(VIBRATOR_SERVICE);
+
+        if (Objects.requireNonNull(vibrator).hasVibrator()) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+                vibrator.vibrate(VibrationEffect.createOneShot(delay, effect));
+
+            } else {
+
+                vibrator.vibrate(delay);
+            }
+        }
+    }
+
     public void startSoundAlarm(Context context, int sound) {
 
         MediaPlayer mediaPlayer = MediaPlayer.create(context, sound);

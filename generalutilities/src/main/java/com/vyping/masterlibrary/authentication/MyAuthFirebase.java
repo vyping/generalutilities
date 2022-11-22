@@ -1,60 +1,82 @@
 package com.vyping.masterlibrary.authentication;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 import android.app.Activity;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.SignInMethodQueryResult;
-import com.vyping.masterlibrary.Common.LogCat;
-
+import com.vyping.masterlibrary.Common.MyToast;
+import com.vyping.masterlibrary.aplication.MyApplication;
 import java.util.List;
 
 public class MyAuthFirebase {
 
-    protected final Context context;
-    protected final FirebaseAuth firebaseAuth;
-    private Interfase interfase;
+    public MyApplication.UidInterfase interfase;
+
+    private FirebaseAuth authFirebase;
+    private FirebaseUser userFirebase;
 
 
     /*----- Setup -----*/
 
-    public MyAuthFirebase(Context context) {
+    public MyAuthFirebase() {
 
-        this.context = context;
-        this.firebaseAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
+        setParameters(FirebaseAuth.getInstance());
     }
 
-    public MyAuthFirebase(Context context, FirebaseAuth firebaseAuth) {
+    public MyAuthFirebase(FirebaseAuth firebaseAuth) {
 
-        this.context = context;
-        this.firebaseAuth = firebaseAuth;
+        setParameters(firebaseAuth);
     }
 
 
     // ----- Methods ----- //
 
-    public MyAuthFirebase interfase(Interfase interfase) {
+    private void setParameters(FirebaseAuth firebaseAuth) {
+
+        authFirebase = firebaseAuth;
+        userFirebase = authFirebase.getCurrentUser();
+    }
+
+    public MyAuthFirebase getLoggedStatus(MyApplication.UidInterfase interfase) {
 
         this.interfase = interfase;
+        this.authFirebase.addAuthStateListener(authStateListener);
+
+        if (authFirebase.getCurrentUser() == null) {
+
+            this.interfase.LoggedStatus(FALSE);
+
+        } else {
+
+            this.interfase.LoggedStatus(TRUE);
+        }
 
         return this;
     }
 
-    public void getSigninMethodsList() {
 
-        firebaseAuth.fetchSignInMethodsForEmail("oscaravillabon@hotmail.com").addOnCompleteListener(new OnCompleteListener<>() {
+    // ----- Sign Methods ----- //
+
+    public FirebaseUser getCurrentUser() {
+
+        return userFirebase;
+    }
+
+    public void getSigningMethodsList() {
+
+        authFirebase.fetchSignInMethodsForEmail("oscaravillabon@hotmail.com").addOnCompleteListener(new OnCompleteListener<>() {
 
             @Override
             public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
@@ -64,45 +86,43 @@ public class MyAuthFirebase {
                     SignInMethodQueryResult result = task.getResult();
                     List<String> signInMethods = result.getSignInMethods();
 
-                    new LogCat( "signInMethods", signInMethods);
-
                     if (signInMethods.contains(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)) {
 
                     } else if (signInMethods.contains(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD)) {
 
                     }
-
-                } else {
-
-                    new LogCat( "Error getting sign in methods for user", task.getException());
                 }
             }
+
+            private void DummyVoid() {};
         });
     }
 
-    private void logInWithCredential(AuthCredential credential) {
+    public void logInAnonymously(Context context) {
 
-        firebaseAuth.signInWithCredential(credential).addOnCompleteListener((Activity) context, new OnCompleteListener<>() {
+        authFirebase.signInAnonymously().addOnCompleteListener(((Activity) context), new OnCompleteListener<>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (interfase != null) {
+                if (task.isSuccessful()) {
 
-                    if (task.isSuccessful()) {
+                    userFirebase = authFirebase.getCurrentUser();
+                    interfase.LoggedAnonimously(userFirebase);
 
-                        FirebaseUser user = task.getResult().getUser();
+                } else {
 
-                        if (user != null && interfase != null) {
+                    if (task.getException() != null) {
 
-                            interfase.LoginSuccess(user);
-                        }
+                        String error = String.valueOf(task.getException().getMessage());
+                        new MyToast(context, "¡Error:" + error + "!");
 
                     } else {
 
-                        String error = String.valueOf(task.getException());
-                        interfase.Failed(error);
+                        new MyToast(context, "¡Error al iniciar anonimamente!");
                     }
+
+                    interfase.Failed();
                 }
             }
 
@@ -110,32 +130,48 @@ public class MyAuthFirebase {
         });
     }
 
-    public void linkWithCredential(AuthCredential credential) {
+    public void linkWithCredential(Context context, AuthCredential credential) {
 
-        if (firebaseAuth.getCurrentUser() != null) {
+        if (authFirebase.getCurrentUser() != null) {
 
-            firebaseAuth.getCurrentUser().linkWithCredential(credential).addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+            authFirebase.getCurrentUser().linkWithCredential(credential).addOnCompleteListener((Activity) context, new OnCompleteListener<>() {
 
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if (task.isSuccessful()) {
 
-                        FirebaseUser user = task.getResult().getUser();
+                        FirebaseUser firebaseUser = task.getResult().getUser();
 
-                        if (user != null && interfase != null) {
+                        if (firebaseUser != null && interfase != null) {
 
-                            interfase.AccounLinked(user);
+                            userFirebase = firebaseUser;
+                            interfase.LoggedSuccess(userFirebase);
+
+                            new MyToast(context, "¡Sesión iniciada con éxito!");
                         }
 
                     } else {
 
-                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                        if (task.getException() != null) {
 
-                            if (interfase != null) {
+                            String error = String.valueOf(task.getException());
 
-                                interfase.Failed(task.getException().getMessage());
+                            if (error.contains("User has already been linked to the given provider")) {
+
+                                logInWithCredential(context, credential);
+
+                            } else {
+
+                                String errorMessage = String.valueOf(task.getException().getMessage());
+                                new MyToast(context, "Error: " + errorMessage);
+                                interfase.Failed();
                             }
+
+                        } else {
+
+                            new MyToast(context, "¡Imposible iniciar sesión!");
+                            interfase.Failed();
                         }
                     }
                 }
@@ -145,14 +181,70 @@ public class MyAuthFirebase {
         }
     }
 
+    public void logInWithCredential(Context context, AuthCredential credential) {
 
-    // ----- Interface ----- //
+        authFirebase.signInWithCredential(credential).addOnCompleteListener((Activity) context, new OnCompleteListener<>() {
 
-    public interface Interfase {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
 
-        default void SigninMethods(List<String> listMethods) {};
-        default void LoginSuccess(FirebaseUser firebaseUser) {};
-        default void AccounLinked(FirebaseUser firebaseUser) {};
-        default void Failed(String error) {};
+                if (task.isSuccessful()) {
+
+                    FirebaseUser firebaseUser = task.getResult().getUser();
+
+                    if (firebaseUser != null) {
+
+                        userFirebase = firebaseUser;
+                        interfase.LoggedSuccess(firebaseUser);
+
+                        new MyToast(context, "¡Sesión iniciada con éxito!");
+                    }
+
+                } else {
+
+                    if (task.getException() != null) {
+
+                        String error = String.valueOf(task.getException().getMessage());
+                        new MyToast(context, "Error: " + error);
+
+                    } else {
+
+                        new MyToast(context, "¡Imposible iniciar sesión!");
+                    }
+
+                    interfase.Failed();
+                }
+            }
+
+            private void DummyVoid() {}
+        });
+    }
+
+    public void logOutFirebase(@NonNull Context context) {
+
+        authFirebase.signOut();
+        userFirebase = null;
+    }
+
+
+    // ----- Listener Methods ----- //
+
+    private final FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
+
+        @Override
+        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        }
+
+        private void DummyVOid(){}
+    };
+
+
+    // ----- Tools Methods ----- //
+
+    public void removeAuthListener() {
+
+        authFirebase.removeAuthStateListener(authStateListener);
     }
 }

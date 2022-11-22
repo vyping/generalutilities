@@ -6,6 +6,7 @@ import static java.lang.Boolean.TRUE;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Patterns;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -305,20 +306,23 @@ public class MyString {
 
     public String formatToMoney(@NonNull String number) {
 
-
         String Return = "";
 
-        if (!number.equals("")) {
+        try {
 
-            boolean isNumber = new MyNumbers().isNumber(number);
+            if (!number.equals("")) {
 
-            if (isNumber) {
+                boolean isNumber = new MyNumbers().isNumber(number);
 
-                long Number = Long.parseLong(number);
+                if (isNumber) {
 
-                Return = formatToMoney(Number);
+                    long Number = Long.parseLong(number);
+
+                    Return = formatToMoney(Number);
+                }
             }
-        }
+
+        } catch (NumberFormatException ignored) {}
 
         return Return;
     }
@@ -355,7 +359,7 @@ public class MyString {
         return String.format(Locale.getDefault(), "%0" + digits + "d", number);
     }
 
-    public String formatDigits(String number, int digits) {
+    public String formatDigits(@NonNull String number, int digits) {
 
         String Return = "";
 
@@ -372,5 +376,41 @@ public class MyString {
         }
 
         return Return;
+    }
+
+    public String extractFromEditText(@NonNull EditText editText) {
+
+        return String.valueOf(editText.getText());
+    }
+
+    public String extractMoneyFromEditText(@NonNull EditText editText) {
+
+        return String.valueOf(editText.getText()).replace("$", "").replace(".", "").replace(",", "");
+    }
+
+    public String reduce(String text) {
+
+        if (text != null) {
+
+            return text.trim().toLowerCase()
+                    .replace("&", "y")
+                    .replace("Ñ", "N")
+                    .replace("Á", "A")
+                    .replace("É", "E")
+                    .replace("Í", "I")
+                    .replace("Ó", "O")
+                    .replace("Ú", "U")
+                    .replace("ñ", "n")
+                    .replace("á", "a")
+                    .replace("é", "e")
+                    .replace("í", "i")
+                    .replace("ó", "o")
+                    .replace("ú", "u")
+                    .replaceAll("[^a-zA-Z0-9]", "");
+
+        } else {
+
+            return "";
+        }
     }
 }

@@ -2,6 +2,17 @@
 
 <resources>
 
+    // Dialogs Permissions
+
+    <string-array name="Dialogs_Permissions_Storage">
+        <item name="PickerDate_IconTitle">\uf00d</item>
+        //times
+        <item name="PickerDate_TextTitle">Permisos Requeridos</item>
+        <item name="PickerDate_Information">- Acceso a camara: Requerido para subir las fotos del ménu desde la camara fotográfica. \n - Acceso a multimedia: Requerido para subir las fotos del ménu desde la galería.</item>
+        <item name="PickerDate_Description">- Acceso a camara: Requerido para subir las fotos del ménu desde la camara fotográfica. \n - Acceso a multimedia: Requerido para subir las fotos del ménu desde la galería.</item>
+        <item name="PickerDate_Negative">Cancelar</item>
+        <item name="PickerDate_Positive">Seleccionar</item>
+    </string-array>
 
     <string-array name="Dialog_LogOut">
         <item name="LogOut_Icon">icon_logout</item>

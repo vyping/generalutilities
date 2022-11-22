@@ -2,6 +2,9 @@ package com.vyping.masterlibrary.Common;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 
+import static com.vyping.masterlibrary.aplication.MyApplication.ACCOUNT;
+import static java.lang.Boolean.TRUE;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.TaskStackBuilder;
@@ -12,9 +15,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.datatransport.backend.cct.BuildConfig;
+import com.vyping.masterlibrary.Json.JsonFile;
 import com.vyping.masterlibrary.Preferences.MyConfigPreferences;
 import com.vyping.masterlibrary.R;
+import com.vyping.masterlibrary.lists.MyHashMap;
+import com.vyping.masterlibrary.menu.side.holders.SideMenuHolder;
+import com.vyping.masterlibrary.models.menus.Menu;
+import com.vyping.masterlibrary.models.submenus.SubMenu;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -40,6 +49,53 @@ public class MyActivity {
 
             ((AppCompatActivity) context).finish();
         }
+    }
+
+    public void Start(@NonNull Context context, String activity, boolean finish) {
+
+        try {
+
+            String packageName = context.getPackageName();
+            Class classDestine = Class.forName(packageName +  "." + activity);
+            Start(context, classDestine, finish);
+
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public void LaunchMainActivity(Context context) {
+
+        try {
+
+            String type = new MyString().reduce(ACCOUNT.getType());
+            int rawFile = context.getResources().getIdentifier("sidemenu_" + type, "raw", context.getPackageName());
+            new JsonFile(context, rawFile, new JsonFile.Interface() {
+
+                @Override
+                public void GetJsonObject(String key, JSONObject jsonObject) {
+
+                    SideMenuHolder.Methods mainMenu = new SideMenuHolder.Methods(key, jsonObject);
+
+                    new MyHashMap<>(mainMenu.getSubMenus()).iterate(new MyHashMap.Interfase<SubMenu>() {
+
+                        @Override
+                        public void ModelIterated(String id, SubMenu subMenu, int position) {
+
+                            if (subMenu.Main == TRUE) {
+
+                                String mainActivity = subMenu.Destin;
+                                Start(context, mainActivity, TRUE);
+                            }
+                        }
+                    });
+                }
+
+                private void DummyVoid() {}
+            });
+
+        } catch (Exception ignored) {}
     }
 
     public void Restart(Context context) {
@@ -111,13 +167,13 @@ public class MyActivity {
 
             List<ActivityManager.RunningAppProcessInfo> processInfos = activityManager.getRunningAppProcesses();
 
-            for (ActivityManager.RunningAppProcessInfo info : processInfos) {
+            //for (ActivityManager.RunningAppProcessInfo info : processInfos) {
 
-                if (BuildConfig.APPLICATION_ID.equalsIgnoreCase(info.processName) && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == info.importance) {
+               // if (BuildConfig.APPLICATION_ID.equalsIgnoreCase(info.processName) && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == info.importance) {
 
-                    return true;
-                }
-            }
+                 //   return true;
+              // }
+          //  }
         }
 
         return false;
